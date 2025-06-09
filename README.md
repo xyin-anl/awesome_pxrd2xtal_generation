@@ -54,7 +54,7 @@ Additionally, `parse_cifs.py` provides general utilities for parsing and process
 | **XtalNet**     | 2024 | CPCP + conditional diffusion                        | 90 % (top-10, hMOF-100)          | [*Adv. Sci.*](https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/advs.202410722) | [10.5281/zenodo.13629658](https://zenodo.org/records/13629658)                                                              |
 | **deCIFer**     | 2025 | Autoregressive Transformer                          | 94 % structure match             | [arXiv](https://arxiv.org/abs/2502.02189)                                  | [FrederikLizakJohansen/deCIFer](https://github.com/FrederikLizakJohansen/deCIFer)     |
 | **DiffractGPT** | 2025 | Large-token GPT (PXRD-conditioned)                  | 0.28 Å lattice-MAE               | [*J. Phys. Chem. Lett.*](https://pubs.acs.org/doi/full/10.1021/acs.jpclett.4c03137)             | [usnistgov/atomgpt](https://github.com/usnistgov/atomgpt)      |
-| **Uni3DAR** | 2025 | Large-token GPT (PXRD-conditioned)                  | 0.02 RMSE               | [arXiv](https://arxiv.org/abs/2503.16278)             | [dptech-corp/Uni-3DAR](https://github.com/dptech-corp/Uni-3DAR)      |
+| **Uni3DAR** | 2025 | Hierarchical tokenization 3D autoregressive                  | 0.02 RMSE               | [arXiv](https://arxiv.org/abs/2503.16278)             | [dptech-corp/Uni-3DAR](https://github.com/dptech-corp/Uni-3DAR)      |
 
 †As reported by authors; metrics differ across papers.
 
