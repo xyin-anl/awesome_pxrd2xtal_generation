@@ -64,15 +64,18 @@ Additionally, `parse_cifs.py` provides general utilities for parsing and process
 
 | Dataset                                                                                          | Size      | Sim / Exp | Format         | Notes                                |
 | ------------------------------------------------------------------------------------------------ | --------- | --------- | -------------- | ------------------------------------ |
-| **[Perov-5](https://figshare.com/articles/dataset/Perov5/22705189)**          | ≈ 1–3k   | Sim       | CIF + PXRD     | Small-cell ABO<sub>3</sub> benchmark |
-| **[MP-20-PXRD](https://github.com/gabeguo/cdvae_xrd/tree/main/data/mp_20)**     | 45 229    | Sim       | CIF + tensors  | Used by PXRDnet / PXRDGen            |
-| **[Carbon-24](https://huggingface.co/datasets/albertvillanova/carbon_24)**  | ≈ 6k     | Sim       | CIF + PXRD     | Covalent carbon allotropes           |
 | **[hMOF-100 / 400](https://doi.org/10.5281/zenodo.13629658)**                   | 100 / 400 | Sim       | CIF + PXRD     | Large hypothetical MOFs              |
+| **[Perov-5](https://figshare.com/articles/dataset/Perov5/22705189)**          | ≈ 1–3k   | Sim       | CIF + PXRD     | Small-cell ABO<sub>3</sub> benchmark |
+| **[Carbon-24](https://huggingface.co/datasets/albertvillanova/carbon_24)**  | ≈ 6k     | Sim       | CIF + PXRD     | Covalent carbon allotropes           |
+| **[MP-20-PXRD](https://github.com/gabeguo/cdvae_xrd/tree/main/data/mp_20)**     | 45 229    | Sim       | CIF + tensors  | Used by PXRDnet / PXRDGen            |
 | **[JARVIS-DFT XRD](https://jarvis.nist.gov/)**                             | 20–60k   | Sim       | DB / API       | Broad chemistry; GPT pre-training    |
 | **[CHILI-3K / 100K](https://github.com/UlrikFriisJensen/CHILI)** | 100k + | Sim | CIF + PXRD | Used by deCIFer |
 | **[SimXRD-4M](https://openreview.net/forum?id=mkuB677eMM)**                 | 4.06M    | Sim       | Spectra shards | Crystal-symmetry mega-benchmark      |
-| **[XRed](https://github.com/WPEM/XRED)**                                        | ≈ 2k     | Exp       | .xy            | High-quality mineral patterns        |
+| **[PowBase](http://www.cristal.org/powbase/index.html)**                 | 169    | Exp       | .dat/.cif |  Unlabeled experimental PXRD      |
+| **[Crystallography Open Database](https://www.crystallography.net/cod/)**                 | 1,052    | Exp       | CIF + PXRD | Labeled with full structure information      |
 | **[RRUFF](https://rruff.info/)** | 3k + | Exp | DB | Reference minerals|
+| **[XRed](https://github.com/WPEM/XRED)**                                        | ≈ 2k     | Exp       | .xy            | High-quality mineral patterns        |
+| **[opXRD](https://zenodo.org/records/15298026)**                 | 92,552    | Exp       | .xyz | Sourced from multiple research institutes      |
 
 
 ## Metrics
