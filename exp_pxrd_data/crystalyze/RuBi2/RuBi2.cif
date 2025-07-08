@@ -1,0 +1,2016 @@
+_publ_contact_author_name            'Danna Freedman'
+_publ_contact_author_address         '77 Massachusetts Avenue (18-592), Cambridge, MA 02139, United States'
+_publ_contact_author_email           danna@mit.edu
+
+
+# start Validation Reply Form
+_vrf_REFLT02_RuBi2_0
+;
+PROBLEM: The number of reflections greater than the sigma threshold
+RESPONSE: The number of reflections greater than the sigma threshold and number of symmmetry-indpendent reflections are both reported as 0.
+;
+_vrf_PLAT881_RuBi2_0
+;
+PROBLEM: No Datum for _diffrn_reflns_av_R_equivalents ...     Please Do !  
+RESPONSE: These values are not calculated for this powder cif.
+;
+_vrf_REFLT02_Bi_V_0
+;
+PROBLEM: The number of reflections greater than the sigma threshold
+RESPONSE: The number of reflections greater than the sigma threshold and number of symmmetry-indpendent reflections are both reported as 0.
+;
+_vrf_PLAT881_Bi_V_0
+;
+PROBLEM: No Datum for _diffrn_reflns_av_R_equivalents ...     Please Do !  
+RESPONSE: These values are not calculated for this powder cif.
+;
+_vrf_REFLT02_MgO_0
+;
+PROBLEM: The number of reflections greater than the sigma threshold
+RESPONSE: The number of reflections greater than the sigma threshold and number of symmmetry-indpendent reflections are both reported as 0.
+;
+_vrf_PLAT881_MgO_0
+;
+PROBLEM: No Datum for _diffrn_reflns_av_R_equivalents ...     Please Do !  
+RESPONSE: These values are not calculated for this powder cif.
+;
+_vrf_GEOM001_Ru_0
+;
+PROBLEM: _geom_bond_atom_site_label_1 is missing
+RESPONSE: Bonds and angles were not calculated.
+;
+_vrf_GEOM002_Ru_0
+;
+PROBLEM: _geom_bond_atom_site_label_2 is missing
+RESPONSE: Bonds and angles were not calculated.
+;
+_vrf_GEOM003_Ru_0
+;
+PROBLEM: _geom_bond_distance is missing
+RESPONSE: Bonds and angles were not calculated.
+;
+_vrf_REFLT02_Ru_0
+;
+PROBLEM: The number of reflections greater than the sigma threshold
+RESPONSE: The number of reflections greater than the sigma threshold and number of symmmetry-indpendent reflections are both reported as 0.
+;
+_vrf_PLAT881_Ru_0
+;
+PROBLEM: No Datum for _diffrn_reflns_av_R_equivalents ...     Please Do !  
+RESPONSE: These values are not calculated for this powder cif.
+;
+# end Validation Reply Form
+
+
+#######	Begin powder crystal structure	#######
+data_RuBi2_0
+_pd_block_id	RuBi2_0
+_pd_block_diffractogram_id	2_Ru_Bi_postheat_widescan_grid_015.xy_0
+_pd_phase_name
+;RuBi2
+;
+_chemical_formula_structural        'Ru Bi2'
+_chemical_formula_sum               'Ru Bi2'
+_chemical_formula_weight	519.03
+
+_space_group_crystal_system	tetragonal       
+_space_group_name_H-M_alt	I4/mcm
+_space_group_name_Hall	 '-I 4 2c'
+_space_group_IT_number	140
+_exptl_crystal_description 'powder'
+_exptl_crystal_colour ?
+
+_cell_length_a	6.3263(7)
+_cell_length_b	6.3263(7)
+_cell_length_c	5.6616(8)
+_cell_angle_alpha	90
+_cell_angle_beta	90
+_cell_angle_gamma	90
+_cell_volume 226.59(6)
+_exptl_crystal_density_diffrn	15.215(4)
+_exptl_absorpt_coefficient_mu	46.268(12)
+_diffrn_radiation_wavelength	0.406626000
+_cell_formula_units_Z	4
+_cell_measurement_temperature	295
+_diffrn_ambient_temperature	295
+_cell_measurement_pressure	28400000
+_cell_measurement_theta_min	2.0016303
+_cell_measurement_theta_max	10.3736518
+_cell_measurement_reflns_used 31
+_diffrn_reflns_number 31
+_diffrn_measured_fraction_theta_full 1
+
+loop_
+	_space_group_symop_id
+	_space_group_symop_operation_xyz
+	  1 'x, y, z '
+	  2 '-x, -y, z '
+	  3 '-x, y, -z+1/2 '
+	  4 '-x, y, z+1/2 '
+	  5 '-y, -x, -z+1/2 '
+	  6 '-y, -x, z+1/2 '
+	  7 '-y, x, -z '
+	  8 '-y, x, z '
+	  9 'y, -x, -z '
+	 10 'y, -x, z '
+	 11 'y, x, -z+1/2 '
+	 12 'y, x, z+1/2 '
+	 13 'x, -y, -z+1/2 '
+	 14 'x, -y, z+1/2 '
+	 15 'x, y, -z '
+	 16 '-x, -y, -z '
+	 17 'x+1/2, y+1/2, z+1/2 '
+	 18 '-x+1/2, -y+1/2, z+1/2 '
+	 19 '-x+1/2, y+1/2, -z '
+	 20 '-x+1/2, y+1/2, z '
+	 21 '-y+1/2, -x+1/2, -z '
+	 22 '-y+1/2, -x+1/2, z '
+	 23 '-y+1/2, x+1/2, -z+1/2 '
+	 24 '-y+1/2, x+1/2, z+1/2 '
+	 25 'y+1/2, -x+1/2, -z+1/2 '
+	 26 'y+1/2, -x+1/2, z+1/2 '
+	 27 'y+1/2, x+1/2, -z '
+	 28 'y+1/2, x+1/2, z '
+	 29 'x+1/2, -y+1/2, -z '
+	 30 'x+1/2, -y+1/2, z '
+	 31 'x+1/2, y+1/2, -z+1/2 '
+	 32 '-x+1/2, -y+1/2, -z+1/2 '
+loop_
+	_atom_site_label
+	_atom_site_type_symbol
+	_atom_site_site_symmetry_multiplicity
+	_atom_site_fract_x
+	_atom_site_fract_y
+	_atom_site_fract_z
+	_atom_site_occupancy
+	_atom_site_B_iso_or_equiv
+Bi1 Bi   8 0.33655 0.83655 0 1 0
+Ru1 Ru   4 0 0 0.25 1 0
+loop_
+	_geom_bond_atom_site_label_1
+	_geom_bond_atom_site_label_2
+	_geom_bond_distance
+	_geom_bond_site_symmetry_1
+	_geom_bond_site_symmetry_2
+	Bi1       Ru1       2.7578(2) 1_555  20_555
+	Bi1       Ru1       2.7578(2) 1_555   1_565
+	Bi1       Ru1       2.7578(2) 1_555  17_554
+	Bi1       Ru1       2.7578(2) 1_555   4_564
+	Bi1       Bi1       2.9247(3) 1_555   2_675
+	Ru1       Bi1       2.7578(2) 1_555   1_545
+	Ru1       Bi1       2.7578(2) 1_555   7_655
+	Ru1       Bi1       2.7578(2) 1_555   5_655
+	Ru1       Bi1       2.7578(2) 1_555   3_545
+	Ru1       Bi1       2.7578(2) 1_555   2_565
+	Ru1       Bi1       2.7578(2) 1_555  11_455
+	Ru1       Bi1       2.7578(2) 1_555  13_565
+	Ru1       Bi1       2.7578(2) 1_555   9_455
+	Ru1       Ru1       2.8308(4) 1_555   4_554
+	Ru1       Ru1       2.8308(4) 1_555   4_555
+	loop_
+		_geom_angle_atom_site_label_1
+		_geom_angle_atom_site_label_2
+		_geom_angle_atom_site_label_3
+		_geom_angle
+		_geom_angle_site_symmetry_1
+		_geom_angle_site_symmetry_2
+		_geom_angle_site_symmetry_3
+	Ru1       Bi1       Ru1        108.393(7)  1_565 1_555  20_555
+	Ru1       Bi1       Ru1        147.3868(15) 17_554 1_555   1_565
+	Ru1       Bi1       Ru1        61.758(9) 17_554 1_555  20_555
+	Ru1       Bi1       Ru1        108.393(7)  4_564 1_555  17_554
+	Ru1       Bi1       Ru1        61.758(9)  4_564 1_555   1_565
+	Ru1       Bi1       Ru1        147.3868(15)  4_564 1_555  20_555
+	Bi1       Bi1       Ru1        106.3066(8)  2_675 1_555   4_564
+	Bi1       Bi1       Ru1        106.3066(8)  2_675 1_555  17_554
+	Bi1       Bi1       Ru1        106.3066(8)  2_675 1_555   1_565
+	Bi1       Bi1       Ru1        106.3066(8)  2_675 1_555  20_555
+	Bi1       Ru1       Bi1        74.728(4)  7_655 1_555   1_545
+	Bi1       Ru1       Bi1        135.958(2)  5_655 1_555   7_655
+	Bi1       Ru1       Bi1        71.607(7)  5_655 1_555   1_545
+	Bi1       Ru1       Bi1        74.728(4)  3_545 1_555   5_655
+	Bi1       Ru1       Bi1        147.3868(15)  3_545 1_555   7_655
+	Bi1       Ru1       Bi1        135.958(2)  3_545 1_555   1_545
+	Bi1       Ru1       Bi1        78.928(6)  2_565 1_555   3_545
+	Bi1       Ru1       Bi1        147.3868(15)  2_565 1_555   5_655
+	Bi1       Ru1       Bi1        74.728(4)  2_565 1_555   7_655
+	Bi1       Ru1       Bi1        118.242(9)  2_565 1_555   1_545
+	Bi1       Ru1       Bi1        71.607(7) 11_455 1_555   2_565
+	Bi1       Ru1       Bi1        74.728(4) 11_455 1_555   3_545
+	Bi1       Ru1       Bi1        118.242(9) 11_455 1_555   5_655
+	Bi1       Ru1       Bi1        78.928(6) 11_455 1_555   7_655
+	Bi1       Ru1       Bi1        147.3868(15) 11_455 1_555   1_545
+	Bi1       Ru1       Bi1        74.728(4) 13_565 1_555  11_455
+	Bi1       Ru1       Bi1        135.958(2) 13_565 1_555   2_565
+	Bi1       Ru1       Bi1        118.242(9) 13_565 1_555   3_545
+	Bi1       Ru1       Bi1        74.728(4) 13_565 1_555   5_655
+	Bi1       Ru1       Bi1        71.607(7) 13_565 1_555   7_655
+	Bi1       Ru1       Bi1        78.928(6) 13_565 1_555   1_545
+	Bi1       Ru1       Bi1        147.3868(15)  9_455 1_555  13_565
+	Bi1       Ru1       Bi1        135.958(2)  9_455 1_555  11_455
+	Bi1       Ru1       Bi1        74.728(4)  9_455 1_555   2_565
+	Bi1       Ru1       Bi1        71.607(7)  9_455 1_555   3_545
+	Bi1       Ru1       Bi1        78.928(6)  9_455 1_555   5_655
+	Bi1       Ru1       Bi1        118.242(9)  9_455 1_555   7_655
+	Bi1       Ru1       Bi1        74.728(4)  9_455 1_555   1_545
+	Ru1       Ru1       Bi1        59.121(4)  4_554 1_555   9_455
+	Ru1       Ru1       Bi1        120.879(4)  4_554 1_555  13_565
+	Ru1       Ru1       Bi1        120.879(4)  4_554 1_555  11_455
+	Ru1       Ru1       Bi1        59.121(4)  4_554 1_555   2_565
+	Ru1       Ru1       Bi1        120.879(4)  4_554 1_555   3_545
+	Ru1       Ru1       Bi1        120.879(4)  4_554 1_555   5_655
+	Ru1       Ru1       Bi1        59.121(4)  4_554 1_555   7_655
+	Ru1       Ru1       Bi1        59.121(4)  4_554 1_555   1_545
+	Ru1       Ru1       Ru1        180.000   4_555 1_555   4_554
+	Ru1       Ru1       Bi1        120.879(4)  4_555 1_555   9_455
+	Ru1       Ru1       Bi1        59.121(4)  4_555 1_555  13_565
+	Ru1       Ru1       Bi1        59.121(4)  4_555 1_555  11_455
+	Ru1       Ru1       Bi1        120.879(4)  4_555 1_555   2_565
+	Ru1       Ru1       Bi1        59.121(4)  4_555 1_555   3_545
+	Ru1       Ru1       Bi1        59.121(4)  4_555 1_555   5_655
+	Ru1       Ru1       Bi1        120.879(4)  4_555 1_555   7_655
+	Ru1       Ru1       Bi1        120.879(4)  4_555 1_555   1_545
+#######	End powder crystal structure	#######
+
+
+#######	Begin powder crystal structure	#######
+data_Bi_V_0
+
+_pd_block_id	Bi_V_0
+_pd_block_diffractogram_id	2_Ru_Bi_postheat_widescan_grid_015.xy_0
+_pd_phase_name
+;Bi_V
+;
+_chemical_formula_structural        'Bi'
+_chemical_formula_sum               'Bi'
+_chemical_formula_weight	208.98
+
+_space_group_crystal_system	cubic       
+_space_group_name_H-M_alt	Im-3m
+_space_group_name_Hall	 '-I 4 2 3'
+_space_group_IT_number	229
+_exptl_crystal_description 'powder'
+_exptl_crystal_colour ?
+
+_cell_length_a	3.592(2)
+_cell_length_b	3.592(2)
+_cell_length_c	3.592(2)
+_cell_angle_alpha	90
+_cell_angle_beta	90
+_cell_angle_gamma	90
+_cell_volume 46.33(10)
+_exptl_crystal_density_diffrn	14.98(3)
+_exptl_absorpt_coefficient_mu	45.79(9)
+_diffrn_radiation_wavelength	0.406626000
+_cell_formula_units_Z	2
+_cell_measurement_temperature	295
+_diffrn_ambient_temperature	295
+_cell_measurement_pressure	28400000
+_cell_measurement_theta_min	2.0016303
+_cell_measurement_theta_max	10.3736518
+_cell_measurement_reflns_used 5
+_diffrn_reflns_number 5
+_diffrn_measured_fraction_theta_full 1
+
+loop_
+	_space_group_symop_id
+	_space_group_symop_operation_xyz
+	  1 'x, y, z '
+	  2 '-x, -y, z '
+	  3 '-x, -z, -y '
+	  4 '-x, -z, y '
+	  5 '-x, z, -y '
+	  6 '-x, z, y '
+	  7 '-x, y, -z '
+	  8 '-x, y, z '
+	  9 '-y, -x, -z '
+	 10 '-y, -x, z '
+	 11 '-y, -z, -x '
+	 12 '-y, -z, x '
+	 13 '-y, z, -x '
+	 14 '-y, z, x '
+	 15 '-y, x, -z '
+	 16 '-y, x, z '
+	 17 '-z, -x, -y '
+	 18 '-z, -x, y '
+	 19 '-z, -y, -x '
+	 20 '-z, -y, x '
+	 21 '-z, y, -x '
+	 22 '-z, y, x '
+	 23 '-z, x, -y '
+	 24 '-z, x, y '
+	 25 'z, -x, -y '
+	 26 'z, -x, y '
+	 27 'z, -y, -x '
+	 28 'z, -y, x '
+	 29 'z, y, -x '
+	 30 'z, y, x '
+	 31 'z, x, -y '
+	 32 'z, x, y '
+	 33 'y, -x, -z '
+	 34 'y, -x, z '
+	 35 'y, -z, -x '
+	 36 'y, -z, x '
+	 37 'y, z, -x '
+	 38 'y, z, x '
+	 39 'y, x, -z '
+	 40 'y, x, z '
+	 41 'x, -y, -z '
+	 42 'x, -y, z '
+	 43 'x, -z, -y '
+	 44 'x, -z, y '
+	 45 'x, z, -y '
+	 46 'x, z, y '
+	 47 'x, y, -z '
+	 48 '-x, -y, -z '
+	 49 'x+1/2, y+1/2, z+1/2 '
+	 50 '-x+1/2, -y+1/2, z+1/2 '
+	 51 '-x+1/2, -z+1/2, -y+1/2 '
+	 52 '-x+1/2, -z+1/2, y+1/2 '
+	 53 '-x+1/2, z+1/2, -y+1/2 '
+	 54 '-x+1/2, z+1/2, y+1/2 '
+	 55 '-x+1/2, y+1/2, -z+1/2 '
+	 56 '-x+1/2, y+1/2, z+1/2 '
+	 57 '-y+1/2, -x+1/2, -z+1/2 '
+	 58 '-y+1/2, -x+1/2, z+1/2 '
+	 59 '-y+1/2, -z+1/2, -x+1/2 '
+	 60 '-y+1/2, -z+1/2, x+1/2 '
+	 61 '-y+1/2, z+1/2, -x+1/2 '
+	 62 '-y+1/2, z+1/2, x+1/2 '
+	 63 '-y+1/2, x+1/2, -z+1/2 '
+	 64 '-y+1/2, x+1/2, z+1/2 '
+	 65 '-z+1/2, -x+1/2, -y+1/2 '
+	 66 '-z+1/2, -x+1/2, y+1/2 '
+	 67 '-z+1/2, -y+1/2, -x+1/2 '
+	 68 '-z+1/2, -y+1/2, x+1/2 '
+	 69 '-z+1/2, y+1/2, -x+1/2 '
+	 70 '-z+1/2, y+1/2, x+1/2 '
+	 71 '-z+1/2, x+1/2, -y+1/2 '
+	 72 '-z+1/2, x+1/2, y+1/2 '
+	 73 'z+1/2, -x+1/2, -y+1/2 '
+	 74 'z+1/2, -x+1/2, y+1/2 '
+	 75 'z+1/2, -y+1/2, -x+1/2 '
+	 76 'z+1/2, -y+1/2, x+1/2 '
+	 77 'z+1/2, y+1/2, -x+1/2 '
+	 78 'z+1/2, y+1/2, x+1/2 '
+	 79 'z+1/2, x+1/2, -y+1/2 '
+	 80 'z+1/2, x+1/2, y+1/2 '
+	 81 'y+1/2, -x+1/2, -z+1/2 '
+	 82 'y+1/2, -x+1/2, z+1/2 '
+	 83 'y+1/2, -z+1/2, -x+1/2 '
+	 84 'y+1/2, -z+1/2, x+1/2 '
+	 85 'y+1/2, z+1/2, -x+1/2 '
+	 86 'y+1/2, z+1/2, x+1/2 '
+	 87 'y+1/2, x+1/2, -z+1/2 '
+	 88 'y+1/2, x+1/2, z+1/2 '
+	 89 'x+1/2, -y+1/2, -z+1/2 '
+	 90 'x+1/2, -y+1/2, z+1/2 '
+	 91 'x+1/2, -z+1/2, -y+1/2 '
+	 92 'x+1/2, -z+1/2, y+1/2 '
+	 93 'x+1/2, z+1/2, -y+1/2 '
+	 94 'x+1/2, z+1/2, y+1/2 '
+	 95 'x+1/2, y+1/2, -z+1/2 '
+	 96 '-x+1/2, -y+1/2, -z+1/2 '
+loop_
+	_atom_site_label
+	_atom_site_type_symbol
+	_atom_site_site_symmetry_multiplicity
+	_atom_site_fract_x
+	_atom_site_fract_y
+	_atom_site_fract_z
+	_atom_site_occupancy
+	_atom_site_B_iso_or_equiv
+Bi1 Bi   2 0 0 0 1 0
+loop_
+	_geom_bond_atom_site_label_1
+	_geom_bond_atom_site_label_2
+	_geom_bond_distance
+	_geom_bond_site_symmetry_1
+	_geom_bond_site_symmetry_2
+	Bi1       Bi1       3.110(2) 1_555  49_545
+	Bi1       Bi1       3.110(2) 1_555  49_544
+	Bi1       Bi1       3.110(2) 1_555  49_455
+	Bi1       Bi1       3.110(2) 1_555  49_454
+	Bi1       Bi1       3.110(2) 1_555  49_445
+	Bi1       Bi1       3.110(2) 1_555  49_554
+	Bi1       Bi1       3.110(2) 1_555  49_444
+	Bi1       Bi1       3.110(2) 1_555  49_555
+	loop_
+		_geom_angle_atom_site_label_1
+		_geom_angle_atom_site_label_2
+		_geom_angle_atom_site_label_3
+		_geom_angle
+		_geom_angle_site_symmetry_1
+		_geom_angle_site_symmetry_2
+		_geom_angle_site_symmetry_3
+	Bi1       Bi1       Bi1        70.529   49_544 1_555  49_545
+	Bi1       Bi1       Bi1        180.000  49_455 1_555  49_544
+	Bi1       Bi1       Bi1        109.471  49_455 1_555  49_545
+	Bi1       Bi1       Bi1        70.529   49_454 1_555  49_455
+	Bi1       Bi1       Bi1        109.471  49_454 1_555  49_544
+	Bi1       Bi1       Bi1        180.000  49_454 1_555  49_545
+	Bi1       Bi1       Bi1        109.471  49_445 1_555  49_454
+	Bi1       Bi1       Bi1        70.529   49_445 1_555  49_455
+	Bi1       Bi1       Bi1        109.471  49_445 1_555  49_544
+	Bi1       Bi1       Bi1        70.529   49_445 1_555  49_545
+	Bi1       Bi1       Bi1        180.000  49_554 1_555  49_445
+	Bi1       Bi1       Bi1        70.529   49_554 1_555  49_454
+	Bi1       Bi1       Bi1        109.471  49_554 1_555  49_455
+	Bi1       Bi1       Bi1        70.529   49_554 1_555  49_544
+	Bi1       Bi1       Bi1        109.471  49_554 1_555  49_545
+	Bi1       Bi1       Bi1        109.471  49_444 1_555  49_554
+	Bi1       Bi1       Bi1        70.529   49_444 1_555  49_445
+	Bi1       Bi1       Bi1        70.529   49_444 1_555  49_454
+	Bi1       Bi1       Bi1        109.471  49_444 1_555  49_455
+	Bi1       Bi1       Bi1        70.529   49_444 1_555  49_544
+	Bi1       Bi1       Bi1        109.471  49_444 1_555  49_545
+	Bi1       Bi1       Bi1        180.000  49_555 1_555  49_444
+	Bi1       Bi1       Bi1        70.529   49_555 1_555  49_554
+	Bi1       Bi1       Bi1        109.471  49_555 1_555  49_445
+	Bi1       Bi1       Bi1        109.471  49_555 1_555  49_454
+	Bi1       Bi1       Bi1        70.529   49_555 1_555  49_455
+	Bi1       Bi1       Bi1        109.471  49_555 1_555  49_544
+	Bi1       Bi1       Bi1        70.529   49_555 1_555  49_545
+#######	End powder crystal structure	#######
+
+
+#######	Begin powder crystal structure	#######
+data_MgO_0
+
+_pd_block_id	MgO_0
+_pd_block_diffractogram_id	2_Ru_Bi_postheat_widescan_grid_015.xy_0
+_pd_phase_name
+;MgO
+;
+_chemical_formula_structural        'Mg O'
+_chemical_formula_sum               'Mg O'
+_chemical_formula_weight	40.304
+
+_space_group_crystal_system	cubic
+_space_group_name_H-M_alt	Fm-3m
+_space_group_name_Hall	 '-F 4 2 3'
+_space_group_IT_number	225
+_exptl_crystal_description 'powder'
+_exptl_crystal_colour ?
+
+_cell_length_a    4.02870(14)
+_cell_length_b    4.02870(14)
+_cell_length_c    4.02870(14)
+_cell_angle_alpha 90
+_cell_angle_beta  90
+_cell_angle_gamma 90
+_cell_volume 65.387(7)
+_exptl_crystal_density_diffrn	4.0942(4)
+_exptl_absorpt_coefficient_mu	0.27452(3)
+_diffrn_radiation_wavelength	0.406626000
+_cell_formula_units_Z	4
+_cell_measurement_temperature	295
+_diffrn_ambient_temperature	295
+_cell_measurement_pressure	28400000
+_cell_measurement_theta_min	2.0016303
+_cell_measurement_theta_max	10.3736518
+_cell_measurement_reflns_used 5
+_diffrn_reflns_number 5
+_diffrn_measured_fraction_theta_full 1
+
+loop_
+	_space_group_symop_id
+	_space_group_symop_operation_xyz
+	  1 'x, y, z '
+	  2 '-x, -y, z '
+	  3 '-x, -z, -y '
+	  4 '-x, -z, y '
+	  5 '-x, z, -y '
+	  6 '-x, z, y '
+	  7 '-x, y, -z '
+	  8 '-x, y, z '
+	  9 '-y, -x, -z '
+	 10 '-y, -x, z '
+	 11 '-y, -z, -x '
+	 12 '-y, -z, x '
+	 13 '-y, z, -x '
+	 14 '-y, z, x '
+	 15 '-y, x, -z '
+	 16 '-y, x, z '
+	 17 '-z, -x, -y '
+	 18 '-z, -x, y '
+	 19 '-z, -y, -x '
+	 20 '-z, -y, x '
+	 21 '-z, y, -x '
+	 22 '-z, y, x '
+	 23 '-z, x, -y '
+	 24 '-z, x, y '
+	 25 'z, -x, -y '
+	 26 'z, -x, y '
+	 27 'z, -y, -x '
+	 28 'z, -y, x '
+	 29 'z, y, -x '
+	 30 'z, y, x '
+	 31 'z, x, -y '
+	 32 'z, x, y '
+	 33 'y, -x, -z '
+	 34 'y, -x, z '
+	 35 'y, -z, -x '
+	 36 'y, -z, x '
+	 37 'y, z, -x '
+	 38 'y, z, x '
+	 39 'y, x, -z '
+	 40 'y, x, z '
+	 41 'x, -y, -z '
+	 42 'x, -y, z '
+	 43 'x, -z, -y '
+	 44 'x, -z, y '
+	 45 'x, z, -y '
+	 46 'x, z, y '
+	 47 'x, y, -z '
+	 48 '-x, -y, -z '
+	 49 'x+1/2, y+1/2, z '
+	 50 '-x+1/2, -y+1/2, z '
+	 51 '-x+1/2, -z+1/2, -y '
+	 52 '-x+1/2, -z+1/2, y '
+	 53 '-x+1/2, z+1/2, -y '
+	 54 '-x+1/2, z+1/2, y '
+	 55 '-x+1/2, y+1/2, -z '
+	 56 '-x+1/2, y+1/2, z '
+	 57 '-y+1/2, -x+1/2, -z '
+	 58 '-y+1/2, -x+1/2, z '
+	 59 '-y+1/2, -z+1/2, -x '
+	 60 '-y+1/2, -z+1/2, x '
+	 61 '-y+1/2, z+1/2, -x '
+	 62 '-y+1/2, z+1/2, x '
+	 63 '-y+1/2, x+1/2, -z '
+	 64 '-y+1/2, x+1/2, z '
+	 65 '-z+1/2, -x+1/2, -y '
+	 66 '-z+1/2, -x+1/2, y '
+	 67 '-z+1/2, -y+1/2, -x '
+	 68 '-z+1/2, -y+1/2, x '
+	 69 '-z+1/2, y+1/2, -x '
+	 70 '-z+1/2, y+1/2, x '
+	 71 '-z+1/2, x+1/2, -y '
+	 72 '-z+1/2, x+1/2, y '
+	 73 'z+1/2, -x+1/2, -y '
+	 74 'z+1/2, -x+1/2, y '
+	 75 'z+1/2, -y+1/2, -x '
+	 76 'z+1/2, -y+1/2, x '
+	 77 'z+1/2, y+1/2, -x '
+	 78 'z+1/2, y+1/2, x '
+	 79 'z+1/2, x+1/2, -y '
+	 80 'z+1/2, x+1/2, y '
+	 81 'y+1/2, -x+1/2, -z '
+	 82 'y+1/2, -x+1/2, z '
+	 83 'y+1/2, -z+1/2, -x '
+	 84 'y+1/2, -z+1/2, x '
+	 85 'y+1/2, z+1/2, -x '
+	 86 'y+1/2, z+1/2, x '
+	 87 'y+1/2, x+1/2, -z '
+	 88 'y+1/2, x+1/2, z '
+	 89 'x+1/2, -y+1/2, -z '
+	 90 'x+1/2, -y+1/2, z '
+	 91 'x+1/2, -z+1/2, -y '
+	 92 'x+1/2, -z+1/2, y '
+	 93 'x+1/2, z+1/2, -y '
+	 94 'x+1/2, z+1/2, y '
+	 95 'x+1/2, y+1/2, -z '
+	 96 '-x+1/2, -y+1/2, -z '
+	 97 'x+1/2, y, z+1/2 '
+	 98 '-x+1/2, -y, z+1/2 '
+	 99 '-x+1/2, -z, -y+1/2 '
+	100 '-x+1/2, -z, y+1/2 '
+	101 '-x+1/2, z, -y+1/2 '
+	102 '-x+1/2, z, y+1/2 '
+	103 '-x+1/2, y, -z+1/2 '
+	104 '-x+1/2, y, z+1/2 '
+	105 '-y+1/2, -x, -z+1/2 '
+	106 '-y+1/2, -x, z+1/2 '
+	107 '-y+1/2, -z, -x+1/2 '
+	108 '-y+1/2, -z, x+1/2 '
+	109 '-y+1/2, z, -x+1/2 '
+	110 '-y+1/2, z, x+1/2 '
+	111 '-y+1/2, x, -z+1/2 '
+	112 '-y+1/2, x, z+1/2 '
+	113 '-z+1/2, -x, -y+1/2 '
+	114 '-z+1/2, -x, y+1/2 '
+	115 '-z+1/2, -y, -x+1/2 '
+	116 '-z+1/2, -y, x+1/2 '
+	117 '-z+1/2, y, -x+1/2 '
+	118 '-z+1/2, y, x+1/2 '
+	119 '-z+1/2, x, -y+1/2 '
+	120 '-z+1/2, x, y+1/2 '
+	121 'z+1/2, -x, -y+1/2 '
+	122 'z+1/2, -x, y+1/2 '
+	123 'z+1/2, -y, -x+1/2 '
+	124 'z+1/2, -y, x+1/2 '
+	125 'z+1/2, y, -x+1/2 '
+	126 'z+1/2, y, x+1/2 '
+	127 'z+1/2, x, -y+1/2 '
+	128 'z+1/2, x, y+1/2 '
+	129 'y+1/2, -x, -z+1/2 '
+	130 'y+1/2, -x, z+1/2 '
+	131 'y+1/2, -z, -x+1/2 '
+	132 'y+1/2, -z, x+1/2 '
+	133 'y+1/2, z, -x+1/2 '
+	134 'y+1/2, z, x+1/2 '
+	135 'y+1/2, x, -z+1/2 '
+	136 'y+1/2, x, z+1/2 '
+	137 'x+1/2, -y, -z+1/2 '
+	138 'x+1/2, -y, z+1/2 '
+	139 'x+1/2, -z, -y+1/2 '
+	140 'x+1/2, -z, y+1/2 '
+	141 'x+1/2, z, -y+1/2 '
+	142 'x+1/2, z, y+1/2 '
+	143 'x+1/2, y, -z+1/2 '
+	144 '-x+1/2, -y, -z+1/2 '
+	145 'x, y+1/2, z+1/2 '
+	146 '-x, -y+1/2, z+1/2 '
+	147 '-x, -z+1/2, -y+1/2 '
+	148 '-x, -z+1/2, y+1/2 '
+	149 '-x, z+1/2, -y+1/2 '
+	150 '-x, z+1/2, y+1/2 '
+	151 '-x, y+1/2, -z+1/2 '
+	152 '-x, y+1/2, z+1/2 '
+	153 '-y, -x+1/2, -z+1/2 '
+	154 '-y, -x+1/2, z+1/2 '
+	155 '-y, -z+1/2, -x+1/2 '
+	156 '-y, -z+1/2, x+1/2 '
+	157 '-y, z+1/2, -x+1/2 '
+	158 '-y, z+1/2, x+1/2 '
+	159 '-y, x+1/2, -z+1/2 '
+	160 '-y, x+1/2, z+1/2 '
+	161 '-z, -x+1/2, -y+1/2 '
+	162 '-z, -x+1/2, y+1/2 '
+	163 '-z, -y+1/2, -x+1/2 '
+	164 '-z, -y+1/2, x+1/2 '
+	165 '-z, y+1/2, -x+1/2 '
+	166 '-z, y+1/2, x+1/2 '
+	167 '-z, x+1/2, -y+1/2 '
+	168 '-z, x+1/2, y+1/2 '
+	169 'z, -x+1/2, -y+1/2 '
+	170 'z, -x+1/2, y+1/2 '
+	171 'z, -y+1/2, -x+1/2 '
+	172 'z, -y+1/2, x+1/2 '
+	173 'z, y+1/2, -x+1/2 '
+	174 'z, y+1/2, x+1/2 '
+	175 'z, x+1/2, -y+1/2 '
+	176 'z, x+1/2, y+1/2 '
+	177 'y, -x+1/2, -z+1/2 '
+	178 'y, -x+1/2, z+1/2 '
+	179 'y, -z+1/2, -x+1/2 '
+	180 'y, -z+1/2, x+1/2 '
+	181 'y, z+1/2, -x+1/2 '
+	182 'y, z+1/2, x+1/2 '
+	183 'y, x+1/2, -z+1/2 '
+	184 'y, x+1/2, z+1/2 '
+	185 'x, -y+1/2, -z+1/2 '
+	186 'x, -y+1/2, z+1/2 '
+	187 'x, -z+1/2, -y+1/2 '
+	188 'x, -z+1/2, y+1/2 '
+	189 'x, z+1/2, -y+1/2 '
+	190 'x, z+1/2, y+1/2 '
+	191 'x, y+1/2, -z+1/2 '
+	192 '-x, -y+1/2, -z+1/2 '
+loop_
+	_atom_site_label
+	_atom_site_type_symbol
+	_atom_site_site_symmetry_multiplicity
+	_atom_site_fract_x
+	_atom_site_fract_y
+	_atom_site_fract_z
+	_atom_site_occupancy
+	_atom_site_B_iso_or_equiv
+Mg1 Mg   4 0 0 0 1 0
+O1 O   4 0.5 0.5 0.5 1 0
+loop_
+	_geom_bond_atom_site_label_1
+	_geom_bond_atom_site_label_2
+	_geom_bond_distance
+	_geom_bond_site_symmetry_1
+	_geom_bond_site_symmetry_2
+	Mg1       O1        2.01435(7) 1_555  49_444
+	Mg1       O1        2.01435(7) 1_555  97_454
+	Mg1       O1        2.01435(7) 1_555 145_544
+	Mg1       O1        2.01435(7) 1_555  49_445
+	Mg1       O1        2.01435(7) 1_555  97_444
+	Mg1       O1        2.01435(7) 1_555 145_444
+	Mg1       Mg1       2.84872(10) 1_555  97_554
+	Mg1       Mg1       2.84872(10) 1_555 145_554
+	Mg1       Mg1       2.84872(10) 1_555  49_545
+	Mg1       Mg1       2.84872(10) 1_555 145_545
+	Mg1       Mg1       2.84872(10) 1_555  49_455
+	Mg1       Mg1       2.84872(10) 1_555  97_455
+	Mg1       Mg1       2.84872(10) 1_555  97_555
+	Mg1       Mg1       2.84872(10) 1_555 145_555
+	Mg1       Mg1       2.84872(10) 1_555  49_555
+	Mg1       Mg1       2.84872(10) 1_555 145_544
+	Mg1       Mg1       2.84872(10) 1_555  97_454
+	Mg1       Mg1       2.84872(10) 1_555  49_445
+	O1        Mg1       2.01435(7) 1_555 145_655
+	O1        Mg1       2.01435(7) 1_555 145_555
+	O1        Mg1       2.01435(7) 1_555  97_565
+	O1        Mg1       2.01435(7) 1_555  97_555
+	O1        Mg1       2.01435(7) 1_555  49_556
+	O1        Mg1       2.01435(7) 1_555  49_555
+	O1        O1        2.84872(10) 1_555  97_554
+	O1        O1        2.84872(10) 1_555  49_545
+	O1        O1        2.84872(10) 1_555 145_554
+	O1        O1        2.84872(10) 1_555  49_455
+	O1        O1        2.84872(10) 1_555 145_545
+	O1        O1        2.84872(10) 1_555  97_455
+	O1        O1        2.84872(10) 1_555  49_555
+	O1        O1        2.84872(10) 1_555  97_555
+	O1        O1        2.84872(10) 1_555 145_555
+	O1        O1        2.84872(10) 1_555 145_544
+	O1        O1        2.84872(10) 1_555  97_454
+	O1        O1        2.84872(10) 1_555  49_445
+	loop_
+		_geom_angle_atom_site_label_1
+		_geom_angle_atom_site_label_2
+		_geom_angle_atom_site_label_3
+		_geom_angle
+		_geom_angle_site_symmetry_1
+		_geom_angle_site_symmetry_2
+		_geom_angle_site_symmetry_3
+	O1        Mg1       O1         90.000   97_454 1_555  49_444
+	O1        Mg1       O1         90.000  145_544 1_555  97_454
+	O1        Mg1       O1         90.000  145_544 1_555  49_444
+	O1        Mg1       O1         90.000   49_445 1_555 145_544
+	O1        Mg1       O1         90.000   49_445 1_555  97_454
+	O1        Mg1       O1         180.000  49_445 1_555  49_444
+	O1        Mg1       O1         90.000   97_444 1_555  49_445
+	O1        Mg1       O1         90.000   97_444 1_555 145_544
+	O1        Mg1       O1         180.000  97_444 1_555  97_454
+	O1        Mg1       O1         90.000   97_444 1_555  49_444
+	O1        Mg1       O1         90.000  145_444 1_555  97_444
+	O1        Mg1       O1         90.000  145_444 1_555  49_445
+	O1        Mg1       O1         180.000 145_444 1_555 145_544
+	O1        Mg1       O1         90.000  145_444 1_555  97_454
+	O1        Mg1       O1         90.000  145_444 1_555  49_444
+	Mg1       Mg1       O1         135.000  97_554 1_555 145_444
+	Mg1       Mg1       O1         90.000   97_554 1_555  97_444
+	Mg1       Mg1       O1         135.000  97_554 1_555  49_445
+	Mg1       Mg1       O1         45.000   97_554 1_555 145_544
+	Mg1       Mg1       O1         90.000   97_554 1_555  97_454
+	Mg1       Mg1       O1         45.000   97_554 1_555  49_444
+	Mg1       Mg1       Mg1        60.000  145_554 1_555  97_554
+	Mg1       Mg1       O1         90.000  145_554 1_555 145_444
+	Mg1       Mg1       O1         135.000 145_554 1_555  97_444
+	Mg1       Mg1       O1         135.000 145_554 1_555  49_445
+	Mg1       Mg1       O1         90.000  145_554 1_555 145_544
+	Mg1       Mg1       O1         45.000  145_554 1_555  97_454
+	Mg1       Mg1       O1         45.000  145_554 1_555  49_444
+	Mg1       Mg1       Mg1        120.000  49_545 1_555 145_554
+	Mg1       Mg1       Mg1        60.000   49_545 1_555  97_554
+	Mg1       Mg1       O1         135.000  49_545 1_555 145_444
+	Mg1       Mg1       O1         45.000   49_545 1_555  97_444
+	Mg1       Mg1       O1         90.000   49_545 1_555  49_445
+	Mg1       Mg1       O1         45.000   49_545 1_555 145_544
+	Mg1       Mg1       O1         135.000  49_545 1_555  97_454
+	Mg1       Mg1       O1         90.000   49_545 1_555  49_444
+	Mg1       Mg1       Mg1        60.000  145_545 1_555  49_545
+	Mg1       Mg1       Mg1        180.0000000(4) 145_545 1_555 145_554
+	Mg1       Mg1       Mg1        120.000 145_545 1_555  97_554
+	Mg1       Mg1       O1         90.000  145_545 1_555 145_444
+	Mg1       Mg1       O1         45.000  145_545 1_555  97_444
+	Mg1       Mg1       O1         45.000  145_545 1_555  49_445
+	Mg1       Mg1       O1         90.000  145_545 1_555 145_544
+	Mg1       Mg1       O1         135.000 145_545 1_555  97_454
+	Mg1       Mg1       O1         135.000 145_545 1_555  49_444
+	Mg1       Mg1       Mg1        120.000  49_455 1_555 145_545
+	Mg1       Mg1       Mg1        180.000  49_455 1_555  49_545
+	Mg1       Mg1       Mg1        60.000   49_455 1_555 145_554
+	Mg1       Mg1       Mg1        120.000  49_455 1_555  97_554
+	Mg1       Mg1       O1         45.000   49_455 1_555 145_444
+	Mg1       Mg1       O1         135.000  49_455 1_555  97_444
+	Mg1       Mg1       O1         90.000   49_455 1_555  49_445
+	Mg1       Mg1       O1         135.000  49_455 1_555 145_544
+	Mg1       Mg1       O1         45.000   49_455 1_555  97_454
+	Mg1       Mg1       O1         90.000   49_455 1_555  49_444
+	Mg1       Mg1       Mg1        60.000   97_455 1_555  49_455
+	Mg1       Mg1       Mg1        60.000   97_455 1_555 145_545
+	Mg1       Mg1       Mg1        120.000  97_455 1_555  49_545
+	Mg1       Mg1       Mg1        120.000  97_455 1_555 145_554
+	Mg1       Mg1       Mg1        180.000  97_455 1_555  97_554
+	Mg1       Mg1       O1         45.000   97_455 1_555 145_444
+	Mg1       Mg1       O1         90.000   97_455 1_555  97_444
+	Mg1       Mg1       O1         45.000   97_455 1_555  49_445
+	Mg1       Mg1       O1         135.000  97_455 1_555 145_544
+	Mg1       Mg1       O1         90.000   97_455 1_555  97_454
+	Mg1       Mg1       O1         135.000  97_455 1_555  49_444
+	Mg1       Mg1       Mg1        90.000   97_555 1_555  97_455
+	Mg1       Mg1       Mg1        120.000  97_555 1_555  49_455
+	Mg1       Mg1       Mg1        60.000   97_555 1_555 145_545
+	Mg1       Mg1       Mg1        60.000   97_555 1_555  49_545
+	Mg1       Mg1       Mg1        120.000  97_555 1_555 145_554
+	Mg1       Mg1       Mg1        90.000   97_555 1_555  97_554
+	Mg1       Mg1       O1         135.000  97_555 1_555 145_444
+	Mg1       Mg1       O1         90.000   97_555 1_555  97_444
+	Mg1       Mg1       O1         45.000   97_555 1_555  49_445
+	Mg1       Mg1       O1         45.000   97_555 1_555 145_544
+	Mg1       Mg1       O1         90.000   97_555 1_555  97_454
+	Mg1       Mg1       O1         135.000  97_555 1_555  49_444
+	Mg1       Mg1       Mg1        60.000  145_555 1_555  97_555
+	Mg1       Mg1       Mg1        60.000  145_555 1_555  97_455
+	Mg1       Mg1       Mg1        60.000  145_555 1_555  49_455
+	Mg1       Mg1       Mg1        90.000  145_555 1_555 145_545
+	Mg1       Mg1       Mg1        120.000 145_555 1_555  49_545
+	Mg1       Mg1       Mg1        90.000  145_555 1_555 145_554
+	Mg1       Mg1       Mg1        120.000 145_555 1_555  97_554
+	Mg1       Mg1       O1         90.000  145_555 1_555 145_444
+	Mg1       Mg1       O1         135.000 145_555 1_555  97_444
+	Mg1       Mg1       O1         45.000  145_555 1_555  49_445
+	Mg1       Mg1       O1         90.000  145_555 1_555 145_544
+	Mg1       Mg1       O1         45.000  145_555 1_555  97_454
+	Mg1       Mg1       O1         135.000 145_555 1_555  49_444
+	Mg1       Mg1       Mg1        60.000   49_555 1_555 145_555
+	Mg1       Mg1       Mg1        60.000   49_555 1_555  97_555
+	Mg1       Mg1       Mg1        120.000  49_555 1_555  97_455
+	Mg1       Mg1       Mg1        90.000   49_555 1_555  49_455
+	Mg1       Mg1       Mg1        120.000  49_555 1_555 145_545
+	Mg1       Mg1       Mg1        90.000   49_555 1_555  49_545
+	Mg1       Mg1       Mg1        60.000   49_555 1_555 145_554
+	Mg1       Mg1       Mg1        60.000   49_555 1_555  97_554
+	Mg1       Mg1       O1         135.000  49_555 1_555 145_444
+	Mg1       Mg1       O1         135.000  49_555 1_555  97_444
+	Mg1       Mg1       O1         90.000   49_555 1_555  49_445
+	Mg1       Mg1       O1         45.000   49_555 1_555 145_544
+	Mg1       Mg1       O1         45.000   49_555 1_555  97_454
+	Mg1       Mg1       O1         90.000   49_555 1_555  49_444
+	Mg1       Mg1       Mg1        120.000 145_544 1_555  49_555
+	Mg1       Mg1       Mg1        180.000 145_544 1_555 145_555
+	Mg1       Mg1       Mg1        120.000 145_544 1_555  97_555
+	Mg1       Mg1       Mg1        120.000 145_544 1_555  97_455
+	Mg1       Mg1       Mg1        120.000 145_544 1_555  49_455
+	Mg1       Mg1       Mg1        90.000  145_544 1_555 145_545
+	Mg1       Mg1       Mg1        60.000  145_544 1_555  49_545
+	Mg1       Mg1       Mg1        90.000  145_544 1_555 145_554
+	Mg1       Mg1       Mg1        60.000  145_544 1_555  97_554
+	Mg1       Mg1       O1         90.000  145_544 1_555 145_444
+	Mg1       Mg1       O1         45.000  145_544 1_555  97_444
+	Mg1       Mg1       O1         135.000 145_544 1_555  49_445
+	Mg1       Mg1       O1         90.000  145_544 1_555 145_544
+	Mg1       Mg1       O1         135.000 145_544 1_555  97_454
+	Mg1       Mg1       O1         45.000  145_544 1_555  49_444
+	Mg1       Mg1       Mg1        60.000   97_454 1_555 145_544
+	Mg1       Mg1       Mg1        120.000  97_454 1_555  49_555
+	Mg1       Mg1       Mg1        120.000  97_454 1_555 145_555
+	Mg1       Mg1       Mg1        180.000  97_454 1_555  97_555
+	Mg1       Mg1       Mg1        90.000   97_454 1_555  97_455
+	Mg1       Mg1       Mg1        60.000   97_454 1_555  49_455
+	Mg1       Mg1       Mg1        120.000  97_454 1_555 145_545
+	Mg1       Mg1       Mg1        120.000  97_454 1_555  49_545
+	Mg1       Mg1       Mg1        60.000   97_454 1_555 145_554
+	Mg1       Mg1       Mg1        90.000   97_454 1_555  97_554
+	Mg1       Mg1       O1         45.000   97_454 1_555 145_444
+	Mg1       Mg1       O1         90.000   97_454 1_555  97_444
+	Mg1       Mg1       O1         135.000  97_454 1_555  49_445
+	Mg1       Mg1       O1         135.000  97_454 1_555 145_544
+	Mg1       Mg1       O1         90.000   97_454 1_555  97_454
+	Mg1       Mg1       O1         45.000   97_454 1_555  49_444
+	Mg1       Mg1       Mg1        60.000   49_445 1_555  97_454
+	Mg1       Mg1       Mg1        60.000   49_445 1_555 145_544
+	Mg1       Mg1       Mg1        180.000  49_445 1_555  49_555
+	Mg1       Mg1       Mg1        120.000  49_445 1_555 145_555
+	Mg1       Mg1       Mg1        120.000  49_445 1_555  97_555
+	Mg1       Mg1       Mg1        60.000   49_445 1_555  97_455
+	Mg1       Mg1       Mg1        90.000   49_445 1_555  49_455
+	Mg1       Mg1       Mg1        60.000   49_445 1_555 145_545
+	Mg1       Mg1       Mg1        90.000   49_445 1_555  49_545
+	Mg1       Mg1       Mg1        120.000  49_445 1_555 145_554
+	Mg1       Mg1       Mg1        120.000  49_445 1_555  97_554
+	Mg1       Mg1       O1         45.000   49_445 1_555 145_444
+	Mg1       Mg1       O1         45.000   49_445 1_555  97_444
+	Mg1       Mg1       O1         90.000   49_445 1_555  49_445
+	Mg1       Mg1       O1         135.000  49_445 1_555 145_544
+	Mg1       Mg1       O1         135.000  49_445 1_555  97_454
+	Mg1       Mg1       O1         90.000   49_445 1_555  49_444
+	Mg1       O1        Mg1        180.000 145_555 1_555 145_655
+	Mg1       O1        Mg1        90.000   97_565 1_555 145_555
+	Mg1       O1        Mg1        90.000   97_565 1_555 145_655
+	Mg1       O1        Mg1        180.000  97_555 1_555  97_565
+	Mg1       O1        Mg1        90.000   97_555 1_555 145_555
+	Mg1       O1        Mg1        90.000   97_555 1_555 145_655
+	Mg1       O1        Mg1        90.000   49_556 1_555  97_555
+	Mg1       O1        Mg1        90.000   49_556 1_555  97_565
+	Mg1       O1        Mg1        90.000   49_556 1_555 145_555
+	Mg1       O1        Mg1        90.000   49_556 1_555 145_655
+	Mg1       O1        Mg1        180.000  49_555 1_555  49_556
+	Mg1       O1        Mg1        90.000   49_555 1_555  97_555
+	Mg1       O1        Mg1        90.000   49_555 1_555  97_565
+	Mg1       O1        Mg1        90.000   49_555 1_555 145_555
+	Mg1       O1        Mg1        90.000   49_555 1_555 145_655
+	O1        O1        Mg1        45.000   97_554 1_555  49_555
+	O1        O1        Mg1        135.000  97_554 1_555  49_556
+	O1        O1        Mg1        90.000   97_554 1_555  97_555
+	O1        O1        Mg1        90.000   97_554 1_555  97_565
+	O1        O1        Mg1        135.000  97_554 1_555 145_555
+	O1        O1        Mg1        45.000   97_554 1_555 145_655
+	O1        O1        O1         60.000   49_545 1_555  97_554
+	O1        O1        Mg1        90.000   49_545 1_555  49_555
+	O1        O1        Mg1        90.000   49_545 1_555  49_556
+	O1        O1        Mg1        45.000   49_545 1_555  97_555
+	O1        O1        Mg1        135.000  49_545 1_555  97_565
+	O1        O1        Mg1        135.000  49_545 1_555 145_555
+	O1        O1        Mg1        45.000   49_545 1_555 145_655
+	O1        O1        O1         120.000 145_554 1_555  49_545
+	O1        O1        O1         60.000  145_554 1_555  97_554
+	O1        O1        Mg1        45.000  145_554 1_555  49_555
+	O1        O1        Mg1        135.000 145_554 1_555  49_556
+	O1        O1        Mg1        135.000 145_554 1_555  97_555
+	O1        O1        Mg1        45.000  145_554 1_555  97_565
+	O1        O1        Mg1        90.000  145_554 1_555 145_555
+	O1        O1        Mg1        90.000  145_554 1_555 145_655
+	O1        O1        O1         60.000   49_455 1_555 145_554
+	O1        O1        O1         180.000  49_455 1_555  49_545
+	O1        O1        O1         120.000  49_455 1_555  97_554
+	O1        O1        Mg1        90.000   49_455 1_555  49_555
+	O1        O1        Mg1        90.000   49_455 1_555  49_556
+	O1        O1        Mg1        135.000  49_455 1_555  97_555
+	O1        O1        Mg1        45.000   49_455 1_555  97_565
+	O1        O1        Mg1        45.000   49_455 1_555 145_555
+	O1        O1        Mg1        135.000  49_455 1_555 145_655
+	O1        O1        O1         120.000 145_545 1_555  49_455
+	O1        O1        O1         180.0000000(4) 145_545 1_555 145_554
+	O1        O1        O1         60.000  145_545 1_555  49_545
+	O1        O1        O1         120.000 145_545 1_555  97_554
+	O1        O1        Mg1        135.000 145_545 1_555  49_555
+	O1        O1        Mg1        45.000  145_545 1_555  49_556
+	O1        O1        Mg1        45.000  145_545 1_555  97_555
+	O1        O1        Mg1        135.000 145_545 1_555  97_565
+	O1        O1        Mg1        90.000  145_545 1_555 145_555
+	O1        O1        Mg1        90.000  145_545 1_555 145_655
+	O1        O1        O1         60.000   97_455 1_555 145_545
+	O1        O1        O1         60.000   97_455 1_555  49_455
+	O1        O1        O1         120.000  97_455 1_555 145_554
+	O1        O1        O1         120.000  97_455 1_555  49_545
+	O1        O1        O1         180.000  97_455 1_555  97_554
+	O1        O1        Mg1        135.000  97_455 1_555  49_555
+	O1        O1        Mg1        45.000   97_455 1_555  49_556
+	O1        O1        Mg1        90.000   97_455 1_555  97_555
+	O1        O1        Mg1        90.000   97_455 1_555  97_565
+	O1        O1        Mg1        45.000   97_455 1_555 145_555
+	O1        O1        Mg1        135.000  97_455 1_555 145_655
+	O1        O1        O1         120.000  49_555 1_555  97_455
+	O1        O1        O1         120.000  49_555 1_555 145_545
+	O1        O1        O1         90.000   49_555 1_555  49_455
+	O1        O1        O1         60.000   49_555 1_555 145_554
+	O1        O1        O1         90.000   49_555 1_555  49_545
+	O1        O1        O1         60.000   49_555 1_555  97_554
+	O1        O1        Mg1        90.000   49_555 1_555  49_555
+	O1        O1        Mg1        90.000   49_555 1_555  49_556
+	O1        O1        Mg1        135.000  49_555 1_555  97_555
+	O1        O1        Mg1        45.000   49_555 1_555  97_565
+	O1        O1        Mg1        135.000  49_555 1_555 145_555
+	O1        O1        Mg1        45.000   49_555 1_555 145_655
+	O1        O1        O1         60.000   97_555 1_555  49_555
+	O1        O1        O1         90.000   97_555 1_555  97_455
+	O1        O1        O1         60.000   97_555 1_555 145_545
+	O1        O1        O1         120.000  97_555 1_555  49_455
+	O1        O1        O1         120.000  97_555 1_555 145_554
+	O1        O1        O1         60.000   97_555 1_555  49_545
+	O1        O1        O1         90.000   97_555 1_555  97_554
+	O1        O1        Mg1        135.000  97_555 1_555  49_555
+	O1        O1        Mg1        45.000   97_555 1_555  49_556
+	O1        O1        Mg1        90.000   97_555 1_555  97_555
+	O1        O1        Mg1        90.000   97_555 1_555  97_565
+	O1        O1        Mg1        135.000  97_555 1_555 145_555
+	O1        O1        Mg1        45.000   97_555 1_555 145_655
+	O1        O1        O1         60.000  145_555 1_555  97_555
+	O1        O1        O1         60.000  145_555 1_555  49_555
+	O1        O1        O1         60.000  145_555 1_555  97_455
+	O1        O1        O1         90.000  145_555 1_555 145_545
+	O1        O1        O1         60.000  145_555 1_555  49_455
+	O1        O1        O1         90.000  145_555 1_555 145_554
+	O1        O1        O1         120.000 145_555 1_555  49_545
+	O1        O1        O1         120.000 145_555 1_555  97_554
+	O1        O1        Mg1        135.000 145_555 1_555  49_555
+	O1        O1        Mg1        45.000  145_555 1_555  49_556
+	O1        O1        Mg1        135.000 145_555 1_555  97_555
+	O1        O1        Mg1        45.000  145_555 1_555  97_565
+	O1        O1        Mg1        90.000  145_555 1_555 145_555
+	O1        O1        Mg1        90.000  145_555 1_555 145_655
+	O1        O1        O1         180.000 145_544 1_555 145_555
+	O1        O1        O1         120.000 145_544 1_555  97_555
+	O1        O1        O1         120.000 145_544 1_555  49_555
+	O1        O1        O1         120.000 145_544 1_555  97_455
+	O1        O1        O1         90.000  145_544 1_555 145_545
+	O1        O1        O1         120.000 145_544 1_555  49_455
+	O1        O1        O1         90.000  145_544 1_555 145_554
+	O1        O1        O1         60.000  145_544 1_555  49_545
+	O1        O1        O1         60.000  145_544 1_555  97_554
+	O1        O1        Mg1        45.000  145_544 1_555  49_555
+	O1        O1        Mg1        135.000 145_544 1_555  49_556
+	O1        O1        Mg1        45.000  145_544 1_555  97_555
+	O1        O1        Mg1        135.000 145_544 1_555  97_565
+	O1        O1        Mg1        90.000  145_544 1_555 145_555
+	O1        O1        Mg1        90.000  145_544 1_555 145_655
+	O1        O1        O1         60.000   97_454 1_555 145_544
+	O1        O1        O1         120.000  97_454 1_555 145_555
+	O1        O1        O1         180.000  97_454 1_555  97_555
+	O1        O1        O1         120.000  97_454 1_555  49_555
+	O1        O1        O1         90.000   97_454 1_555  97_455
+	O1        O1        O1         120.000  97_454 1_555 145_545
+	O1        O1        O1         60.000   97_454 1_555  49_455
+	O1        O1        O1         60.000   97_454 1_555 145_554
+	O1        O1        O1         120.000  97_454 1_555  49_545
+	O1        O1        O1         90.000   97_454 1_555  97_554
+	O1        O1        Mg1        45.000   97_454 1_555  49_555
+	O1        O1        Mg1        135.000  97_454 1_555  49_556
+	O1        O1        Mg1        90.000   97_454 1_555  97_555
+	O1        O1        Mg1        90.000   97_454 1_555  97_565
+	O1        O1        Mg1        45.000   97_454 1_555 145_555
+	O1        O1        Mg1        135.000  97_454 1_555 145_655
+	O1        O1        O1         60.000   49_445 1_555  97_454
+	O1        O1        O1         60.000   49_445 1_555 145_544
+	O1        O1        O1         120.000  49_445 1_555 145_555
+	O1        O1        O1         120.000  49_445 1_555  97_555
+	O1        O1        O1         180.000  49_445 1_555  49_555
+	O1        O1        O1         60.000   49_445 1_555  97_455
+	O1        O1        O1         60.000   49_445 1_555 145_545
+	O1        O1        O1         90.000   49_445 1_555  49_455
+	O1        O1        O1         120.000  49_445 1_555 145_554
+	O1        O1        O1         90.000   49_445 1_555  49_545
+	O1        O1        O1         120.000  49_445 1_555  97_554
+	O1        O1        Mg1        90.000   49_445 1_555  49_555
+	O1        O1        Mg1        90.000   49_445 1_555  49_556
+	O1        O1        Mg1        45.000   49_445 1_555  97_555
+	O1        O1        Mg1        135.000  49_445 1_555  97_565
+	O1        O1        Mg1        45.000   49_445 1_555 145_555
+	O1        O1        Mg1        135.000  49_445 1_555 145_655
+#######	End powder crystal structure	#######
+
+
+#######	Begin powder crystal structure	#######
+data_Ru_0
+_pd_block_id	Ru_0
+_pd_block_diffractogram_id	2_Ru_Bi_postheat_widescan_grid_015.xy_0
+_pd_phase_name
+;Ru
+;
+_chemical_formula_structural        'Ru1'
+_chemical_formula_sum               'Ru1'
+_chemical_formula_weight	101.07
+
+_space_group_crystal_system	hexagonal
+_space_group_name_H-M_alt	P63/mmc
+_space_group_name_Hall	 '-P 6c 2c'
+_space_group_IT_number	194
+_exptl_crystal_description 'powder'
+_exptl_crystal_colour ?
+
+_cell_length_a    2.6366(5)
+_cell_length_b    2.6366(5)
+_cell_length_c    4.2438(13)
+_cell_angle_alpha 90
+_cell_angle_beta  90
+_cell_angle_gamma 120
+_cell_volume 25.550(13)
+_exptl_crystal_density_diffrn	13.14
+_exptl_absorpt_coefficient_mu	39.12
+_diffrn_radiation_wavelength	0.406626000
+_cell_formula_units_Z	2
+_cell_measurement_temperature	295
+_diffrn_ambient_temperature	295
+_cell_measurement_pressure	28400000
+_cell_measurement_theta_min	2.0016303
+_cell_measurement_theta_max	10.3736518
+_cell_measurement_reflns_used 8
+_diffrn_reflns_number 8
+_diffrn_measured_fraction_theta_full 1
+
+loop_
+	_space_group_symop_id
+	_space_group_symop_operation_xyz
+	  1 'x, y, z '
+	  2 '-x, -x+y, z+1/2 '
+	  3 '-x, -y, -z '
+	  4 '-x, -y, z+1/2 '
+	  5 '-x+y, -x, -z+1/2 '
+	  6 '-x+y, -x, z '
+	  7 '-x+y, y, -z+1/2 '
+	  8 '-x+y, y, z '
+	  9 '-y, -x, -z+1/2 '
+	 10 '-y, -x, z '
+	 11 '-y, x-y, -z+1/2 '
+	 12 '-y, x-y, z '
+	 13 'y, -x+y, -z '
+	 14 'y, -x+y, z+1/2 '
+	 15 'y, x, -z '
+	 16 'y, x, z+1/2 '
+	 17 'x-y, -y, -z '
+	 18 'x-y, -y, z+1/2 '
+	 19 'x-y, x, -z '
+	 20 'x-y, x, z+1/2 '
+	 21 'x, y, -z+1/2 '
+	 22 '-x, -x+y, -z '
+	 23 'x, x-y, -z+1/2 '
+	 24 'x, x-y, z '
+loop_
+	_atom_site_label
+	_atom_site_type_symbol
+	_atom_site_site_symmetry_multiplicity
+	_atom_site_fract_x
+	_atom_site_fract_y
+	_atom_site_fract_z
+	_atom_site_occupancy
+	_atom_site_B_iso_or_equiv
+Ru1 Ru   6 0.3333 0.6667 0.25 1 0
+#######	End powder crystal structure	#######
+
+
+#######	Begin powder diffraction data	#######
+data_2_Ru_Bi_postheat_widescan_grid_015.xy_0
+_pd_block_id	2_Ru_Bi_postheat_widescan_grid_015.xy_0
+_pd_calc_method	Rietveld
+_diffrn_radiation_probe	x-ray
+_diffrn_radiation_wavelength	0.406626000
+_refine_ls_goodness_of_fit_all	2.49649
+_pd_proc_ls_prof_R_factor	0.01227
+_pd_proc_ls_prof_wR_factor	0.02282
+_pd_proc_ls_prof_wR_expected	0.00914
+loop_
+	_pd_phase_id
+	_pd_phase_block_id
+	_pd_phase_mass_%
+1	RuBi2_0	9.2(2)
+2	Bi_V_0	0.44(11)
+3	MgO_0	88.7(3)
+4	Ru_0	1.61(16)
+loop_
+	_refln_index_h
+	_refln_index_k
+	_refln_index_l
+	_pd_refln_phase_id
+	_refln_d_spacing
+	_refln_F_squared_calc
+	_refln_F_squared_meas
+   0    0    2 1    2.830795     0.893303     0.929820
+   0    0    4 1    1.415397     1.610970     1.648501
+   1    1    0 1    4.473369     0.000288     0.000287
+   1    1    2 1    2.392075     1.582465     1.565606
+   1    1    4 1    1.349460     0.004754     0.004751
+   2    0    0 1    3.163150     0.147367     0.153072
+   2    0    2 1    2.109424     2.802003     2.656999
+   2    0    4 1    1.291954     0.210692     0.211043
+   2    1    1 1    2.530804     6.995213     6.973566
+   2    1    3 1    1.569971     5.265129     5.308495
+   2    2    0 1    2.236685     0.614619     0.601080
+   2    2    2 1    1.754978     0.003069     0.003081
+   2    2    4 1    1.196037     0.726201     0.717841
+   3    1    0 1    2.000552     3.117994     3.141585
+   3    1    2 1    1.633749     0.728332     0.724430
+   3    1    4 1    1.155451     3.925364     3.892646
+   3    2    1 1    1.675960     0.027678     0.027662
+   3    2    3 1    1.285011     0.022402     0.022426
+   3    3    0 1    1.491123     1.273509     1.245569
+   3    3    2 1    1.319285     6.017066     6.481077
+   4    0    0 1    1.581575     0.251807     0.261564
+   4    0    2 1    1.380696     2.665653     2.694673
+   4    1    1 1    1.480932     4.346716     4.260442
+   4    1    3 1    1.190522     3.594024     3.570337
+   4    2    0 1    1.414604     1.050872     1.078243
+   4    2    2 1    1.265402     0.007894     0.007884
+   4    3    1 1    1.234800     0.018651     0.018654
+   4    4    0 1    1.118342     0.520446     0.522653
+   5    1    0 1    1.240689     0.001411     0.001410
+   5    1    2 1    1.136340     1.353612     1.361666
+   5    2    1 1    1.150263     4.573278     4.601234
+   1    1    0 2    2.539593     0.671474     0.673997
+   2    0    0 2    1.795764     0.277200     0.279931
+   2    1    1 2    1.466235     0.957389     0.947671
+   2    2    0 2    1.269797     0.423611     0.423541
+   3    1    0 2    1.135741     0.762061     0.768868
+   1    1    1 3    2.325969     1.322359     1.309306
+   2    0    0 3    2.014348    16.604290    16.612996
+   2    2    0 3    1.424359    20.979998    21.000479
+   2    2    2 3    1.162984     9.792218     9.861627
+   3    1    1 3    1.214698     3.925366     3.877581
+   0    0    2 4    2.121924     1.008311     0.949674
+   1    0    0 4    2.283397     0.798294     0.859564
+   1    0    1 4    2.010811     4.349722     4.355200
+   1    0    2 4    1.554380     1.150133     1.107338
+   1    0    3 4    1.202543     2.627164     2.542378
+   2   -1    0 4    1.318320     1.938261     2.063931
+   2   -1    2 4    1.119799     3.232201     3.238966
+   2    0    0 4    1.141698     0.412998     0.419131
+loop_
+	_pd_meas_2theta_scan
+	_pd_proc_intensity_total
+	_pd_proc_ls_weight
+	_pd_calc_intensity_total
+	_pd_proc_intensity_bkg_calc
+   4.003261  7989.433594     0.000125  7959.119508     0.000000 
+   4.023805  7971.639160     0.000125  7956.343849     0.000000 
+   4.044350  7980.880859     0.000125  7953.659403     0.000000 
+   4.064895  7978.937500     0.000125  7951.065654     0.000000 
+   4.085440  7984.791992     0.000125  7948.562089     0.000000 
+   4.105985  7976.837402     0.000125  7946.148195     0.000000 
+   4.126530  7967.244141     0.000126  7943.823462     0.000000 
+   4.147074  7956.543457     0.000126  7941.587382     0.000000 
+   4.167619  7952.895508     0.000126  7939.439450     0.000000 
+   4.188164  7945.821777     0.000126  7937.379161     0.000000 
+   4.208709  7946.142090     0.000126  7935.406015     0.000000 
+   4.229254  7951.039551     0.000126  7933.519510     0.000000 
+   4.249799  7949.466797     0.000126  7931.719149     0.000000 
+   4.270343  7955.935059     0.000126  7930.004436     0.000000 
+   4.290888  7945.425293     0.000126  7928.374877     0.000000 
+   4.311433  7949.440918     0.000126  7926.829980     0.000000 
+   4.331978  7951.326660     0.000126  7925.369256     0.000000 
+   4.352523  7941.335938     0.000126  7923.992216     0.000000 
+   4.373068  7942.150391     0.000126  7922.698375     0.000000 
+   4.393613  7937.511719     0.000126  7921.487249     0.000000 
+   4.414157  7931.091309     0.000126  7920.358355     0.000000 
+   4.434702  7935.395508     0.000126  7919.311215     0.000000 
+   4.455247  7919.010254     0.000126  7918.345349     0.000000 
+   4.475792  7916.850098     0.000126  7917.460283     0.000000 
+   4.496337  7910.012207     0.000126  7916.655542     0.000000 
+   4.516882  7901.628418     0.000127  7915.930656     0.000000 
+   4.537426  7911.552246     0.000126  7915.285154     0.000000 
+   4.557971  7896.286621     0.000127  7914.718568     0.000000 
+   4.578516  7902.206543     0.000127  7914.230434     0.000000 
+   4.599061  7904.389648     0.000127  7913.820289     0.000000 
+   4.619606  7901.919922     0.000127  7913.487672     0.000000 
+   4.640151  7905.149902     0.000126  7913.232123     0.000000 
+   4.660695  7899.531250     0.000127  7913.053188     0.000000 
+   4.681240  7896.237305     0.000127  7912.950413     0.000000 
+   4.701785  7900.751465     0.000127  7912.923346     0.000000 
+   4.722330  7903.816406     0.000127  7912.971541     0.000000 
+   4.742875  7912.239258     0.000126  7913.094553     0.000000 
+   4.763420  7917.265625     0.000126  7913.291939     0.000000 
+   4.783964  7922.993164     0.000126  7913.563265     0.000000 
+   4.804509  7948.781738     0.000126  7913.908097     0.000000 
+   4.825054  7956.325195     0.000126  7914.326008     0.000000 
+   4.845599  7945.437012     0.000126  7914.816579     0.000000 
+   4.866144  7934.711426     0.000126  7915.379397     0.000000 
+   4.886689  7929.134766     0.000126  7916.014063     0.000000 
+   4.907233  7933.334473     0.000126  7916.720190     0.000000 
+   4.927778  7940.557617     0.000126  7917.497410     0.000000 
+   4.948323  7953.004395     0.000126  7918.345389     0.000000 
+   4.968868  7981.754395     0.000125  7919.263852     0.000000 
+   4.989413  7973.023438     0.000125  7920.252681     0.000000 
+   5.009958  7952.468262     0.000126  7921.312272     0.000000 
+   5.030502  7944.120117     0.000126  7922.444583     0.000000 
+   5.051047  7937.401855     0.000126  7923.655579     0.000000 
+   5.071592  7938.601562     0.000126  7924.959489     0.000000 
+   5.092137  7925.865723     0.000126  7926.382945     0.000000 
+   5.112682  7921.226562     0.000126  7927.962552     0.000000 
+   5.133227  7922.565430     0.000126  7929.727230     0.000000 
+   5.153772  7913.050293     0.000126  7931.666919     0.000000 
+   5.174316  7910.382324     0.000126  7933.704256     0.000000 
+   5.194861  7908.329102     0.000126  7935.695952     0.000000 
+   5.215406  7904.479980     0.000127  7937.490979     0.000000 
+   5.235951  7908.536621     0.000126  7939.049658     0.000000 
+   5.256496  7895.981445     0.000127  7940.485237     0.000000 
+   5.277041  7888.077148     0.000127  7941.956126     0.000000 
+   5.297585  7894.671387     0.000127  7943.572329     0.000000 
+   5.318130  7898.032715     0.000127  7945.372487     0.000000 
+   5.338675  7914.200195     0.000126  7947.340737     0.000000 
+   5.359220  7909.291504     0.000126  7949.439836     0.000000 
+   5.379765  7896.379883     0.000127  7951.636741     0.000000 
+   5.400310  7900.081543     0.000127  7953.910935     0.000000 
+   5.420854  7896.658691     0.000127  7956.252341     0.000000 
+   5.441399  7903.451660     0.000127  7958.656735     0.000000 
+   5.461944  7902.719727     0.000127  7961.122380     0.000000 
+   5.482489  7892.442871     0.000127  7963.648405     0.000000 
+   5.503034  7903.493652     0.000127  7966.234214     0.000000 
+   5.523579  7898.922852     0.000127  7968.879304     0.000000 
+   5.544123  7897.456543     0.000127  7971.583210     0.000000 
+   5.564668  7899.571289     0.000127  7974.345495     0.000000 
+   5.585213  7898.849609     0.000127  7977.165734     0.000000 
+   5.605758  7913.034668     0.000126  7980.043516     0.000000 
+   5.626303  7911.835449     0.000126  7982.978440     0.000000 
+   5.646848  7903.703125     0.000127  7985.970111     0.000000 
+   5.667392  7908.803223     0.000126  7989.018141     0.000000 
+   5.687937  7928.016602     0.000126  7992.122146     0.000000 
+   5.708482  7985.053223     0.000125  7995.281747     0.000000 
+   5.729027  8020.259766     0.000125  7998.496567     0.000000 
+   5.749572  8018.162598     0.000125  8001.766234     0.000000 
+   5.770117  8020.636230     0.000125  8005.090378     0.000000 
+   5.790661  8013.725586     0.000125  8008.468630     0.000000 
+   5.811206  8008.788086     0.000125  8011.900627     0.000000 
+   5.831751  8013.645508     0.000125  8015.386005     0.000000 
+   5.852296  8052.645508     0.000124  8018.924404     0.000000 
+   5.872841  8093.101074     0.000124  8022.515464     0.000000 
+   5.893386  8110.106934     0.000123  8026.346972     0.000000 
+   5.913931  8092.098145     0.000124  8030.047626     0.000000 
+   5.934475  8098.967285     0.000123  8033.800107     0.000000 
+   5.955020  8085.334473     0.000124  8037.604078     0.000000 
+   5.975565  8085.967285     0.000124  8041.459204     0.000000 
+   5.996110  8080.533203     0.000124  8045.365152     0.000000 
+   6.016655  8077.521484     0.000124  8049.321593     0.000000 
+   6.037200  8086.718262     0.000124  8053.328202     0.000000 
+   6.057744  8068.308105     0.000124  8057.384655     0.000000 
+   6.078289  8053.636719     0.000124  8061.490631     0.000000 
+   6.098834  8049.026855     0.000124  8065.645814     0.000000 
+   6.119379  8044.674316     0.000124  8069.849891     0.000000 
+   6.139924  8062.876465     0.000124  8074.102552     0.000000 
+   6.160469  8066.236816     0.000124  8078.403491     0.000000 
+   6.181013  8064.548828     0.000124  8082.752408     0.000000 
+   6.201558  8073.984863     0.000124  8087.149004     0.000000 
+   6.222103  8074.797363     0.000124  8091.592987     0.000000 
+   6.242648  8078.600098     0.000124  8096.084070     0.000000 
+   6.263193  8083.738770     0.000124  8100.621970     0.000000 
+   6.283738  8089.198730     0.000124  8105.206410     0.000000 
+   6.304282  8097.263672     0.000123  8109.837120     0.000000 
+   6.324827  8100.097168     0.000123  8114.513837     0.000000 
+   6.345372  8098.778809     0.000123  8119.236304     0.000000 
+   6.365917  8103.209961     0.000123  8124.004274     0.000000 
+   6.386462  8100.466797     0.000123  8128.817507     0.000000 
+   6.407007  8110.722168     0.000123  8133.675776     0.000000 
+   6.427551  8121.308594     0.000123  8138.578860     0.000000 
+   6.448096  8113.139160     0.000123  8143.526555     0.000000 
+   6.468641  8123.364746     0.000123  8148.518667     0.000000 
+   6.489186  8119.146484     0.000123  8153.555024     0.000000 
+   6.509731  8122.874023     0.000123  8158.635463     0.000000 
+   6.530276  8134.567383     0.000123  8163.759843     0.000000 
+   6.550821  8135.331055     0.000123  8168.928052     0.000000 
+   6.571365  8147.847656     0.000123  8174.139998     0.000000 
+   6.591910  8149.330566     0.000123  8179.395618     0.000000 
+   6.612455  8146.331055     0.000123  8184.694882     0.000000 
+   6.633000  8156.615723     0.000123  8190.037813     0.000000 
+   6.653545  8155.063477     0.000123  8195.424463     0.000000 
+   6.674090  8164.798828     0.000122  8200.854943     0.000000 
+   6.694634  8169.047363     0.000122  8206.329434     0.000000 
+   6.715179  8170.688477     0.000122  8211.848196     0.000000 
+   6.735724  8185.765137     0.000122  8217.411562     0.000000 
+   6.756269  8185.168457     0.000122  8223.019983     0.000000 
+   6.776814  8195.586914     0.000122  8228.674050     0.000000 
+   6.797359  8200.317383     0.000122  8234.374502     0.000000 
+   6.817903  8200.847656     0.000122  8240.122259     0.000000 
+   6.838448  8212.215820     0.000122  8247.036021     0.000000 
+   6.858993  8216.353516     0.000122  8252.915726     0.000000 
+   6.879538  8221.477539     0.000122  8258.848304     0.000000 
+   6.900083  8232.990234     0.000121  8264.836981     0.000000 
+   6.920628  8239.877930     0.000121  8270.884301     0.000000 
+   6.941172  8249.269531     0.000121  8276.994037     0.000000 
+   6.961717  8254.232422     0.000121  8283.170857     0.000000 
+   6.982262  8247.452148     0.000121  8289.420745     0.000000 
+   7.002807  8252.643555     0.000121  8295.751463     0.000000 
+   7.023352  8252.256836     0.000121  8302.173023     0.000000 
+   7.043897  8261.632812     0.000121  8308.698495     0.000000 
+   7.064441  8272.703125     0.000121  8315.345325     0.000000 
+   7.084986  8277.500000     0.000121  8322.137394     0.000000 
+   7.105531  8289.010742     0.000121  8329.107054     0.000000 
+   7.126076  8298.435547     0.000121  8336.299947     0.000000 
+   7.146621  8304.207031     0.000120  8343.783249     0.000000 
+   7.167166  8308.474609     0.000120  8351.667695     0.000000 
+   7.187710  8314.392578     0.000120  8360.182567     0.000000 
+   7.208255  8328.137695     0.000120  8369.956377     0.000000 
+   7.228800  8334.726562     0.000120  8382.857455     0.000000 
+   7.249345  8337.021484     0.000120  8403.782628     0.000000 
+   7.269890  8363.210938     0.000120  8442.728499     0.000000 
+   7.290435  8413.104492     0.000119  8513.904057     0.000000 
+   7.310980  8641.582031     0.000116  8627.158757     0.000000 
+   7.331524  9163.833008     0.000109  8771.855522     0.000000 
+   7.352069  9546.611328     0.000105  8904.677069     0.000000 
+   7.372614  9683.863281     0.000103  8957.432998     0.000000 
+   7.393159  9367.470703     0.000107  8896.495903     0.000000 
+   7.413704  9099.914062     0.000110  8769.521528     0.000000 
+   7.434249  8673.410156     0.000115  8642.340752     0.000000 
+   7.454793  8465.212891     0.000118  8551.234172     0.000000 
+   7.475338  8446.270508     0.000118  8501.265384     0.000000 
+   7.495883  8440.200195     0.000118  8480.565400     0.000000 
+   7.516428  8438.645508     0.000119  8475.390351     0.000000 
+   7.536973  8448.083984     0.000118  8476.890624     0.000000 
+   7.557518  8453.010742     0.000118  8480.972597     0.000000 
+   7.578062  8463.548828     0.000118  8486.140649     0.000000 
+   7.598607  8470.677734     0.000118  8491.893688     0.000000 
+   7.619152  8470.022461     0.000118  8498.042827     0.000000 
+   7.639697  8483.409180     0.000118  8504.493760     0.000000 
+   7.660242  8497.289062     0.000118  8511.189912     0.000000 
+   7.680787  8505.277344     0.000118  8518.094925     0.000000 
+   7.701331  8513.494141     0.000117  8525.185557     0.000000 
+   7.721876  8516.475586     0.000117  8532.448365     0.000000 
+   7.742421  8525.156250     0.000117  8539.877335     0.000000 
+   7.762966  8532.654297     0.000117  8547.473060     0.000000 
+   7.783511  8531.811523     0.000117  8555.241973     0.000000 
+   7.804056  8540.752930     0.000117  8563.196566     0.000000 
+   7.824600  8548.195312     0.000117  8571.355665     0.000000 
+   7.845145  8563.418945     0.000117  8579.745978     0.000000 
+   7.865690  8579.787109     0.000117  8588.404219     0.000000 
+   7.886235  8587.196289     0.000116  8597.378851     0.000000 
+   7.906780  8592.685547     0.000116  8615.461771     0.000000 
+   7.927325  8595.910156     0.000116  8625.566923     0.000000 
+   7.947869  8598.383789     0.000116  8636.275313     0.000000 
+   7.968414  8615.413086     0.000116  8647.751238     0.000000 
+   7.988959  8630.286133     0.000116  8660.226483     0.000000 
+   8.009504  8658.146484     0.000115  8674.035801     0.000000 
+   8.030049  8677.387695     0.000115  8689.682068     0.000000 
+   8.050594  8685.898438     0.000115  8708.008210     0.000000 
+   8.071139  8710.479492     0.000115  8730.852241     0.000000 
+   8.091683  8739.678711     0.000114  8763.481922     0.000000 
+   8.112228  8804.301758     0.000114  8821.565226     0.000000 
+   8.132773  8877.153320     0.000113  8944.365370     0.000000 
+   8.153318  9085.209961     0.000110  9203.986731     0.000000 
+   8.173863  9507.074219     0.000105  9680.412589     0.000000 
+   8.194408  10137.914060     0.000099  10376.008170     0.000000 
+   8.214952  11379.553710     0.000088  11112.565255     0.000000 
+   8.235497  11987.860350     0.000083  11499.375799     0.000000 
+   8.256042  12375.527340     0.000081  11232.334192     0.000000 
+   8.276587  11620.519530     0.000086  10540.647959     0.000000 
+   8.297132  10819.296880     0.000092  9835.358200     0.000000 
+   8.317677  9579.214844     0.000104  9334.299706     0.000000 
+   8.338221  9206.512695     0.000109  9058.731191     0.000000 
+   8.358766  8924.635742     0.000112  8934.875322     0.000000 
+   8.379311  8884.627930     0.000113  8886.157156     0.000000 
+   8.399856  8886.764648     0.000113  8867.513652     0.000000 
+   8.420401  8882.085938     0.000113  8860.345463     0.000000 
+   8.440946  8889.104492     0.000112  8858.311525     0.000000 
+   8.461490  8871.600586     0.000113  8859.250730     0.000000 
+   8.482035  8867.011719     0.000113  8864.183206     0.000000 
+   8.502580  8868.835938     0.000113  8868.731639     0.000000 
+   8.523125  8866.903320     0.000113  8874.448873     0.000000 
+   8.543670  8879.315430     0.000113  8881.106993     0.000000 
+   8.564215  8879.093750     0.000113  8888.550176     0.000000 
+   8.584759  8881.803711     0.000113  8896.674022     0.000000 
+   8.605304  8887.251953     0.000113  8905.412248     0.000000 
+   8.625849  8895.456055     0.000112  8914.727576     0.000000 
+   8.646394  8905.212891     0.000112  8924.604452     0.000000 
+   8.666939  8922.134766     0.000112  8935.046871     0.000000 
+   8.687484  8934.315430     0.000112  8946.077580     0.000000 
+   8.708028  8954.359375     0.000112  8957.738186     0.000000 
+   8.728573  8962.705078     0.000112  8970.088445     0.000000 
+   8.749118  8976.207031     0.000111  8983.209826     0.000000 
+   8.769663  8988.673828     0.000111  8997.210199     0.000000 
+   8.790208  9004.172852     0.000111  9012.231615     0.000000 
+   8.810753  9025.655273     0.000111  9028.451937     0.000000 
+   8.831298  9043.340820     0.000111  9046.102631     0.000000 
+   8.851842  9058.261719     0.000110  9065.485217     0.000000 
+   8.872387  9087.239258     0.000110  9086.813111     0.000000 
+   8.892932  9100.336914     0.000110  9110.970630     0.000000 
+   8.913477  9124.158203     0.000110  9138.465094     0.000000 
+   8.934022  9134.543945     0.000109  9170.250041     0.000000 
+   8.954567  9162.720703     0.000109  9207.638336     0.000000 
+   8.975111  9200.518555     0.000109  9252.483261     0.000000 
+   8.995656  9261.380859     0.000108  9307.478724     0.000000 
+   9.016201  9341.409180     0.000107  9376.713277     0.000000 
+   9.036746  9444.700195     0.000106  9466.696164     0.000000 
+   9.057291  9562.839844     0.000105  9590.228035     0.000000 
+   9.077836  9794.210938     0.000102  9782.981325     0.000000 
+   9.098380  10233.802730     0.000098  10171.511237     0.000000 
+   9.118925  11307.014650     0.000088  11163.477263     0.000000 
+   9.139470  13490.349610     0.000074  13627.900981     0.000000 
+   9.160015  18476.445310     0.000054  18278.852877     0.000000 
+   9.180560  24067.880860     0.000042  24140.153059     0.000000 
+   9.201105  28900.412110     0.000035  28461.947279     0.000000 
+   9.221649  28017.828120     0.000036  28340.920431     0.000000 
+   9.242194  24361.884770     0.000041  23804.105211     0.000000 
+   9.262739  17802.183590     0.000056  18276.895839     0.000000 
+   9.283284  13580.895510     0.000074  14063.430764     0.000000 
+   9.303829  10672.631840     0.000094  11635.228687     0.000000 
+   9.324374  9914.487305     0.000101  10501.307296     0.000000 
+   9.344918  9607.811523     0.000104  10018.888338     0.000000 
+   9.365463  9484.051758     0.000105  9795.852855     0.000000 
+   9.386008  9440.152344     0.000106  9670.318649     0.000000 
+   9.406553  9418.753906     0.000106  9588.487878     0.000000 
+   9.427098  9426.355469     0.000106  9532.035594     0.000000 
+   9.447643  9456.441406     0.000106  9492.767872     0.000000 
+   9.468187  9507.414062     0.000105  9466.022713     0.000000 
+   9.488732  9573.691406     0.000104  9448.861262     0.000000 
+   9.509277  9643.600586     0.000104  9439.505640     0.000000 
+   9.529822  9634.793945     0.000104  9437.010664     0.000000 
+   9.550367  9592.291992     0.000104  9441.132254     0.000000 
+   9.570912  9530.396484     0.000105  9452.379318     0.000000 
+   9.591457  9516.887695     0.000105  9472.447872     0.000000 
+   9.612001  9549.844727     0.000105  9506.100036     0.000000 
+   9.632546  9634.434570     0.000104  9568.443529     0.000000 
+   9.653091  9844.573242     0.000102  9704.474226     0.000000 
+   9.673636  10301.388670     0.000097  10023.141643     0.000000 
+   9.694181  10914.213870     0.000092  10674.078031     0.000000 
+   9.714726  11787.177730     0.000085  11704.437819     0.000000 
+   9.735270  12477.873050     0.000080  12801.683607     0.000000 
+   9.755815  12539.497070     0.000080  13151.249288     0.000000 
+   9.776360  12066.283200     0.000083  12379.108845     0.000000 
+   9.796905  11288.155270     0.000089  11249.015730     0.000000 
+   9.817450  10669.268550     0.000094  10381.472772     0.000000 
+   9.837995  10026.105470     0.000100  9901.851954     0.000000 
+   9.858539  9763.218750     0.000102  9691.038261     0.000000 
+   9.879084  9618.432617     0.000104  9611.454499     0.000000 
+   9.899629  9581.474609     0.000104  9591.407869     0.000000 
+   9.920174  9603.997070     0.000104  9612.113746     0.000000 
+   9.940719  9655.698242     0.000104  9680.421433     0.000000 
+   9.961264  9767.325195     0.000102  9791.710403     0.000000 
+   9.981808  9931.818359     0.000101  9936.157467     0.000000 
+  10.002353  10043.182620     0.000100  10076.307456     0.000000 
+  10.022898  10035.275390     0.000100  10158.226781     0.000000 
+  10.043443  9904.079102     0.000101  10141.206080     0.000000 
+  10.063988  9739.913086     0.000103  10035.733114     0.000000 
+  10.084533  9658.861328     0.000104  9892.104460     0.000000 
+  10.105077  9642.803711     0.000104  9759.755557     0.000000 
+  10.125622  9731.743164     0.000103  9675.601241     0.000000 
+  10.146167  10038.725590     0.000100  9717.868291     0.000000 
+  10.166712  10865.840820     0.000092  10140.509608     0.000000 
+  10.187257  11933.972660     0.000084  11205.406240     0.000000 
+  10.207802  13313.485350     0.000075  12312.986162     0.000000 
+  10.228347  13167.445310     0.000076  12225.214044     0.000000 
+  10.248891  12155.929690     0.000082  11062.537132     0.000000 
+  10.269436  10596.086910     0.000094  10083.228945     0.000000 
+  10.289981  9919.570312     0.000101  9736.724307     0.000000 
+  10.310526  9765.257812     0.000102  9687.777215     0.000000 
+  10.331071  9747.873047     0.000103  9725.832293     0.000000 
+  10.351616  9777.348633     0.000102  9823.027629     0.000000 
+  10.372160  9899.060547     0.000101  10030.162392     0.000000 
+  10.392705  10115.812500     0.000099  10390.131653     0.000000 
+  10.413250  10351.451170     0.000097  10821.477310     0.000000 
+  10.433795  10493.721680     0.000095  10999.656861     0.000000 
+  10.454340  10465.462890     0.000096  10719.614745     0.000000 
+  10.474885  10200.844730     0.000098  10306.392989     0.000000 
+  10.495429  10028.169920     0.000100  10011.347713     0.000000 
+  10.515974  9897.263672     0.000101  9862.877983     0.000000 
+  10.536519  9848.051758     0.000102  9804.566584     0.000000 
+  10.557064  9829.664062     0.000102  9776.578591     0.000000 
+  10.577609  9818.713867     0.000102  9771.408772     0.000000 
+  10.598154  9824.585938     0.000102  9772.333797     0.000000 
+  10.618698  9834.846680     0.000102  9781.143821     0.000000 
+  10.639243  9845.025391     0.000102  9788.092279     0.000000 
+  10.659788  9858.487305     0.000101  9796.848229     0.000000 
+  10.680333  9868.192383     0.000101  9807.098574     0.000000 
+  10.700878  9873.728516     0.000101  9818.690467     0.000000 
+  10.721423  9884.441406     0.000101  9831.587912     0.000000 
+  10.741967  9890.003906     0.000101  9845.852996     0.000000 
+  10.762512  9908.071289     0.000101  9861.648188     0.000000 
+  10.783057  9920.815430     0.000101  9879.244339     0.000000 
+  10.803602  9947.086914     0.000101  9899.060902     0.000000 
+  10.824147  9977.527344     0.000100  9921.745596     0.000000 
+  10.844692  9997.414062     0.000100  9948.463125     0.000000 
+  10.865236  10023.248050     0.000100  9982.638397     0.000000 
+  10.885781  10057.276370     0.000099  10038.611368     0.000000 
+  10.906326  10128.923830     0.000099  10168.472140     0.000000 
+  10.926871  10258.508790     0.000097  10498.047965     0.000000 
+  10.947416  10638.989260     0.000094  11179.932648     0.000000 
+  10.967961  11236.037110     0.000089  12184.912906     0.000000 
+  10.988506  12234.640620     0.000082  13205.005631     0.000000 
+  11.009050  13481.902340     0.000074  14046.312335     0.000000 
+  11.029595  14419.716800     0.000069  14990.163845     0.000000 
+  11.050140  14697.515620     0.000068  16044.245704     0.000000 
+  11.070685  14127.352540     0.000071  15730.834899     0.000000 
+  11.091230  13234.681640     0.000076  13812.698166     0.000000 
+  11.111775  11990.184570     0.000083  12049.744340     0.000000 
+  11.132319  11229.080080     0.000089  11048.365475     0.000000 
+  11.152864  10705.139650     0.000093  10613.077619     0.000000 
+  11.173409  10425.030270     0.000096  10442.463019     0.000000 
+  11.193954  10311.708980     0.000097  10370.585412     0.000000 
+  11.214499  10273.497070     0.000097  10339.027519     0.000000 
+  11.235044  10279.326170     0.000097  10329.745375     0.000000 
+  11.255588  10304.762700     0.000097  10336.075184     0.000000 
+  11.276133  10331.464840     0.000097  10355.108410     0.000000 
+  11.296678  10366.411130     0.000096  10385.858352     0.000000 
+  11.317223  10394.488280     0.000096  10428.736420     0.000000 
+  11.337768  10454.685550     0.000096  10485.459947     0.000000 
+  11.358313  10508.991210     0.000095  10559.282100     0.000000 
+  11.378857  10582.402340     0.000094  10655.463249     0.000000 
+  11.399402  10689.407230     0.000094  10782.952393     0.000000 
+  11.419947  10856.858400     0.000092  10960.732617     0.000000 
+  11.440492  11155.838870     0.000090  11246.912579     0.000000 
+  11.461037  11720.401370     0.000085  11847.687044     0.000000 
+  11.481582  13139.264650     0.000076  13397.229856     0.000000 
+  11.502126  16913.013670     0.000059  17330.482621     0.000000 
+  11.522671  25470.781250     0.000039  25647.038063     0.000000 
+  11.543216  39759.804690     0.000025  39114.546311     0.000000 
+  11.563761  54869.042970     0.000018  54493.015777     0.000000 
+  11.584306  63207.933590     0.000016  63695.399575     0.000000 
+  11.604851  59851.808590     0.000017  60209.511089     0.000000 
+  11.625395  48335.898440     0.000021  48081.018975     0.000000 
+  11.645940  35977.351560     0.000028  35620.423552     0.000000 
+  11.666485  26203.085940     0.000038  26422.120311     0.000000 
+  11.687030  19308.226560     0.000052  19307.166805     0.000000 
+  11.707575  15707.700200     0.000064  14801.029966     0.000000 
+  11.728120  13299.131840     0.000075  12625.075250     0.000000 
+  11.748665  11955.742190     0.000084  11700.473738     0.000000 
+  11.769209  11300.166020     0.000088  11281.880815     0.000000 
+  11.789754  10933.157230     0.000091  11047.540163     0.000000 
+  11.810299  10796.748050     0.000093  10893.157290     0.000000 
+  11.830844  10705.553710     0.000093  10783.890019     0.000000 
+  11.851389  10653.878910     0.000094  10703.948192     0.000000 
+  11.871934  10611.886720     0.000094  10644.232984     0.000000 
+  11.892478  10576.117190     0.000095  10598.983421     0.000000 
+  11.913023  10564.887700     0.000095  10564.342695     0.000000 
+  11.933568  10548.176760     0.000095  10537.689311     0.000000 
+  11.954113  10551.183590     0.000095  10517.178177     0.000000 
+  11.974658  10545.915040     0.000095  10501.462684     0.000000 
+  11.995203  10541.307620     0.000095  10489.547112     0.000000 
+  12.015747  10530.563480     0.000095  10480.686757     0.000000 
+  12.036292  10530.270510     0.000095  10474.316493     0.000000 
+  12.056837  10530.196290     0.000095  10469.988104     0.000000 
+  12.077382  10534.095700     0.000095  10467.353881     0.000000 
+  12.097927  10528.905270     0.000095  10466.138130     0.000000 
+  12.118472  10534.191410     0.000095  10466.120732     0.000000 
+  12.139016  10532.709960     0.000095  10467.118808     0.000000 
+  12.159561  10532.032230     0.000095  10468.985233     0.000000 
+  12.180106  10540.562500     0.000095  10471.599607     0.000000 
+  12.200651  10543.043950     0.000095  10471.229035     0.000000 
+  12.221196  10554.436520     0.000095  10475.178622     0.000000 
+  12.241741  10554.191410     0.000095  10479.611963     0.000000 
+  12.262285  10554.773440     0.000095  10484.470252     0.000000 
+  12.282830  10559.372070     0.000095  10489.701645     0.000000 
+  12.303375  10558.982420     0.000095  10495.262611     0.000000 
+  12.323920  10569.203120     0.000095  10501.115975     0.000000 
+  12.344465  10573.997070     0.000095  10507.229732     0.000000 
+  12.365010  10583.344730     0.000094  10513.575363     0.000000 
+  12.385554  10591.743160     0.000094  10520.128542     0.000000 
+  12.406099  10590.566410     0.000094  10526.868279     0.000000 
+  12.426644  10593.684570     0.000094  10533.780850     0.000000 
+  12.447189  10599.240230     0.000094  10540.840166     0.000000 
+  12.467734  10600.244140     0.000094  10548.036991     0.000000 
+  12.488279  10611.648440     0.000094  10555.359851     0.000000 
+  12.508824  10611.298830     0.000094  10562.799249     0.000000 
+  12.529368  10625.611330     0.000094  10570.349275     0.000000 
+  12.549913  10624.631840     0.000094  10578.008874     0.000000 
+  12.570458  10639.276370     0.000094  10585.784280     0.000000 
+  12.591003  10651.325200     0.000094  10593.692342     0.000000 
+  12.611548  10660.972660     0.000094  10601.766496     0.000000 
+  12.632093  10675.942380     0.000094  10610.064194     0.000000 
+  12.652637  10679.317380     0.000094  10618.674614     0.000000 
+  12.673182  10687.559570     0.000094  10627.727788     0.000000 
+  12.693727  10687.584960     0.000094  10637.402415     0.000000 
+  12.714272  10697.084960     0.000093  10647.931098     0.000000 
+  12.734817  10711.279300     0.000093  10655.348863     0.000000 
+  12.755362  10732.538090     0.000093  10668.596206     0.000000 
+  12.775906  10744.213870     0.000093  10683.567234     0.000000 
+  12.796451  10776.210940     0.000093  10700.509137     0.000000 
+  12.816996  10783.825200     0.000093  10719.548609     0.000000 
+  12.837541  10814.394530     0.000092  10740.635432     0.000000 
+  12.858086  10832.690430     0.000092  10763.486043     0.000000 
+  12.878631  10876.516600     0.000092  10787.541366     0.000000 
+  12.899175  10917.527340     0.000092  10798.416139     0.000000 
+  12.919720  10970.648440     0.000091  10822.640136     0.000000 
+  12.940265  11034.017580     0.000091  10845.067417     0.000000 
+  12.960810  11101.000980     0.000090  10864.593670     0.000000 
+  12.981355  11113.806640     0.000090  10880.288221     0.000000 
+  13.001900  11081.052730     0.000090  10891.526415     0.000000 
+  13.022444  11007.461910     0.000091  10898.088175     0.000000 
+  13.042989  10953.489260     0.000091  10900.205379     0.000000 
+  13.063534  10932.431640     0.000091  10898.505265     0.000000 
+  13.084079  10926.599610     0.000092  10893.920097     0.000000 
+  13.104624  10950.598630     0.000091  10887.565010     0.000000 
+  13.125169  10937.389650     0.000091  10880.576074     0.000000 
+  13.145713  10912.591800     0.000092  10873.977107     0.000000 
+  13.166258  10878.916990     0.000092  10868.588887     0.000000 
+  13.186803  10883.882810     0.000092  10865.685529     0.000000 
+  13.207348  10884.920900     0.000092  10864.157320     0.000000 
+  13.227893  10897.426760     0.000092  10864.787692     0.000000 
+  13.248438  10907.070310     0.000092  10867.564836     0.000000 
+  13.268983  10918.629880     0.000092  10872.572746     0.000000 
+  13.289527  10928.958980     0.000092  10880.046834     0.000000 
+  13.310072  10935.927730     0.000091  10887.629901     0.000000 
+  13.330617  10937.181640     0.000091  10892.782752     0.000000 
+  13.351162  10943.861330     0.000091  10899.180275     0.000000 
+  13.371707  10947.559570     0.000091  10906.814915     0.000000 
+  13.392252  10946.996090     0.000091  10915.045255     0.000000 
+  13.412796  10951.039060     0.000091  10923.565735     0.000000 
+  13.433341  10952.760740     0.000091  10932.240497     0.000000 
+  13.453886  10966.638670     0.000091  10941.000895     0.000000 
+  13.474431  10967.166020     0.000091  10949.809475     0.000000 
+  13.494976  10971.995120     0.000091  10958.645644     0.000000 
+  13.515521  10976.634770     0.000091  10967.498377     0.000000 
+  13.536065  10987.988280     0.000091  10976.362096     0.000000 
+  13.556610  10997.934570     0.000091  10985.234313     0.000000 
+  13.577155  11007.273440     0.000091  10994.324227     0.000000 
+  13.597700  11012.063480     0.000091  11003.220384     0.000000 
+  13.618245  11020.085940     0.000091  11012.127169     0.000000 
+  13.638790  11026.261720     0.000091  11021.047093     0.000000 
+  13.659334  11042.002930     0.000091  11034.150143     0.000000 
+  13.679879  11048.086910     0.000091  11043.251863     0.000000 
+  13.700424  11051.248050     0.000090  11052.389440     0.000000 
+  13.720969  11059.162110     0.000090  11061.572894     0.000000 
+  13.741514  11068.977540     0.000090  11070.816655     0.000000 
+  13.762059  11082.031250     0.000090  11080.142613     0.000000 
+  13.782603  11090.551760     0.000090  11089.584805     0.000000 
+  13.803148  11095.809570     0.000090  11099.200561     0.000000 
+  13.823693  11106.219730     0.000090  11109.096339     0.000000 
+  13.844238  11112.649410     0.000090  11119.512429     0.000000 
+  13.864783  11127.502930     0.000090  11131.103693     0.000000 
+  13.885328  11141.218750     0.000090  11145.493394     0.000000 
+  13.905872  11163.262700     0.000090  11165.114401     0.000000 
+  13.926417  11179.661130     0.000089  11187.991882     0.000000 
+  13.946962  11187.575200     0.000089  11196.565677     0.000000 
+  13.967507  11185.739260     0.000089  11192.912249     0.000000 
+  13.988052  11179.627930     0.000089  11193.492834     0.000000 
+  14.008597  11177.994140     0.000089  11199.239416     0.000000 
+  14.029142  11181.406250     0.000089  11207.810649     0.000000 
+  14.049686  11194.529300     0.000089  11217.827108     0.000000 
+  14.070231  11208.303710     0.000089  11228.863965     0.000000 
+  14.090776  11220.196290     0.000089  11240.936042     0.000000 
+  14.111321  11232.738280     0.000089  11254.296933     0.000000 
+  14.131866  11246.844730     0.000089  11269.454700     0.000000 
+  14.152411  11266.428710     0.000089  11287.310976     0.000000 
+  14.172955  11312.079100     0.000088  11309.543119     0.000000 
+  14.193500  11377.439450     0.000088  11339.819484     0.000000 
+  14.214045  11466.109380     0.000087  11388.053001     0.000000 
+  14.234590  11626.746090     0.000086  11479.563917     0.000000 
+  14.255135  11761.197270     0.000085  11659.215111     0.000000 
+  14.275680  11905.822270     0.000084  11950.579642     0.000000 
+  14.296224  11926.819340     0.000084  12172.601815     0.000000 
+  14.316769  11864.456050     0.000084  12008.111689     0.000000 
+  14.337314  11686.413090     0.000086  11728.577160     0.000000 
+  14.357859  11570.159180     0.000086  11554.711135     0.000000 
+  14.378404  11463.506840     0.000087  11475.013228     0.000000 
+  14.398949  11413.365230     0.000088  11443.370536     0.000000 
+  14.419493  11390.875980     0.000088  11431.944204     0.000000 
+  14.440038  11382.441410     0.000088  11432.350685     0.000000 
+  14.460583  11377.017580     0.000088  11435.171120     0.000000 
+  14.481128  11385.478520     0.000088  11441.305893     0.000000 
+  14.501673  11390.141600     0.000088  11449.897352     0.000000 
+  14.522218  11393.098630     0.000088  11460.533699     0.000000 
+  14.542762  11403.445310     0.000088  11473.076247     0.000000 
+  14.563307  11410.160160     0.000088  11487.599104     0.000000 
+  14.583852  11422.585940     0.000088  11504.376557     0.000000 
+  14.604397  11435.939450     0.000087  11523.910984     0.000000 
+  14.624942  11459.770510     0.000087  11547.024354     0.000000 
+  14.645487  11482.814450     0.000087  11575.084301     0.000000 
+  14.666032  11523.768550     0.000087  11610.638158     0.000000 
+  14.686576  11598.339840     0.000086  11659.009336     0.000000 
+  14.707121  11726.829100     0.000085  11730.965355     0.000000 
+  14.727666  11982.543950     0.000083  11842.929537     0.000000 
+  14.748211  12360.650390     0.000081  12006.981993     0.000000 
+  14.768756  12767.583010     0.000078  12196.742649     0.000000 
+  14.789301  13308.444340     0.000075  12382.917085     0.000000 
+  14.809845  13999.333980     0.000071  12746.553098     0.000000 
+  14.830390  14877.803710     0.000067  13571.118461     0.000000 
+  14.850935  15690.848630     0.000064  15018.480070     0.000000 
+  14.871480  16091.273440     0.000062  16603.153745     0.000000 
+  14.892025  15990.352540     0.000063  16624.692258     0.000000 
+  14.912570  15331.115230     0.000065  15115.898346     0.000000 
+  14.933114  14362.533200     0.000070  13775.826619     0.000000 
+  14.953659  13388.558590     0.000075  13058.263987     0.000000 
+  14.974204  12639.918950     0.000079  12788.673658     0.000000 
+  14.994749  12122.652340     0.000082  12725.096933     0.000000 
+  15.015294  11869.540040     0.000084  12710.367699     0.000000 
+  15.035839  11734.575200     0.000085  12667.321341     0.000000 
+  15.056383  11702.735350     0.000085  12569.340638     0.000000 
+  15.076928  11721.892580     0.000085  12424.426967     0.000000 
+  15.097473  11811.040040     0.000085  12255.541875     0.000000 
+  15.118018  11921.088870     0.000084  12094.014835     0.000000 
+  15.138563  11983.148440     0.000083  11961.892456     0.000000 
+  15.159108  11952.357420     0.000084  11868.002505     0.000000 
+  15.179652  11886.086910     0.000084  11809.845277     0.000000 
+  15.200197  11828.927730     0.000085  11778.941794     0.000000 
+  15.220742  11791.354490     0.000085  11765.753497     0.000000 
+  15.241287  11789.751950     0.000085  11762.810381     0.000000 
+  15.261832  11813.322270     0.000085  11765.337161     0.000000 
+  15.282377  11820.208980     0.000085  11770.740708     0.000000 
+  15.302921  11800.389650     0.000085  11777.802931     0.000000 
+  15.323466  11781.541990     0.000085  11786.035363     0.000000 
+  15.344011  11775.574220     0.000085  11795.290370     0.000000 
+  15.364556  11769.066410     0.000085  11805.576838     0.000000 
+  15.385101  11770.416990     0.000085  11816.995983     0.000000 
+  15.405646  11780.680660     0.000085  11829.730136     0.000000 
+  15.426191  11787.740230     0.000085  11843.359756     0.000000 
+  15.446735  11794.947270     0.000085  11860.966504     0.000000 
+  15.467280  11797.812500     0.000085  11879.916333     0.000000 
+  15.487825  11803.416020     0.000085  11902.307562     0.000000 
+  15.508370  11814.567380     0.000085  11929.454056     0.000000 
+  15.528915  11823.881840     0.000085  11963.536139     0.000000 
+  15.549460  11836.263670     0.000084  12008.848745     0.000000 
+  15.570004  11864.347660     0.000084  12075.128047     0.000000 
+  15.590549  11928.845700     0.000084  12183.298084     0.000000 
+  15.611094  12030.301760     0.000083  12367.996583     0.000000 
+  15.631639  12282.672850     0.000081  12662.989182     0.000000 
+  15.652184  12522.873050     0.000080  13049.393834     0.000000 
+  15.672729  12866.693360     0.000078  13353.753993     0.000000 
+  15.693273  13201.296880     0.000076  13420.923599     0.000000 
+  15.713818  13571.299800     0.000074  13538.900842     0.000000 
+  15.734363  13983.858400     0.000072  14020.305956     0.000000 
+  15.754908  14450.474610     0.000069  14880.695594     0.000000 
+  15.775453  14762.043950     0.000068  15630.088069     0.000000 
+  15.795998  14779.947270     0.000068  15398.981831     0.000000 
+  15.816542  14363.272460     0.000070  14443.606554     0.000000 
+  15.837087  13835.095700     0.000072  13569.631123     0.000000 
+  15.857632  13256.790040     0.000075  13015.131285     0.000000 
+  15.878177  12918.189450     0.000077  12723.019879     0.000000 
+  15.898722  12724.218750     0.000079  12580.943238     0.000000 
+  15.919267  12524.307620     0.000080  12508.488161     0.000000 
+  15.939811  12388.002930     0.000081  12466.113428     0.000000 
+  15.960356  12258.204100     0.000082  12437.595943     0.000000 
+  15.980901  12152.509770     0.000082  12415.942442     0.000000 
+  16.001446  12110.262700     0.000083  12398.473794     0.000000 
+  16.021991  12120.387700     0.000083  12383.586299     0.000000 
+  16.042536  12137.377930     0.000082  12370.862081     0.000000 
+  16.063080  12144.220700     0.000082  12360.511356     0.000000 
+  16.083625  12162.839840     0.000082  12353.178636     0.000000 
+  16.104170  12204.899410     0.000082  12349.810218     0.000000 
+  16.124715  12237.899410     0.000082  12347.559667     0.000000 
+  16.145260  12262.315430     0.000082  12358.459083     0.000000 
+  16.165805  12285.675780     0.000081  12375.348233     0.000000 
+  16.186350  12306.228520     0.000081  12402.883448     0.000000 
+  16.206894  12346.430660     0.000081  12444.577980     0.000000 
+  16.227439  12410.408200     0.000081  12507.468643     0.000000 
+  16.247984  12524.638670     0.000080  12609.790642     0.000000 
+  16.268529  12718.735350     0.000079  12803.234661     0.000000 
+  16.289074  13130.112300     0.000076  13218.856000     0.000000 
+  16.309619  13922.258790     0.000072  14119.980369     0.000000 
+  16.330163  15655.721680     0.000064  15878.455672     0.000000 
+  16.350708  18606.156250     0.000054  18765.400258     0.000000 
+  16.371253  22651.162110     0.000044  22561.705885     0.000000 
+  16.391798  26713.187500     0.000037  26209.648914     0.000000 
+  16.412343  28105.388670     0.000036  27915.576944     0.000000 
+  16.432888  26312.164060     0.000038  26563.301037     0.000000 
+  16.453432  22822.917970     0.000044  23247.436186     0.000000 
+  16.473977  19582.626950     0.000051  19837.271112     0.000000 
+  16.494522  17646.378910     0.000057  17402.920934     0.000000 
+  16.515067  16636.275390     0.000060  15972.065760     0.000000 
+  16.535612  15829.540040     0.000063  14952.694751     0.000000 
+  16.556157  14999.546880     0.000067  14084.074518     0.000000 
+  16.576701  14039.401370     0.000071  13444.974344     0.000000 
+  16.597246  13345.156250     0.000075  13035.713420     0.000000 
+  16.617791  12923.753910     0.000077  12795.376346     0.000000 
+  16.638336  12648.742190     0.000079  12659.092727     0.000000 
+  16.658881  12491.095700     0.000080  12579.506948     0.000000 
+  16.679426  12391.017580     0.000081  12530.193373     0.000000 
+  16.699970  12358.012700     0.000081  12498.774366     0.000000 
+  16.720515  12336.276370     0.000081  12479.829231     0.000000 
+  16.741060  12332.065430     0.000081  12471.012824     0.000000 
+  16.761605  12346.687500     0.000081  12471.711097     0.000000 
+  16.782150  12377.242190     0.000081  12483.153174     0.000000 
+  16.802695  12464.286130     0.000080  12510.008462     0.000000 
+  16.823239  12600.973630     0.000079  12564.431839     0.000000 
+  16.843784  12819.972660     0.000078  12671.600956     0.000000 
+  16.864329  13161.075200     0.000076  12869.916323     0.000000 
+  16.884874  13538.264650     0.000074  13192.957181     0.000000 
+  16.905419  13862.160160     0.000072  13622.485051     0.000000 
+  16.925964  14035.771480     0.000071  13988.542204     0.000000 
+  16.946509  14050.520510     0.000071  13976.576915     0.000000 
+  16.967053  13839.048830     0.000072  13601.532644     0.000000 
+  16.987598  13471.845700     0.000074  13178.089819     0.000000 
+  17.008143  13112.511720     0.000076  12864.655996     0.000000 
+  17.028688  12791.037110     0.000078  12673.134034     0.000000 
+  17.049233  12562.833010     0.000080  12569.845667     0.000000 
+  17.069778  12445.758790     0.000080  12515.885995     0.000000 
+  17.090322  12403.636720     0.000081  12486.391827     0.000000 
+  17.110867  12386.807620     0.000081  12469.025587     0.000000 
+  17.131412  12376.620120     0.000081  12458.443377     0.000000 
+  17.151957  12381.649410     0.000081  12449.607079     0.000000 
+  17.172502  12385.999020     0.000081  12446.502522     0.000000 
+  17.193047  12397.802730     0.000081  12445.655298     0.000000 
+  17.213591  12408.459960     0.000081  12446.567119     0.000000 
+  17.234136  12422.264650     0.000081  12448.931237     0.000000 
+  17.254681  12427.285160     0.000080  12453.149643     0.000000 
+  17.275226  12430.000000     0.000080  12457.983456     0.000000 
+  17.295771  12437.464840     0.000080  12463.898821     0.000000 
+  17.316316  12451.168950     0.000080  12470.648480     0.000000 
+  17.336860  12456.466800     0.000080  12477.758339     0.000000 
+  17.357405  12462.973630     0.000080  12485.125804     0.000000 
+  17.377950  12466.479490     0.000080  12493.302799     0.000000 
+  17.398495  12480.465820     0.000080  12502.783191     0.000000 
+  17.419040  12490.487300     0.000080  12513.902181     0.000000 
+  17.439585  12507.147460     0.000080  12527.060495     0.000000 
+  17.460129  12525.424800     0.000080  12542.938711     0.000000 
+  17.480674  12544.584960     0.000080  12562.749529     0.000000 
+  17.501219  12565.650390     0.000080  12588.546327     0.000000 
+  17.521764  12593.088870     0.000079  12623.680170     0.000000 
+  17.542309  12635.066410     0.000079  12673.325680     0.000000 
+  17.562854  12697.619140     0.000079  12745.366599     0.000000 
+  17.583398  12801.454100     0.000078  12852.232830     0.000000 
+  17.603943  12976.260740     0.000077  13015.192573     0.000000 
+  17.624488  13309.328120     0.000075  13271.068425     0.000000 
+  17.645033  13960.087890     0.000072  13675.124689     0.000000 
+  17.665578  15031.549800     0.000067  14285.240133     0.000000 
+  17.686123  16742.037110     0.000060  15113.745490     0.000000 
+  17.706668  18225.167970     0.000055  16023.551543     0.000000 
+  17.727212  19049.412110     0.000052  16572.133931     0.000000 
+  17.747757  18300.398440     0.000055  16309.434483     0.000000 
+  17.768302  17005.560550     0.000059  15507.372077     0.000000 
+  17.788847  15304.973630     0.000065  14675.176913     0.000000 
+  17.809392  14184.254880     0.000071  14021.808800     0.000000 
+  17.829937  13425.819340     0.000074  13566.288525     0.000000 
+  17.850481  13068.792970     0.000077  13263.023435     0.000000 
+  17.871026  12861.095700     0.000078  13060.689251     0.000000 
+  17.891571  12766.569340     0.000078  12923.433705     0.000000 
+  17.912116  12727.325200     0.000079  12831.510873     0.000000 
+  17.932661  12727.037110     0.000079  12770.203815     0.000000 
+  17.953206  12729.205080     0.000079  12726.099538     0.000000 
+  17.973750  12728.762700     0.000079  12703.916599     0.000000 
+  17.994295  12748.800780     0.000078  12692.335965     0.000000 
+  18.014840  12755.191410     0.000078  12692.348270     0.000000 
+  18.035385  12771.327150     0.000078  12701.786516     0.000000 
+  18.055930  12771.125980     0.000078  12721.015785     0.000000 
+  18.076475  12776.161130     0.000078  12747.698088     0.000000 
+  18.097019  12766.411130     0.000078  12772.155852     0.000000 
+  18.117564  12756.601560     0.000078  12777.912993     0.000000 
+  18.138109  12748.650390     0.000078  12763.685119     0.000000 
+  18.158654  12742.136720     0.000078  12745.525036     0.000000 
+  18.179199  12740.733400     0.000078  12733.440712     0.000000 
+  18.199744  12734.347660     0.000079  12728.277786     0.000000 
+  18.220288  12731.689450     0.000079  12727.034002     0.000000 
+  18.240833  12735.986330     0.000079  12727.873148     0.000000 
+  18.261378  12735.224610     0.000079  12730.657797     0.000000 
+  18.281923  12745.575200     0.000078  12735.126225     0.000000 
+  18.302468  12761.886720     0.000078  12740.761165     0.000000 
+  18.323013  12781.218750     0.000078  12747.018432     0.000000 
+  18.343557  12793.489260     0.000078  12753.421180     0.000000 
+  18.364102  12805.713870     0.000078  12759.618818     0.000000 
+  18.384647  12808.396480     0.000078  12765.392625     0.000000 
+  18.405192  12797.507810     0.000078  12770.632690     0.000000 
+  18.425737  12795.040040     0.000078  12775.297537     0.000000 
+  18.446282  12779.272460     0.000078  12778.126572     0.000000 
+  18.466827  12773.944340     0.000078  12781.475126     0.000000 
+  18.487371  12759.463870     0.000078  12784.760046     0.000000 
+  18.507916  12749.213870     0.000078  12785.454332     0.000000 
+  18.528461  12738.165040     0.000079  12784.948839     0.000000 
+  18.549006  12734.108400     0.000079  12783.906324     0.000000 
+  18.569551  12736.644530     0.000079  12783.948838     0.000000 
+  18.590096  12736.889650     0.000079  12782.810734     0.000000 
+  18.610640  12740.966800     0.000078  12781.791139     0.000000 
+  18.631185  12743.316410     0.000078  12780.959497     0.000000 
+  18.651730  12745.770510     0.000078  12780.388022     0.000000 
+  18.672275  12753.180660     0.000078  12780.150867     0.000000 
+  18.692820  12758.104490     0.000078  12780.316070     0.000000 
+  18.713365  12765.297850     0.000078  12780.939118     0.000000 
+  18.733909  12773.076170     0.000078  12782.059955     0.000000 
+  18.754454  12773.733400     0.000078  12783.705662     0.000000 
+  18.774999  12778.556640     0.000078  12785.896452     0.000000 
+  18.795544  12775.188480     0.000078  12789.001936     0.000000 
+  18.816089  12788.325200     0.000078  12792.350867     0.000000 
+  18.836634  12789.371090     0.000078  12796.316693     0.000000 
+  18.857178  12792.210940     0.000078  12800.930534     0.000000 
+  18.877723  12802.972660     0.000078  12806.243408     0.000000 
+  18.898268  12822.189450     0.000078  12812.377716     0.000000 
+  18.918813  12838.667970     0.000078  12819.342879     0.000000 
+  18.939358  12844.052730     0.000078  12826.639149     0.000000 
+  18.959903  12848.547850     0.000078  12833.215015     0.000000 
+  18.980447  12851.678710     0.000078  12838.810335     0.000000 
+  19.000992  12851.367190     0.000078  12844.617491     0.000000 
+  19.021537  12865.072270     0.000078  12851.877456     0.000000 
+  19.042082  12881.694340     0.000078  12861.693348     0.000000 
+  19.062627  12901.391600     0.000078  12875.955506     0.000000 
+  19.083172  12914.266600     0.000077  12898.712200     0.000000 
+  19.103717  12934.771480     0.000077  12937.870706     0.000000 
+  19.124261  12982.444340     0.000077  13006.788263     0.000000 
+  19.144806  13066.872070     0.000077  13123.312560     0.000000 
+  19.165351  13234.687500     0.000076  13306.193526     0.000000 
+  19.185896  13508.298830     0.000074  13564.666121     0.000000 
+  19.206441  13899.275390     0.000072  13887.218914     0.000000 
+  19.226986  14316.742190     0.000070  14232.503720     0.000000 
+  19.247530  14622.290040     0.000068  14527.868383     0.000000 
+  19.268075  14657.107420     0.000068  14686.348766     0.000000 
+  19.288620  14445.098630     0.000069  14658.486118     0.000000 
+  19.309165  14096.559570     0.000071  14479.900488     0.000000 
+  19.329710  13752.507810     0.000073  14237.436577     0.000000 
+  19.350255  13476.532230     0.000074  14016.738339     0.000000 
+  19.370799  13304.915040     0.000075  13862.692112     0.000000 
+  19.391344  13201.103520     0.000076  13787.366018     0.000000 
+  19.411889  13155.109380     0.000076  13775.472217     0.000000 
+  19.432434  13138.541990     0.000076  13799.059710     0.000000 
+  19.452979  13170.765620     0.000076  13831.111006     0.000000 
+  19.473524  13219.604490     0.000076  13854.443927     0.000000 
+  19.494068  13314.998050     0.000075  13864.951549     0.000000 
+  19.514613  13412.605470     0.000075  13870.169853     0.000000 
+  19.535158  13564.403320     0.000074  13883.678963     0.000000 
+  19.555703  13725.700200     0.000073  13915.246154     0.000000 
+  19.576248  13912.385740     0.000072  13961.993495     0.000000 
+  19.596793  14106.384770     0.000071  14033.800162     0.000000 
+  19.617337  14324.115230     0.000070  14170.187130     0.000000 
+  19.637882  14382.138670     0.000070  14365.829684     0.000000 
+  19.658427  14366.693360     0.000070  14498.099750     0.000000 
+  19.678972  14162.229490     0.000071  14397.533600     0.000000 
+  19.699517  13941.540040     0.000072  14091.660650     0.000000 
+  19.720062  13680.492190     0.000073  13751.952539     0.000000 
+  19.740606  13446.761720     0.000074  13478.472469     0.000000 
+  19.761151  13277.743160     0.000075  13291.202754     0.000000 
+  19.781696  13151.575200     0.000076  13175.910238     0.000000 
+  19.802241  13079.097660     0.000076  13109.479542     0.000000 
+  19.822786  13025.588870     0.000077  13071.947789     0.000000 
+  19.843331  13002.239260     0.000077  13050.393697     0.000000 
+  19.863875  12985.636720     0.000077  13038.009096     0.000000 
+  19.884420  12984.904300     0.000077  13031.694248     0.000000 
+  19.904965  12989.397460     0.000077  13030.410709     0.000000 
+  19.925510  13000.323240     0.000077  13034.558075     0.000000 
+  19.946055  13018.718750     0.000077  13046.117086     0.000000 
+  19.966600  13046.571290     0.000077  13069.165570     0.000000 
+  19.987145  13093.748050     0.000076  13110.176213     0.000000 
+  20.007689  13182.639650     0.000076  13177.309901     0.000000 
+  20.028234  13339.212890     0.000075  13278.161706     0.000000 
+  20.048779  13599.313480     0.000074  13415.863449     0.000000 
+  20.069324  13897.021480     0.000072  13584.476636     0.000000 
+  20.089869  14173.394530     0.000071  13766.371681     0.000000 
+  20.110414  14301.837890     0.000070  13932.982572     0.000000 
+  20.130958  14262.435550     0.000070  14052.608690     0.000000 
+  20.151503  14182.537110     0.000071  14112.943491     0.000000 
+  20.172048  14110.160160     0.000071  14142.397439     0.000000 
+  20.192593  14152.982420     0.000071  14199.123868     0.000000 
+  20.213138  14230.567380     0.000070  14337.280373     0.000000 
+  20.233683  14338.149410     0.000070  14573.327659     0.000000 
+  20.254227  14453.289060     0.000069  14842.809321     0.000000 
+  20.274772  14594.579100     0.000069  15001.493053     0.000000 
+  20.295317  14739.296880     0.000068  15011.655527     0.000000 
+  20.315862  14921.798830     0.000067  15013.982495     0.000000 
+  20.336407  15070.893550     0.000066  15078.900235     0.000000 
+  20.356952  15146.273440     0.000066  15085.818506     0.000000 
+  20.377496  15084.618160     0.000066  14868.863202     0.000000 
+  20.398041  14841.035160     0.000067  14482.057544     0.000000 
+  20.418586  14470.850590     0.000069  14096.945077     0.000000 
+  20.439131  14118.544920     0.000071  13800.213804     0.000000 
+  20.459676  13931.767580     0.000072  13603.768606     0.000000 
+  20.480221  13825.888670     0.000072  13490.521158     0.000000 
+  20.500765  13789.955080     0.000073  13437.889802     0.000000 
+  20.521310  13730.030270     0.000073  13429.399196     0.000000 
+  20.541855  13688.067380     0.000073  13456.669362     0.000000 
+  20.562400  13650.919920     0.000073  13514.019832     0.000000 
+  20.582945  13647.008790     0.000073  13587.317905     0.000000 
+  20.603490  13639.047850     0.000073  13638.157451     0.000000 
+  20.624035  13605.458010     0.000073  13614.353427     0.000000 
+  20.644579  13553.666020     0.000074  13518.040704     0.000000 
+  20.665124  13471.594730     0.000074  13404.212870     0.000000 
+  20.685669  13384.775390     0.000075  13312.716602     0.000000 
+  20.706214  13313.817380     0.000075  13257.019153     0.000000 
+  20.726759  13261.356450     0.000075  13237.626600     0.000000 
+  20.747304  13223.778320     0.000076  13250.477651     0.000000 
+#######	End powder diffraction data	#######
