@@ -15,31 +15,17 @@ This repository adopts a new "AI-assisted" approach to content creation, hoping 
 
 ## Beyond Curation
 
-Unlike typical "awesome" repositories that merely list resources, we try to solve the "last mile delivery" issue by providing inference scripts. Currently some tested inference scripts are available for selected models in the `model_inference` folder:
+Unlike typical "awesome" repositories that merely list resources, we try to solve the "last mile delivery" issue by providing inference scripts. Currently some tested inference scripts are available for selected models in the `inference` folder:
 
 | Model | Local Inference | Cloud Inference | Utils/Support | Environment |
 |-------|-----------------|-----------------|---------------|-------------|
 | **Uni3DAR** | `uni3dar_inference.py` | `uni3dar_modal.py` | N/A | `uni3dar_env.yml` |
-| **PXRDnet** | `pxrdnet_inference.py` | TBA | N/A | `pxrdnet_env.yml` |
+| **PXRDnet** | `pxrdnet_inference.py` | `pxrdnet_modal.py` | N/A | `pxrdnet_env.yml` |
 | **deCIFer** | `decifer_inference.py` | N/A | `decifer_utils.py` | `decifer_env.yml` |
-| **Crystalyze** | `crystalyze_inference.py` | TBA | `crystalyze_utils.py` | `crystalyze_env.yml` |
+| **Crystalyze** | `crystalyze_inference.py` | N/A | `crystalyze_utils.py` | `crystalyze_env.yml` |
+| **DiffractGPT** | `diffractgpt_inference.py` | `diffractgpt_modal.py` |  N/A |  N/A |
 
-Additionally, `parse_cifs.py` provides general utilities for parsing and processing CIF files that contains experimental PXRD patterns across different models. We are planning to add visualization and assessment scripts in the future. Besides, we are investigating using latest automatic coding agents (Codex/Jules/Claude) to update/develop those inference scripts automatically.
-
-
-## Curation Protocol (Jun 8 2025)
-1. **OpenAI Deep Research**: Generated initial report and README. Resources were highly relevant but some gaps identified. [Full conversation →](https://chatgpt.com/share/68461d44-2e8c-8005-a54f-e4fc7e3e462c)
-
-2. **Anthropic Deep Research**: Generated another version of initial report and README, refined to focus on PXRD-specific models. [Final output →](https://claude.ai/public/artifacts/c47e47fb-55e8-4329-bf47-f602c281517f)
-
-3. **OpenAI O1 Pro**: Merged both reports using advanced reasoning. Strategy documented in [this blog post](https://xiangyu-yin.com/content/post_deep_research.html). [Full conversation →](https://chatgpt.com/share/68462b6d-c924-8005-b27b-9315ee87796b)
-
-4. **OpenAI O3 + Web Search**: Checked and corrected information and links. Reorganized and simplified tables. [Full conversation →](https://chatgpt.com/share/68462cb8-f7b4-8005-96e9-8b3d255a144f)
-
-5. **OpenAI Deep Research**: Information verification and missing information retrieval [Full conversation →](https://chatgpt.com/share/68467093-dae0-8005-9afc-a0c40f0eb412)
-
-6. **Manual Edit**: Manual verification, correction, and reorganization of content.
-
+Additionally, `parse_cifs.py` in the `utils` folder provides general utilities for parsing and processing CIF files that contains experimental PXRD patterns across different models. We are planning to add more utility scripts in the future. Besides, we are investigating using latest automatic coding agents to update/develop those inference scripts automatically.
 
 
 ## Models
