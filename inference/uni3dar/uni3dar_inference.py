@@ -1,22 +1,24 @@
 # PXRD Inference script for Uni‑3DAR (https://github.com/dptech-corp/Uni-3DAR)
 # Checkpoint: https://huggingface.co/dptech/Uni-3DAR/tree/main
 # 1. Clone the Uni-3DAR repo, create a conda environment using the uni3dar_env.yml file
-# 2. Obtain the ckpt.pt file place it in the top level of the Uni-3DAR repo
-# 3. Prepare the experimental PXRD cif file
-# 4. Copy the uni3dar_inference.py into the top level of the Uni-3DAR repo
-# 5. Run the script
+# 2. Obtain the model checkpoint file place it in the top level of the Uni-3DAR repo
+# 3. Prepare the experimental PXRD cif file (e.g. wn6225Isup2.rtv.combined.cif)
+# 4. Copy the uni3dar_inference.py into the top level of the Uni-3DAR repo and run it
+# 5. The script will output the generated structures and their scores
 # Inspired by https://github.com/dptech-corp/Uni-3DAR/blob/main/uni3dar/inference.py
 # Curated by: Xiangyu Yin (xiangyu-yin.com)
 
 from __future__ import annotations
-import warnings
 from typing import Any, Dict, List, Tuple, Union
+import warnings
+
+warnings.filterwarnings("ignore")
 
 import numpy as np
 import torch
 from unicore import tasks, utils, options
 from pymatgen.core.periodic_table import Element
-from parse_cifs import read_experimental_cif
+
 
 DEFAULT_CFG: Dict[str, Any] = {
     # high‑level definition
@@ -120,25 +122,21 @@ def load_model(
     else:
         model = model.float()
 
-    return model, args
+    return model
 
 
 def sample_from_model(
     model,
-    args,
     cur_data: Dict[str, Any],
     *,
     num_samples: int = 1,
     atom_constraint: np.ndarray | None = None,
-) -> Tuple[List["ase.Atoms"], List[float]]:
+) -> Tuple[List, List[float]]:
     """
     Parameters
     ----------
     model : torch.nn.Module
         The sampler returned by `load_model`.
-    args : argparse.Namespace
-        Same object returned by `load_model`; only used to know the
-        key‑names (`atom_type_key`, `lattice_matrix_key`, …) if you need them.
     cur_data : dict
         A single datapoint formatted exactly as Uni‑3DAR expects
         (same fields that used to be read from LMDB).
@@ -169,7 +167,18 @@ def sample_from_model(
 
 
 if __name__ == "__main__":
-    test_cif_path = "./experimental_xrd/wn6225Isup2.rtv.combined.cif"
+    import sys
+    import os
+
+    # Add the root directory to the Python path
+    root_dir = os.path.dirname(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    )
+    sys.path.insert(0, root_dir)
+
+    from utils.parse_cifs import read_experimental_cif
+
+    test_cif_path = "../../exp_pxrd_data/pxrdnet/wn6225Isup2.rtv.combined.cif"
     (
         source_file_name,
         cif_str,
@@ -203,9 +212,9 @@ if __name__ == "__main__":
     }
     atom_constraint = None  # np.array(atom_Zs) - 1
 
-    model, args = load_model("mp20_pxrd.pt", device="cuda")
+    model = load_model("mp20_pxrd.pt", device="cuda")
     crystals, scores = sample_from_model(
-        model, args, inference_data, atom_constraint=atom_constraint, num_samples=3
+        model, inference_data, atom_constraint=atom_constraint, num_samples=3
     )
     print(crystals)
     print(scores)

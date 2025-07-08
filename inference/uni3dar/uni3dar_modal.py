@@ -1,6 +1,6 @@
 import modal
 from typing import Any, Dict, List, Tuple
-from parse_cifs import read_experimental_cif
+from ase import Atoms  # ase is needed for modal result serialization
 
 
 def cache_model_weights():
@@ -9,18 +9,18 @@ def cache_model_weights():
     import os
 
     # Create directory for model weights if it doesn't exist
-    os.makedirs("/models", exist_ok=True)
+    os.makedirs("/models/uni3dar", exist_ok=True)
 
     # Download the model weights file
     model_path = hf_hub_download(
-        repo_id="dptech/Uni-3DAR", filename="mp20_pxrd.pt", local_dir="/models"
+        repo_id="dptech/Uni-3DAR", filename="mp20_pxrd.pt", local_dir="/models/uni3dar"
     )
 
     print(f"Model weights downloaded to: {model_path}")
     return model_path
 
 
-aps_image = (
+uni3dar_image = (
     modal.Image.debian_slim(python_version="3.11")
     .pip_install(
         "torch==2.6.0",
@@ -44,7 +44,7 @@ aps_image = (
     .pip_install("scikit-learn")
 )
 
-app = modal.App("aps-garden")
+app = modal.App("uni3dar-inference")
 
 
 DEFAULT_CFG: Dict[str, Any] = {
@@ -121,39 +121,16 @@ def load_model(
     *,
     overrides: Dict[str, Any] | None = None,
 ):
-
     import numpy as np
     import torch
     from unicore import tasks, utils, options
     import warnings
-    import sys
-    import importlib
-
-    # Make sure uni3dar is in path and importable
-    if "/uni3dar" not in sys.path:
-        sys.path.append("/uni3dar")
-
-    # Try to manually import and register the task
-    try:
-        import uni3dar
-
-        # Try directly importing task module to register it
-        try:
-            import uni3dar.tasks
-
-        except Exception as e:
-            print(f"Failed to import uni3dar.tasks: {e}")
-    except Exception as e:
-        print(f"Failed to import uni3dar module: {e}")
 
     cfg = {**DEFAULT_CFG, **(overrides or {}), "finetune_from_model": checkpoint}
     arg_list = _make_arg_list(cfg)
 
     parser = options.get_training_parser()
-
-    args = options.parse_args_and_arch(
-        parser, input_args=arg_list
-    )  # failing here. --task uni3dar is not accepted
+    args = options.parse_args_and_arch(parser, input_args=arg_list)
 
     utils.import_user_module(args)
     utils.set_jit_fusion_options()
@@ -187,9 +164,6 @@ def sample_from_model(
     ----------
     model : torch.nn.Module
         The sampler returned by `load_model`.
-    args : argparse.Namespace
-        Same object returned by `load_model`; only used to know the
-        key-names (`atom_type_key`, `lattice_matrix_key`, …) if you need them.
     cur_data : dict
         A single datapoint formatted exactly as Uni-3DAR expects
         (same fields that used to be read from LMDB).
@@ -220,15 +194,29 @@ def sample_from_model(
     return crystals, scores
 
 
-@app.function(image=aps_image, gpu="T4", timeout=1500)
-def uni3dar_pxrd2structure_predict(
-    i_vals, two_theta_vals, atom_Zs, use_constraint=False
+@app.function(image=uni3dar_image, gpu="T4", timeout=1500)
+def uni3dar_pxrd2xtal(
+    i_vals, two_theta_vals, atom_Zs, use_constraint=False, num_samples=3
 ):
+    import sys
+
+    # Make sure uni3dar is in path and importable
+    if "/uni3dar" not in sys.path:
+        sys.path.append("/uni3dar")
+
+    # Try to manually import and register the task
+    try:
+        import uni3dar
+
+        try:
+            import uni3dar.tasks
+        except Exception as e:
+            print(f"Failed to import uni3dar.tasks: {e}")
+    except Exception as e:
+        print(f"Failed to import uni3dar module: {e}")
+
     import numpy as np
     from pymatgen.core.periodic_table import Element
-    import warnings
-
-    warnings.filterwarnings("ignore")
 
     # Normalize intensity array between 0 and 100
     intensity_array = 100 * i_vals / np.max(i_vals)
@@ -246,9 +234,9 @@ def uni3dar_pxrd2structure_predict(
     }
     atom_constraint = None if not use_constraint else np.array(atom_Zs) - 1
 
-    model = load_model("/models/mp20_pxrd.pt")
+    model = load_model("/models/uni3dar/mp20_pxrd.pt")
     crystals, scores = sample_from_model(
-        model, inference_data, atom_constraint=atom_constraint, num_samples=3
+        model, inference_data, atom_constraint=atom_constraint, num_samples=num_samples
     )
 
     return crystals, scores
@@ -256,12 +244,47 @@ def uni3dar_pxrd2structure_predict(
 
 @app.local_entrypoint()
 def main():
-    test_cif_path = "./example.cif"
-    _, _, _, _, atom_Zs, _, two_theta_vals, _, i_vals, _, _, _ = read_experimental_cif(
+    import sys
+    import os
+    import warnings
+
+    warnings.filterwarnings("ignore")
+
+    # Add the root directory to the Python path
+    root_dir = os.path.dirname(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    )
+    sys.path.insert(0, root_dir)
+
+    from utils.parse_cifs import read_experimental_cif
+
+    test_cif_path = "../../exp_pxrd_data/pxrdnet/wn6225Isup2.rtv.combined.cif"
+    (
+        source_file_name,
+        cif_str,
+        pretty_formula,
+        frac_coords,
+        atom_Zs,
+        spacegroup_number,
+        two_theta_vals,
+        q_vals,
+        i_vals,
+        exp_wavelength,
+        exp_2theta_min,
+        exp_2theta_max,
+    ) = read_experimental_cif(
         filepath=test_cif_path,
     )
-    crystals, scores = uni3dar_pxrd2structure_predict.remote(
-        i_vals, two_theta_vals, atom_Zs, use_constraint=False
+
+    print("pretty_formula", pretty_formula)
+    print("atom_Zs", atom_Zs)
+    print("spacegroup_number", spacegroup_number)
+    print("exp_wavelength", exp_wavelength)
+
+    print("Running Uni3DAR inference test...")
+    crystals, scores = uni3dar_pxrd2xtal.remote(
+        i_vals, two_theta_vals, atom_Zs, use_constraint=False, num_samples=3
     )
-    print(crystals)
-    print(scores)
+    print(f"Generated {len(crystals)} structures")
+    print(f"Scores: {scores}")
+    print(f"Crystals: {crystals}")

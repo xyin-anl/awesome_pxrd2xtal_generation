@@ -1,10 +1,11 @@
 # PXRD inference script for PXRDNet (https://github.com/gabeguo/cdvae_xrd)
-# Checkpoint: https://huggingface.co/shawnyin/PXRDNet/tree/main
+# Checkpoint: https://huggingface.co/therealgabeguo/cdvae_xrd_sinc10
 # 1. Clone the cdvae_xrd repo, create a conda environment using the pxrdnet_env.yml file
-# 2. Download the checkpoint file, unzip it, and place it in the top level of the cdvae_xrd repo
-# 3. Copy the pxrdnet_inference.py and parse_cifs.py files into the top level of the cdvae_xrd repo
-# 4. Change the project_root environment variable to the path of the cdvae_xrd repo
-# 5. Run the script
+# 2. Download the model checkpoint files, and place it in the top level of the cdvae_xrd repo
+# 3. Change the project_root environment variable to the path of the cdvae_xrd repo
+# 4. Prepare the experimental PXRD cif file (e.g. wn6225Isup2.rtv.combined.cif)
+# 5. Copy the pxrdnet_inference.py into the top level of the cdvae_xrd repo and run it
+# 6. The script will output the generated structures and their scores
 
 # Curated by: Xiangyu Yin (xiangyu-yin.com)
 import os
@@ -43,7 +44,6 @@ from cdvae.pl_data.dataset import CrystDataset
 from cdvae.pl_data.datamodule import worker_init_fn
 from cdvae.common.data_utils import build_crystal, build_crystal_graph
 from cdvae.common.data_utils import add_scaled_lattice_prop
-from parse_cifs import read_experimental_cif
 
 
 class CrystDatasetInMemory(CrystDataset):
@@ -360,10 +360,35 @@ def optimize_latent_code(
 
 
 if __name__ == "__main__":
-    cif_path = (
-        os.environ["PROJECT_ROOT"]
-        + "/data/experimental_xrd/cif_files/av5088sup4.rtv.combined.cif"
+    import sys
+    import os
+
+    # Add the root directory to the Python path
+    root_dir = os.path.dirname(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     )
+    sys.path.insert(0, root_dir)
+
+    from utils.parse_cifs import read_experimental_cif
+
+    test_cif_path = "../../exp_pxrd_data/pxrdnet/wn6225Isup2.rtv.combined.cif"
+    (
+        source_file_name,
+        cif_str,
+        pretty_formula,
+        frac_coords,
+        atom_Zs,
+        spacegroup_number,
+        two_theta_vals,
+        q_vals,
+        i_vals,
+        exp_wavelength,
+        exp_2theta_min,
+        exp_2theta_max,
+    ) = read_experimental_cif(
+        filepath=test_cif_path,
+    )
+
     model_path = os.environ["PROJECT_ROOT"] + "/hydra/singlerun/2025-03-21/mp_20"
 
     try:
@@ -396,22 +421,7 @@ if __name__ == "__main__":
     if torch.cuda.is_available():
         model = model.cuda()
 
-    (
-        fname,  # source_file_name
-        cif_str,
-        pretty_formula,
-        frac_coords,
-        atom_types,
-        spg_number,
-        two_theta,  # np.ndarray
-        q_vals,  # np.ndarray
-        i_vals,  # np.ndarray
-        exp_lambda,
-        exp_2th_min,
-        exp_2th_max,
-    ) = read_experimental_cif(cif_path)
-
-    mask = (two_theta >= 0) & (two_theta <= 180)
+    mask = (two_theta_vals >= 0) & (two_theta_vals <= 180)
     q_vals = q_vals[mask]
     i_vals = i_vals[mask]
 
@@ -447,11 +457,11 @@ if __name__ == "__main__":
     )
 
     data_dict = {
-        "material_id": fname,
+        "material_id": source_file_name,
         "pretty_formula": pretty_formula,
-        "elements": [Element.from_Z(z).symbol for z in list(set(atom_types))],
+        "elements": [Element.from_Z(z).symbol for z in list(set(atom_Zs))],
         "cif": cif_str,
-        "spacegroup.number": int(spg_number),
+        "spacegroup.number": int(spacegroup_number),
         "xrd": xrd_tensor,
     }
     data_df = pd.DataFrame(
