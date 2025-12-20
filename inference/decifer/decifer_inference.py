@@ -1,7 +1,7 @@
 # PXRD Inference script for deCIFer (https://github.com/frederiklizakjohansen/decifer)
-# Checkpoint: not provided yet, please train your own model or reach out to the authors
+# Checkpoint: download link available in deCIFer's repo README.md: https://sid.erda.dk/share_redirect/epnX85vrEP
 # 1. Clone the decifer repo, create a conda environment using the decifer_env.yml file
-# 2. Obtain the model checkpoint file place it in the top level of the decifer repo
+# 2. Download the model checkpoint file, uncompress and place it in the top level of the decifer repo
 # 3. Prepare the experimental PXRD cif file (e.g. wn6225Isup2.rtv.combined.cif)
 # 4. Copy the decifer_inference.py into the top level of the decifer repo and run it
 # 5. The script will output the generated structures and their scores
