@@ -30,7 +30,10 @@ This file records how the repository content was generated, checked, and updated
 8. **GPT-5.5 Pro targeted web pass — May 9 2026**  
    A follow-up search pass focused specifically on addable 2025–2026 information: new full-structure solvers, experimental datasets, benchmark corpora, auxiliary PXRD ML models, search-match systems, phase-decomposition models, refinement models, simulation tools, and evaluation metrics.
 
-9. **Manual Edit — May 2026**  
+9. **Codex web verification pass — May 2026**
+   Verified README claims, metrics, repository-local links, and external resource links using web search and source pages. Corrected stale or broken links and adjusted unsupported or outdated dataset sizes, benchmark descriptions, and author-reported metrics.
+
+10. **Manual Edit — May 2026**
    Manual verification, correction, and reorganization of content.
 
 You can see the [full conversation here →](https://chatgpt.com/share/69ff8242-0554-83ea-8c9d-595209e41636)
@@ -67,9 +70,10 @@ Code: https://github.com/liqi-529/RealPXRD-Solver
 Paper: https://www.nature.com/articles/s41597-025-05534-3  
 Code/data landing page: https://github.com/BCV-Uniandes/SIMPOD
 
-- **AlphaDiffract** — deep model for crystal system, space group, and lattice parameter prediction from PXRD; added as a related module rather than a full structure generator.  
-Paper: https://arxiv.org/abs/2603.23367  
-Open model: https://huggingface.co/Uni-Vienna-Applied-AI/AlphaDiffract_open
+- **AlphaDiffract** — deep model for crystal system, space group, and lattice parameter prediction from PXRD; added as a related module rather than a full structure generator.
+Paper: https://arxiv.org/abs/2603.23367
+Open model: https://huggingface.co/linked-liszt/OpenAlphaDiffract
+Training code: https://github.com/AdvancedPhotonSource/OpenAlphaDiffract
 
 - **XQueryer** — neural search-match / PXRD structure identification system with real-time diffractometer integration; added as a related retrieval/identification method and dataset source.  
 Paper: https://academic.oup.com/nsr/article/12/12/nwaf421/8268901  
@@ -87,7 +91,7 @@ Paper: https://arxiv.org/abs/2602.11709
 Package: https://pypi.org/project/xrd-rust/
 
 - **Machine-learning automated Rietveld refinement** — convolutional-network refinement workflow; added as a related refinement method and metric reference.  
-Article: https://pmc.ncbi.nlm.nih.gov/articles/PMC11988465/
+Article: https://ora.ox.ac.uk/objects/uuid:f25209eb-c034-4ef5-9056-6cab8cf303d1
 
 ### Editorial changes from the May 9 2026 pass  
 
