@@ -36,6 +36,19 @@ This file records how the repository content was generated, checked, and updated
 10. **Manual Edit — May 2026**
    Manual verification, correction, and reorganization of content.
 
+## July 18 2026 competitive refresh
+
+11. **Codex primary-source verification pass — Jul 18 2026**
+    Compared this board with `Bin-Cao/awesome-xrd2crystal`, searched primary publication and repository sources for newer full-structure solvers, and added three verified 2026 resources: **Xrd2Mof**, **Ab-PXRD-Solver**, and **XRDiff**. The pass also added a task-oriented entry point, documented a contribution workflow, and preserved explicit caveats around author-reported metrics and missing artifacts.
+
+The three additions were verified against their primary sources:
+
+- **Xrd2Mof** — https://pubs.acs.org/doi/10.1021/jacs.5c16416 and https://github.com/PKUsam2023/Xrd2Mof
+- **Ab-PXRD-Solver** — https://arxiv.org/abs/2605.24594 and https://github.com/MaterSim/Ab-PXRD-Solver
+- **XRDiff** — https://arxiv.org/abs/2606.14003; public code/data were not found during this pass
+
+The competitor comparison informed presentation and process improvements, but factual entries were independently verified from the original paper, code, and data sources rather than copied from another curated list.
+
 You can see the [full conversation here →](https://chatgpt.com/share/69ff8242-0554-83ea-8c9d-595209e41636)
 
 ### Search strategy for the May 9 2026 pass
