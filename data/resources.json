@@ -1,7 +1,7 @@
 {
   "$schema": "./resources.schema.json",
   "schema_version": 1,
-  "last_updated": "2026-05-09",
+  "last_updated": "2026-07-18",
   "website_url": "https://nodeology.ai/resources/pxrd2xtal",
   "inference_order": [
     "uni3dar",
@@ -366,6 +366,30 @@
       }
     },
     {
+      "id": "xrd2mof",
+      "name": "Xrd2Mof",
+      "category": "core_solver",
+      "verified_at": "2026-07-18",
+      "year": "2026",
+      "inputs_target": "PXRD + metal-node and organic-linker priors → atomic MOF structure",
+      "method": "Stable-Diffusion framework with a coarse-grained MOF representation and atomic assembly",
+      "reported_performance": "Over 93% accuracy identifying the ground-truth MOF corresponding to a target XRD pattern in the author-reported setting",
+      "paper_links": [
+        {
+          "label": "JACS",
+          "url": "https://pubs.acs.org/doi/10.1021/jacs.5c16416",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "PKUsam2023/Xrd2Mof",
+          "url": "https://github.com/PKUsam2023/Xrd2Mof",
+          "role": "code"
+        }
+      ]
+    },
+    {
       "id": "xrdsol",
       "name": "XRDSol",
       "category": "core_solver",
@@ -417,6 +441,54 @@
           "role": "code"
         }
       ]
+    },
+    {
+      "id": "ab-pxrd-solver",
+      "name": "Ab-PXRD-Solver",
+      "category": "core_solver",
+      "verified_at": "2026-07-18",
+      "year": "2026",
+      "inputs_target": "Experimental PXRD + chemical formula, with an optional known space group → refined CIF",
+      "method": "Hybrid discrete symmetry/cell/Wyckoff search and continuous coordinate optimization with ML and physics-informed refinement",
+      "reported_performance": "Authors provide systematic results for more than 1,000 systems and demonstrations on complex or noisy experimental cases",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2605.24594",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "MaterSim/Ab-PXRD-Solver",
+          "url": "https://github.com/MaterSim/Ab-PXRD-Solver",
+          "role": "code"
+        },
+        {
+          "label": "online results",
+          "url": "https://mmi.charlotte.edu/ab_pxrd_solver",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "xrdiff",
+      "name": "XRDiff",
+      "category": "core_solver",
+      "verified_at": "2026-07-18",
+      "year": "2026",
+      "inputs_target": "PXRD + stoichiometry, or elements + total atom count → crystal structure",
+      "method": "Diffusion model with full-spectrum or peak-descriptor PXRD conditioning",
+      "reported_performance": "Peak-based conditioning generalized substantially better to experimental PXRD than full-spectrum conditioning, including a full-spectrum model with fitted noise augmentation",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2606.14003",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [],
+      "artifact_note": "code/data not found during 2026-07-18 verification pass"
     },
     {
       "id": "alphadiffract",

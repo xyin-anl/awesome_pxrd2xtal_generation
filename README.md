@@ -7,7 +7,7 @@ A curated, AI-assisted index of resources for **powder X-ray diffraction (PXRD) 
 
 PXRD structure determination is an ill-posed inverse problem: many candidate structures can produce similar patterns, experimental profiles contain instrumental broadening, finite-size effects, texture, preferred orientation, background, impurity phases, and peak overlap, and many workflows require prior knowledge such as composition, lattice constants, or a unit cell. Traditional approaches rely on indexing, search-match, direct methods/global optimization, and Rietveld refinement. Recent AI/ML methods add new capabilities, including direct PXRD-to-CIF generation, diffusion or flow-based coordinate sampling, language-model generation of CIF text, lattice/symmetry prediction, retrieval/search-match, and phase decomposition.
 
-**Last update:** 2026-05-09. See [`curation_protocal.md`](curation_protocal.md) for the AI-assisted curation workflow and update notes.
+**Last update:** 2026-07-18. See [`curation_protocal.md`](curation_protocal.md) for the AI-assisted curation workflow and update notes.
 
 **Interactive board:** Explore and filter the catalog at [nodeology.ai/resources/pxrd2xtal](https://nodeology.ai/resources/pxrd2xtal).
 
@@ -19,6 +19,18 @@ This repository separates methods into two groups:
 2. **Related PXRD AI/ML modules**: methods that do not by themselves output a complete structure, but are useful for structure solution pipelines, including lattice/space-group prediction, retrieval/search-match, multi-phase decomposition, Rietveld refinement, simulation acceleration, and experimental-data benchmarks.
 
 The tables below intentionally mix peer-reviewed articles, preprints, open repositories, and datasets. Author-reported metrics are **not directly comparable** because input assumptions, chemistry scope, crystallographic tolerances, simulated-vs-experimental evaluation, and post-refinement protocols differ.
+
+### Choose the right starting point
+
+| If you need to… | Start here | Check before comparing results |
+|-----------------|------------|--------------------------------|
+| Generate a full candidate structure | [Core solvers](#core-pxrd--structure-generation--structure-solution-models) | Whether formula, composition, lattice, unit cell, or space group is supplied |
+| Identify a known phase or narrow the search space | [Pipeline modules](#related-pxrd-aiml-modules) | Candidate-database size, composition filtering, and open-set handling |
+| Train or benchmark a model | [Datasets and benchmarks](#datasets-and-benchmarks) | Simulated vs experimental data, licensing, chemistry overlap, and leakage |
+| Compare reported model quality | [Metrics and evaluation recommendations](#metrics-and-evaluation-recommendations) | Matcher tolerances, top-k, refinement, and experimental-transfer protocol |
+| Run an included implementation | [Runnable inference](#runnable-inference) | Environment files, expected inputs, model weights, and upstream licenses |
+
+The repository is more than a reading list: [`data/resources.json`](data/resources.json) is a validated, machine-readable source of truth; the README tables and [interactive Nodeology board](https://nodeology.ai/resources/pxrd2xtal) are derived from it; and the catalog distinguishes full solvers from supporting modules, datasets, utilities, and runnable inference.
 
 ## AI-assisted Curation
 
@@ -40,8 +52,11 @@ The resource tables below are generated from the canonical [`data/resources.json
 | **deCIFer** | 2025/2026 | PXRD-conditioned generation → CIF tokens | Autoregressive Transformer / CIF language modeling | 94% structure match in author-reported setting | [TMLR / OpenReview](https://openreview.net/forum?id=LftFQ35l47) | [FrederikLizakJohansen/deCIFer](https://github.com/FrederikLizakJohansen/deCIFer) |
 | **DiffractGPT** | 2025 | PXRD-conditioned text generation → CIF-like crystal descriptions | Large-token GPT / AtomGPT-style generative model | DGPT-formula lattice MAE: 0.17 / 0.18 / 0.27 Å for a/b/c; normalized RMS-d 0.07 Å | [J. Phys. Chem. Lett.](https://pubs.acs.org/doi/full/10.1021/acs.jpclett.4c03137) | [atomgptlab/atomgpt](https://github.com/atomgptlab/atomgpt) |
 | **Uni3DAR** | 2025 | PXRD + composition tokens → 3D crystal generation | Hierarchical tokenization + 3D autoregressive generation | MP-20 PXRD-guided CSP: 75.08% match rate, 0.0276 RMSE | [arXiv](https://arxiv.org/abs/2503.16278) | [dptech-corp/Uni-3DAR](https://github.com/dptech-corp/Uni-3DAR) |
+| **Xrd2Mof** | 2026 | PXRD + metal-node and organic-linker priors → atomic MOF structure | Stable-Diffusion framework with a coarse-grained MOF representation and atomic assembly | Over 93% accuracy identifying the ground-truth MOF corresponding to a target XRD pattern in the author-reported setting | [JACS](https://pubs.acs.org/doi/10.1021/jacs.5c16416) | [PKUsam2023/Xrd2Mof](https://github.com/PKUsam2023/Xrd2Mof) |
 | **XRDSol** | 2026 | Stoichiometry + unit cell + PXRD → atomic coordinates | Equivariant graph neural network diffusion model | MP-20: 82.3% success; ICDD-20 experimental benchmark: 81.6%; ~0.6 s per solution on one GPU | [Nature Communications](https://www.nature.com/articles/s41467-026-70035-9) | [ai4mat-zhu/XRDSol](https://github.com/ai4mat-zhu/XRDSol), [Zenodo code/data](https://doi.org/10.5281/zenodo.17837824) |
 | **RealPXRD-Solver** | 2026 | Experimental or simulated PXRD, with lattice-conditioned and lattice-free modes → crystal structure | Flow-matching / generative solver using d-I fingerprints and experiment-mimicking augmentation | Theoretical benchmark: 98.3% top-20; CNRS experimental: 77.9% top-1 / 91.9% top-20 with lattice conditioning; RRUFF: 78.8% / 92.9%; solved 39 previously unreported PDF entries | [arXiv](https://arxiv.org/abs/2603.00965) | [liqi-529/RealPXRD-Solver](https://github.com/liqi-529/RealPXRD-Solver) |
+| **Ab-PXRD-Solver** | 2026 | Experimental PXRD + chemical formula, with an optional known space group → refined CIF | Hybrid discrete symmetry/cell/Wyckoff search and continuous coordinate optimization with ML and physics-informed refinement | Authors provide systematic results for more than 1,000 systems and demonstrations on complex or noisy experimental cases | [arXiv](https://arxiv.org/abs/2605.24594) | [MaterSim/Ab-PXRD-Solver](https://github.com/MaterSim/Ab-PXRD-Solver), [online results](https://mmi.charlotte.edu/ab_pxrd_solver) |
+| **XRDiff** | 2026 | PXRD + stoichiometry, or elements + total atom count → crystal structure | Diffusion model with full-spectrum or peak-descriptor PXRD conditioning | Peak-based conditioning generalized substantially better to experimental PXRD than full-spectrum conditioning, including a full-spectrum model with fitted noise augmentation | [arXiv](https://arxiv.org/abs/2606.14003) | code/data not found during 2026-07-18 verification pass |
 <!-- END GENERATED: core-solvers -->
 
 †Author-reported metrics; evaluation tasks and assumptions differ. Check each paper for allowed inputs, structural tolerances, train/test chemistry overlap, post-refinement settings, and experimental validation protocol.
@@ -142,7 +157,7 @@ Unlike typical "awesome" repositories that only list resources, this repository 
 
 ## Contributing
 
-When adding a new entry, please include:
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the complete catalog workflow. When proposing a new entry, please include:
 
 1. Paper or preprint link.
 2. Code, model weights, or reproducibility artifact if available.
