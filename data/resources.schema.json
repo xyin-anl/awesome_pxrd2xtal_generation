@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/xyin-anl/awesome_pxrd2xtal_generation/blob/main/data/resources.schema.json",
+  "title": "PXRD-to-crystal resource catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "last_updated",
+    "website_url",
+    "inference_order",
+    "shared_urls",
+    "resources"
+  ],
+  "properties": {
+    "$schema": { "const": "./resources.schema.json" },
+    "schema_version": { "const": 1 },
+    "last_updated": { "$ref": "#/$defs/date" },
+    "website_url": { "type": "string", "format": "uri", "pattern": "^https://" },
+    "inference_order": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" }
+    },
+    "shared_urls": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "format": "uri", "pattern": "^https://" }
+    },
+    "resources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/resource" }
+    }
+  },
+  "$defs": {
+    "date": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "link": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "url", "role"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "minLength": 1 },
+        "role": {
+          "enum": [
+            "paper",
+            "code",
+            "data",
+            "model",
+            "docs",
+            "tool",
+            "inference",
+            "resource"
+          ]
+        },
+        "code_label": { "type": "boolean" }
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/link" }
+    },
+    "inference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["local", "cloud", "support", "environment"],
+      "properties": {
+        "local": { "$ref": "#/$defs/links" },
+        "cloud": { "$ref": "#/$defs/links" },
+        "support": { "$ref": "#/$defs/links" },
+        "environment": { "$ref": "#/$defs/links" }
+      }
+    },
+    "resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "category", "verified_at"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "name": { "type": "string", "minLength": 1 },
+        "category": {
+          "enum": ["core_solver", "pipeline_module", "dataset", "utility"]
+        },
+        "verified_at": { "$ref": "#/$defs/date" },
+        "year": { "type": "string", "minLength": 4 },
+        "inputs_target": { "type": "string", "minLength": 1 },
+        "task": { "type": "string", "minLength": 1 },
+        "method": { "type": "string", "minLength": 1 },
+        "reported_performance": { "type": "string", "minLength": 1 },
+        "reported_result": { "type": "string", "minLength": 1 },
+        "size": { "type": "string", "minLength": 1 },
+        "sim_exp": { "type": "string", "minLength": 1 },
+        "format": { "type": "string", "minLength": 1 },
+        "notes": { "type": "string", "minLength": 1 },
+        "paper_links": { "$ref": "#/$defs/links" },
+        "artifact_links": { "$ref": "#/$defs/links" },
+        "artifact_note": { "type": "string", "minLength": 1 },
+        "resource_links": { "$ref": "#/$defs/links" },
+        "inference": { "$ref": "#/$defs/inference" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "category": { "const": "core_solver" } } },
+          "then": {
+            "required": [
+              "year",
+              "inputs_target",
+              "method",
+              "reported_performance",
+              "paper_links",
+              "artifact_links"
+            ]
+          }
+        },
+        {
+          "if": { "properties": { "category": { "const": "pipeline_module" } } },
+          "then": {
+            "required": [
+              "year",
+              "task",
+              "method",
+              "reported_result",
+              "paper_links",
+              "artifact_links"
+            ]
+          }
+        },
+        {
+          "if": { "properties": { "category": { "const": "dataset" } } },
+          "then": {
+            "required": ["size", "sim_exp", "format", "notes", "resource_links"]
+          }
+        },
+        {
+          "if": { "properties": { "category": { "const": "utility" } } },
+          "then": { "required": ["task", "notes", "resource_links"] }
+        }
+      ]
+    }
+  }
+}

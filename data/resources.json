@@ -1,0 +1,955 @@
+{
+  "$schema": "./resources.schema.json",
+  "schema_version": 1,
+  "last_updated": "2026-05-09",
+  "website_url": "https://nodeology.ai/resources/pxrd2xtal",
+  "inference_order": [
+    "uni3dar",
+    "pxrdnet",
+    "decifer",
+    "crystalyze",
+    "diffractgpt"
+  ],
+  "shared_urls": [
+    "https://academic.oup.com/nsr/article/12/12/nwaf421/8268901",
+    "https://arxiv.org/abs/2603.00965",
+    "https://arxiv.org/abs/2603.23367",
+    "https://github.com/Bin-Cao/XQueryer",
+    "https://github.com/ai4mat-zhu/XRDSol",
+    "https://github.com/liqi-529/RealPXRD-Solver",
+    "https://huggingface.co/datasets/caobin/opxrd_hkust_expdata",
+    "https://huggingface.co/linked-liszt/OpenAlphaDiffract"
+  ],
+  "resources": [
+    {
+      "id": "deepstruc",
+      "name": "DeepStruc",
+      "category": "core_solver",
+      "verified_at": "2026-05-09",
+      "year": "2023",
+      "inputs_target": "Pair distribution function / scattering data → nanoparticle structure class",
+      "method": "Conditional VAE on PDF-like data",
+      "reported_performance": "Correct for 7 nanoparticle types",
+      "paper_links": [
+        {
+          "label": "Digital Discovery",
+          "url": "https://pubs.rsc.org/en/content/articlelanding/2023/dd/d2dd00086e",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "EmilSkaaning/DeepStruc",
+          "url": "https://github.com/EmilSkaaning/DeepStruc",
+          "role": "code"
+        }
+      ]
+    },
+    {
+      "id": "crystalnet",
+      "name": "CrystalNet",
+      "category": "core_solver",
+      "verified_at": "2026-05-09",
+      "year": "2024",
+      "inputs_target": "PXRD + composition information → electron density / structure",
+      "method": "Coordinate-based VAE for electron density",
+      "reported_performance": "Up to 93.4% SSIM on cubic test cases; 74.1% average SSIM on trigonal cases",
+      "paper_links": [
+        {
+          "label": "npj Computational Materials",
+          "url": "https://www.nature.com/articles/s41524-024-01401-8",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "gabeguo/deep-crystallography-public",
+          "url": "https://github.com/gabeguo/deep-crystallography-public",
+          "role": "code"
+        }
+      ]
+    },
+    {
+      "id": "crystalyze",
+      "name": "Crystalyze",
+      "category": "core_solver",
+      "verified_at": "2026-05-09",
+      "year": "2024",
+      "inputs_target": "PXRD → CIF / crystal structure",
+      "method": "End-to-end PXRD-to-CIF pipeline",
+      "reported_performance": "42% experimental match; 67% simulated match",
+      "paper_links": [
+        {
+          "label": "JACS",
+          "url": "https://pubs.acs.org/doi/abs/10.1021/jacs.4c10244",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "ML-PXRD/Crystalyze",
+          "url": "https://github.com/ML-PXRD/Crystalyze",
+          "role": "code"
+        }
+      ],
+      "inference": {
+        "local": [
+          {
+            "label": "crystalyze_inference.py",
+            "url": "inference/crystalyze/crystalyze_inference.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "cloud": [],
+        "support": [
+          {
+            "label": "crystalyze_utils.py",
+            "url": "inference/crystalyze/crystalyze_utils.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "environment": [
+          {
+            "label": "crystalyze_env.yml",
+            "url": "inference/crystalyze/crystalyze_env.yml",
+            "role": "inference",
+            "code_label": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "xtalnet",
+      "name": "XtalNet",
+      "category": "core_solver",
+      "verified_at": "2026-05-09",
+      "year": "2024/2025",
+      "inputs_target": "PXRD + composition / MOF setting → crystal structure candidates",
+      "method": "Crystal-parameter-constrained prediction + conditional diffusion",
+      "reported_performance": "90% top-10 on hMOF-100",
+      "paper_links": [
+        {
+          "label": "Advanced Science",
+          "url": "https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/advs.202410722",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "Zenodo: hMOF-100/400 + code/data",
+          "url": "https://zenodo.org/records/13629658",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "pxrdnet",
+      "name": "PXRDnet",
+      "category": "core_solver",
+      "verified_at": "2026-05-09",
+      "year": "2025",
+      "inputs_target": "Formula + finite-size-broadened PXRD → atomic structure candidates",
+      "method": "SE(3)-equivariant score-based diffusion; post-Rietveld verification",
+      "reported_performance": "Verifiable candidates for simulated nanocrystals in ~4/5 cases; average post-Rietveld R factor ~7%; median RMSD ≤0.11 Å in reported benchmarks",
+      "paper_links": [
+        {
+          "label": "Nature Materials",
+          "url": "https://www.nature.com/articles/s41563-025-02220-y",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "gabeguo/cdvae_xrd",
+          "url": "https://github.com/gabeguo/cdvae_xrd",
+          "role": "code"
+        }
+      ],
+      "inference": {
+        "local": [
+          {
+            "label": "pxrdnet_inference.py",
+            "url": "inference/pxrdnet/pxrdnet_inference.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "cloud": [
+          {
+            "label": "pxrdnet_modal.py",
+            "url": "inference/pxrdnet/pxrdnet_modal.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "support": [],
+        "environment": [
+          {
+            "label": "pxrdnet_env.yml",
+            "url": "inference/pxrdnet/pxrdnet_env.yml",
+            "role": "inference",
+            "code_label": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "pxrdgen",
+      "name": "PXRDGen",
+      "category": "core_solver",
+      "verified_at": "2026-05-09",
+      "year": "2025",
+      "inputs_target": "PXRD + optional composition constraints → structure candidates",
+      "method": "Pretrained XRD encoder + diffusion/flow generator + automatic Rietveld refinement",
+      "reported_performance": "MP-20: 82% valid compounds from 1 sample; 96% within 20 samples",
+      "paper_links": [
+        {
+          "label": "Nature Communications",
+          "url": "https://www.nature.com/articles/s41467-025-62708-8",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "CodeOcean capsule",
+          "url": "https://codeocean.com/capsule/7727770/tree/v1",
+          "role": "code"
+        }
+      ]
+    },
+    {
+      "id": "decifer",
+      "name": "deCIFer",
+      "category": "core_solver",
+      "verified_at": "2026-05-09",
+      "year": "2025/2026",
+      "inputs_target": "PXRD-conditioned generation → CIF tokens",
+      "method": "Autoregressive Transformer / CIF language modeling",
+      "reported_performance": "94% structure match in author-reported setting",
+      "paper_links": [
+        {
+          "label": "TMLR / OpenReview",
+          "url": "https://openreview.net/forum?id=LftFQ35l47",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "FrederikLizakJohansen/deCIFer",
+          "url": "https://github.com/FrederikLizakJohansen/deCIFer",
+          "role": "code"
+        }
+      ],
+      "inference": {
+        "local": [
+          {
+            "label": "decifer_inference.py",
+            "url": "inference/decifer/decifer_inference.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "cloud": [],
+        "support": [
+          {
+            "label": "decifer_utils.py",
+            "url": "inference/decifer/decifer_utils.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "environment": [
+          {
+            "label": "decifer_env.yml",
+            "url": "inference/decifer/decifer_env.yml",
+            "role": "inference",
+            "code_label": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "diffractgpt",
+      "name": "DiffractGPT",
+      "category": "core_solver",
+      "verified_at": "2026-05-09",
+      "year": "2025",
+      "inputs_target": "PXRD-conditioned text generation → CIF-like crystal descriptions",
+      "method": "Large-token GPT / AtomGPT-style generative model",
+      "reported_performance": "DGPT-formula lattice MAE: 0.17 / 0.18 / 0.27 Å for a/b/c; normalized RMS-d 0.07 Å",
+      "paper_links": [
+        {
+          "label": "J. Phys. Chem. Lett.",
+          "url": "https://pubs.acs.org/doi/full/10.1021/acs.jpclett.4c03137",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "atomgptlab/atomgpt",
+          "url": "https://github.com/atomgptlab/atomgpt",
+          "role": "code"
+        }
+      ],
+      "inference": {
+        "local": [
+          {
+            "label": "diffractgpt_inference.py",
+            "url": "inference/diffractgpt/diffractgpt_inference.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "cloud": [
+          {
+            "label": "diffractgpt_modal.py",
+            "url": "inference/diffractgpt/diffractgpt_modal.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "support": [],
+        "environment": []
+      }
+    },
+    {
+      "id": "uni3dar",
+      "name": "Uni3DAR",
+      "category": "core_solver",
+      "verified_at": "2026-05-09",
+      "year": "2025",
+      "inputs_target": "PXRD + composition tokens → 3D crystal generation",
+      "method": "Hierarchical tokenization + 3D autoregressive generation",
+      "reported_performance": "MP-20 PXRD-guided CSP: 75.08% match rate, 0.0276 RMSE",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2503.16278",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "dptech-corp/Uni-3DAR",
+          "url": "https://github.com/dptech-corp/Uni-3DAR",
+          "role": "code"
+        }
+      ],
+      "inference": {
+        "local": [
+          {
+            "label": "uni3dar_inference.py",
+            "url": "inference/uni3dar/uni3dar_inference.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "cloud": [
+          {
+            "label": "uni3dar_modal.py",
+            "url": "inference/uni3dar/uni3dar_modal.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "support": [],
+        "environment": [
+          {
+            "label": "uni3dar_env.yml",
+            "url": "inference/uni3dar/uni3dar_env.yml",
+            "role": "inference",
+            "code_label": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "xrdsol",
+      "name": "XRDSol",
+      "category": "core_solver",
+      "verified_at": "2026-05-09",
+      "year": "2026",
+      "inputs_target": "Stoichiometry + unit cell + PXRD → atomic coordinates",
+      "method": "Equivariant graph neural network diffusion model",
+      "reported_performance": "MP-20: 82.3% success; ICDD-20 experimental benchmark: 81.6%; ~0.6 s per solution on one GPU",
+      "paper_links": [
+        {
+          "label": "Nature Communications",
+          "url": "https://www.nature.com/articles/s41467-026-70035-9",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "ai4mat-zhu/XRDSol",
+          "url": "https://github.com/ai4mat-zhu/XRDSol",
+          "role": "code"
+        },
+        {
+          "label": "Zenodo code/data",
+          "url": "https://doi.org/10.5281/zenodo.17837824",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "realpxrd-solver",
+      "name": "RealPXRD-Solver",
+      "category": "core_solver",
+      "verified_at": "2026-05-09",
+      "year": "2026",
+      "inputs_target": "Experimental or simulated PXRD, with lattice-conditioned and lattice-free modes → crystal structure",
+      "method": "Flow-matching / generative solver using d-I fingerprints and experiment-mimicking augmentation",
+      "reported_performance": "Theoretical benchmark: 98.3% top-20; CNRS experimental: 77.9% top-1 / 91.9% top-20 with lattice conditioning; RRUFF: 78.8% / 92.9%; solved 39 previously unreported PDF entries",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2603.00965",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "liqi-529/RealPXRD-Solver",
+          "url": "https://github.com/liqi-529/RealPXRD-Solver",
+          "role": "code"
+        }
+      ]
+    },
+    {
+      "id": "alphadiffract",
+      "name": "AlphaDiffract",
+      "category": "pipeline_module",
+      "verified_at": "2026-05-09",
+      "year": "2026",
+      "task": "Crystal system, space group, and lattice parameter prediction from PXRD",
+      "method": "1D ConvNeXt / deep diffraction encoder",
+      "reported_result": "Trained on >31M simulated patterns from 312,267 ICSD + Materials Project structures; RRUFF experimental benchmark: 81.7% crystal-system and 66.2% space-group accuracy in the paper",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2603.23367",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "Open model",
+          "url": "https://huggingface.co/linked-liszt/OpenAlphaDiffract",
+          "role": "model"
+        },
+        {
+          "label": "training code",
+          "url": "https://github.com/AdvancedPhotonSource/OpenAlphaDiffract",
+          "role": "code"
+        }
+      ]
+    },
+    {
+      "id": "xqueryer",
+      "name": "XQueryer",
+      "category": "pipeline_module",
+      "verified_at": "2026-05-09",
+      "year": "2025",
+      "task": "Neural search-match / structure identification from PXRD",
+      "method": "Fourier transform, CNN feature extraction, cross-attention, real-time diffractometer integration",
+      "reported_result": "Simulated database: >2M patterns from 100,315 Materials Project structures; experimental RRUFF-MP benchmark: ~70.3% accuracy reported",
+      "paper_links": [
+        {
+          "label": "National Science Review",
+          "url": "https://academic.oup.com/nsr/article/12/12/nwaf421/8268901",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "Bin-Cao/XQueryer",
+          "url": "https://github.com/Bin-Cao/XQueryer",
+          "role": "code"
+        }
+      ]
+    },
+    {
+      "id": "xccp",
+      "name": "XCCP",
+      "category": "pipeline_module",
+      "verified_at": "2026-05-09",
+      "year": "2026",
+      "task": "Contrastive PXRD-candidate matching and space-group identification",
+      "method": "Dual-expert PXRD/candidate encoder with Kolmogorov-Arnold Network components",
+      "reported_result": "Top-1 structure retrieval: 46.42% without elemental priors; 88.98% with elemental pre-screening; space-group accuracy up to 93.39% with composition filtering",
+      "paper_links": [
+        {
+          "label": "npj Computational Materials",
+          "url": "https://www.nature.com/articles/s41524-026-02015-y",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "opXRD-HKUST experimental data",
+          "url": "https://huggingface.co/datasets/caobin/opxrd_hkust_expdata",
+          "role": "data"
+        }
+      ],
+      "artifact_note": "code not found during 2026-05-09 pass"
+    },
+    {
+      "id": "phasedifformer",
+      "name": "PhaseDifformer",
+      "category": "pipeline_module",
+      "verified_at": "2026-05-09",
+      "year": "2026",
+      "task": "Multi-phase PXRD decomposition",
+      "method": "Phase-decomposition diffusion Transformer",
+      "reported_result": "Decomposes a single mixed PXRD pattern into constituent single-phase patterns; useful as a front-end for mixture analysis before structure solution",
+      "paper_links": [
+        {
+          "label": "npj Computational Materials",
+          "url": "https://www.nature.com/articles/s41524-026-02087-w",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [],
+      "artifact_note": "Code/data not found during 2026-05-09 pass"
+    },
+    {
+      "id": "automation-of-rietveld-refinement-through-machine-learning",
+      "name": "Automation of Rietveld refinement through machine learning",
+      "category": "pipeline_module",
+      "verified_at": "2026-05-09",
+      "year": "2026",
+      "task": "Fast Rietveld-like refinement / parameter prediction",
+      "method": "Convolutional neural network trained on simulated PXRD profiles",
+      "reported_result": "Demonstrated refined structures for CeO₂, Tb₂BaCoO₅, and PbSO₄ with reliability factors comparable to conventional Rietveld refinement",
+      "paper_links": [
+        {
+          "label": "Journal of Applied Crystallography / ORA",
+          "url": "https://ora.ox.ac.uk/objects/uuid:f25209eb-c034-4ef5-9056-6cab8cf303d1",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [],
+      "artifact_note": "Article-provided workflow; standalone code not found during 2026-05-09 pass"
+    },
+    {
+      "id": "hmof-100-hmof-400",
+      "name": "hMOF-100 / hMOF-400",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": "100 / 400",
+      "sim_exp": "Sim",
+      "format": "CIF + PXRD",
+      "notes": "Hypothetical MOF benchmarks used by XtalNet",
+      "resource_links": [
+        {
+          "label": "Zenodo",
+          "url": "https://doi.org/10.5281/zenodo.13629658",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "perov-5",
+      "name": "Perov-5",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": "18,928",
+      "sim_exp": "Sim",
+      "format": "Structure data; PXRD can be simulated",
+      "notes": "Small-cell ABO₃ / perovskite benchmark with 5 atoms per unit cell",
+      "resource_links": [
+        {
+          "label": "Figshare",
+          "url": "https://figshare.com/articles/dataset/Perov5/22705189",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "carbon-24",
+      "name": "Carbon-24",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": "10,153",
+      "sim_exp": "Sim",
+      "format": "Structure data; PXRD can be simulated",
+      "notes": "Carbon allotrope benchmark with 6–24 atoms per unit cell",
+      "resource_links": [
+        {
+          "label": "Hugging Face",
+          "url": "https://huggingface.co/datasets/albertvillanova/carbon_24",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "mp-20-pxrd",
+      "name": "MP-20-PXRD",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": "45,229",
+      "sim_exp": "Sim",
+      "format": "CIF + tensors / calculated PXRD",
+      "notes": "Materials Project subset used by PXRDnet and PXRDGen",
+      "resource_links": [
+        {
+          "label": "gabeguo/cdvae_xrd data",
+          "url": "https://github.com/gabeguo/cdvae_xrd/tree/main/data/mp_20",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "xrdsol-mp-20-icdd-20-benchmarks",
+      "name": "XRDSol MP-20 / ICDD-20 benchmarks",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": "45,231 MP structures; 1,000 experimental ICDD-20 sets",
+      "sim_exp": "Sim + Exp",
+      "format": "CIF/PXRD; some restricted experimental records",
+      "notes": "XRDSol training/evaluation; ICDD/PDF content may require database access",
+      "resource_links": [
+        {
+          "label": "XRDSol GitHub",
+          "url": "https://github.com/ai4mat-zhu/XRDSol",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "jarvis-dft-jarvis-xrd",
+      "name": "JARVIS-DFT / JARVIS-XRD",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": "80k+ materials in JARVIS-DFT",
+      "sim_exp": "Sim",
+      "format": "DB / API / web app",
+      "notes": "Broad inorganic computed structures and simulated XRD; DiffractGPT reports training from JARVIS-DFT simulated PXRD",
+      "resource_links": [
+        {
+          "label": "JARVIS docs",
+          "url": "https://pages.nist.gov/jarvis/",
+          "role": "docs"
+        },
+        {
+          "label": "XRD tool docs",
+          "url": "https://jarvis-tools.readthedocs.io/en/master/autoapi/jarvis/analysis/diffraction/xrd/",
+          "role": "docs"
+        }
+      ]
+    },
+    {
+      "id": "chili-3k-chili-100k",
+      "name": "CHILI-3K / CHILI-100K",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": "3K / 100K nanomaterial graphs",
+      "sim_exp": "Sim",
+      "format": "Graph/HDF5 nanomaterial data with structure and scattering-related targets",
+      "notes": "Related large-scale inorganic nanomaterial benchmark; not a direct PXRD-to-CIF benchmark",
+      "resource_links": [
+        {
+          "label": "CHILI GitHub",
+          "url": "https://github.com/UlrikFriisJensen/CHILI",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "simxrd-4m",
+      "name": "SimXRD-4M",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": "4,065,346 patterns from 119,569 structures",
+      "sim_exp": "Sim",
+      "format": "Spectra shards",
+      "notes": "Large crystal-symmetry prediction benchmark with 33 simulated conditions",
+      "resource_links": [
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=mkuB677eMM",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "simpod",
+      "name": "SIMPOD",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": "467,861",
+      "sim_exp": "Sim",
+      "format": "JSON structures, 1D PXRD, 2D radial images",
+      "notes": "COD-derived benchmark for PXRD ML; simulated 2θ range 5–90° with 10,824 points and radial-image representation",
+      "resource_links": [
+        {
+          "label": "Scientific Data paper",
+          "url": "https://www.nature.com/articles/s41597-025-05534-3",
+          "role": "paper"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/BCV-Uniandes/SIMPOD",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "realpxrd-solver-training-corpus",
+      "name": "RealPXRD-Solver training corpus",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": "6,250,238 theoretical structures",
+      "sim_exp": "Sim + Exp evaluation",
+      "format": "d-I fingerprints, simulated/augmented PXRD, code/data links",
+      "notes": "AFLOW + Materials Project + Alexandria + OQMD-scale corpus with experiment-mimicking augmentations; evaluated on CNRS, RRUFF, and PDF entries",
+      "resource_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2603.00965",
+          "role": "paper"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/liqi-529/RealPXRD-Solver",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "alphadiffract-simulation-corpus",
+      "name": "AlphaDiffract simulation corpus",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": ">31M simulated PXRD from 312,267 structures in paper; open MP-only model subset also available",
+      "sim_exp": "Sim + Exp evaluation",
+      "format": "Simulated PXRD, labels for lattice / symmetry",
+      "notes": "Crystal system, space group, and lattice parameter benchmark; open model/data are smaller and based on public Materials Project structures",
+      "resource_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2603.23367",
+          "role": "paper"
+        },
+        {
+          "label": "Open model",
+          "url": "https://huggingface.co/linked-liszt/OpenAlphaDiffract",
+          "role": "model"
+        }
+      ]
+    },
+    {
+      "id": "xqueryer-simulated-database",
+      "name": "XQueryer simulated database",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": ">2M PXRD patterns from 100,315 MP structures",
+      "sim_exp": "Sim + Exp evaluation",
+      "format": "Simulated patterns, matching database, benchmark scripts",
+      "notes": "Neural search-match and real-time identification; includes RRUFF-MP matching benchmark",
+      "resource_links": [
+        {
+          "label": "National Science Review paper",
+          "url": "https://academic.oup.com/nsr/article/12/12/nwaf421/8268901",
+          "role": "paper"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Bin-Cao/XQueryer",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "powbase",
+      "name": "PowBase",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": "169",
+      "sim_exp": "Exp",
+      "format": "`.dat` / `.cif`",
+      "notes": "Historical experimental PXRD collection; limited labels",
+      "resource_links": [
+        {
+          "label": "PowBase archived snapshot",
+          "url": "https://web.archive.org/web/20260510024719/https://www.cristal.org/DU-SDPD/nexus/albweb/univ-lem/powbase/index2.htm",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "crystallography-open-database-entries-with-diffraction-data",
+      "name": "Crystallography Open Database entries with diffraction data",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": "Query-dependent",
+      "sim_exp": "Exp / structure DB",
+      "format": "CIF; diffraction/profile fields where deposited",
+      "notes": "COD is primarily an open crystal-structure database; experimental diffraction availability depends on the individual CIF records",
+      "resource_links": [
+        {
+          "label": "COD",
+          "url": "https://www.crystallography.net/cod/",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "rruff",
+      "name": "RRUFF",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": "1k+ XRD patterns",
+      "sim_exp": "Exp",
+      "format": "DB / spectra",
+      "notes": "Reference mineral Raman/IR/XRD data; commonly used for experimental transfer",
+      "resource_links": [
+        {
+          "label": "RRUFF",
+          "url": "https://rruff.info/",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "xred",
+      "name": "XRed",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": "100+ public pattern files in GitHub tree",
+      "sim_exp": "Exp",
+      "format": "`.csv` + `.cif`",
+      "notes": "Public experimental XRD phase-identification dataset with mono-, bi-, tri-, and multi-phase examples",
+      "resource_links": [
+        {
+          "label": "WPEM/XRED",
+          "url": "https://github.com/WPEM/XRED",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "opxrd",
+      "name": "opXRD",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": "92,552 patterns; 2,179 at least partially labeled",
+      "sim_exp": "Exp",
+      "format": "Diffractograms + metadata",
+      "notes": "Open experimental PXRD database sourced from six contributing institutions; useful for experimental-domain adaptation and retrieval",
+      "resource_links": [
+        {
+          "label": "Data portal",
+          "url": "https://xrd.aimat.science/",
+          "role": "data"
+        },
+        {
+          "label": "paper",
+          "url": "https://publikationen.bibliothek.kit.edu/1000182521",
+          "role": "paper"
+        }
+      ]
+    },
+    {
+      "id": "opxrd-hkust-xccp-experimental-data",
+      "name": "opXRD-HKUST / XCCP experimental data",
+      "category": "dataset",
+      "verified_at": "2026-05-09",
+      "size": "subset of opXRD-related experimental data",
+      "sim_exp": "Exp",
+      "format": "Hugging Face dataset",
+      "notes": "Experimental data associated with contrastive PXRD-candidate matching",
+      "resource_links": [
+        {
+          "label": "Hugging Face",
+          "url": "https://huggingface.co/datasets/caobin/opxrd_hkust_expdata",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "pymatgen-xrdcalculator",
+      "name": "pymatgen XRDCalculator",
+      "category": "utility",
+      "verified_at": "2026-05-09",
+      "task": "PXRD simulation from CIF / structure",
+      "notes": "Widely used baseline for simulated pattern generation",
+      "resource_links": [
+        {
+          "label": "pymatgen",
+          "url": "https://pymatgen.org/",
+          "role": "tool"
+        }
+      ]
+    },
+    {
+      "id": "gsas-ii",
+      "name": "GSAS-II",
+      "category": "utility",
+      "verified_at": "2026-05-09",
+      "task": "Rietveld refinement and diffraction analysis",
+      "notes": "Standard open-source crystallographic refinement package; also used for simulation in ML data generation",
+      "resource_links": [
+        {
+          "label": "GSAS-II",
+          "url": "https://cai.xray.aps.anl.gov/Featured-Projects/GSAS-II",
+          "role": "tool"
+        }
+      ]
+    },
+    {
+      "id": "xrd-rust",
+      "name": "XRD-Rust",
+      "category": "utility",
+      "verified_at": "2026-05-09",
+      "task": "Fast PXRD simulation",
+      "notes": "Rust-accelerated pymatgen-style XRD calculator; reported average 4–6× speedups and much larger speedups for some structures",
+      "resource_links": [
+        {
+          "label": "PyPI",
+          "url": "https://pypi.org/project/xrd-rust/",
+          "role": "tool"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/bracerino/xrd-rust",
+          "role": "tool"
+        }
+      ]
+    },
+    {
+      "id": "diffpy-pdf-tools",
+      "name": "diffpy / PDF tools",
+      "category": "utility",
+      "verified_at": "2026-05-09",
+      "task": "Pair distribution function analysis",
+      "notes": "Useful for PDF-based inverse problems and nanoparticle structure models",
+      "resource_links": [
+        {
+          "label": "diffpy",
+          "url": "https://www.diffpy.org/",
+          "role": "tool"
+        }
+      ]
+    },
+    {
+      "id": "parse-cifs-py",
+      "name": "parse_cifs.py",
+      "category": "utility",
+      "verified_at": "2026-05-09",
+      "task": "Repository utility",
+      "notes": "Parses and normalizes CIFs / experimental PXRD fields for model-specific inference scripts",
+      "resource_links": [
+        {
+          "label": "utils/parse_cifs.py",
+          "url": "utils/parse_cifs.py",
+          "role": "tool",
+          "code_label": true
+        }
+      ]
+    }
+  ]
+}

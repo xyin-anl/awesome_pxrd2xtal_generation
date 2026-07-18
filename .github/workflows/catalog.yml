@@ -1,0 +1,37 @@
+name: Validate resource catalog
+
+on:
+  pull_request:
+    paths:
+      - "data/resources.json"
+      - "data/resources.schema.json"
+      - "scripts/catalog.py"
+      - "tests/test_catalog.py"
+      - "README.md"
+      - ".github/workflows/catalog.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "data/resources.json"
+      - "data/resources.schema.json"
+      - "scripts/catalog.py"
+      - "tests/test_catalog.py"
+      - "README.md"
+      - ".github/workflows/catalog.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check generated catalog surfaces
+        run: python3 scripts/catalog.py check
+      - name: Run catalog tests
+        run: python3 -m unittest discover -s tests -v
