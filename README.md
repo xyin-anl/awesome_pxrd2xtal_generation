@@ -9,6 +9,8 @@ PXRD structure determination is an ill-posed inverse problem: many candidate str
 
 **Last update:** 2026-05-09. See [`curation_protocal.md`](curation_protocal.md) for the AI-assisted curation workflow and update notes.
 
+**Interactive board:** Explore and filter the catalog at [nodeology.ai/resources/pxrd2xtal](https://nodeology.ai/resources/pxrd2xtal).
+
 ## Scope and Taxonomy
 
 This repository separates methods into two groups:
@@ -22,8 +24,11 @@ The tables below intentionally mix peer-reviewed articles, preprints, open repos
 
 This repository adopts an **AI-assisted curation** approach: advanced reasoning models and web research tools are used to discover and organize resources, followed by human review. The goal is to overcome the limitations of manual literature tracking while keeping the process auditable. All AI-generated update passes, corrections, and known uncertainties are documented in [`curation_protocal.md`](curation_protocal.md).
 
+The resource tables below are generated from the canonical [`data/resources.json`](data/resources.json) catalog. Run `python3 scripts/catalog.py render` after catalog edits and `python3 scripts/catalog.py check` before submitting a pull request.
+
 ## Core PXRD → Structure Generation / Structure Solution Models
 
+<!-- BEGIN GENERATED: core-solvers -->
 | Model | Year | Inputs / Target | Method / Architecture | Reported Performance† | Paper | Implementation / Data |
 |-------|------|-----------------|-----------------------|------------------------|-------|-----------------------|
 | **DeepStruc** | 2023 | Pair distribution function / scattering data → nanoparticle structure class | Conditional VAE on PDF-like data | Correct for 7 nanoparticle types | [Digital Discovery](https://pubs.rsc.org/en/content/articlelanding/2023/dd/d2dd00086e) | [EmilSkaaning/DeepStruc](https://github.com/EmilSkaaning/DeepStruc) |
@@ -37,6 +42,7 @@ This repository adopts an **AI-assisted curation** approach: advanced reasoning 
 | **Uni3DAR** | 2025 | PXRD + composition tokens → 3D crystal generation | Hierarchical tokenization + 3D autoregressive generation | MP-20 PXRD-guided CSP: 75.08% match rate, 0.0276 RMSE | [arXiv](https://arxiv.org/abs/2503.16278) | [dptech-corp/Uni-3DAR](https://github.com/dptech-corp/Uni-3DAR) |
 | **XRDSol** | 2026 | Stoichiometry + unit cell + PXRD → atomic coordinates | Equivariant graph neural network diffusion model | MP-20: 82.3% success; ICDD-20 experimental benchmark: 81.6%; ~0.6 s per solution on one GPU | [Nature Communications](https://www.nature.com/articles/s41467-026-70035-9) | [ai4mat-zhu/XRDSol](https://github.com/ai4mat-zhu/XRDSol), [Zenodo code/data](https://doi.org/10.5281/zenodo.17837824) |
 | **RealPXRD-Solver** | 2026 | Experimental or simulated PXRD, with lattice-conditioned and lattice-free modes → crystal structure | Flow-matching / generative solver using d-I fingerprints and experiment-mimicking augmentation | Theoretical benchmark: 98.3% top-20; CNRS experimental: 77.9% top-1 / 91.9% top-20 with lattice conditioning; RRUFF: 78.8% / 92.9%; solved 39 previously unreported PDF entries | [arXiv](https://arxiv.org/abs/2603.00965) | [liqi-529/RealPXRD-Solver](https://github.com/liqi-529/RealPXRD-Solver) |
+<!-- END GENERATED: core-solvers -->
 
 †Author-reported metrics; evaluation tasks and assumptions differ. Check each paper for allowed inputs, structural tolerances, train/test chemistry overlap, post-refinement settings, and experimental validation protocol.
 
@@ -44,6 +50,7 @@ This repository adopts an **AI-assisted curation** approach: advanced reasoning 
 
 These methods are not always full PXRD-to-structure generators, but they are highly relevant to practical PXRD structure determination pipelines.
 
+<!-- BEGIN GENERATED: pipeline-modules -->
 | Resource | Year | Task | Method | Reported Result / Note | Paper | Code / Data |
 |----------|------|------|--------|------------------------|-------|-------------|
 | **AlphaDiffract** | 2026 | Crystal system, space group, and lattice parameter prediction from PXRD | 1D ConvNeXt / deep diffraction encoder | Trained on >31M simulated patterns from 312,267 ICSD + Materials Project structures; RRUFF experimental benchmark: 81.7% crystal-system and 66.2% space-group accuracy in the paper | [arXiv](https://arxiv.org/abs/2603.23367) | [Open model](https://huggingface.co/linked-liszt/OpenAlphaDiffract), [training code](https://github.com/AdvancedPhotonSource/OpenAlphaDiffract) |
@@ -51,9 +58,11 @@ These methods are not always full PXRD-to-structure generators, but they are hig
 | **XCCP** | 2026 | Contrastive PXRD-candidate matching and space-group identification | Dual-expert PXRD/candidate encoder with Kolmogorov-Arnold Network components | Top-1 structure retrieval: 46.42% without elemental priors; 88.98% with elemental pre-screening; space-group accuracy up to 93.39% with composition filtering | [npj Computational Materials](https://www.nature.com/articles/s41524-026-02015-y) | [opXRD-HKUST experimental data](https://huggingface.co/datasets/caobin/opxrd_hkust_expdata), code not found during 2026-05-09 pass |
 | **PhaseDifformer** | 2026 | Multi-phase PXRD decomposition | Phase-decomposition diffusion Transformer | Decomposes a single mixed PXRD pattern into constituent single-phase patterns; useful as a front-end for mixture analysis before structure solution | [npj Computational Materials](https://www.nature.com/articles/s41524-026-02087-w) | Code/data not found during 2026-05-09 pass |
 | **Automation of Rietveld refinement through machine learning** | 2026 | Fast Rietveld-like refinement / parameter prediction | Convolutional neural network trained on simulated PXRD profiles | Demonstrated refined structures for CeO₂, Tb₂BaCoO₅, and PbSO₄ with reliability factors comparable to conventional Rietveld refinement | [Journal of Applied Crystallography / ORA](https://ora.ox.ac.uk/objects/uuid:f25209eb-c034-4ef5-9056-6cab8cf303d1) | Article-provided workflow; standalone code not found during 2026-05-09 pass |
+<!-- END GENERATED: pipeline-modules -->
 
 ## Datasets and Benchmarks
 
+<!-- BEGIN GENERATED: datasets -->
 | Dataset / Benchmark | Size | Sim / Exp | Format | Notes / Use | Link |
 |---------------------|------|-----------|--------|-------------|------|
 | **hMOF-100 / hMOF-400** | 100 / 400 | Sim | CIF + PXRD | Hypothetical MOF benchmarks used by XtalNet | [Zenodo](https://doi.org/10.5281/zenodo.13629658) |
@@ -74,6 +83,7 @@ These methods are not always full PXRD-to-structure generators, but they are hig
 | **XRed** | 100+ public pattern files in GitHub tree | Exp | `.csv` + `.cif` | Public experimental XRD phase-identification dataset with mono-, bi-, tri-, and multi-phase examples | [WPEM/XRED](https://github.com/WPEM/XRED) |
 | **opXRD** | 92,552 patterns; 2,179 at least partially labeled | Exp | Diffractograms + metadata | Open experimental PXRD database sourced from six contributing institutions; useful for experimental-domain adaptation and retrieval | [Data portal](https://xrd.aimat.science/), [paper](https://publikationen.bibliothek.kit.edu/1000182521) |
 | **opXRD-HKUST / XCCP experimental data** | subset of opXRD-related experimental data | Exp | Hugging Face dataset | Experimental data associated with contrastive PXRD-candidate matching | [Hugging Face](https://huggingface.co/datasets/caobin/opxrd_hkust_expdata) |
+<!-- END GENERATED: datasets -->
 
 ## Metrics and Evaluation Recommendations
 
@@ -104,6 +114,7 @@ A practical leaderboard should split at least the following settings:
 
 ## Simulation, Refinement, and Utility Tools
 
+<!-- BEGIN GENERATED: utilities -->
 | Tool | Task | Notes | Link |
 |------|------|-------|------|
 | **pymatgen XRDCalculator** | PXRD simulation from CIF / structure | Widely used baseline for simulated pattern generation | [pymatgen](https://pymatgen.org/) |
@@ -111,11 +122,13 @@ A practical leaderboard should split at least the following settings:
 | **XRD-Rust** | Fast PXRD simulation | Rust-accelerated pymatgen-style XRD calculator; reported average 4–6× speedups and much larger speedups for some structures | [PyPI](https://pypi.org/project/xrd-rust/), [GitHub](https://github.com/bracerino/xrd-rust) |
 | **diffpy / PDF tools** | Pair distribution function analysis | Useful for PDF-based inverse problems and nanoparticle structure models | [diffpy](https://www.diffpy.org/) |
 | **parse_cifs.py** | Repository utility | Parses and normalizes CIFs / experimental PXRD fields for model-specific inference scripts | [`utils/parse_cifs.py`](utils/parse_cifs.py) |
+<!-- END GENERATED: utilities -->
 
 ## Beyond Curation: Inference Scripts
 
 Unlike typical "awesome" repositories that only list resources, this repository also tries to solve the "last-mile" problem by providing runnable inference scripts when practical. Current tested scripts are in the [`inference`](inference) folder.
 
+<!-- BEGIN GENERATED: inference -->
 | Model | Local Inference | Cloud Inference | Utils/Support | Environment |
 |-------|-----------------|-----------------|---------------|-------------|
 | **Uni3DAR** | [`uni3dar_inference.py`](inference/uni3dar/uni3dar_inference.py) | [`uni3dar_modal.py`](inference/uni3dar/uni3dar_modal.py) | N/A | [`uni3dar_env.yml`](inference/uni3dar/uni3dar_env.yml) |
@@ -123,6 +136,7 @@ Unlike typical "awesome" repositories that only list resources, this repository 
 | **deCIFer** | [`decifer_inference.py`](inference/decifer/decifer_inference.py) | N/A | [`decifer_utils.py`](inference/decifer/decifer_utils.py) | [`decifer_env.yml`](inference/decifer/decifer_env.yml) |
 | **Crystalyze** | [`crystalyze_inference.py`](inference/crystalyze/crystalyze_inference.py) | N/A | [`crystalyze_utils.py`](inference/crystalyze/crystalyze_utils.py) | [`crystalyze_env.yml`](inference/crystalyze/crystalyze_env.yml) |
 | **DiffractGPT** | [`diffractgpt_inference.py`](inference/diffractgpt/diffractgpt_inference.py) | [`diffractgpt_modal.py`](inference/diffractgpt/diffractgpt_modal.py) | N/A | N/A |
+<!-- END GENERATED: inference -->
 
 `utils/parse_cifs.py` provides general utilities for parsing and processing CIF files that contain experimental PXRD patterns across different model formats. New 2025–2026 models such as XRDSol and RealPXRD-Solver have public repositories but are not yet integrated into the local inference folder.
 
