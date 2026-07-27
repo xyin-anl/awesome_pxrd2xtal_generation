@@ -51,6 +51,30 @@ The competitor comparison informed presentation and process improvements, but fa
 
 You can see the [full conversation here →](https://chatgpt.com/share/69ff8242-0554-83ea-8c9d-595209e41636)
 
+## July 27 2026 biweekly refresh
+
+12. **Codex primary-source and artifact audit — Jul 27 2026**
+    Searched for work released after the July 18 catalog cutoff, compared the current catalog with `Bin-Cao/awesome-xrd2crystal` for discovery, and independently checked candidate claims against publisher, arXiv, official repository, PyPI, and Hugging Face pages. The pass also tested every catalogued external paper, artifact, dataset, and utility link for availability.
+
+Material changes:
+
+- Added **CrystaLLM-π** as a core solver after its maintained repository received post-cutoff updates. The entry records its requirement for pre-picked PXRD peaks and composition/unit-cell stoichiometry rather than implying raw-pattern-only inference. Sources: https://arxiv.org/abs/2511.21299, https://github.com/C-Bone-UCL/CrystaLLM-pi, https://huggingface.co/c-bone/CrystaLLM-pi_Mattergen-XRD, and https://huggingface.co/c-bone/CrystaLLM-pi_Chili100K-XRD.
+- Added the missing official **XtalNet** code repository and corrected the method and hMOF-100/hMOF-400 top-10 results. Sources: https://arxiv.org/abs/2401.03862 and https://github.com/dptech-corp/XtalNet.
+- Replaced the stale **XRD-Rust** 4–6× summary with the paper's serial-SIMD and eight-thread benchmark results, and added the paper link. Sources: https://arxiv.org/abs/2602.11709, https://github.com/bracerino/xrd-rust, and https://pypi.org/project/xrd-rust/.
+- Rechecked **XRDiff**, **XCCP**, and **PhaseDifformer**. Their paper and existing data links remained available, but no official public code/data release was found for XRDiff or PhaseDifformer and no official public code release was found for XCCP.
+
+No post-cutoff arXiv submission or newly created GitHub repository meeting the catalog scope was found. **GraPhAI** and **CrystalX** were reviewed but excluded because their inputs are reflection-level or single-crystal diffraction data rather than PXRD patterns. The competitor board's stale `C-Bone-UCL/CrystaLLM-2.0` and `usnistgov/diffractgpt` links were not imported; current official resources were verified independently.
+
+Representative discovery queries included:
+
+- `site:arxiv.org/abs/2607 "powder X-ray diffraction" crystal structure`
+- `site:arxiv.org/abs/2607 PXRD materials machine learning`
+- `PXRD crystal created:>=2026-07-18`
+- `"powder X-ray diffraction" crystal created:>=2026-07-18`
+- `site:github.com "XRDiff" "Powder X-Ray Diffraction"`
+- `site:github.com "PhaseDifformer"`
+- `site:github.com "XCCP" powder XRD contrastive`
+
 ### Search strategy for the May 9 2026 pass
 
 Representative search targets included:
