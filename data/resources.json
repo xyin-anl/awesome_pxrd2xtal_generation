@@ -1,7 +1,7 @@
 {
   "$schema": "./resources.schema.json",
   "schema_version": 1,
-  "last_updated": "2026-07-18",
+  "last_updated": "2026-07-27",
   "website_url": "https://nodeology.ai/resources/pxrd2xtal",
   "inference_order": [
     "uni3dar",
@@ -124,11 +124,11 @@
       "id": "xtalnet",
       "name": "XtalNet",
       "category": "core_solver",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-07-27",
       "year": "2024/2025",
       "inputs_target": "PXRD + composition / MOF setting → crystal structure candidates",
-      "method": "Crystal-parameter-constrained prediction + conditional diffusion",
-      "reported_performance": "90% top-10 on hMOF-100",
+      "method": "Contrastive PXRD-crystal pretraining + conditional equivariant diffusion",
+      "reported_performance": "Top-10 match rate: 90.2% on hMOF-100 and 79% on hMOF-400",
       "paper_links": [
         {
           "label": "Advanced Science",
@@ -137,6 +137,11 @@
         }
       ],
       "artifact_links": [
+        {
+          "label": "dptech-corp/XtalNet",
+          "url": "https://github.com/dptech-corp/XtalNet",
+          "role": "code"
+        },
         {
           "label": "Zenodo: hMOF-100/400 + code/data",
           "url": "https://zenodo.org/records/13629658",
@@ -366,6 +371,40 @@
       }
     },
     {
+      "id": "crystallm-pi",
+      "name": "CrystaLLM-π",
+      "category": "core_solver",
+      "verified_at": "2026-07-27",
+      "year": "2025/2026",
+      "inputs_target": "Pre-picked PXRD peak positions/intensities + composition and unit-cell stoichiometry → CIF candidates",
+      "method": "Autoregressive CIF language model with residual-attention PXRD conditioning and perplexity ranking",
+      "reported_performance": "MP-20: 62.73% conditional match for one perplexity-ranked candidate (RMSD 0.0444 Å); JARVIS-DFT: 85.47% best-of-20 consistent match (RMSD 0.0361 Å)",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2511.21299",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "C-Bone-UCL/CrystaLLM-pi",
+          "url": "https://github.com/C-Bone-UCL/CrystaLLM-pi",
+          "role": "code"
+        },
+        {
+          "label": "MatterGen-XRD model",
+          "url": "https://huggingface.co/c-bone/CrystaLLM-pi_Mattergen-XRD",
+          "role": "model"
+        },
+        {
+          "label": "CHILI-100K-XRD model",
+          "url": "https://huggingface.co/c-bone/CrystaLLM-pi_Chili100K-XRD",
+          "role": "model"
+        }
+      ]
+    },
+    {
       "id": "xrd2mof",
       "name": "Xrd2Mof",
       "category": "core_solver",
@@ -475,7 +514,7 @@
       "id": "xrdiff",
       "name": "XRDiff",
       "category": "core_solver",
-      "verified_at": "2026-07-18",
+      "verified_at": "2026-07-27",
       "year": "2026",
       "inputs_target": "PXRD + stoichiometry, or elements + total atom count → crystal structure",
       "method": "Diffusion model with full-spectrum or peak-descriptor PXRD conditioning",
@@ -488,7 +527,7 @@
         }
       ],
       "artifact_links": [],
-      "artifact_note": "code/data not found during 2026-07-18 verification pass"
+      "artifact_note": "code/data not found during 2026-07-27 verification pass"
     },
     {
       "id": "alphadiffract",
@@ -547,7 +586,7 @@
       "id": "xccp",
       "name": "XCCP",
       "category": "pipeline_module",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-07-27",
       "year": "2026",
       "task": "Contrastive PXRD-candidate matching and space-group identification",
       "method": "Dual-expert PXRD/candidate encoder with Kolmogorov-Arnold Network components",
@@ -566,13 +605,13 @@
           "role": "data"
         }
       ],
-      "artifact_note": "code not found during 2026-05-09 pass"
+      "artifact_note": "code not found during 2026-07-27 verification pass"
     },
     {
       "id": "phasedifformer",
       "name": "PhaseDifformer",
       "category": "pipeline_module",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-07-27",
       "year": "2026",
       "task": "Multi-phase PXRD decomposition",
       "method": "Phase-decomposition diffusion Transformer",
@@ -585,7 +624,7 @@
         }
       ],
       "artifact_links": [],
-      "artifact_note": "Code/data not found during 2026-05-09 pass"
+      "artifact_note": "Code/data not found during 2026-07-27 verification pass"
     },
     {
       "id": "automation-of-rietveld-refinement-through-machine-learning",
@@ -976,10 +1015,15 @@
       "id": "xrd-rust",
       "name": "XRD-Rust",
       "category": "utility",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-07-27",
       "task": "Fast PXRD simulation",
-      "notes": "Rust-accelerated pymatgen-style XRD calculator; reported average 4–6× speedups and much larger speedups for some structures",
+      "notes": "Rust-accelerated pymatgen-style XRD calculator; the paper reports median serial-SIMD speedups of 10.7× on COD and 10.8× on MC3D, increasing to 19.5× and 15.1× with eight threads",
       "resource_links": [
+        {
+          "label": "paper",
+          "url": "https://arxiv.org/abs/2602.11709",
+          "role": "paper"
+        },
         {
           "label": "PyPI",
           "url": "https://pypi.org/project/xrd-rust/",
