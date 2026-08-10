@@ -75,6 +75,37 @@ Representative discovery queries included:
 - `site:github.com "PhaseDifformer"`
 - `site:github.com "XCCP" powder XRD contrastive`
 
+## August 10 2026 biweekly refresh
+
+13. **Codex primary-source and artifact audit — Aug 10 2026**
+    Updated local `main` to include the merged July 27 refresh, queried the official arXiv API and GitHub repository index, searched publisher/project pages, and checked `Bin-Cao/awesome-xrd2crystal` for discovery. The competing board had no commit after July 14, so it supplied no post-cutoff candidate. All 65 pre-existing external catalog URLs were rechecked; available links resolved, while publisher and Code Ocean anti-bot responses were treated as inconclusive rather than broken. Only entries whose claims or artifact availability were directly reverified received a new `verified_at` date.
+
+Material changes:
+
+- Added **AGAPI-XRD** as a core solver. It combines DiffractGPT, JARVIS-DFT/COD pattern matching, optional ALIGNN-FF relaxation, and automated GSAS-II/BGMN Rietveld refinement. The catalog distinguishes candidate/lattice-parameter return rates from structural correctness: the paper reports a candidate for 93.8% and valid lattice parameters for 79.7% of 276 RRUFF minerals, while only 229 of 1,000 Alexandria structures matched under `StructureMatcher` in the no-refinement run. Sources: https://arxiv.org/abs/2607.08890, https://github.com/crhysc/agapi_xrd_paper, and https://atomgpt.org/xrd. The paper-linked `atomgptlab/agapi_xrd_paper` URL returned 404; the available first-author repository is linked instead.
+- Added **XMatcher** as a pipeline module after its official repository received a post-cutoff update. It is a local, evidence-oriented search-match system with bounded global-angle correction, one-to-one peak assignment, and AutoMix multiphase fitting. The catalog preserves the authors' warning that AutoMix outputs are diffraction-evidence contributions, not quantitative phase fractions. Sources: https://arxiv.org/abs/2607.17162, https://github.com/Asterbin/Asterbin-XMatcher, and https://doi.org/10.6084/m9.figshare.32812985.
+- Added the **invariant lattice-bispectrum predictor** as a pipeline module. The preprint predicts an E(3)-invariant reciprocal-lattice descriptor from PXRD and inverts it to lattice vectors; on MP-20, the fixed-architecture comparison reports length MAPE decreasing from 11.18% to 2.44% and angle MAPE from 12.74% to 3.07%. Source: https://arxiv.org/abs/2607.21829. The paper says code/data will be released on publication, but its named GitHub URL returned 404 during this pass.
+- Added **XRDStudio** as a utility after its August 2026 release. It is a single-file browser simulator and pattern-comparison tool with CIF import; the entry explicitly notes that it is not a refinement program and omits texture, absorption, and size/strain broadening. Source: https://github.com/shirishchandrakar/XRDStudio.
+- Corrected **PhaseDifformer** by adding its official source repository and reverified the paper/repository match. Sources: https://www.nature.com/articles/s41524-026-02087-w and https://github.com/quantumbeam/PhaseDifformer.
+- Rechecked **XRDiff** and **XCCP** paper/artifact availability. No official public code/data release was found for XRDiff, and no official public code release was found for XCCP as of Aug 10 2026.
+- Corrected the README's stale displayed update date, which had remained at July 18 even though the canonical catalog had advanced to July 27.
+
+Candidates reviewed but not added:
+
+- **ED-CSP** (arXiv:2608.06448) uses electron-diffraction detector-plane spots rather than powder X-ray diffraction, so it is outside this catalog even though it benchmarks against PXRDGen.
+- **XRD Fitting Toolkit** (`liuchzzyy/XRD-toolkit`) is a repository-only Windows-oriented GSAS-II wrapper with a hard-coded WC/W2C acceptance recipe and no independent validation; its general refinement capability overlaps the existing GSAS-II entry.
+- **x_ray-diffraction-pattern-of-SnS2-crystal-structure** is a one-material analysis notebook rather than a reusable PXRD-to-structure resource.
+
+Representative discovery queries included:
+
+- official arXiv API queries for `all:"powder X-ray diffraction"` and `all:PXRD`, sorted by submission date;
+- `site:arxiv.org/abs/2608 PXRD crystal structure`;
+- `site:arxiv.org/abs/2608 "powder X-ray diffraction" machine learning crystal`;
+- `PXRD crystal created:>=2026-07-27`;
+- `"powder X-ray diffraction" crystal created:>=2026-07-27`;
+- `XRD crystal structure created:>=2026-07-27`;
+- exact GitHub searches for `XRDiff`, `PhaseDifformer`, `XCCP`, `PowderXRD_Project`, `XMatcher`, and `AGAPI-XRD`.
+
 ### Search strategy for the May 9 2026 pass
 
 Representative search targets included:

@@ -1,7 +1,7 @@
 {
   "$schema": "./resources.schema.json",
   "schema_version": 1,
-  "last_updated": "2026-07-27",
+  "last_updated": "2026-08-10",
   "website_url": "https://nodeology.ai/resources/pxrd2xtal",
   "inference_order": [
     "uni3dar",
@@ -371,6 +371,36 @@
       }
     },
     {
+      "id": "agapi-xrd",
+      "name": "AGAPI-XRD",
+      "category": "core_solver",
+      "verified_at": "2026-08-10",
+      "year": "2026",
+      "inputs_target": "Experimental or simulated PXRD + optional composition/formula constraints → candidate and refined crystal structure",
+      "method": "Hybrid DiffractGPT generation, JARVIS-DFT/COD pattern matching, optional ALIGNN-FF relaxation, and automated GSAS-II/BGMN Rietveld refinement",
+      "reported_performance": "RRUFF (276 minerals with a,b,c ≤10 Å): candidate returned for 93.8% and valid lattice parameters for 79.7%; Alexandria 1,000-structure subset: 94.8–98.1% valid lattice-parameter return, but 229/1,000 StructureMatcher matches in the no-refinement run",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2607.08890",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "first-author reproducibility repository",
+          "url": "https://github.com/crhysc/agapi_xrd_paper",
+          "role": "code"
+        },
+        {
+          "label": "AGAPI-XRD API",
+          "url": "https://atomgpt.org/xrd",
+          "role": "tool"
+        }
+      ],
+      "artifact_note": "The paper-linked atomgptlab repository returned 404 during the 2026-08-10 verification pass; the first-author repository was available"
+    },
+    {
       "id": "crystallm-pi",
       "name": "CrystaLLM-π",
       "category": "core_solver",
@@ -514,7 +544,7 @@
       "id": "xrdiff",
       "name": "XRDiff",
       "category": "core_solver",
-      "verified_at": "2026-07-27",
+      "verified_at": "2026-08-10",
       "year": "2026",
       "inputs_target": "PXRD + stoichiometry, or elements + total atom count → crystal structure",
       "method": "Diffusion model with full-spectrum or peak-descriptor PXRD conditioning",
@@ -527,7 +557,7 @@
         }
       ],
       "artifact_links": [],
-      "artifact_note": "code/data not found during 2026-07-27 verification pass"
+      "artifact_note": "code/data not found during 2026-08-10 verification pass"
     },
     {
       "id": "alphadiffract",
@@ -559,6 +589,25 @@
       ]
     },
     {
+      "id": "lattice-bispectrum-pxrd",
+      "name": "Invariant lattice-bispectrum predictor",
+      "category": "pipeline_module",
+      "verified_at": "2026-08-10",
+      "year": "2026",
+      "task": "Unit-cell parameter prediction from simulated or experimental PXRD",
+      "method": "Transformer prediction of an E(3)-invariant reciprocal-lattice bispectrum followed by dynamic-programming/gradient inversion to lattice vectors",
+      "reported_result": "On MP-20 with the same model architecture, the paper reports length MAPE decreasing from 11.18% to 2.44% and angle MAPE from 12.74% to 3.07% versus direct lattice-parameter prediction",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2607.21829",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [],
+      "artifact_note": "The preprint says code/data will be released on publication; its named GitHub URL returned 404 during the 2026-08-10 verification pass"
+    },
+    {
       "id": "xqueryer",
       "name": "XQueryer",
       "category": "pipeline_module",
@@ -583,10 +632,39 @@
       ]
     },
     {
+      "id": "xmatcher",
+      "name": "XMatcher",
+      "category": "pipeline_module",
+      "verified_at": "2026-08-10",
+      "year": "2026",
+      "task": "Interpretable single- and multi-phase search-match identification from experimental PXRD",
+      "method": "Composition-filtered theoretical-library retrieval, bounded global 2θ shift, one-to-one peak assignment, and AutoMix non-negative mixture fitting",
+      "reported_result": "Version 1.2.0 provides local Python/UI workflows and MP500-derived database artifacts; AutoMix weights are diffraction-evidence contributions, not quantitative phase fractions",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2607.17162",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "Asterbin/Asterbin-XMatcher",
+          "url": "https://github.com/Asterbin/Asterbin-XMatcher",
+          "role": "code"
+        },
+        {
+          "label": "versioned app/database archive",
+          "url": "https://doi.org/10.6084/m9.figshare.32812985",
+          "role": "data"
+        }
+      ]
+    },
+    {
       "id": "xccp",
       "name": "XCCP",
       "category": "pipeline_module",
-      "verified_at": "2026-07-27",
+      "verified_at": "2026-08-10",
       "year": "2026",
       "task": "Contrastive PXRD-candidate matching and space-group identification",
       "method": "Dual-expert PXRD/candidate encoder with Kolmogorov-Arnold Network components",
@@ -605,13 +683,13 @@
           "role": "data"
         }
       ],
-      "artifact_note": "code not found during 2026-07-27 verification pass"
+      "artifact_note": "code not found during 2026-08-10 verification pass"
     },
     {
       "id": "phasedifformer",
       "name": "PhaseDifformer",
       "category": "pipeline_module",
-      "verified_at": "2026-07-27",
+      "verified_at": "2026-08-10",
       "year": "2026",
       "task": "Multi-phase PXRD decomposition",
       "method": "Phase-decomposition diffusion Transformer",
@@ -623,8 +701,13 @@
           "role": "paper"
         }
       ],
-      "artifact_links": [],
-      "artifact_note": "Code/data not found during 2026-07-27 verification pass"
+      "artifact_links": [
+        {
+          "label": "quantumbeam/PhaseDifformer",
+          "url": "https://github.com/quantumbeam/PhaseDifformer",
+          "role": "code"
+        }
+      ]
     },
     {
       "id": "automation-of-rietveld-refinement-through-machine-learning",
@@ -1032,6 +1115,21 @@
         {
           "label": "GitHub",
           "url": "https://github.com/bracerino/xrd-rust",
+          "role": "tool"
+        }
+      ]
+    },
+    {
+      "id": "xrdstudio",
+      "name": "XRDStudio",
+      "category": "utility",
+      "verified_at": "2026-08-10",
+      "task": "Browser-based PXRD simulation and phase-pattern comparison",
+      "notes": "Single-file local app with 171 bundled structures, CIF import, multiple radiation choices, overlays, and reflection export; it does not perform refinement or model texture, absorption, or size/strain broadening",
+      "resource_links": [
+        {
+          "label": "shirishchandrakar/XRDStudio",
+          "url": "https://github.com/shirishchandrakar/XRDStudio",
           "role": "tool"
         }
       ]
