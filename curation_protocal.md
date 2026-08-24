@@ -106,6 +106,36 @@ Representative discovery queries included:
 - `XRD crystal structure created:>=2026-07-27`;
 - exact GitHub searches for `XRDiff`, `PhaseDifformer`, `XCCP`, `PowderXRD_Project`, `XMatcher`, and `AGAPI-XRD`.
 
+## August 24 2026 biweekly refresh
+
+14. **Codex primary-source and artifact audit — Aug 24 2026**
+    Updated local `main`, searched the official arXiv API over the Aug 10–24 interval, queried the official GitHub repository index, searched publisher/project pages, and compared the full canonical README from `Bin-Cao/awesome-xrd2crystal`. The competing board had no commit after Aug 10 and did not list the candidates below. The only newly submitted/released paper-backed resource found after the catalog cutoff was **PowderLine**; a broader cross-reference audit also exposed six material omissions from earlier 2025–2026 releases.
+
+Material changes:
+
+- Added **PowderLine** as a utility. It expresses Rietveld or single-peak analyses as versioned declarative JSON recipes, executes them through refinement engines, and returns structured results. Its advertised Read the Docs site returned 404, so the catalog links the source repository, which includes local documentation, instead. Sources: https://arxiv.org/abs/2608.17009 and https://github.com/NSLS2/PowderLine.
+- Added **CrySTARNet** as a core solver because its official repository and Zenodo record provide runnable code, model checkpoints, and data for PXRD/composition-conditioned structure generation with optional TEM conditioning. No paper or preprint was found, so its >85% top-10 claim is explicitly labeled as repository/Zenodo-reported rather than peer-reviewed. Sources: https://github.com/PKUsam2023/CrySTARNet and https://doi.org/10.5281/zenodo.17896706.
+- Added **AIdex-R2** as a pipeline module for joint extinction-group and unit-cell indexing from low-angle reflections. The paper reports ~98.5% top-5 extinction-group accuracy, ~1.44% cell-parameter MAPE, and >90% indexing success under its strongest combined perturbation benchmark. Public code, weights, and benchmark data were not found. Source: https://pubs.acs.org/doi/10.1021/acs.jcim.6c01362.
+- Added **MatDiffract** as a pipeline module for vector-retrieval phase identification, Rietveld refinement, and phase quantification. The public service was available, but source code and downloadable benchmark artifacts were not found. Sources: https://arxiv.org/abs/2607.20880 and https://matdiffract.nhepsdc.cn/.
+- Added **RADAR-PD** as a pipeline module for X-ray and neutron phase identification using mismatch-tolerant neural screening, lattice nudging, and GSAS-II verification. Sources: https://arxiv.org/abs/2605.12478, https://github.com/LalitYadav07/Impurity_detection_GSAS_ver6, and https://huggingface.co/spaces/Lalityadav07/phase_detection.
+- Added **Dara** as a pipeline module for multiple-hypothesis phase identification using peak-matching-pruned tree search and BGMN refinement. The catalog notes that its open package still needs the external refinement engine and a user-supplied structure database. Sources: https://pubs.acs.org/doi/10.1021/acs.chemmater.5c02820 and https://github.com/CederGroupHub/dara.
+- Added the **Automated Interpretation Framework (AIF)** as a pipeline module for probabilistic ranking and trust assessment of competing phase interpretations. Its code is public, but the repository declares no license and the workflow depends on Dara, an ICSD-backed database, and CBORG/OpenAI-compatible model access. Sources: https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.76450, https://github.com/hackingmaterials/AIF, and https://doi.org/10.5281/zenodo.21141588.
+- Rechecked **XRDiff**, the **invariant lattice-bispectrum predictor**, **XMatcher**, and **XCCP**. Their existing paper/artifact links remained available; no public XRDiff code/data, lattice-bispectrum implementation, or XCCP code release was found.
+- Rechecked all 74 unique pre-existing external URLs. No link returned 404 or a transport error. Publisher and Code Ocean 403 responses were treated as anti-bot/inconclusive rather than broken because the corresponding primary pages were independently discoverable.
+
+Candidates reviewed but not added:
+
+- **ED-CSP v2** remained outside scope because it predicts structures from electron-diffraction detector-plane spots rather than PXRD.
+- **DiffractScout**, **XRDIO**, and the post-cutoff `xrd-autoencoder` tutorial were classified as utilities but excluded because they were repository-only, peripheral to PXRD-to-structure workflows, or lacked a release/paper and independent validation.
+- The `socoolblue/Advanced_XRD_Analysis` repository was not attributed to AIdex-R2 because its README cites a different, unnamed work and provides no link to the AIdex-R2 paper.
+
+Representative discovery queries included:
+
+- official arXiv API queries for `all:"powder X-ray diffraction"`, `all:PXRD`, `all:"X-ray diffraction" AND all:"crystal structure"`, `all:diffraction AND all:"structure prediction"`, and `all:Rietveld`, with submitted-date bounds for Aug 10–24;
+- official GitHub API repository searches for `PXRD`, `XRD`, `"powder X-ray diffraction"`, and `diffraction` with `created:>=2026-08-10`;
+- exact searches for `PowderLine`, `CrySTARNet`, `AIdex-R2`, `MatDiffract`, `RADAR-PD`, `Dara`, `AIF`, `XRDiff`, `XCCP`, and the invariant lattice-bispectrum predictor;
+- publisher searches on ACS, Wiley, Nature, and arXiv for 2026 PXRD indexing, phase identification, refinement, and structure generation.
+
 ### Search strategy for the May 9 2026 pass
 
 Representative search targets included:

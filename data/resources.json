@@ -1,7 +1,7 @@
 {
   "$schema": "./resources.schema.json",
   "schema_version": 1,
-  "last_updated": "2026-08-10",
+  "last_updated": "2026-08-24",
   "website_url": "https://nodeology.ai/resources/pxrd2xtal",
   "inference_order": [
     "uni3dar",
@@ -435,6 +435,30 @@
       ]
     },
     {
+      "id": "crystarnet",
+      "name": "CrySTARNet",
+      "category": "core_solver",
+      "verified_at": "2026-08-24",
+      "year": "2025/2026",
+      "inputs_target": "PXRD + composition, with optional TEM → crystal structure with fractional occupancies",
+      "method": "Contrastive XRD/TEM representation learning + conditional diffusion generation + diffraction-based candidate screening",
+      "reported_performance": "Repository/Zenodo claim: over 85% top-10 match accuracy across six structure families, with several families above 95%; no paper or independent validation was found",
+      "paper_links": [],
+      "artifact_links": [
+        {
+          "label": "PKUsam2023/CrySTARNet",
+          "url": "https://github.com/PKUsam2023/CrySTARNet",
+          "role": "code"
+        },
+        {
+          "label": "Zenodo data and checkpoints",
+          "url": "https://doi.org/10.5281/zenodo.17896706",
+          "role": "data"
+        }
+      ],
+      "artifact_note": "No paper or preprint was found during the 2026-08-24 pass; performance is reported only by the official repository and Zenodo record"
+    },
+    {
       "id": "xrd2mof",
       "name": "Xrd2Mof",
       "category": "core_solver",
@@ -544,7 +568,7 @@
       "id": "xrdiff",
       "name": "XRDiff",
       "category": "core_solver",
-      "verified_at": "2026-08-10",
+      "verified_at": "2026-08-24",
       "year": "2026",
       "inputs_target": "PXRD + stoichiometry, or elements + total atom count → crystal structure",
       "method": "Diffusion model with full-spectrum or peak-descriptor PXRD conditioning",
@@ -557,7 +581,7 @@
         }
       ],
       "artifact_links": [],
-      "artifact_note": "code/data not found during 2026-08-10 verification pass"
+      "artifact_note": "code/data not found during 2026-08-24 verification pass"
     },
     {
       "id": "alphadiffract",
@@ -592,7 +616,7 @@
       "id": "lattice-bispectrum-pxrd",
       "name": "Invariant lattice-bispectrum predictor",
       "category": "pipeline_module",
-      "verified_at": "2026-08-10",
+      "verified_at": "2026-08-24",
       "year": "2026",
       "task": "Unit-cell parameter prediction from simulated or experimental PXRD",
       "method": "Transformer prediction of an E(3)-invariant reciprocal-lattice bispectrum followed by dynamic-programming/gradient inversion to lattice vectors",
@@ -605,7 +629,7 @@
         }
       ],
       "artifact_links": [],
-      "artifact_note": "The preprint says code/data will be released on publication; its named GitHub URL returned 404 during the 2026-08-10 verification pass"
+      "artifact_note": "The preprint says code/data will be released on publication; no public implementation was found during the 2026-08-24 verification pass"
     },
     {
       "id": "xqueryer",
@@ -635,7 +659,7 @@
       "id": "xmatcher",
       "name": "XMatcher",
       "category": "pipeline_module",
-      "verified_at": "2026-08-10",
+      "verified_at": "2026-08-24",
       "year": "2026",
       "task": "Interpretable single- and multi-phase search-match identification from experimental PXRD",
       "method": "Composition-filtered theoretical-library retrieval, bounded global 2θ shift, one-to-one peak assignment, and AutoMix non-negative mixture fitting",
@@ -664,7 +688,7 @@
       "id": "xccp",
       "name": "XCCP",
       "category": "pipeline_module",
-      "verified_at": "2026-08-10",
+      "verified_at": "2026-08-24",
       "year": "2026",
       "task": "Contrastive PXRD-candidate matching and space-group identification",
       "method": "Dual-expert PXRD/candidate encoder with Kolmogorov-Arnold Network components",
@@ -683,7 +707,136 @@
           "role": "data"
         }
       ],
-      "artifact_note": "code not found during 2026-08-10 verification pass"
+      "artifact_note": "code not found during 2026-08-24 verification pass"
+    },
+    {
+      "id": "aidex-r2",
+      "name": "AIdex-R2",
+      "category": "pipeline_module",
+      "verified_at": "2026-08-24",
+      "year": "2026",
+      "task": "Powder-pattern indexing: extinction-group and unit-cell inference from low-angle reflections",
+      "method": "Transformer joint prediction of extinction groups and cell parameters from reflection sequences",
+      "reported_result": "The paper reports ~98.5% top-5 extinction-group accuracy, ~1.44% cell-parameter MAPE, and >90% indexing success under its strongest combined perturbation benchmark",
+      "paper_links": [
+        {
+          "label": "Journal of Chemical Information and Modeling",
+          "url": "https://pubs.acs.org/doi/10.1021/acs.jcim.6c01362",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [],
+      "artifact_note": "public code, weights, and benchmark data not found during the 2026-08-24 verification pass"
+    },
+    {
+      "id": "matdiffract",
+      "name": "MatDiffract",
+      "category": "pipeline_module",
+      "verified_at": "2026-08-24",
+      "year": "2026",
+      "task": "Automated single- and multi-phase identification, refinement, and quantification from PXRD",
+      "method": "Atomly-derived simulated library + multiscale vector retrieval + full-pattern Rietveld refinement and quantitative phase fitting",
+      "reported_result": "875 single-phase experimental patterns: 91.3% top-1 and 97.2% top-10 after refinement; binary/ternary mixtures: 85.0%/70.0% top-1 with 1.2%/1.8% mass-fraction MAE",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2607.20880",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "official MatDiffract service",
+          "url": "https://matdiffract.nhepsdc.cn/",
+          "role": "tool"
+        }
+      ],
+      "artifact_note": "The public analysis service was available, but source code and downloadable benchmark artifacts were not found during the 2026-08-24 pass"
+    },
+    {
+      "id": "radar-pd",
+      "name": "RADAR-PD",
+      "category": "pipeline_module",
+      "verified_at": "2026-08-24",
+      "year": "2026",
+      "task": "Automated phase identification and quantification for X-ray and neutron powder diffraction",
+      "method": "Coarse-Q neural candidate screening + lattice nudging + staged GSAS-II Rietveld verification",
+      "reported_result": "On a curated 291-pattern RRUFF PXRD benchmark, the paper reports recovering reference phases more often and faster than Dara; it also demonstrates multiphase analysis for constant-wavelength and time-of-flight neutron data",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2605.12478",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "LalitYadav07/Impurity_detection_GSAS_ver6",
+          "url": "https://github.com/LalitYadav07/Impurity_detection_GSAS_ver6",
+          "role": "code"
+        },
+        {
+          "label": "RADAR-PD demo",
+          "url": "https://huggingface.co/spaces/Lalityadav07/phase_detection",
+          "role": "tool"
+        }
+      ],
+      "artifact_note": "The implementation requires GSAS-II and a separately downloaded crystallographic database of about 2.3 GB"
+    },
+    {
+      "id": "dara",
+      "name": "Dara",
+      "category": "pipeline_module",
+      "verified_at": "2026-08-24",
+      "year": "2025/2026",
+      "task": "Multiple-hypothesis phase identification and Rietveld refinement from PXRD",
+      "method": "Database filtering + peak-matching-pruned tree search + BGMN full-profile refinement + isostructural grouping",
+      "reported_result": "Commercial precursor mixtures: 18/20 correct for 2-minute scans and 20/20 for 8-minute scans; 2,453 deployed analyses had median runtime 88.9 s and median best-fit Rwp 5.85%",
+      "paper_links": [
+        {
+          "label": "Chemistry of Materials",
+          "url": "https://pubs.acs.org/doi/10.1021/acs.chemmater.5c02820",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "CederGroupHub/dara",
+          "url": "https://github.com/CederGroupHub/dara",
+          "role": "code"
+        }
+      ],
+      "artifact_note": "The open Dara package uses the external BGMN refinement engine and requires a user-supplied structure database; access restrictions depend on the selected database"
+    },
+    {
+      "id": "aif",
+      "name": "Automated Interpretation Framework (AIF)",
+      "category": "pipeline_module",
+      "verified_at": "2026-08-24",
+      "year": "2026",
+      "task": "Probabilistic ranking and trust assessment of competing PXRD phase interpretations",
+      "method": "Bayesian combination of Rwp/peak-match evidence, composition balance, and LLM-derived chemical-plausibility priors",
+      "reported_result": "In 30 blinded cases with a clear expert preference, evaluators selected AIF's top interpretation over the lowest-Rwp baseline in 93% of cases (95% CI 78-98%); trust decisions agreed with experts in about 75-80%",
+      "paper_links": [
+        {
+          "label": "Advanced Science",
+          "url": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.76450",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "hackingmaterials/AIF",
+          "url": "https://github.com/hackingmaterials/AIF",
+          "role": "code"
+        },
+        {
+          "label": "supporting PXRD fits",
+          "url": "https://doi.org/10.5281/zenodo.21141588",
+          "role": "data"
+        }
+      ],
+      "artifact_note": "The repository declares no software license and depends on Dara, an ICSD-backed structure database, and CBORG/OpenAI-compatible model access"
     },
     {
       "id": "phasedifformer",
@@ -1090,6 +1243,26 @@
         {
           "label": "GSAS-II",
           "url": "https://cai.xray.aps.anl.gov/Featured-Projects/GSAS-II",
+          "role": "tool"
+        }
+      ]
+    },
+    {
+      "id": "powderline",
+      "name": "PowderLine",
+      "category": "utility",
+      "verified_at": "2026-08-24",
+      "task": "Programmatic Rietveld refinement and single-peak fitting",
+      "notes": "Encodes a full refinement as a versioned declarative JSON recipe and returns structured results through GSAS-II, TOPAS v7, or EasyDiffraction; the paper's two-phase worked example reports Rwp = 8.46%. Hosted documentation returned 404 on 2026-08-24, but source documentation is included in the repository",
+      "resource_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2608.17009",
+          "role": "paper"
+        },
+        {
+          "label": "NSLS2/PowderLine",
+          "url": "https://github.com/NSLS2/PowderLine",
           "role": "tool"
         }
       ]
