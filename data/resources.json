@@ -1,7 +1,7 @@
 {
   "$schema": "./resources.schema.json",
   "schema_version": 1,
-  "last_updated": "2026-08-24",
+  "last_updated": "2026-09-07",
   "website_url": "https://nodeology.ai/resources/pxrd2xtal",
   "inference_order": [
     "uni3dar",
@@ -14,6 +14,7 @@
     "https://academic.oup.com/nsr/article/12/12/nwaf421/8268901",
     "https://arxiv.org/abs/2603.00965",
     "https://arxiv.org/abs/2603.23367",
+    "https://arxiv.org/abs/2609.00070",
     "https://github.com/Bin-Cao/XQueryer",
     "https://github.com/ai4mat-zhu/XRDSol",
     "https://github.com/liqi-529/RealPXRD-Solver",
@@ -568,7 +569,7 @@
       "id": "xrdiff",
       "name": "XRDiff",
       "category": "core_solver",
-      "verified_at": "2026-08-24",
+      "verified_at": "2026-09-07",
       "year": "2026",
       "inputs_target": "PXRD + stoichiometry, or elements + total atom count → crystal structure",
       "method": "Diffusion model with full-spectrum or peak-descriptor PXRD conditioning",
@@ -581,7 +582,7 @@
         }
       ],
       "artifact_links": [],
-      "artifact_note": "code/data not found during 2026-08-24 verification pass"
+      "artifact_note": "code/data not found during 2026-09-07 verification pass"
     },
     {
       "id": "alphadiffract",
@@ -616,7 +617,7 @@
       "id": "lattice-bispectrum-pxrd",
       "name": "Invariant lattice-bispectrum predictor",
       "category": "pipeline_module",
-      "verified_at": "2026-08-24",
+      "verified_at": "2026-09-07",
       "year": "2026",
       "task": "Unit-cell parameter prediction from simulated or experimental PXRD",
       "method": "Transformer prediction of an E(3)-invariant reciprocal-lattice bispectrum followed by dynamic-programming/gradient inversion to lattice vectors",
@@ -629,7 +630,7 @@
         }
       ],
       "artifact_links": [],
-      "artifact_note": "The preprint says code/data will be released on publication; no public implementation was found during the 2026-08-24 verification pass"
+      "artifact_note": "The preprint says code/data will be released on publication; no public implementation was found during the 2026-09-07 verification pass"
     },
     {
       "id": "xqueryer",
@@ -688,7 +689,7 @@
       "id": "xccp",
       "name": "XCCP",
       "category": "pipeline_module",
-      "verified_at": "2026-08-24",
+      "verified_at": "2026-09-07",
       "year": "2026",
       "task": "Contrastive PXRD-candidate matching and space-group identification",
       "method": "Dual-expert PXRD/candidate encoder with Kolmogorov-Arnold Network components",
@@ -707,13 +708,13 @@
           "role": "data"
         }
       ],
-      "artifact_note": "code not found during 2026-08-24 verification pass"
+      "artifact_note": "code not found during 2026-09-07 verification pass"
     },
     {
       "id": "aidex-r2",
       "name": "AIdex-R2",
       "category": "pipeline_module",
-      "verified_at": "2026-08-24",
+      "verified_at": "2026-09-07",
       "year": "2026",
       "task": "Powder-pattern indexing: extinction-group and unit-cell inference from low-angle reflections",
       "method": "Transformer joint prediction of extinction groups and cell parameters from reflection sequences",
@@ -726,13 +727,13 @@
         }
       ],
       "artifact_links": [],
-      "artifact_note": "public code, weights, and benchmark data not found during the 2026-08-24 verification pass"
+      "artifact_note": "public code, weights, and benchmark data not found during the 2026-09-07 verification pass"
     },
     {
       "id": "matdiffract",
       "name": "MatDiffract",
       "category": "pipeline_module",
-      "verified_at": "2026-08-24",
+      "verified_at": "2026-09-07",
       "year": "2026",
       "task": "Automated single- and multi-phase identification, refinement, and quantification from PXRD",
       "method": "Atomly-derived simulated library + multiscale vector retrieval + full-pattern Rietveld refinement and quantitative phase fitting",
@@ -751,7 +752,7 @@
           "role": "tool"
         }
       ],
-      "artifact_note": "The public analysis service was available, but source code and downloadable benchmark artifacts were not found during the 2026-08-24 pass"
+      "artifact_note": "The public analysis service was available, but source code and downloadable benchmark artifacts were not found during the 2026-09-07 pass"
     },
     {
       "id": "radar-pd",
@@ -839,6 +840,36 @@
       "artifact_note": "The repository declares no software license and depends on Dara, an ICSD-backed structure database, and CBORG/OpenAI-compatible model access"
     },
     {
+      "id": "autoxrd",
+      "name": "AutoXRD",
+      "category": "pipeline_module",
+      "verified_at": "2026-09-07",
+      "year": "2026",
+      "task": "Autonomous powder-diffraction analysis, staged Rietveld workflow execution, and evidence-based result validation",
+      "method": "LLM agent runtime with reusable XRD procedures, FullProf/GSAS-II backends, deterministic pre/post checks, and append-only refinement trajectories",
+      "reported_result": "Across 1,340 runs on ten language models, the paper reports a mean score of 57.8/100, decreasing from 61.9 on 100 diagnostic tasks to 53.7 on 34 executable end-to-end workflows; all six framework-component ablations reduced performance",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2609.00070",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "Stephen-SMJ/AutoXRD",
+          "url": "https://github.com/Stephen-SMJ/AutoXRD",
+          "role": "code"
+        },
+        {
+          "label": "project site",
+          "url": "https://stephen-smj.github.io/AutoXRD/",
+          "role": "docs"
+        }
+      ],
+      "artifact_note": "Source code and tests are public, but the repository declares no software license and has no tagged release; full refinement requires a model API key and separately configured FullProf and/or GSAS-II backends"
+    },
+    {
       "id": "phasedifformer",
       "name": "PhaseDifformer",
       "category": "pipeline_module",
@@ -864,22 +895,55 @@
     },
     {
       "id": "automation-of-rietveld-refinement-through-machine-learning",
-      "name": "Automation of Rietveld refinement through machine learning",
+      "name": "RAPID",
       "category": "pipeline_module",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-09-07",
       "year": "2026",
-      "task": "Fast Rietveld-like refinement / parameter prediction",
-      "method": "Convolutional neural network trained on simulated PXRD profiles",
+      "task": "CNN initialization and automated FullProf Rietveld refinement from PXRD",
+      "method": "Convolutional neural network trained on augmented simulated profiles to predict structure/profile parameters, followed by AutoFP/FullProf refinement",
       "reported_result": "Demonstrated refined structures for CeO₂, Tb₂BaCoO₅, and PbSO₄ with reliability factors comparable to conventional Rietveld refinement",
       "paper_links": [
         {
-          "label": "Journal of Applied Crystallography / ORA",
-          "url": "https://ora.ox.ac.uk/objects/uuid:f25209eb-c034-4ef5-9056-6cab8cf303d1",
+          "label": "Journal of Applied Crystallography",
+          "url": "https://doi.org/10.1107/S1600576726001494",
           "role": "paper"
         }
       ],
-      "artifact_links": [],
-      "artifact_note": "Article-provided workflow; standalone code not found during 2026-05-09 pass"
+      "artifact_links": [
+        {
+          "label": "DataForgeSci/RAPID",
+          "url": "https://github.com/DataForgeSci/RAPID",
+          "role": "code"
+        }
+      ],
+      "artifact_note": "GPL-3.0 code is public; the current workflow is Windows-only and requires separate Python 2.7 and 3.11 environments plus AutoFP/FullProf"
+    },
+    {
+      "id": "xrdbench",
+      "name": "XRDBench",
+      "category": "dataset",
+      "verified_at": "2026-09-07",
+      "size": "100 diagnostic tasks + 34 executable workflows",
+      "sim_exp": "Controlled + Exp",
+      "format": "JSON task/oracle definitions + XYE/PRM/CIF inputs",
+      "notes": "Powder-diffraction agent benchmark spanning diagnostic reasoning and 11 end-to-end task families; the 34 measured-pattern workflows include 30 X-ray and 4 neutron cases. Published snapshots include evaluator-only oracles and must be excluded from blind solver workspaces",
+      "resource_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2609.00070",
+          "role": "paper"
+        },
+        {
+          "label": "Stephen-SMJ/XRDBench",
+          "url": "https://github.com/Stephen-SMJ/XRDBench",
+          "role": "data"
+        },
+        {
+          "label": "interactive explorer",
+          "url": "https://stephen-smj.github.io/XRDBench/",
+          "role": "docs"
+        }
+      ]
     },
     {
       "id": "hmof-100-hmof-400",
@@ -1182,15 +1246,15 @@
       "id": "opxrd",
       "name": "opXRD",
       "category": "dataset",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-09-07",
       "size": "92,552 patterns; 2,179 at least partially labeled",
       "sim_exp": "Exp",
       "format": "Diffractograms + metadata",
       "notes": "Open experimental PXRD database sourced from six contributing institutions; useful for experimental-domain adaptation and retrieval",
       "resource_links": [
         {
-          "label": "Data portal",
-          "url": "https://xrd.aimat.science/",
+          "label": "Zenodo archive",
+          "url": "https://doi.org/10.5281/zenodo.14279434",
           "role": "data"
         },
         {
@@ -1251,9 +1315,9 @@
       "id": "powderline",
       "name": "PowderLine",
       "category": "utility",
-      "verified_at": "2026-08-24",
+      "verified_at": "2026-09-07",
       "task": "Programmatic Rietveld refinement and single-peak fitting",
-      "notes": "Encodes a full refinement as a versioned declarative JSON recipe and returns structured results through GSAS-II, TOPAS v7, or EasyDiffraction; the paper's two-phase worked example reports Rwp = 8.46%. Hosted documentation returned 404 on 2026-08-24, but source documentation is included in the repository",
+      "notes": "Encodes a full refinement as a versioned declarative JSON recipe and returns structured results through GSAS-II, TOPAS v7, or EasyDiffraction; the paper's two-phase worked example reports Rwp = 8.46%. Hosted and repository-local documentation are available",
       "resource_links": [
         {
           "label": "arXiv",
@@ -1264,6 +1328,11 @@
           "label": "NSLS2/PowderLine",
           "url": "https://github.com/NSLS2/PowderLine",
           "role": "tool"
+        },
+        {
+          "label": "documentation",
+          "url": "https://nsls2.github.io/PowderLine/",
+          "role": "docs"
         }
       ]
     },
