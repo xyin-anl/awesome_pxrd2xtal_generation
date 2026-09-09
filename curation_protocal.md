@@ -136,6 +136,36 @@ Representative discovery queries included:
 - exact searches for `PowderLine`, `CrySTARNet`, `AIdex-R2`, `MatDiffract`, `RADAR-PD`, `Dara`, `AIF`, `XRDiff`, `XCCP`, and the invariant lattice-bispectrum predictor;
 - publisher searches on ACS, Wiley, Nature, and arXiv for 2026 PXRD indexing, phase identification, refinement, and structure generation.
 
+## September 7 2026 biweekly refresh
+
+15. **Codex primary-source and artifact audit — Sep 7 2026**
+    Updated local `main`, searched the official arXiv API over the Aug 24–Sep 7 interval, queried the official GitHub repository index, searched publisher and project pages, and compared the canonical README from `Bin-Cao/awesome-xrd2crystal`. The competing board still had no commit after Jul 14 and supplied no post-cutoff candidate. The date-bounded arXiv search returned six records, of which only **AutoXRD** was a reusable in-scope PXRD resource.
+
+Material changes:
+
+- Added **AutoXRD** as a pipeline module for language-model-planned powder-diffraction analysis with executable FullProf/GSAS-II backends, deterministic physical checks, and preserved refinement trajectories. The paper reports 1,340 runs across ten models, with the mean score decreasing from 61.9/100 on 100 diagnostic tasks to 53.7/100 on 34 end-to-end workflows. Public source and tests are available, but the repository has no declared software license or tagged release; full refinement also requires model API access and separately configured crystallographic backends. Sources: https://arxiv.org/abs/2609.00070, https://github.com/Stephen-SMJ/AutoXRD, and https://stephen-smj.github.io/AutoXRD/.
+- Added **XRDBench** as a dataset/benchmark. Its public snapshot contains 100 diagnostic tasks and 34 measured-pattern workflows across 11 task families, including 30 X-ray and four neutron cases, with downloadable XYE/PRM/CIF inputs. Because the published JSON also exposes evaluator oracles, those files must not be mounted in a blind solver workspace. Sources: https://arxiv.org/abs/2609.00070, https://github.com/Stephen-SMJ/XRDBench, and https://stephen-smj.github.io/XRDBench/.
+- Corrected the existing machine-learning Rietveld entry to its released name, **RAPID**, and added the official GPL-3.0 repository. The current implementation is Windows-only and requires separate Python 2.7 and 3.11 environments plus AutoFP/FullProf. Sources: https://doi.org/10.1107/S1600576726001494 and https://github.com/DataForgeSci/RAPID.
+- Replaced the opXRD web portal, which returned HTTP 500 during this audit, with the stable Zenodo dataset archive while retaining the paper record. Sources: https://doi.org/10.5281/zenodo.14279434 and https://publikationen.bibliothek.kit.edu/1000182521.
+- Added PowderLine's newly advertised and working GitHub Pages documentation. Sources: https://github.com/NSLS2/PowderLine and https://nsls2.github.io/PowderLine/.
+- Rechecked **XRDiff**, the **invariant lattice-bispectrum predictor**, **XCCP**, **AIdex-R2**, and **MatDiffract**. Their available primary links remained reachable, but no public XRDiff code/data, lattice-bispectrum implementation, XCCP code, AIdex-R2 code/weights/benchmark data, or downloadable MatDiffract implementation/benchmark artifacts were found.
+- Rechecked all 90 unique catalogued external URLs. No link returned 404 or a transport error. Ten publisher/Code Ocean links returned HTTP 403 and were treated as anti-bot/inconclusive because their primary records remained independently discoverable; the opXRD HTTP 500 was resolved by linking its official archive.
+- Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog.py check` (56 resources); `python3 -m unittest discover -s tests -v` (8 passed); and `git diff --check`.
+
+Candidates reviewed but not added:
+
+- **EXIT** was published in ACS Central Science after the cutoff, but it uses XRD alongside MOF identity to predict adsorption and decomposition properties rather than to infer crystal structure, so it is outside this catalog's task scope.
+- **Artifact segmentation using the U-Net architecture for powder X-ray diffraction images** operates on two-dimensional detector images upstream of the catalog's one-dimensional PXRD-to-structure workflow and was therefore excluded.
+- `ArchiteuthisDuxDux/pxrd-ml-crystal-structure` contains a detailed project report but no implementation or data. `moobeed/pxrdfc` and `lauraliborio/pxrd-plotter` were effectively empty, and `manuhergo/rietveld-refinement` was only a package stub.
+- `cristian-galeazzi/XRD-Plotter` was classified as a utility but excluded because it post-processes GSAS-II CSV exports into publication figures rather than supporting structure inference, refinement, or benchmark evaluation.
+
+Representative discovery queries included:
+
+- an official arXiv API union query for `"powder X-ray diffraction"`, `PXRD`, `Rietveld`, and `diffraction AND "structure prediction"`, bounded to Aug 24–Sep 7;
+- official GitHub API repository searches for `PXRD`, `"powder X-ray diffraction"`, `Rietveld`, and `XRD "crystal structure"` with `created:>=2026-08-24`;
+- exact GitHub searches for `XRDiff`, `XCCP`, the invariant lattice-bispectrum predictor, `AIdex-R2`, `MatDiffract`, PowderLine, and the catalogued machine-learning Rietveld paper;
+- publisher searches on ACS, Nature, Wiley, and IUCr for 2026 PXRD machine learning, indexing, refinement, and structure prediction.
+
 ### Search strategy for the May 9 2026 pass
 
 Representative search targets included:
