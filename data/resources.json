@@ -1,7 +1,7 @@
 {
   "$schema": "./resources.schema.json",
   "schema_version": 1,
-  "last_updated": "2026-09-07",
+  "last_updated": "2026-09-21",
   "website_url": "https://nodeology.ai/resources/pxrd2xtal",
   "inference_order": [
     "uni3dar",
@@ -15,6 +15,7 @@
     "https://arxiv.org/abs/2603.00965",
     "https://arxiv.org/abs/2603.23367",
     "https://arxiv.org/abs/2609.00070",
+    "https://arxiv.org/abs/2609.06908",
     "https://github.com/Bin-Cao/XQueryer",
     "https://github.com/ai4mat-zhu/XRDSol",
     "https://github.com/liqi-529/RealPXRD-Solver",
@@ -463,8 +464,8 @@
       "id": "xrd2mof",
       "name": "Xrd2Mof",
       "category": "core_solver",
-      "verified_at": "2026-07-18",
-      "year": "2026",
+      "verified_at": "2026-09-21",
+      "year": "2025/2026",
       "inputs_target": "PXRD + metal-node and organic-linker priors → atomic MOF structure",
       "method": "Stable-Diffusion framework with a coarse-grained MOF representation and atomic assembly",
       "reported_performance": "Over 93% accuracy identifying the ground-truth MOF corresponding to a target XRD pattern in the author-reported setting",
@@ -481,7 +482,8 @@
           "url": "https://github.com/PKUsam2023/Xrd2Mof",
           "role": "code"
         }
-      ]
+      ],
+      "artifact_note": "MIT source is public; the current README directs full-data requests to the authors. Training structures originate from CSD, whose access terms apply; the September repository update changes installation instructions, not the published performance claim"
     },
     {
       "id": "xrdsol",
@@ -569,7 +571,7 @@
       "id": "xrdiff",
       "name": "XRDiff",
       "category": "core_solver",
-      "verified_at": "2026-09-07",
+      "verified_at": "2026-09-21",
       "year": "2026",
       "inputs_target": "PXRD + stoichiometry, or elements + total atom count → crystal structure",
       "method": "Diffusion model with full-spectrum or peak-descriptor PXRD conditioning",
@@ -582,7 +584,7 @@
         }
       ],
       "artifact_links": [],
-      "artifact_note": "code/data not found during 2026-09-07 verification pass"
+      "artifact_note": "code/data not found during 2026-09-21 verification pass"
     },
     {
       "id": "alphadiffract",
@@ -617,7 +619,7 @@
       "id": "lattice-bispectrum-pxrd",
       "name": "Invariant lattice-bispectrum predictor",
       "category": "pipeline_module",
-      "verified_at": "2026-09-07",
+      "verified_at": "2026-09-21",
       "year": "2026",
       "task": "Unit-cell parameter prediction from simulated or experimental PXRD",
       "method": "Transformer prediction of an E(3)-invariant reciprocal-lattice bispectrum followed by dynamic-programming/gradient inversion to lattice vectors",
@@ -630,7 +632,67 @@
         }
       ],
       "artifact_links": [],
-      "artifact_note": "The preprint says code/data will be released on publication; no public implementation was found during the 2026-09-07 verification pass"
+      "artifact_note": "The preprint says code/data will be released on publication; no public implementation was found during the 2026-09-21 verification pass"
+    },
+    {
+      "id": "chatxrd",
+      "name": "ChatXRD",
+      "category": "pipeline_module",
+      "verified_at": "2026-09-21",
+      "year": "2026",
+      "task": "Crystal-system classification and lattice prediction from extracted PXRD peak positions, not raw experimental profiles",
+      "method": "GPT-5 agent with decision-tree tool selection and self-attention-decayed transformer classifiers/regressors",
+      "reported_result": "Authors report up to 97.3% classification accuracy and lattice R^2 of 0.88-0.99 on simulated/curated peak data; classifier results select the best of seven split seeds, distinct from the 150-sample agent evaluation",
+      "paper_links": [
+        {
+          "label": "Materials Genome Engineering Advances",
+          "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/mgea.70095",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "Zenodo data archive",
+          "url": "https://doi.org/10.5281/zenodo.19535340",
+          "role": "data"
+        }
+      ],
+      "artifact_note": "The CC-BY-4.0 Zenodo record publishes data.zip; archive contents were not downloaded in this audit. No separate official source-code or checkpoint release was found as of 2026-09-21; experimental peak extraction remains a stated limitation"
+    },
+    {
+      "id": "galaxi",
+      "name": "GALAXI",
+      "category": "pipeline_module",
+      "verified_at": "2026-09-21",
+      "year": "2026",
+      "task": "Single- and multi-phase identification from PXRD against a supplied reference-structure library",
+      "method": "Independent phase-specific binary CNN screening followed by Dara multiple-hypothesis Rietveld refinement",
+      "reported_result": "Preprint reports group-level micro-F1 = 0.935 after refinement on 61 pristine experimental patterns (365 CIFs grouped into 317 profile-similarity classes); not exact-CIF recovery or a test over the 64,594-structure hosted library",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2609.06908",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "Szymanski-Group/galaxi",
+          "url": "https://github.com/Szymanski-Group/galaxi",
+          "role": "code"
+        },
+        {
+          "label": "365-phase example weights",
+          "url": "https://doi.org/10.6084/m9.figshare.33360183",
+          "role": "model"
+        },
+        {
+          "label": "advertised phase-identification service",
+          "url": "https://galaxi-xrd.com/",
+          "role": "tool"
+        }
+      ],
+      "artifact_note": "MIT source and example weights are public; the complete hosted weight library was not verified downloadable. Local HTTPS checks of the advertised service failed certificate-chain validation on 2026-09-21. The paper's refinement stage uses Dara/BGMN; pretrained examples require a 5-105 degree, 7001-point grid"
     },
     {
       "id": "xqueryer",
@@ -660,11 +722,11 @@
       "id": "xmatcher",
       "name": "XMatcher",
       "category": "pipeline_module",
-      "verified_at": "2026-08-24",
+      "verified_at": "2026-09-21",
       "year": "2026",
       "task": "Interpretable single- and multi-phase search-match identification from experimental PXRD",
       "method": "Composition-filtered theoretical-library retrieval, bounded global 2θ shift, one-to-one peak assignment, and AutoMix non-negative mixture fitting",
-      "reported_result": "Version 1.2.0 provides local Python/UI workflows and MP500-derived database artifacts; AutoMix weights are diffraction-evidence contributions, not quantitative phase fractions",
+      "reported_result": "The official archive provides Desktop v1.3.0 Windows/macOS packages and reports 2,007 added RRUFF structures; AutoMix weights are diffraction-evidence contributions, not quantitative phase fractions",
       "paper_links": [
         {
           "label": "arXiv",
@@ -674,22 +736,18 @@
       ],
       "artifact_links": [
         {
-          "label": "Asterbin/Asterbin-XMatcher",
-          "url": "https://github.com/Asterbin/Asterbin-XMatcher",
-          "role": "code"
-        },
-        {
-          "label": "versioned app/database archive",
+          "label": "versioned desktop archive",
           "url": "https://doi.org/10.6084/m9.figshare.32812985",
-          "role": "data"
+          "role": "tool"
         }
-      ]
+      ],
+      "artifact_note": "The formerly official GitHub repository returned 404 on repeated web/API checks on 2026-09-21; no replacement source repository was verified. The Figshare archive remains available and labels its deposit CC-BY-4.0"
     },
     {
       "id": "xccp",
       "name": "XCCP",
       "category": "pipeline_module",
-      "verified_at": "2026-09-07",
+      "verified_at": "2026-09-21",
       "year": "2026",
       "task": "Contrastive PXRD-candidate matching and space-group identification",
       "method": "Dual-expert PXRD/candidate encoder with Kolmogorov-Arnold Network components",
@@ -708,13 +766,13 @@
           "role": "data"
         }
       ],
-      "artifact_note": "code not found during 2026-09-07 verification pass"
+      "artifact_note": "code not found during 2026-09-21 verification pass"
     },
     {
       "id": "aidex-r2",
       "name": "AIdex-R2",
       "category": "pipeline_module",
-      "verified_at": "2026-09-07",
+      "verified_at": "2026-09-21",
       "year": "2026",
       "task": "Powder-pattern indexing: extinction-group and unit-cell inference from low-angle reflections",
       "method": "Transformer joint prediction of extinction groups and cell parameters from reflection sequences",
@@ -727,13 +785,13 @@
         }
       ],
       "artifact_links": [],
-      "artifact_note": "public code, weights, and benchmark data not found during the 2026-09-07 verification pass"
+      "artifact_note": "public code, weights, and benchmark data not found during the 2026-09-21 verification pass"
     },
     {
       "id": "matdiffract",
       "name": "MatDiffract",
       "category": "pipeline_module",
-      "verified_at": "2026-09-07",
+      "verified_at": "2026-09-21",
       "year": "2026",
       "task": "Automated single- and multi-phase identification, refinement, and quantification from PXRD",
       "method": "Atomly-derived simulated library + multiscale vector retrieval + full-pattern Rietveld refinement and quantitative phase fitting",
@@ -752,7 +810,7 @@
           "role": "tool"
         }
       ],
-      "artifact_note": "The public analysis service was available, but source code and downloadable benchmark artifacts were not found during the 2026-09-07 pass"
+      "artifact_note": "The public analysis service was available, but no verified official source-code or benchmark-data release was found during the 2026-09-21 pass; a newly found same-name data repository could not be attributed to the authors"
     },
     {
       "id": "radar-pd",
@@ -917,6 +975,28 @@
         }
       ],
       "artifact_note": "GPL-3.0 code is public; the current workflow is Windows-only and requires separate Python 2.7 and 3.11 environments plus AutoFP/FullProf"
+    },
+    {
+      "id": "galaxi-experimental-benchmark",
+      "name": "GALAXI experimental benchmark",
+      "category": "dataset",
+      "verified_at": "2026-09-21",
+      "size": "128 public XY files; paper describes 130 experimental test patterns",
+      "sim_exp": "Exp / experimental stress tests",
+      "format": "XY profiles + reference CIFs + model configurations",
+      "notes": "The public example includes 365 reference CIFs and artifact-grouped patterns. The paper separates 61 pristine patterns from 69 stress tests; the inspected snapshot has 128 XY files, so full paper-cohort completeness is not established. Phase labels occur in filenames and must be hidden in blind evaluation",
+      "resource_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2609.06908",
+          "role": "paper"
+        },
+        {
+          "label": "official benchmark example",
+          "url": "https://github.com/Szymanski-Group/galaxi/tree/main/examples/pretrained_catalog",
+          "role": "data"
+        }
+      ]
     },
     {
       "id": "xrdbench",
@@ -1212,15 +1292,15 @@
       "id": "rruff",
       "name": "RRUFF",
       "category": "dataset",
-      "verified_at": "2026-05-09",
-      "size": "1k+ XRD patterns",
+      "verified_at": "2026-09-21",
+      "size": "Mineral spectra collection; current PXRD subset count not reverified",
       "sim_exp": "Exp",
       "format": "DB / spectra",
-      "notes": "Reference mineral Raman/IR/XRD data; commonly used for experimental transfer",
+      "notes": "Reference mineral Raman/IR/XRD data used for experimental transfer; the new official portal is still under construction. Replaces rruff.info, which redirected to the unrelated Gale Crater database during this audit",
       "resource_links": [
         {
           "label": "RRUFF",
-          "url": "https://rruff.info/",
+          "url": "https://www.rruff.net/",
           "role": "data"
         }
       ]
@@ -1333,6 +1413,46 @@
           "label": "documentation",
           "url": "https://nsls2.github.io/PowderLine/",
           "role": "docs"
+        }
+      ]
+    },
+    {
+      "id": "eraf4xrd",
+      "name": "ERAF4XRD",
+      "category": "utility",
+      "verified_at": "2026-09-21",
+      "task": "Literature-derived experimental PXRD figure and metadata curation",
+      "notes": "Downloads/screens papers, links XRD figures to metadata, and checks extracted records against source evidence; not a crystal solver or a released numerical-pattern corpus. BSD-3-Clause source requires model API access and source installation; package-index releases are not yet available. The paper's benchmark DOI (10.5281/zenodo.22683615) returned 404 on 2026-09-21",
+      "resource_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2609.18583",
+          "role": "paper"
+        },
+        {
+          "label": "niaz60/ERAF4XRD",
+          "url": "https://github.com/niaz60/ERAF4XRD",
+          "role": "code"
+        }
+      ]
+    },
+    {
+      "id": "xrdkit",
+      "name": "xrdkit",
+      "category": "utility",
+      "verified_at": "2026-09-21",
+      "task": "PXRD ingestion, candidate matching, and scripted Le Bail/Rietveld workflows",
+      "notes": "MIT Python package with XRDML/XY/XYE readers, COD candidate matching, and a separate GSAS-II refinement driver. PyPI v0.2.0 is available; matching requires an element set and refinement requires starting structures/instrument parameters. No bundled benchmark data or peer-reviewed performance claim; API remains under active development",
+      "resource_links": [
+        {
+          "label": "amirkhesro/xrdkit",
+          "url": "https://github.com/amirkhesro/xrdkit",
+          "role": "code"
+        },
+        {
+          "label": "PyPI",
+          "url": "https://pypi.org/project/xrdkit/",
+          "role": "tool"
         }
       ]
     },

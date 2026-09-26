@@ -166,6 +166,44 @@ Representative discovery queries included:
 - exact GitHub searches for `XRDiff`, `XCCP`, the invariant lattice-bispectrum predictor, `AIdex-R2`, `MatDiffract`, PowderLine, and the catalogued machine-learning Rietveld paper;
 - publisher searches on ACS, Nature, Wiley, and IUCr for 2026 PXRD machine learning, indexing, refinement, and structure prediction.
 
+## September 21 2026 biweekly refresh
+
+16. **Codex primary-source and artifact audit - Sep 21 2026**
+    Started from a clean checkout and fast-forwarded `main` to `d8f5a7d`, including the merged previous refresh. Searched from the canonical Sep 7 cutoff inclusively because it records a date, not a timestamp. This includes same-day publications that were not captured in the previous pass. The expanded official arXiv query returned 32 records; the competing `Bin-Cao/awesome-xrd2crystal` board still had no commit after Jul 14 and supplied no new candidate. Technical claims below were checked against the original papers and official artifacts, not the competing board.
+
+Material additions and corrections:
+
+- Added **GALAXI** as a `pipeline_module`, not a full structure generator. Its paper benchmark and downloadable 365-phase example are distinguished from the larger hosted library. The score counts profile-similarity groups rather than exact CIF identities. Sources: https://arxiv.org/abs/2609.06908, https://github.com/Szymanski-Group/galaxi, https://doi.org/10.6084/m9.figshare.33360183, and https://galaxi-xrd.com/.
+- Added the **GALAXI experimental benchmark** as a `dataset`. The GitHub tree contains 128 XY files and 365 reference CIFs, whereas the paper describes 130 experimental test patterns. Full cohort completeness is therefore not claimed. Filenames expose phase labels and should not be passed unchanged to a blind solver. Source: https://github.com/Szymanski-Group/galaxi/tree/main/examples/pretrained_catalog.
+- Added **ChatXRD** as a `pipeline_module` for extracted-peak symmetry/lattice prediction. Recorded simulated/curated-data and best-of-seven-split caveats rather than presenting its classifier accuracy as raw experimental or agent-level accuracy. The official CC-BY-4.0 data archive exists, but no separate code/checkpoint release was found. Sources: https://onlinelibrary.wiley.com/doi/full/10.1002/mgea.70095 and https://doi.org/10.5281/zenodo.19535340.
+- Added **ERAF4XRD** as a `utility` for literature-to-PXRD figure/metadata curation, not a crystal solver or numeric pattern dataset. Its BSD-3-Clause source is available and requires model API access; the README warns that package-index installation is not yet available. The paper's benchmark DOI, `10.5281/zenodo.22683615`, returned 404 both at the DOI resolver and Zenodo API, so it was not added as an available dataset. Sources: https://arxiv.org/abs/2609.18583 and https://github.com/niaz60/ERAF4XRD.
+- Added **xrdkit** as a `utility` after its Sep 12 initial package release and Sep 21 v0.2.0 release. Checked its package metadata, source readers, COD matching code, and GSAS-II workflow documentation. The entry records external refinement dependencies and starting-model requirements without adding a performance claim. Sources: https://github.com/amirkhesro/xrdkit and https://pypi.org/project/xrdkit/.
+- Corrected **XMatcher** to its official Desktop v1.3.0 archive. Removed the GitHub link after repeated HTTP 404 responses from both the repository page and API; cached search results still displayed the former repository and were not treated as current availability. The Figshare record retains Windows/macOS downloads and a CC-BY-4.0 deposit license. Sources: https://arxiv.org/abs/2607.17162 and https://doi.org/10.6084/m9.figshare.32812985.
+- Corrected **RRUFF** to its new official portal. The old `rruff.info` URL returned HTTP 200 but redirected to the unrelated Gale Crater database. Removed the unverified current PXRD subset count and noted the new portal's own under-construction warning. Source: https://www.rruff.net/.
+- Reverified **Xrd2Mof** after its September installation updates, corrected its year to distinguish Dec 2025 online publication from the 2026 journal issue, and recorded the README's full-data-on-request/CSD access caveat. No new performance claim was inferred from the code update. Sources: https://pubs.acs.org/doi/10.1021/jacs.5c16416 and https://github.com/PKUsam2023/Xrd2Mof.
+- Rechecked **XRDiff**, the **invariant lattice-bispectrum predictor**, **XCCP**, **AIdex-R2**, and **MatDiffract** against their paper records and current artifact searches. Their verified official release status did not change. Only these directly reviewed entries and the corrections above received new `verified_at` dates; transport-only checks did not refresh other entries.
+
+Availability and validation boundaries:
+
+- Checked all 96 unique pre-existing external catalog URLs: 82 returned HTTP 200, two returned HTTP 202, eleven returned HTTP 403, and XMatcher returned HTTP 404. A 200 response was not equated with correct content: RRUFF redirected incorrectly, OpenReview presented challenge redirects, and several Nature URLs carried cookie-challenge parameters. Publisher/Code Ocean restrictions remain inconclusive, not evidence that the papers or artifacts disappeared.
+- Downloadable archive inventories were inspected through official APIs; large model/data archives were not downloaded, and published inference/refinement pipelines were not executed. Availability checks do not reproduce author-reported performance or establish that hosted inference works.
+- Checked all 12 new/replacement external URLs. GALAXI's advertised service failed local HTTPS certificate-chain validation; the source and example-weight records were accessible. The service link is retained as an advertised resource with this explicit caveat, not asserted to be operational. ChatXRD's publisher returned 403 to curl but its full article was retrievable through the web tool; Figshare's landing page returned 202 and its API exposed the weight inventory.
+- Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog.py check` (61 resources); `python3 -m unittest discover -s tests -v` (8 passed); and `git diff --check`.
+
+Candidates reviewed but not added:
+
+- **PXRD2Seq** is an intended `pipeline_module`, but its preliminary release currently contains dataset-construction utilities rather than the model, checkpoints, processed data, or exact evaluation manifests. Keep it on the watchlist for the announced model release; do not describe it as a runnable solver. Source: https://github.com/Slosmr/PXRD2Seq.
+- `1213718318/MatDiffract` is a new `dataset` candidate containing raw-pattern files, but it has no README, attribution, or declared license, and neither the paper nor the checked official service pages linked it. It was not promoted to an official MatDiffract artifact solely because its name matches. Source: https://github.com/1213718318/MatDiffract.
+- **PARA-X** (arXiv:2609.13619), **basis-adaptive texture tomography** (arXiv:2609.17299), and **cross-modal dislocation inference** (arXiv:2609.12713) target spatially resolved microstructure/orientation/strain rather than this catalog's one-dimensional powder-pattern-to-crystal task. **Neutron magnetic-interaction inference** (arXiv:2609.21970) targets a magnetic Hamiltonian, and **SynAgent** (arXiv:2609.18598) targets synthesis control rather than a reusable PXRD solver. These supporting-method candidates were excluded as out of scope.
+- **BraggsView** is a plotting/comparison `utility`, not a phase-identification method; **XRD-MAT** is a `utility` with a limited ten-reference-lattice demonstration; **XRD Tools** is a desktop `utility` for overlays and TOPAS input generation. These were not added in this pass: the first two are peripheral to the catalog's inference focus, and numerical validation of the third's generated refinement inputs was not established. Sources: https://github.com/anjulnj/BraggsView, https://github.com/aryan3verma31/XRD-MAT, and https://github.com/EmilJaffal/xrd-tools-app.
+
+Representative discovery queries included:
+
+- official arXiv API query `(all:XRD OR all:PXRD OR all:"powder diffraction" OR all:"X-ray diffraction" OR all:Rietveld) AND submittedDate:[202609070000 TO 202609212359]`, plus a narrower crystal-structure query;
+- official GitHub repository searches for `PXRD created:>=2026-09-07` and `(PXRD OR XRD OR diffraction) created:>=2026-09-07`, including both result pages;
+- exact paper/artifact searches for GALAXI, ChatXRD, ERAF4XRD, PXRD2Seq, XRDiff, XCCP, AIdex-R2, MatDiffract, and the invariant lattice-bispectrum predictor;
+- September 2026 PXRD, indexing, refinement, and machine-learning searches restricted to arXiv, ACS, Nature, Wiley, and IUCr, followed by primary-source cross-reference checks.
+
 ### Search strategy for the May 9 2026 pass
 
 Representative search targets included:
