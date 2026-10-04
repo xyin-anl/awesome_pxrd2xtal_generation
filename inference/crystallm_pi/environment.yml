@@ -1,0 +1,28 @@
+# Conda environment for CrystaLLM-pi inference. setup.sh creates it and installs upstream.
+# Versions are the ones verified in this repository (see manifest.yaml). The torch wheel below
+# targets CUDA 13 (NVIDIA driver >= 580); on older drivers install a torch build for your CUDA.
+name: crystallm_pi
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - torch==2.14.1
+      - transformers==4.51.3
+      - tokenizers==0.21.4
+      - huggingface_hub==0.36.2
+      - datasets==5.0.1
+      - pymatgen==2025.10.7
+      - numpy==1.26.4
+      - scipy==1.15.3
+      - pandas==2.3.3
+      - pyarrow==25.0.1
+      - safetensors==0.8.0
+      - commentjson==0.9.0
+      - lark-parser==0.7.8
+      - joblib==1.6.0
+      - matplotlib==3.10.9
+      - requests==2.34.2
+      - tqdm==4.70.1
+      - pyyaml==6.0.3

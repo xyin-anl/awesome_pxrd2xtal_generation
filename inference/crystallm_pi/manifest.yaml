@@ -1,0 +1,46 @@
+# Inference manifest: the contract between this directory, the benchmark harness, and the
+# catalog. Fields are documented in inference/README.md.
+id: crystallm_pi
+name: CrystaLLM-pi
+catalog_id: crystallm-pi
+upstream:
+  repo: https://github.com/C-Bone-UCL/CrystaLLM-pi
+  commit: 12f1d728ca49fd1797e9ff2bfd40c5cbb0a457b3
+  license: MIT
+weights:
+  - id: c-bone/CrystaLLM-pi_Mattergen-XRD
+    url: https://huggingface.co/c-bone/CrystaLLM-pi_Mattergen-XRD
+    revision: 0051c70854553f1e95682770a83cad82657e190a
+    note: default (--model mattergen); trained on simulated XRD of MatterGen/Alex-MP structures
+  - id: c-bone/CrystaLLM-pi_Chili100K-XRD
+    url: https://huggingface.co/c-bone/CrystaLLM-pi_Chili100K-XRD
+    revision: f5a4e7848693889f5591702009fe6ee198002a5c
+    note: --model chili100k; trained on CHILI-100K structures
+inputs:
+  pattern: required (raw profile is peak-picked by inference/_common/pxrd_io.py, or pass --peaks)
+  wavelength: required for column files; read from pdCIF
+  composition: required
+  z: optional (all of 1,2,3,4,6 tried if omitted)
+  spacegroup: optional
+  usable_range: 0-90 degrees 2theta at CuKa1; peaks outside are dropped after conversion
+hardware:
+  gpu_memory_gb: 2
+  platform: tested on Linux x86-64 only (pure PyTorch; other platforms untested)
+  cpu_ok: true
+environment:
+  file: environment.yml
+  setup: setup.sh
+  conda_env: crystallm_pi
+benchmark:
+  settings:
+    - name: composition_z
+      inputs: [composition, z]
+    - name: composition_only
+      inputs: [composition]
+    - name: composition_z_spacegroup
+      inputs: [composition, z, spacegroup]
+status:
+  state: verified
+  verified_on: 2026-10-04
+  verified_by: Claude Code agent with Codex review (pending maintainer review)
+  hardware: NVIDIA RTX 4090 24 GB, driver 595.91, Linux
