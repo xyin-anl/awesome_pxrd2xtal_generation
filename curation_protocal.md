@@ -204,6 +204,19 @@ Representative discovery queries included:
 - exact paper/artifact searches for GALAXI, ChatXRD, ERAF4XRD, PXRD2Seq, XRDiff, XCCP, AIdex-R2, MatDiffract, and the invariant lattice-bispectrum predictor;
 - September 2026 PXRD, indexing, refinement, and machine-learning searches restricted to arXiv, ACS, Nature, Wiley, and IUCr, followed by primary-source cross-reference checks.
 
+## October 4 2026 inference verification pass
+
+17. **Claude Code inference build and Codex review - Oct 4 2026**
+    Introduced a common inference layout (`inference/README.md`, `inference/AGENTS.md`): pinned upstream commits and weights, a shared `run.py` interface, a shared PXRD loader/peak picker, and a 12-pattern experimental benchmark with a mismatched-pattern control. Each wrapper was checked against the authors' own example, benchmarked on an RTX 4090, and reviewed against the pinned upstream code by Codex (gpt-5.6-sol and gpt-6-astra); every review finding was verified before it was fixed or rejected.
+
+Material changes:
+
+- Added a verified **CrystaLLM-π** wrapper. The released XRD checkpoints condition on picked peaks; the wrapper picks peaks and converts them to the averaged Cu Kα wavelength used in training.
+- Replaced the **deCIFer** script. The previous script prompted with the reduced formula (`CeO2`), which gave 0/24 correct CeO2 structures versus 22/25 with the full-cell formula (`Ce4O8`) that the model was trained on. The previous checkpoint link served a different file; the wrapper now downloads the published `decifer_v1_ckpt.pt` and verifies its checksum.
+- Replaced the **Uni3DAR** local and Modal scripts. They passed a raw profile without wavelength conversion, conditioned on distinct elements instead of the primitive-cell atom list, and skipped upstream's composition filtering and ranking. The new wrapper reproduces the paper's MP-20 PXRD-guided result (0.750 top-1 on 40 test records vs 75.08% reported).
+- Fixed `utils/parse_cifs.py`: processed wavelengths take precedence, standard uncertainties are parsed, observed columns are preferred over calculated ones, net intensities are not background-subtracted, and neutron data are rejected.
+- Recorded that `exp_pxrd_data/decifer/HEO/crystalline_CeO2_BM31.xye` is 2θ at 0.2545 Å (not Q, as upstream's README states), and excluded a two-phase pdCIF (`av5088sup4`) from the benchmark.
+
 ### Search strategy for the May 9 2026 pass
 
 Representative search targets included:

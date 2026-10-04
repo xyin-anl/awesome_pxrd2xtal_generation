@@ -8,7 +8,8 @@
     "pxrdnet",
     "decifer",
     "crystalyze",
-    "diffractgpt"
+    "diffractgpt",
+    "crystallm-pi"
   ],
   "shared_urls": [
     "https://academic.oup.com/nsr/article/12/12/nwaf421/8268901",
@@ -252,8 +253,8 @@
       "inference": {
         "local": [
           {
-            "label": "decifer_inference.py",
-            "url": "inference/decifer/decifer_inference.py",
+            "label": "run.py",
+            "url": "inference/decifer/run.py",
             "role": "inference",
             "code_label": true
           }
@@ -261,16 +262,28 @@
         "cloud": [],
         "support": [
           {
-            "label": "decifer_utils.py",
-            "url": "inference/decifer/decifer_utils.py",
+            "label": "setup.sh",
+            "url": "inference/decifer/setup.sh",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "manifest.yaml",
+            "url": "inference/decifer/manifest.yaml",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "README.md",
+            "url": "inference/decifer/README.md",
             "role": "inference",
             "code_label": true
           }
         ],
         "environment": [
           {
-            "label": "decifer_env.yml",
-            "url": "inference/decifer/decifer_env.yml",
+            "label": "environment.yml",
+            "url": "inference/decifer/environment.yml",
             "role": "inference",
             "code_label": true
           }
@@ -347,25 +360,43 @@
       "inference": {
         "local": [
           {
-            "label": "uni3dar_inference.py",
-            "url": "inference/uni3dar/uni3dar_inference.py",
+            "label": "run.py",
+            "url": "inference/uni3dar/run.py",
             "role": "inference",
             "code_label": true
           }
         ],
-        "cloud": [
+        "cloud": [],
+        "support": [
           {
-            "label": "uni3dar_modal.py",
-            "url": "inference/uni3dar/uni3dar_modal.py",
+            "label": "setup.sh",
+            "url": "inference/uni3dar/setup.sh",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "manifest.yaml",
+            "url": "inference/uni3dar/manifest.yaml",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "README.md",
+            "url": "inference/uni3dar/README.md",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "reproduce_upstream.py",
+            "url": "inference/uni3dar/reproduce_upstream.py",
             "role": "inference",
             "code_label": true
           }
         ],
-        "support": [],
         "environment": [
           {
-            "label": "uni3dar_env.yml",
-            "url": "inference/uni3dar/uni3dar_env.yml",
+            "label": "environment.yml",
+            "url": "inference/uni3dar/environment.yml",
             "role": "inference",
             "code_label": true
           }
@@ -434,7 +465,46 @@
           "url": "https://huggingface.co/c-bone/CrystaLLM-pi_Chili100K-XRD",
           "role": "model"
         }
-      ]
+      ],
+      "inference": {
+        "local": [
+          {
+            "label": "run.py",
+            "url": "inference/crystallm_pi/run.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "cloud": [],
+        "support": [
+          {
+            "label": "setup.sh",
+            "url": "inference/crystallm_pi/setup.sh",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "manifest.yaml",
+            "url": "inference/crystallm_pi/manifest.yaml",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "README.md",
+            "url": "inference/crystallm_pi/README.md",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "environment": [
+          {
+            "label": "environment.yml",
+            "url": "inference/crystallm_pi/environment.yml",
+            "role": "inference",
+            "code_label": true
+          }
+        ]
+      }
     },
     {
       "id": "crystarnet",

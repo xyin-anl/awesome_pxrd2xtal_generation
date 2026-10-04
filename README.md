@@ -160,19 +160,22 @@ A practical leaderboard should split at least the following settings:
 
 ## Beyond Curation: Inference Scripts
 
-Unlike typical "awesome" repositories that only list resources, this repository also tries to solve the "last-mile" problem by providing runnable inference scripts when practical. Current tested scripts are in the [`inference`](inference) folder.
+Unlike typical "awesome" repositories that only list resources, this repository also tries to solve the "last-mile" problem by providing runnable inference scripts when practical. Scripts live in the [`inference`](inference) folder and are meant to run on your own GPU or CPU.
+
+Newer entries (CrystaLLM-π, deCIFer, Uni-3DAR) share one command-line interface (`run.py --pattern ... --composition ... --out ...`), pin the upstream commit and weights in a `manifest.yaml`, and are verified by reproducing the authors' own example, running a shared 12-pattern experimental benchmark with a mismatched-pattern control, and an independent review against the upstream code. Each model's `README.md` reports those results. See [`inference/README.md`](inference/README.md) for usage and [`inference/AGENTS.md`](inference/AGENTS.md) for how new models are added.
 
 <!-- BEGIN GENERATED: inference -->
 | Model | Local Inference | Cloud Inference | Utils/Support | Environment |
 |-------|-----------------|-----------------|---------------|-------------|
-| **Uni3DAR** | [`uni3dar_inference.py`](inference/uni3dar/uni3dar_inference.py) | [`uni3dar_modal.py`](inference/uni3dar/uni3dar_modal.py) | N/A | [`uni3dar_env.yml`](inference/uni3dar/uni3dar_env.yml) |
+| **Uni3DAR** | [`run.py`](inference/uni3dar/run.py) | N/A | [`setup.sh`](inference/uni3dar/setup.sh), [`manifest.yaml`](inference/uni3dar/manifest.yaml), [`README.md`](inference/uni3dar/README.md), [`reproduce_upstream.py`](inference/uni3dar/reproduce_upstream.py) | [`environment.yml`](inference/uni3dar/environment.yml) |
 | **PXRDnet** | [`pxrdnet_inference.py`](inference/pxrdnet/pxrdnet_inference.py) | [`pxrdnet_modal.py`](inference/pxrdnet/pxrdnet_modal.py) | N/A | [`pxrdnet_env.yml`](inference/pxrdnet/pxrdnet_env.yml) |
-| **deCIFer** | [`decifer_inference.py`](inference/decifer/decifer_inference.py) | N/A | [`decifer_utils.py`](inference/decifer/decifer_utils.py) | [`decifer_env.yml`](inference/decifer/decifer_env.yml) |
+| **deCIFer** | [`run.py`](inference/decifer/run.py) | N/A | [`setup.sh`](inference/decifer/setup.sh), [`manifest.yaml`](inference/decifer/manifest.yaml), [`README.md`](inference/decifer/README.md) | [`environment.yml`](inference/decifer/environment.yml) |
 | **Crystalyze** | [`crystalyze_inference.py`](inference/crystalyze/crystalyze_inference.py) | N/A | [`crystalyze_utils.py`](inference/crystalyze/crystalyze_utils.py) | [`crystalyze_env.yml`](inference/crystalyze/crystalyze_env.yml) |
 | **DiffractGPT** | [`diffractgpt_inference.py`](inference/diffractgpt/diffractgpt_inference.py) | [`diffractgpt_modal.py`](inference/diffractgpt/diffractgpt_modal.py) | N/A | N/A |
+| **CrystaLLM-π** | [`run.py`](inference/crystallm_pi/run.py) | N/A | [`setup.sh`](inference/crystallm_pi/setup.sh), [`manifest.yaml`](inference/crystallm_pi/manifest.yaml), [`README.md`](inference/crystallm_pi/README.md) | [`environment.yml`](inference/crystallm_pi/environment.yml) |
 <!-- END GENERATED: inference -->
 
-`utils/parse_cifs.py` provides general utilities for parsing and processing CIF files that contain experimental PXRD patterns across different model formats. New 2025–2026 models such as XRDSol and RealPXRD-Solver have public repositories but are not yet integrated into the local inference folder.
+`utils/parse_cifs.py` provides general utilities for parsing and processing CIF files that contain experimental PXRD patterns across different model formats. PXRDnet, Crystalyze, and DiffractGPT still use their original per-model scripts. New 2025–2026 models such as XRDSol and RealPXRD-Solver have public repositories but are not yet integrated into the local inference folder.
 
 ## Contributing
 
