@@ -23,6 +23,7 @@ import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(os.path.dirname(HERE)))
 
+from inference._common.cells import atom_list, primitive_z_candidates  # noqa: E402
 from inference._common.pxrd_io import (  # noqa: E402
     CU_KA,
     convert_two_theta,
@@ -51,22 +52,6 @@ UPSTREAM_ARGS = [
     "--crystal-component", "1", "--crystal-component-sqrt", "--crystal-component-noise", "0.1",
     "--crystal-pxrd-threshold", "5", "--max-num-atom", "128",
 ]
-
-# Lattice centering -> lattice points per conventional cell. R assumes Z is quoted for the
-# hexagonal axes (the usual convention); for rhombohedral axes pass --spacegroup with Z=Z_rh*3.
-CENTERING = {"P": 1, "A": 2, "B": 2, "C": 2, "I": 2, "F": 4, "R": 3}
-
-
-def primitive_z_candidates(z: int, spacegroup: str | None) -> list[int]:
-    """Formula units in the primitive cell. Training records use primitive cells, while users
-    usually quote Z for the conventional cell; without a space group every centering is tried."""
-    if spacegroup:
-        m = CENTERING[spacegroup.strip()[0].upper()]
-        if z % m:
-            raise SystemExit(f"Z={z} is not divisible by the {m} lattice points of {spacegroup}")
-        return [z // m]
-    return sorted({z // m for m in (1, 2, 3, 4) if z % m == 0})
-
 
 def prepare_peaks(args, out: str) -> tuple[np.ndarray, np.ndarray, list[float]]:
     """Return Cu Ka peak positions/intensities and the Cu Ka 2theta range the scan covered."""
@@ -144,7 +129,7 @@ def main() -> None:
     # Upstream builds structures with ase inside a bare `except:`; without ase every sample
     # would vanish silently, so import it here to fail fast.
     import ase  # noqa: F401
-    from pymatgen.core import Composition
+    from pymatgen.core import Element
     from pymatgen.io.ase import AseAtomsAdaptor
 
     out = os.path.abspath(args.out)
@@ -164,17 +149,13 @@ def main() -> None:
     # matches the default batch size the wrapper was benchmarked with.
     max_try = MAX_TRY * max(1, DEFAULT_BATCH // args.batch_size)
     for z_prim in primitive_z_candidates(args.z, args.spacegroup):
-        comp = Composition(args.composition) * z_prim
-        amounts = {el: n for el, n in comp.items()}
-        if any(abs(n - round(n)) > 1e-6 for n in amounts.values()):
-            raise SystemExit(f"{args.composition} x {z_prim} is not an integer atom list; partial occupancies are not supported")
-        symbols = sorted(el.symbol for el, n in amounts.items() for _ in range(int(round(n))))
+        symbols = atom_list(args.composition, z_prim)
         if len(symbols) > 128:
             print(f"Skipping primitive Z={z_prim}: {len(symbols)} atoms exceeds the model's 128-atom limit")
             continue
         data = {"pxrd_x": pxrd_x, "pxrd_y": pxrd_y, "atom_type": symbols}
         # Upstream's atom_constraint: sorted atomic numbers minus one.
-        target = np.array(sorted(el.Z for el, n in amounts.items() for _ in range(int(round(n))))) - 1
+        target = np.array(sorted(Element(sym).Z for sym in symbols)) - 1
         pool, tries, needed = [], 0, args.n_samples * OVERSAMPLE
         while len(pool) < needed:
             res, score = model.generate(data=data, atom_constraint=target)
