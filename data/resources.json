@@ -98,8 +98,8 @@
       "inference": {
         "local": [
           {
-            "label": "crystalyze_inference.py",
-            "url": "inference/crystalyze/crystalyze_inference.py",
+            "label": "run.py",
+            "url": "inference/crystalyze/run.py",
             "role": "inference",
             "code_label": true
           }
@@ -107,16 +107,34 @@
         "cloud": [],
         "support": [
           {
-            "label": "crystalyze_utils.py",
-            "url": "inference/crystalyze/crystalyze_utils.py",
+            "label": "setup.sh",
+            "url": "inference/crystalyze/setup.sh",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "manifest.yaml",
+            "url": "inference/crystalyze/manifest.yaml",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "README.md",
+            "url": "inference/crystalyze/README.md",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "reproduce_examples.py",
+            "url": "inference/crystalyze/reproduce_examples.py",
             "role": "inference",
             "code_label": true
           }
         ],
         "environment": [
           {
-            "label": "crystalyze_env.yml",
-            "url": "inference/crystalyze/crystalyze_env.yml",
+            "label": "environment.yml",
+            "url": "inference/crystalyze/environment.yml",
             "role": "inference",
             "code_label": true
           }
@@ -178,25 +196,37 @@
       "inference": {
         "local": [
           {
-            "label": "pxrdnet_inference.py",
-            "url": "inference/pxrdnet/pxrdnet_inference.py",
+            "label": "run.py",
+            "url": "inference/pxrdnet/run.py",
             "role": "inference",
             "code_label": true
           }
         ],
-        "cloud": [
+        "cloud": [],
+        "support": [
           {
-            "label": "pxrdnet_modal.py",
-            "url": "inference/pxrdnet/pxrdnet_modal.py",
+            "label": "setup.sh",
+            "url": "inference/pxrdnet/setup.sh",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "manifest.yaml",
+            "url": "inference/pxrdnet/manifest.yaml",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "README.md",
+            "url": "inference/pxrdnet/README.md",
             "role": "inference",
             "code_label": true
           }
         ],
-        "support": [],
         "environment": [
           {
-            "label": "pxrdnet_env.yml",
-            "url": "inference/pxrdnet/pxrdnet_env.yml",
+            "label": "environment.yml",
+            "url": "inference/pxrdnet/environment.yml",
             "role": "inference",
             "code_label": true
           }
@@ -316,22 +346,47 @@
       "inference": {
         "local": [
           {
-            "label": "diffractgpt_inference.py",
-            "url": "inference/diffractgpt/diffractgpt_inference.py",
+            "label": "run.py",
+            "url": "inference/diffractgpt/run.py",
             "role": "inference",
             "code_label": true
           }
         ],
-        "cloud": [
+        "cloud": [],
+        "support": [
           {
-            "label": "diffractgpt_modal.py",
-            "url": "inference/diffractgpt/diffractgpt_modal.py",
+            "label": "setup.sh",
+            "url": "inference/diffractgpt/setup.sh",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "manifest.yaml",
+            "url": "inference/diffractgpt/manifest.yaml",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "README.md",
+            "url": "inference/diffractgpt/README.md",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "reproduce_upstream.py",
+            "url": "inference/diffractgpt/reproduce_upstream.py",
             "role": "inference",
             "code_label": true
           }
         ],
-        "support": [],
-        "environment": []
+        "environment": [
+          {
+            "label": "environment.yml",
+            "url": "inference/diffractgpt/environment.yml",
+            "role": "inference",
+            "code_label": true
+          }
+        ]
       }
     },
     {

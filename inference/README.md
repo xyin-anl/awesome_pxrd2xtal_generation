@@ -42,8 +42,8 @@ candidate list). Some models write extra files such as the peak list they were c
 | `<model>/README.md` | Model-specific notes, caveats, and the latest benchmark result |
 | `<model>/benchmark.json` | Full benchmark report from the last verification run |
 
-Directories from before this layout (`crystalyze`, `diffractgpt`, `pxrdnet`) still use their
-original per-model scripts and are being migrated.
+All wrappers follow this layout. [`TRIAGE.md`](TRIAGE.md) lists which other catalogued models are
+feasible to wrap next and which are blocked.
 
 ## What "verified" means
 
@@ -56,6 +56,9 @@ A model is marked `verified` in its manifest only when all of these hold on the 
    that the diffraction data actually influences the output.
 5. An independent review of the wrapper against the pinned upstream code found no open issues
    (findings and fixes are summarized in the model README).
+
+A model is marked `reproduced` when 1-3 and 5 hold but the control is not clearly lower: the
+wrapper behaves like upstream, yet on this benchmark the output barely depends on the pattern.
 
 Benchmark numbers come from a small set of 12 experimental patterns. They are a sanity check for
 the wrapper, not a ranking of models, and they are not comparable to numbers in the papers.
