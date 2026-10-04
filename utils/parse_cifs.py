@@ -46,6 +46,11 @@ possible_bg_suffixes = [
 ]
 
 
+def _cif_float(token):
+    """Parse a CIF number, dropping a standard uncertainty such as 0.71073(2)."""
+    return float(token.strip("'\"").split("(")[0])
+
+
 def get_field_value(all_lines, desired_start, is_num=True):
     for i, the_line in enumerate(all_lines):
         if the_line.startswith(desired_start):
@@ -54,7 +59,7 @@ def get_field_value(all_lines, desired_start, is_num=True):
                 val = split_line[-1]
                 if is_num:
                     try:
-                        return float(val)
+                        return _cif_float(val)
                     except ValueError:
                         pass
                 else:
@@ -64,7 +69,7 @@ def get_field_value(all_lines, desired_start, is_num=True):
                 tokens = ret_val.split()
                 for token in tokens:
                     try:
-                        return float(token) if is_num else token
+                        return _cif_float(token) if is_num else token
                     except ValueError:
                         continue
                 if not is_num:
@@ -89,11 +94,16 @@ def find_end_of_xrd(all_lines, start_idx):
 
 
 def find_first_by_suffix(field_list, suffix_list):
+    """Return the column matching the highest-priority suffix (suffix lists are ordered by
+    preference). Calculated columns (_pd_calc_*) are used only when nothing observed matches."""
     lower_field_list = [f.lower() for f in field_list]
-    for i, field_name in enumerate(lower_field_list):
+    for allow_calc in (False, True):
         for sfx in suffix_list:
-            if field_name.endswith(sfx.lower()):
-                return i
+            for i, field_name in enumerate(lower_field_list):
+                if "_calc_" in field_name and not allow_calc:
+                    continue
+                if field_name.endswith(sfx.lower()):
+                    return i
     return None
 
 
@@ -141,6 +151,10 @@ def read_experimental_cif(filepath, plot=False, save_pickle=False, pickle_path=N
         auto_identify_columns(field_list)
     )
 
+    intensity_is_net = (
+        intensity_idx is not None and field_list[intensity_idx].lower().endswith("_net")
+    )
+
     if intensity_idx is None and (
         two_theta_idx is None and d_spacing_idx is None and tof_idx is None
     ):
@@ -151,18 +165,21 @@ def read_experimental_cif(filepath, plot=False, save_pickle=False, pickle_path=N
         rad_type = get_field_value(
             all_lines, "_diffrn_radiation_type", is_num=False
         ).lower()
-        if "neutron" in rad_type:
-            raise ValueError(
-                "Neutron diffraction data is not supported in this script."
-            )
     except ValueError:
-        pass
+        rad_type = ""
+    if "neutron" in rad_type or "_diffrn_radiation_probe neutron" in " ".join(all_lines).lower():
+        raise ValueError("Neutron diffraction data is not supported in this script.")
 
-    try:
-        exp_wavelength = float(
-            get_field_value(all_lines, "_diffrn_radiation_wavelength")
-        )
-    except ValueError:
+    # A processed wavelength (e.g. after K-alpha2 stripping) describes the data as published,
+    # so it takes precedence over the source wavelength.
+    exp_wavelength = None
+    for tag in ("_pd_proc_wavelength", "_diffrn_radiation_wavelength"):
+        try:
+            exp_wavelength = float(get_field_value(all_lines, tag))
+            break
+        except ValueError:
+            continue
+    if exp_wavelength is None:
         try:
             rad_type_raw = get_field_value(
                 all_lines, "_diffrn_radiation_type", is_num=False
@@ -275,7 +292,8 @@ def read_experimental_cif(filepath, plot=False, save_pickle=False, pickle_path=N
         except ValueError:
             intensity_val = 0.0
 
-        if bg_idx is not None and bg_idx < len(parts):
+        # Net intensities already have the background removed; only subtract it from totals/counts.
+        if bg_idx is not None and bg_idx < len(parts) and not intensity_is_net:
             raw_bg = parts[bg_idx]
             try:
                 bg_val = float(raw_bg.split("(")[0])

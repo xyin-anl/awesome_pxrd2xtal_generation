@@ -1,0 +1,189 @@
+{
+  "excluded": {
+    "sh0123Xraysup5.rtv.combined.cif": "utils/parse_cifs.py cannot parse the pattern loop",
+    "ck5030Vsup6.rtv.combined.cif": "partial-occupancy Er2Ge3.17 phase parses as a 2-atom ErGe cell",
+    "av5088sup4.rtv.combined.cif": "two-phase sample (monoclinic ~57.5 wt% + orthorhombic C4Br4S); one reference cannot score it"
+  },
+  "cases": [
+    {
+      "id": "br1322Isup2",
+      "pattern": "exp_pxrd_data/pxrdnet/br1322Isup2.rtv.combined.cif",
+      "wavelength": 1.54056,
+      "two_theta_range": [
+        15.02,
+        89.97
+      ],
+      "composition": "AlPO4",
+      "z": 2,
+      "spacegroup": "P6_3mc",
+      "spacegroup_number": 186,
+      "ground_truth": "ground_truth/br1322Isup2.cif",
+      "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
+    },
+    {
+      "id": "br1340Isup2",
+      "pattern": "exp_pxrd_data/pxrdnet/br1340Isup2.rtv.combined.cif",
+      "wavelength": 1.5418,
+      "two_theta_range": [
+        10.0,
+        90.0
+      ],
+      "composition": "CdBiClO2",
+      "z": 2,
+      "spacegroup": "P2_1/m",
+      "spacegroup_number": 11,
+      "ground_truth": "ground_truth/br1340Isup2.cif",
+      "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
+    },
+    {
+      "id": "gw5052Mg2Si_100K_LTsup2",
+      "pattern": "exp_pxrd_data/pxrdnet/gw5052Mg2Si_100K_LTsup2.rtv.combined.cif",
+      "wavelength": 0.49935,
+      "two_theta_range": [
+        7.0,
+        75.0
+      ],
+      "composition": "Mg2Si",
+      "z": 4,
+      "spacegroup": "Fm-3m",
+      "spacegroup_number": 225,
+      "ground_truth": "ground_truth/gw5052Mg2Si_100K_LTsup2.cif",
+      "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
+    },
+    {
+      "id": "gw5052Mg2Sn_100K_LTsup23",
+      "pattern": "exp_pxrd_data/pxrdnet/gw5052Mg2Sn_100K_LTsup23.rtv.combined.cif",
+      "wavelength": 0.49935,
+      "two_theta_range": [
+        5.5,
+        76.3
+      ],
+      "composition": "Mg2Sn",
+      "z": 4,
+      "spacegroup": "Fm-3m",
+      "spacegroup_number": 225,
+      "ground_truth": "ground_truth/gw5052Mg2Sn_100K_LTsup23.cif",
+      "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
+    },
+    {
+      "id": "iz1026Isup2",
+      "pattern": "exp_pxrd_data/pxrdnet/iz1026Isup2.rtv.combined.cif",
+      "wavelength": 1.5418,
+      "two_theta_range": [
+        15.0,
+        118.0
+      ],
+      "composition": "Na2LiAlF6",
+      "z": 2,
+      "spacegroup": "P2_1/c",
+      "spacegroup_number": 14,
+      "ground_truth": "ground_truth/iz1026Isup2.cif",
+      "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
+    },
+    {
+      "id": "ks5409BTsup2",
+      "pattern": "exp_pxrd_data/pxrdnet/ks5409BTsup2.rtv.combined.cif",
+      "wavelength": 1.54056,
+      "two_theta_range": [
+        15.06,
+        119.94
+      ],
+      "composition": "BaTiO3",
+      "z": 1,
+      "spacegroup": "P4mm",
+      "spacegroup_number": 99,
+      "ground_truth": "ground_truth/ks5409BTsup2.cif",
+      "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
+    },
+    {
+      "id": "sq1033Isup2",
+      "pattern": "exp_pxrd_data/pxrdnet/sq1033Isup2.rtv.combined.cif",
+      "wavelength": 1.5418,
+      "two_theta_range": [
+        10.0,
+        140.0
+      ],
+      "composition": "LaInO3",
+      "z": 4,
+      "spacegroup": "Pnma",
+      "spacegroup_number": 62,
+      "ground_truth": "ground_truth/sq1033Isup2.cif",
+      "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
+    },
+    {
+      "id": "sq3214Isup2",
+      "pattern": "exp_pxrd_data/pxrdnet/sq3214Isup2.rtv.combined.cif",
+      "wavelength": 1.54059,
+      "two_theta_range": [
+        5.03,
+        109.01
+      ],
+      "composition": "EuI2",
+      "z": 4,
+      "spacegroup": "Pnma",
+      "spacegroup_number": 62,
+      "ground_truth": "ground_truth/sq3214Isup2.cif",
+      "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
+    },
+    {
+      "id": "wh5012phaseIIIsup3",
+      "pattern": "exp_pxrd_data/pxrdnet/wh5012phaseIIIsup3.rtv.combined.cif",
+      "wavelength": 0.71073,
+      "two_theta_range": [
+        5.0,
+        18.22
+      ],
+      "composition": "Rb2S",
+      "z": 2,
+      "spacegroup": "P6_3/mmc",
+      "spacegroup_number": 194,
+      "ground_truth": "ground_truth/wh5012phaseIIIsup3.cif",
+      "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
+    },
+    {
+      "id": "wh5012phaseIIsup2",
+      "pattern": "exp_pxrd_data/pxrdnet/wh5012phaseIIsup2.rtv.combined.cif",
+      "wavelength": 0.71073,
+      "two_theta_range": [
+        5.0,
+        19.01
+      ],
+      "composition": "Rb2S",
+      "z": 4,
+      "spacegroup": "Pnma",
+      "spacegroup_number": 62,
+      "ground_truth": "ground_truth/wh5012phaseIIsup2.cif",
+      "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
+    },
+    {
+      "id": "wm2446Isup2",
+      "pattern": "exp_pxrd_data/pxrdnet/wm2446Isup2.rtv.combined.cif",
+      "wavelength": 1.5406,
+      "two_theta_range": [
+        9.95,
+        109.89
+      ],
+      "composition": "KLaTiO4",
+      "z": 2,
+      "spacegroup": "P4/nmm",
+      "spacegroup_number": 129,
+      "ground_truth": "ground_truth/wm2446Isup2.cif",
+      "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
+    },
+    {
+      "id": "wn6225Isup2",
+      "pattern": "exp_pxrd_data/pxrdnet/wn6225Isup2.rtv.combined.cif",
+      "wavelength": 1.54056,
+      "two_theta_range": [
+        10.0,
+        135.0
+      ],
+      "composition": "KCaCO3F",
+      "z": 1,
+      "spacegroup": "P-6m2",
+      "spacegroup_number": 187,
+      "ground_truth": "ground_truth/wn6225Isup2.cif",
+      "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
+    }
+  ]
+}
