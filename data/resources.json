@@ -1,6 +1,6 @@
 {
   "$schema": "./resources.schema.json",
-  "schema_version": 1,
+  "schema_version": 2,
   "last_updated": "2026-10-05",
   "website_url": "https://nodeology.ai/resources/pxrd2xtal",
   "inference_order": [
@@ -24,33 +24,10 @@
   ],
   "resources": [
     {
-      "id": "deepstruc",
-      "name": "DeepStruc",
-      "category": "core_solver",
-      "verified_at": "2026-05-09",
-      "year": "2023",
-      "inputs_target": "Pair distribution function / scattering data → nanoparticle structure class",
-      "method": "Conditional VAE on PDF-like data",
-      "reported_performance": "Correct for 7 nanoparticle types",
-      "paper_links": [
-        {
-          "label": "Digital Discovery",
-          "url": "https://pubs.rsc.org/en/content/articlelanding/2023/dd/d2dd00086e",
-          "role": "paper"
-        }
-      ],
-      "artifact_links": [
-        {
-          "label": "EmilSkaaning/DeepStruc",
-          "url": "https://github.com/EmilSkaaning/DeepStruc",
-          "role": "code"
-        }
-      ]
-    },
-    {
       "id": "crystalnet",
       "name": "CrystalNet",
       "category": "core_solver",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "year": "2024",
       "inputs_target": "PXRD + composition information → electron density / structure",
@@ -75,6 +52,7 @@
       "id": "crystalyze",
       "name": "Crystalyze",
       "category": "core_solver",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "year": "2024",
       "inputs_target": "PXRD → CIF / crystal structure",
@@ -126,6 +104,7 @@
       "id": "xtalnet",
       "name": "XtalNet",
       "category": "core_solver",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-07-27",
       "year": "2024/2025",
       "inputs_target": "PXRD + composition / MOF setting → crystal structure candidates",
@@ -155,6 +134,7 @@
       "id": "pxrdnet",
       "name": "PXRDnet",
       "category": "core_solver",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "year": "2025",
       "inputs_target": "Formula + finite-size-broadened PXRD → atomic structure candidates",
@@ -206,6 +186,7 @@
       "id": "pxrdgen",
       "name": "PXRDGen",
       "category": "core_solver",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "year": "2025",
       "inputs_target": "PXRD + optional composition constraints → structure candidates",
@@ -230,6 +211,7 @@
       "id": "decifer",
       "name": "deCIFer",
       "category": "core_solver",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-10-05",
       "year": "2025/2026",
       "inputs_target": "PXRD-conditioned generation → CIF tokens",
@@ -287,6 +269,7 @@
       "id": "diffractgpt",
       "name": "DiffractGPT",
       "category": "core_solver",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "year": "2025",
       "inputs_target": "PXRD-conditioned text generation → CIF-like crystal descriptions",
@@ -331,6 +314,7 @@
       "id": "uni3dar",
       "name": "Uni3DAR",
       "category": "core_solver",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "year": "2025",
       "inputs_target": "PXRD + composition tokens → 3D crystal generation",
@@ -382,6 +366,7 @@
       "id": "agapi-xrd",
       "name": "AGAPI-XRD",
       "category": "core_solver",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-10-05",
       "year": "2026",
       "inputs_target": "Experimental or simulated PXRD + optional composition/formula constraints → candidate and refined crystal structure",
@@ -412,6 +397,7 @@
       "id": "crystallm-pi",
       "name": "CrystaLLM-π",
       "category": "core_solver",
+      "scope_relation": "powder_derived",
       "verified_at": "2026-07-27",
       "year": "2025/2026",
       "inputs_target": "Pre-picked PXRD peak positions/intensities + composition and unit-cell stoichiometry → CIF candidates",
@@ -446,6 +432,7 @@
       "id": "crystarnet",
       "name": "CrySTARNet",
       "category": "core_solver",
+      "scope_relation": "multimodal_pxrd",
       "verified_at": "2026-08-24",
       "year": "2025/2026",
       "inputs_target": "PXRD + composition, with optional TEM → crystal structure with fractional occupancies",
@@ -470,6 +457,7 @@
       "id": "xrd2mof",
       "name": "Xrd2Mof",
       "category": "core_solver",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-10-05",
       "year": "2025/2026",
       "inputs_target": "PXRD + metal-node and organic-linker priors → atomic MOF structure",
@@ -495,6 +483,7 @@
       "id": "xrdsol",
       "name": "XRDSol",
       "category": "core_solver",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "year": "2026",
       "inputs_target": "Stoichiometry + unit cell + PXRD → atomic coordinates",
@@ -524,6 +513,7 @@
       "id": "realpxrd-solver",
       "name": "RealPXRD-Solver",
       "category": "core_solver",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "year": "2026",
       "inputs_target": "Experimental or simulated PXRD, with lattice-conditioned and lattice-free modes → crystal structure",
@@ -548,6 +538,7 @@
       "id": "ab-pxrd-solver",
       "name": "Ab-PXRD-Solver",
       "category": "core_solver",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-07-18",
       "year": "2026",
       "inputs_target": "Experimental PXRD + chemical formula, with an optional known space group → refined CIF",
@@ -577,6 +568,7 @@
       "id": "xrdiff",
       "name": "XRDiff",
       "category": "core_solver",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-10-05",
       "year": "2026",
       "inputs_target": "PXRD + stoichiometry, or elements + total atom count → crystal structure",
@@ -596,6 +588,7 @@
       "id": "alphadiffract",
       "name": "AlphaDiffract",
       "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "year": "2026",
       "task": "Crystal system, space group, and lattice parameter prediction from PXRD",
@@ -625,6 +618,7 @@
       "id": "lattice-bispectrum-pxrd",
       "name": "Invariant lattice-bispectrum predictor",
       "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-10-05",
       "year": "2026",
       "task": "Unit-cell parameter prediction from simulated or experimental PXRD",
@@ -650,11 +644,12 @@
       "id": "phigen",
       "name": "PhiGen",
       "category": "pipeline_module",
+      "scope_relation": "powder_derived",
       "verified_at": "2026-10-05",
       "year": "2026",
-      "task": "Generate crystallographic phase sets for electron-density-map initialization from incomplete or overlapped diffraction",
-      "method": "Invariant-constrained generative phase prediction followed by conventional phase extension",
-      "reported_result": "On 1,854 held-out simulated 3 Å zeolite powder datasets, the preprint reports 84.2% framework-map recovery at CC >= 0.7 versus 1.0% for Superflip; experimental ZSM-25 and TNU-9 are two phase-seeding demonstrations, not a broad experimental benchmark",
+      "task": "Phase prediction from indexed powder-derived structure-factor amplitudes with a known unit cell and space group; not raw-profile PXRD-to-structure inference",
+      "method": "Invariant-constrained generative phase prediction using a separately trained 3 Å zeolite powder branch, followed by Superflip phase extension; the experimental workflow obtains amplitudes by Le Bail fitting",
+      "reported_result": "On 1,854 held-out simulated 3 Å zeolite powder datasets with modelled reflection overlap, the preprint reports 84.2% framework-map recovery at CC >= 0.7 versus 1.0% for Superflip. Experimental ZSM-25 and TNU-9 are phase-seeding demonstrations; one of 4 and one of 40 seeds, respectively, led to recovery after phase extension, and the paper does not establish reference-free selection of the successful seed. The broader 210-space-group results use calculated 1 Å reflections and are not powder evidence. The main text does not state whether the zeolite success rate uses best-of-N reference selection, and the supplement was not inspected",
       "paper_links": [
         {
           "label": "arXiv",
@@ -669,9 +664,10 @@
       "id": "hyphid",
       "name": "HyPhID",
       "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-10-05",
       "year": "2026",
-      "task": "Crystal-system and space-group classification with ranked XRD phase retrieval and explanations",
+      "task": "Crystal-system and space-group classification from one-dimensional simulated powder XRD patterns, with ranked phase retrieval and explanations",
       "method": "Convolutional autoencoder/classifier with latent retrieval, Integrated Gradients similarity, and composition-embedding evidence aggregation",
       "reported_result": "The preprint reports 98.85% crystal-system and 95.82% 22-space-group accuracy on an internal synthetic holdout, decreasing to 81.07% and 56.13% on 750 augmented patterns generated from 50 RRUFF CIFs; this is RRUFF-derived simulation, not raw measured-profile evaluation",
       "paper_links": [
@@ -694,6 +690,7 @@
       "id": "chatxrd",
       "name": "ChatXRD",
       "category": "pipeline_module",
+      "scope_relation": "powder_derived",
       "verified_at": "2026-09-21",
       "year": "2026",
       "task": "Crystal-system classification and lattice prediction from extracted PXRD peak positions, not raw experimental profiles",
@@ -719,6 +716,7 @@
       "id": "galaxi",
       "name": "GALAXI",
       "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-10-05",
       "year": "2026",
       "task": "Single- and multi-phase identification from PXRD against a supplied reference-structure library",
@@ -754,6 +752,7 @@
       "id": "xqueryer",
       "name": "XQueryer",
       "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "year": "2025",
       "task": "Neural search-match / structure identification from PXRD",
@@ -778,6 +777,7 @@
       "id": "xmatcher",
       "name": "XMatcher",
       "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-10-05",
       "year": "2026",
       "task": "Interpretable single- and multi-phase search-match identification from experimental PXRD",
@@ -803,6 +803,7 @@
       "id": "xccp",
       "name": "XCCP",
       "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-10-05",
       "year": "2026",
       "task": "Contrastive PXRD-candidate matching and space-group identification",
@@ -820,14 +821,20 @@
           "label": "opXRD-HKUST experimental data",
           "url": "https://huggingface.co/datasets/caobin/opxrd_hkust_expdata",
           "role": "data"
+        },
+        {
+          "label": "22 MPEA CIFs",
+          "url": "https://github.com/George-JieXIONG/Materials-Dataset/tree/main/XRD-Files",
+          "role": "data"
         }
       ],
-      "artifact_note": "code not found during the 2026-10-05 verification pass"
+      "artifact_note": "No public source code was verified on 2026-10-05"
     },
     {
       "id": "aidex-r2",
       "name": "AIdex-R2",
       "category": "pipeline_module",
+      "scope_relation": "powder_derived",
       "verified_at": "2026-10-05",
       "year": "2026",
       "task": "Powder-pattern indexing: extinction-group and unit-cell inference from low-angle reflections",
@@ -847,6 +854,7 @@
       "id": "matdiffract",
       "name": "MatDiffract",
       "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-10-05",
       "year": "2026",
       "task": "Automated single- and multi-phase identification, refinement, and quantification from PXRD",
@@ -872,6 +880,7 @@
       "id": "radar-pd",
       "name": "RADAR-PD",
       "category": "pipeline_module",
+      "scope_relation": "multimodal_pxrd",
       "verified_at": "2026-10-05",
       "year": "2026",
       "task": "Automated phase identification and quantification for X-ray and neutron powder diffraction",
@@ -907,6 +916,7 @@
       "id": "dara",
       "name": "Dara",
       "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-08-24",
       "year": "2025/2026",
       "task": "Multiple-hypothesis phase identification and Rietveld refinement from PXRD",
@@ -932,6 +942,7 @@
       "id": "aif",
       "name": "Automated Interpretation Framework (AIF)",
       "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-08-24",
       "year": "2026",
       "task": "Probabilistic ranking and trust assessment of competing PXRD phase interpretations",
@@ -962,7 +973,8 @@
       "id": "autoxrd",
       "name": "AutoXRD",
       "category": "pipeline_module",
-      "verified_at": "2026-09-07",
+      "scope_relation": "multimodal_pxrd",
+      "verified_at": "2026-10-05",
       "year": "2026",
       "task": "Autonomous powder-diffraction analysis, staged Rietveld workflow execution, and evidence-based result validation",
       "method": "LLM agent runtime with reusable XRD procedures, FullProf/GSAS-II backends, deterministic pre/post checks, and append-only refinement trajectories",
@@ -992,6 +1004,7 @@
       "id": "phasedifformer",
       "name": "PhaseDifformer",
       "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-08-10",
       "year": "2026",
       "task": "Multi-phase PXRD decomposition",
@@ -1016,6 +1029,7 @@
       "id": "automation-of-rietveld-refinement-through-machine-learning",
       "name": "RAPID",
       "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-09-07",
       "year": "2026",
       "task": "CNN initialization and automated FullProf Rietveld refinement from PXRD",
@@ -1041,6 +1055,7 @@
       "id": "galaxi-experimental-benchmark",
       "name": "GALAXI experimental benchmark",
       "category": "dataset",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-09-21",
       "size": "128 public XY files; paper describes 130 experimental test patterns",
       "sim_exp": "Exp / experimental stress tests",
@@ -1060,26 +1075,10 @@
       ]
     },
     {
-      "id": "eraf4xrd-benchmark",
-      "name": "ERAF4XRD benchmark",
-      "category": "dataset",
-      "verified_at": "2026-10-05",
-      "size": "273 publications; manually assessed subsets of 47, 35, and 5 documents",
-      "sim_exp": "Published literature / extracted experimental XRD figures and metadata",
-      "format": "DOI workbook + figure crops + staged/final JSON records + analysis outputs",
-      "notes": "CC-BY-4.0 benchmark for literature XRD figure identification and metadata extraction; it contains framework outputs and manual/automated analyses, not numeric PXRD profiles for structure-solver benchmarking. Figure-crop counts can exceed the number of true figures because PDF formatting may split figures",
-      "resource_links": [
-        {
-          "label": "Zenodo benchmark",
-          "url": "https://doi.org/10.5281/zenodo.22683615",
-          "role": "data"
-        }
-      ]
-    },
-    {
       "id": "realbind",
       "name": "RealBind",
       "category": "dataset",
+      "scope_relation": "multimodal_pxrd",
       "verified_at": "2026-10-05",
       "size": "3,288 structures; 1,468 measured PXRD queries; 16,005 measured Raman spectra",
       "sim_exp": "Exp queries + Sim candidate/training patterns",
@@ -1102,6 +1101,7 @@
       "id": "xrdbench",
       "name": "XRDBench",
       "category": "dataset",
+      "scope_relation": "multimodal_pxrd",
       "verified_at": "2026-09-07",
       "size": "100 diagnostic tasks + 34 executable workflows",
       "sim_exp": "Controlled + Exp",
@@ -1129,6 +1129,7 @@
       "id": "hmof-100-hmof-400",
       "name": "hMOF-100 / hMOF-400",
       "category": "dataset",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "size": "100 / 400",
       "sim_exp": "Sim",
@@ -1143,48 +1144,15 @@
       ]
     },
     {
-      "id": "perov-5",
-      "name": "Perov-5",
-      "category": "dataset",
-      "verified_at": "2026-05-09",
-      "size": "18,928",
-      "sim_exp": "Sim",
-      "format": "Structure data; PXRD can be simulated",
-      "notes": "Small-cell ABO₃ / perovskite benchmark with 5 atoms per unit cell",
-      "resource_links": [
-        {
-          "label": "Figshare",
-          "url": "https://figshare.com/articles/dataset/Perov5/22705189",
-          "role": "data"
-        }
-      ]
-    },
-    {
-      "id": "carbon-24",
-      "name": "Carbon-24",
-      "category": "dataset",
-      "verified_at": "2026-05-09",
-      "size": "10,153",
-      "sim_exp": "Sim",
-      "format": "Structure data; PXRD can be simulated",
-      "notes": "Carbon allotrope benchmark with 6–24 atoms per unit cell",
-      "resource_links": [
-        {
-          "label": "Hugging Face",
-          "url": "https://huggingface.co/datasets/albertvillanova/carbon_24",
-          "role": "data"
-        }
-      ]
-    },
-    {
       "id": "mp-20-pxrd",
       "name": "MP-20-PXRD",
       "category": "dataset",
-      "verified_at": "2026-05-09",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-05",
       "size": "45,229",
       "sim_exp": "Sim",
-      "format": "CIF + tensors / calculated PXRD",
-      "notes": "Materials Project subset used by PXRDnet and PXRDGen",
+      "format": "Pickled PyTorch tensors with structures and precomputed unbroadened PXRD",
+      "notes": "PXRDnet's released modification of MP-20 with calculated powder patterns; despite the .csv filenames, the Git LFS objects are pickle files containing PyTorch tensors. PXRDnet uses this release, while PXRDGen starts from the same MP-20 structures and generates different GSAS-II powder patterns",
       "resource_links": [
         {
           "label": "gabeguo/cdvae_xrd data",
@@ -1197,6 +1165,7 @@
       "id": "xrdsol-mp-20-icdd-20-benchmarks",
       "name": "XRDSol MP-20 / ICDD-20 benchmarks",
       "category": "dataset",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "size": "45,231 MP structures; 1,000 experimental ICDD-20 sets",
       "sim_exp": "Sim + Exp",
@@ -1212,13 +1181,14 @@
     },
     {
       "id": "jarvis-dft-jarvis-xrd",
-      "name": "JARVIS-DFT / JARVIS-XRD",
+      "name": "JARVIS-DFT structures / JARVIS-XRD simulator",
       "category": "dataset",
-      "verified_at": "2026-05-09",
+      "scope_relation": "supporting",
+      "verified_at": "2026-10-05",
       "size": "80k+ materials in JARVIS-DFT",
-      "sim_exp": "Sim",
-      "format": "DB / API / web app",
-      "notes": "Broad inorganic computed structures and simulated XRD; DiffractGPT reports training from JARVIS-DFT simulated PXRD",
+      "sim_exp": "Structure source + simulator",
+      "format": "Computed-structure database / API plus XRD simulation module",
+      "notes": "JARVIS-DFT supplies computed structures and JARVIS-Tools supplies XRD simulation; this is supporting infrastructure rather than a standalone PXRD benchmark. DiffractGPT reports training on simulated patterns from JARVIS-DFT structures",
       "resource_links": [
         {
           "label": "JARVIS docs",
@@ -1236,11 +1206,12 @@
       "id": "chili-3k-chili-100k",
       "name": "CHILI-3K / CHILI-100K",
       "category": "dataset",
-      "verified_at": "2026-05-09",
+      "scope_relation": "supporting",
+      "verified_at": "2026-10-05",
       "size": "3K / 100K nanomaterial graphs",
-      "sim_exp": "Sim",
-      "format": "Graph/HDF5 nanomaterial data with structure and scattering-related targets",
-      "notes": "Related large-scale inorganic nanomaterial benchmark; not a direct PXRD-to-CIF benchmark",
+      "sim_exp": "Structure source",
+      "format": "Graph/HDF5 finite nanomaterial structures with simulated total-scattering channels",
+      "notes": "Retained as supporting structure substrate because deCIFer evaluates on about 8,200 periodic CHILI-100K CIFs and calculates Bragg PXRD from them. CHILI's own Debye-equation XRD channel describes finite-cluster total scattering and is not the in-scope pathway",
       "resource_links": [
         {
           "label": "CHILI GitHub",
@@ -1253,6 +1224,7 @@
       "id": "simxrd-4m",
       "name": "SimXRD-4M",
       "category": "dataset",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "size": "4,065,346 patterns from 119,569 structures",
       "sim_exp": "Sim",
@@ -1270,6 +1242,7 @@
       "id": "simpod",
       "name": "SIMPOD",
       "category": "dataset",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "size": "467,861",
       "sim_exp": "Sim",
@@ -1292,6 +1265,7 @@
       "id": "realpxrd-solver-training-corpus",
       "name": "RealPXRD-Solver training corpus",
       "category": "dataset",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "size": "6,250,238 theoretical structures",
       "sim_exp": "Sim + Exp evaluation",
@@ -1314,6 +1288,7 @@
       "id": "alphadiffract-simulation-corpus",
       "name": "AlphaDiffract simulation corpus",
       "category": "dataset",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "size": ">31M simulated PXRD from 312,267 structures in paper; open MP-only model subset also available",
       "sim_exp": "Sim + Exp evaluation",
@@ -1336,6 +1311,7 @@
       "id": "xqueryer-simulated-database",
       "name": "XQueryer simulated database",
       "category": "dataset",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "size": ">2M PXRD patterns from 100,315 MP structures",
       "sim_exp": "Sim + Exp evaluation",
@@ -1358,6 +1334,7 @@
       "id": "powbase",
       "name": "PowBase",
       "category": "dataset",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "size": "169",
       "sim_exp": "Exp",
@@ -1373,13 +1350,14 @@
     },
     {
       "id": "crystallography-open-database-entries-with-diffraction-data",
-      "name": "Crystallography Open Database entries with diffraction data",
+      "name": "Crystallography Open Database structure source",
       "category": "dataset",
-      "verified_at": "2026-05-09",
+      "scope_relation": "supporting",
+      "verified_at": "2026-10-05",
       "size": "Query-dependent",
-      "sim_exp": "Exp / structure DB",
+      "sim_exp": "Structure database; optional experimental records",
       "format": "CIF; diffraction/profile fields where deposited",
-      "notes": "COD is primarily an open crystal-structure database; experimental diffraction availability depends on the individual CIF records",
+      "notes": "COD is primarily an open crystal-structure database used by SIMPOD and XRD-Rust for simulated-PXRD generation and by xrdkit for candidate search. Structure factors or powder diffractograms are optional per-entry deposits, so this row does not claim a defined experimental-PXRD subset",
       "resource_links": [
         {
           "label": "COD",
@@ -1392,6 +1370,7 @@
       "id": "rruff",
       "name": "RRUFF",
       "category": "dataset",
+      "scope_relation": "multimodal_pxrd",
       "verified_at": "2026-09-21",
       "size": "Mineral spectra collection; current PXRD subset count not reverified",
       "sim_exp": "Exp",
@@ -1409,6 +1388,7 @@
       "id": "xred",
       "name": "XRed",
       "category": "dataset",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-05-09",
       "size": "100+ public pattern files in GitHub tree",
       "sim_exp": "Exp",
@@ -1426,6 +1406,7 @@
       "id": "opxrd",
       "name": "opXRD",
       "category": "dataset",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-09-07",
       "size": "92,552 patterns; 2,179 at least partially labeled",
       "sim_exp": "Exp",
@@ -1445,14 +1426,15 @@
       ]
     },
     {
-      "id": "opxrd-hkust-xccp-experimental-data",
-      "name": "opXRD-HKUST / XCCP experimental data",
+      "id": "opxrd-hkust-literature-experimental-data",
+      "name": "opXRD-HKUST and literature experimental PXRD",
       "category": "dataset",
-      "verified_at": "2026-05-09",
-      "size": "subset of opXRD-related experimental data",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-05",
+      "size": "1,277 patterns: 261 selected opXRD HKUST-B samples plus literature data",
       "sim_exp": "Exp",
       "format": "Hugging Face dataset",
-      "notes": "Experimental data associated with contrastive PXRD-candidate matching",
+      "notes": "Open experimental PXRD collection hosted by Bin Cao: 261 selected, labeled samples from opXRD's 499-pattern HKUST-B set plus additional patterns retrieved from the literature. Patterns were filtered for low noise and narrow resolved peaks, then background-subtracted; the card recommends curated opXRD or RRUFF releases for standardized benchmarking. The XCCP paper cites this collection as an experimental data artifact",
       "resource_links": [
         {
           "label": "Hugging Face",
@@ -1465,14 +1447,15 @@
       "id": "pymatgen-xrdcalculator",
       "name": "pymatgen XRDCalculator",
       "category": "utility",
-      "verified_at": "2026-05-09",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-05",
       "task": "PXRD simulation from CIF / structure",
       "notes": "Widely used baseline for simulated pattern generation",
       "resource_links": [
         {
-          "label": "pymatgen",
-          "url": "https://pymatgen.org/",
-          "role": "tool"
+          "label": "XRDCalculator docs",
+          "url": "https://pymatgen.org/pymatgen.analysis.diffraction.html",
+          "role": "docs"
         }
       ]
     },
@@ -1480,14 +1463,15 @@
       "id": "gsas-ii",
       "name": "GSAS-II",
       "category": "utility",
-      "verified_at": "2026-05-09",
+      "scope_relation": "multimodal_pxrd",
+      "verified_at": "2026-10-05",
       "task": "Rietveld refinement and diffraction analysis",
       "notes": "Standard open-source crystallographic refinement package; also used for simulation in ML data generation",
       "resource_links": [
         {
-          "label": "GSAS-II",
-          "url": "https://cai.xray.aps.anl.gov/Featured-Projects/GSAS-II",
-          "role": "tool"
+          "label": "AdvancedPhotonSource/GSAS-II",
+          "url": "https://github.com/AdvancedPhotonSource/GSAS-II",
+          "role": "code"
         }
       ]
     },
@@ -1495,6 +1479,7 @@
       "id": "powderline",
       "name": "PowderLine",
       "category": "utility",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-09-07",
       "task": "Programmatic Rietveld refinement and single-peak fitting",
       "notes": "Encodes a full refinement as a versioned declarative JSON recipe and returns structured results through GSAS-II, TOPAS v7, or EasyDiffraction; the paper's two-phase worked example reports Rwp = 8.46%. Hosted and repository-local documentation are available",
@@ -1517,29 +1502,10 @@
       ]
     },
     {
-      "id": "eraf4xrd",
-      "name": "ERAF4XRD",
-      "category": "utility",
-      "verified_at": "2026-10-05",
-      "task": "Literature-derived experimental PXRD figure and metadata curation",
-      "notes": "Downloads/screens papers, links XRD figures to metadata, and checks extracted records against source evidence; not a crystal solver or a numerical-pattern corpus. BSD-3-Clause source requires model API access and source installation; package-index releases are not yet available. Its separately catalogued 273-document benchmark became publicly available on Zenodo after the previous audit",
-      "resource_links": [
-        {
-          "label": "arXiv",
-          "url": "https://arxiv.org/abs/2609.18583",
-          "role": "paper"
-        },
-        {
-          "label": "niaz60/ERAF4XRD",
-          "url": "https://github.com/niaz60/ERAF4XRD",
-          "role": "code"
-        }
-      ]
-    },
-    {
       "id": "pyxplore",
       "name": "PyXplore / PyWPEM",
       "category": "utility",
+      "scope_relation": "multimodal_pxrd",
       "verified_at": "2026-10-05",
       "task": "Whole-pattern effect modelling, PXRD simulation/decomposition, and structure/profile preprocessing",
       "notes": "MIT Python package with PyPI release 2026.9.18. Its WPEM workflow supports structure and profile refinement but still requires an initial structure/CIF; the broader package also covers XPS and EXAFS. Paper benchmarks are author-reported and were not reproduced in this audit",
@@ -1565,6 +1531,7 @@
       "id": "xrdkit",
       "name": "xrdkit",
       "category": "utility",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-09-21",
       "task": "PXRD ingestion, candidate matching, and scripted Le Bail/Rietveld workflows",
       "notes": "MIT Python package with XRDML/XY/XYE readers, COD candidate matching, and a separate GSAS-II refinement driver. PyPI v0.2.0 is available; matching requires an element set and refinement requires starting structures/instrument parameters. No bundled benchmark data or peer-reviewed performance claim; API remains under active development",
@@ -1585,6 +1552,7 @@
       "id": "xrd-rust",
       "name": "XRD-Rust",
       "category": "utility",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-10-05",
       "task": "Fast PXRD simulation",
       "notes": "Rust-accelerated pymatgen-style XRD calculator; the paper reports median serial-SIMD speedups of 10.7× on COD and 10.8× on MC3D, increasing to 19.5× and 15.1× with eight threads",
@@ -1615,6 +1583,7 @@
       "id": "xrdstudio",
       "name": "XRDStudio",
       "category": "utility",
+      "scope_relation": "direct_pxrd",
       "verified_at": "2026-08-10",
       "task": "Browser-based PXRD simulation and phase-pattern comparison",
       "notes": "Single-file local app with 171 bundled structures, CIF import, multiple radiation choices, overlays, and reflection export; it does not perform refinement or model texture, absorption, or size/strain broadening",
@@ -1623,37 +1592,6 @@
           "label": "shirishchandrakar/XRDStudio",
           "url": "https://github.com/shirishchandrakar/XRDStudio",
           "role": "tool"
-        }
-      ]
-    },
-    {
-      "id": "diffpy-pdf-tools",
-      "name": "diffpy / PDF tools",
-      "category": "utility",
-      "verified_at": "2026-05-09",
-      "task": "Pair distribution function analysis",
-      "notes": "Useful for PDF-based inverse problems and nanoparticle structure models",
-      "resource_links": [
-        {
-          "label": "diffpy",
-          "url": "https://www.diffpy.org/",
-          "role": "tool"
-        }
-      ]
-    },
-    {
-      "id": "parse-cifs-py",
-      "name": "parse_cifs.py",
-      "category": "utility",
-      "verified_at": "2026-05-09",
-      "task": "Repository utility",
-      "notes": "Parses and normalizes CIFs / experimental PXRD fields for model-specific inference scripts",
-      "resource_links": [
-        {
-          "label": "utils/parse_cifs.py",
-          "url": "utils/parse_cifs.py",
-          "role": "tool",
-          "code_label": true
         }
       ]
     }
