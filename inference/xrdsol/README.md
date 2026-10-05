@@ -86,6 +86,8 @@ test structures, with inputs built exactly as `process_one` and 25 samples per s
 
 The paper reports 82.3% for its top-1 protocol; the 0.830 any-of-25 result uses a looser metric
 and should not be compared to that figure as if it were the same measure.
+A rerun from a fresh `setup.sh` environment (2026-10-05) gave 0.750 top-1, 0.820 any-of-25, and
+0.450 for a single sample: GPU sampling is not bit-reproducible, so expect differences of this size.
 
 Pattern dependence during generation is weak. The decoder compresses the entire pattern with
 `nn.Linear(4500, 1)` into one scalar per structure, appended to node features only before the
