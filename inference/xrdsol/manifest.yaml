@@ -1,0 +1,39 @@
+# Inference manifest: the contract between this directory, the benchmark harness, and the
+# catalog. Fields are documented in inference/README.md.
+id: xrdsol
+name: XRDSol
+catalog_id: xrdsol
+upstream:
+  repo: https://github.com/ai4mat-zhu/XRDSol
+  commit: b2144df1968e4b03b188080c26089646f1293e88
+  license: MIT
+weights:
+  - id: mp20
+    url: https://github.com/ai4mat-zhu/XRDSol/tree/b2144df1968e4b03b188080c26089646f1293e88/xrdsol/prop_models/mp20
+    sha256: 7e3c48dbe4c055841e069f26d31551cc23d3dd3ea55921665328e827ec88e54e
+    note: epoch=189-step=5129.ckpt (git LFS) with hparams.yaml and scalers
+inputs:
+  pattern: required (peak-picked by inference/_common/pxrd_io.py and rendered as in training, or pass --peaks)
+  wavelength: required for 2theta column files; not needed for Q-space files; read from pdCIF
+  composition: required
+  z: required (conventional cell)
+  cell: required (conventional a,b,c,alpha,beta,gamma); XRDSol solves coordinates for a known cell
+  spacegroup: required unless --cell-is-primitive (converts cell and Z to the primitive cell used in training; R groups accept hexagonal or rhombohedral axes, detected from the cell)
+  usable_range: 0-90 degrees 2theta at averaged Cu Ka; at most 20 atoms in the primitive cell
+hardware:
+  gpu_memory_gb: 2
+  cpu_ok: false
+  platform: tested on Linux x86-64 only
+environment:
+  file: environment.yml
+  setup: setup.sh
+  conda_env: xrdsol
+benchmark:
+  settings:
+    - name: composition_z_cell_spacegroup
+      inputs: [composition, z, cell, spacegroup]
+status:
+  state: reproduced  # paper accuracy reproduced; mismatched-pattern control not clearly lower
+  verified_on: 2026-10-04
+  verified_by: Claude Code agent with Codex review (pending maintainer review)
+  hardware: NVIDIA RTX 4090 24 GB, driver 595.91, Linux
