@@ -17,6 +17,7 @@
       "z": 2,
       "spacegroup": "P6_3mc",
       "spacegroup_number": 186,
+      "cell": "5.09760,5.09760,8.34410,90.00000,90.00000,120.00000",
       "ground_truth": "ground_truth/br1322Isup2.cif",
       "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
     },
@@ -32,6 +33,7 @@
       "z": 2,
       "spacegroup": "P2_1/m",
       "spacegroup_number": 11,
+      "cell": "6.05940,4.13970,7.58780,90.00000,101.52900,90.00000",
       "ground_truth": "ground_truth/br1340Isup2.cif",
       "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
     },
@@ -47,6 +49,7 @@
       "z": 4,
       "spacegroup": "Fm-3m",
       "spacegroup_number": 225,
+      "cell": "6.33470,6.33470,6.33470,90.00000,90.00000,90.00000",
       "ground_truth": "ground_truth/gw5052Mg2Si_100K_LTsup2.cif",
       "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
     },
@@ -62,6 +65,7 @@
       "z": 4,
       "spacegroup": "Fm-3m",
       "spacegroup_number": 225,
+      "cell": "6.74174,6.74174,6.74174,90.00000,90.00000,90.00000",
       "ground_truth": "ground_truth/gw5052Mg2Sn_100K_LTsup23.cif",
       "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
     },
@@ -77,6 +81,7 @@
       "z": 2,
       "spacegroup": "P2_1/c",
       "spacegroup_number": 14,
+      "cell": "5.28630,5.36030,9.17745,90.00000,125.16538,90.00000",
       "ground_truth": "ground_truth/iz1026Isup2.cif",
       "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
     },
@@ -92,6 +97,7 @@
       "z": 1,
       "spacegroup": "P4mm",
       "spacegroup_number": 99,
+      "cell": "3.99460,3.99460,4.03380,90.00000,90.00000,90.00000",
       "ground_truth": "ground_truth/ks5409BTsup2.cif",
       "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
     },
@@ -107,6 +113,7 @@
       "z": 4,
       "spacegroup": "Pnma",
       "spacegroup_number": 62,
+      "cell": "5.72290,5.94040,8.21580,90.00000,90.00000,90.00000",
       "ground_truth": "ground_truth/sq1033Isup2.cif",
       "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
     },
@@ -122,6 +129,7 @@
       "z": 4,
       "spacegroup": "Pnma",
       "spacegroup_number": 62,
+      "cell": "4.88750,8.36970,12.26650,90.00000,90.00000,90.00000",
       "ground_truth": "ground_truth/sq3214Isup2.cif",
       "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
     },
@@ -137,6 +145,7 @@
       "z": 2,
       "spacegroup": "P6_3/mmc",
       "spacegroup_number": 194,
+      "cell": "5.30756,5.30756,6.80615,90.00000,90.00000,120.00000",
       "ground_truth": "ground_truth/wh5012phaseIIIsup3.cif",
       "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
     },
@@ -152,6 +161,7 @@
       "z": 4,
       "spacegroup": "Pnma",
       "spacegroup_number": 62,
+      "cell": "5.10100,8.16700,9.95700,90.00000,90.00000,90.00000",
       "ground_truth": "ground_truth/wh5012phaseIIsup2.cif",
       "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
     },
@@ -167,6 +177,7 @@
       "z": 2,
       "spacegroup": "P4/nmm",
       "spacegroup_number": 129,
+      "cell": "3.84155,3.84155,13.46950,90.00000,90.00000,90.00000",
       "ground_truth": "ground_truth/wm2446Isup2.cif",
       "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
     },
@@ -182,6 +193,7 @@
       "z": 1,
       "spacegroup": "P-6m2",
       "spacegroup_number": 187,
+      "cell": "5.10093,5.10093,4.45510,90.00000,90.00000,120.00000",
       "ground_truth": "ground_truth/wn6225Isup2.cif",
       "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)"
     }

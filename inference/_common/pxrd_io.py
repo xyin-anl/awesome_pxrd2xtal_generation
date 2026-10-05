@@ -159,16 +159,17 @@ def pick_peaks(
     FWHM), which tracks integrated intensities from simulation better than raw heights.
 
     strip_ka2 merges resolved Cu K-alpha2 satellites into their K-alpha1 parents; merged
-    parents are re-expressed at the pattern's wavelength. By default it is enabled for Cu
-    wavelengths (1.5406 or 1.5418);
-    pass False for monochromated K-alpha1 data. A satellite must sit at the K-alpha2 position
+    parents are re-expressed at the pattern's wavelength. By default it is enabled only for data
+    declared at the averaged Cu K-alpha wavelength (1.5418); pass True to force it for Cu data. A satellite must sit at the K-alpha2 position
     with 30-75% of the parent's area, and each parent absorbs at most one satellite.
     """
     x, y = _resample_uniform(pattern)
     step = x[1] - x[0]
     is_cu = abs(pattern.wavelength - CU_KA) < 0.003 or abs(pattern.wavelength - CU_KA1) < 0.003
     if strip_ka2 is None:
-        strip_ka2 = is_cu
+        # Data declared at the averaged Cu Ka wavelength contain the Ka1/Ka2 doublet; data declared
+        # as Ka1 (1.5406 A) are taken to be monochromated or already stripped.
+        strip_ka2 = abs(pattern.wavelength - CU_KA) < 0.0008
     elif strip_ka2 and not is_cu:
         raise ValueError(f"K-alpha2 stripping only applies to Cu radiation, not {pattern.wavelength} A")
 

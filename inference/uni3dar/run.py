@@ -64,7 +64,8 @@ def prepare_peaks(args, out: str) -> tuple[np.ndarray, np.ndarray, list[float]]:
         covered = [float(np.nanmin(two_theta)), float(np.nanmax(two_theta))]
     else:
         pattern = load_pattern(args.pattern, args.wavelength, args.x_unit)
-        two_theta, intensity, lam = pick_peaks(pattern)
+        strip = {"auto": None, "on": True, "off": False}[args.strip_ka2]
+        two_theta, intensity, lam = pick_peaks(pattern, strip_ka2=strip)
         covered = [float(pattern.two_theta.min()), float(pattern.two_theta.max())]
     tt = convert_two_theta(two_theta, lam, CU_KA)
     keep = np.isfinite(tt) & (tt > 0) & (tt <= TWO_THETA_MAX) & np.isfinite(intensity) & (intensity > 0)
@@ -111,6 +112,8 @@ def main() -> None:
     src.add_argument("--peaks", help="Pre-picked peaks CSV with header '2theta,intensity'")
     p.add_argument("--wavelength", help="Angstrom or name (CuKa, MoKa, ...); read from pdCIF if omitted")
     p.add_argument("--x-unit", choices=["2theta", "q"], default="2theta", help="Unit of the pattern's first column")
+    p.add_argument("--strip-ka2", choices=["auto", "on", "off"], default="auto",
+                   help="Merge Cu Ka2 satellites into Ka1 peaks (auto: on only for data declared at averaged Cu Ka, 1.5418 A)")
     p.add_argument("--composition", required=True, help="Reduced formula, e.g. TiO2 (required by this model)")
     p.add_argument("--z", type=int, required=True, help="Formula units per conventional cell")
     p.add_argument("--spacegroup", help="Optional; only used to convert Z to the primitive cell")

@@ -57,6 +57,8 @@ def main() -> None:
                 "z": int(z),
                 "spacegroup": sga.get_space_group_symbol(),
                 "spacegroup_number": sga.get_space_group_number(),
+                # conventional standard cell (same setting as z and spacegroup), for models that need the cell
+                "cell": ",".join(f"{v:.5f}" for v in list(conv.lattice.abc) + list(conv.lattice.angles)),
                 "ground_truth": f"ground_truth/{case_id}.cif",
                 "source": "exp_pxrd_data/pxrdnet (IUCr pdCIF, as used by PXRDnet)",
             }

@@ -36,7 +36,7 @@ REPO_ROOT = os.path.dirname(os.path.dirname(HERE))
 # Matching tolerances used by CDVAE/DiffCSP-style crystal structure prediction benchmarks.
 MATCHER_KW = {"stol": 0.5, "angle_tol": 10, "ltol": 0.3}
 
-FLAG_FOR_INPUT = {"composition": "--composition", "z": "--z", "spacegroup": "--spacegroup"}
+FLAG_FOR_INPUT = {"composition": "--composition", "z": "--z", "spacegroup": "--spacegroup", "cell": "--cell"}
 
 
 def run_case(model_dir, python, case, pattern_case, inputs, n_samples, out_dir, extra_args):
@@ -88,6 +88,8 @@ def score(out_dir, results, gt_path):
         "n_candidates": len(rows),
         "n_valid": len(valid),
         "match_any": bool(matched),
+        # first candidate as returned; meaningful for wrappers that rank their output
+        "match_top1": bool(rows and rows[0]["valid"] and rows[0]["match"]),
         # Both fractions use all returned candidates; unreadable CIFs count as wrong.
         "match_fraction": round(len(matched) / len(rows), 3) if rows else 0.0,
         "best_rms": min((r["rms"] for r in matched), default=None),
@@ -105,6 +107,7 @@ def summarize(per_case):
         "n_cases": n,
         "n_failed_runs": n - len(ok),
         "match_rate_any": round(sum(c["match_any"] for c in ok) / n, 3) if n else 0.0,
+        "match_rate_top1": round(sum(c.get("match_top1", False) for c in ok) / n, 3) if n else 0.0,
         "mean_match_fraction": round(sum(c["match_fraction"] for c in ok) / n, 3) if n else 0.0,
         "mean_spacegroup_fraction": round(sum(c["spacegroup_fraction"] for c in ok) / n, 3) if n else 0.0,
         "mean_candidates": round(sum(c["n_candidates"] for c in ok) / n, 1) if n else 0.0,
@@ -120,6 +123,8 @@ def main() -> None:
     p.add_argument("--cases", default=os.path.join(HERE, "cases.json"))
     p.add_argument("--only", nargs="*", help="Run only these case ids")
     p.add_argument("--control", action="store_true", help="Also run the mismatched-pattern control")
+    p.add_argument("--resume", action="store_true",
+                   help="Reuse cases whose output directory already has results.json (written only by completed runs)")
     p.add_argument("--settings", nargs="*", help="Run only these settings and merge them into an existing report")
     p.add_argument("--work", default=os.path.join(HERE, "runs"), help="Scratch directory for model outputs")
     p.add_argument("--report", help="Where to write the JSON report (default: <model_dir>/benchmark.json)")
@@ -167,7 +172,17 @@ def main() -> None:
         for case in cases:
             pattern_case = donor[case["id"]] if mismatched else case
             out_dir = os.path.join(args.work, manifest["id"], name, case["id"])
-            res = run_case(model_dir, args.python, case, pattern_case, inputs, args.n_samples, out_dir, extra)
+            marker = os.path.join(out_dir, ".benchmark_complete")
+            if args.resume and os.path.exists(marker):
+                with open(os.path.join(out_dir, "results.json"), encoding="utf-8") as fin:
+                    res = json.load(fin)
+            else:
+                for stale in (marker, os.path.join(out_dir, "results.json")):
+                    if os.path.exists(stale):
+                        os.remove(stale)
+                res = run_case(model_dir, args.python, case, pattern_case, inputs, args.n_samples, out_dir, extra)
+                if "error" not in res:
+                    open(marker, "w").close()
             gt_path = os.path.join(HERE, case["ground_truth"])
             entry = {"id": case["id"], "pattern_from": pattern_case["id"]}
             entry.update(res if "error" in res else score(out_dir, res, gt_path))
