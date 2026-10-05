@@ -1,12 +1,17 @@
-# Playbook: adding a runnable inference script
+# Playbook: adding and maintaining runnable inference scripts
 
 Instructions for an agent (or person) wrapping a new model from `data/resources.json` under
-`inference/<id>/`. Read `inference/README.md` first for the directory contract. Work on a branch
-and open a pull request; a maintainer reviews and merges.
+`inference/<id>/`, or changing an existing wrapper or the shared code. Read `inference/README.md`
+first for the directory contract and the status definitions. Work on a branch; a maintainer
+reviews, pushes, and merges. Never push, open a pull request, or merge without the maintainer's
+go-ahead.
+
+Every pass ends with a dated entry in `curation_protocal.md` (step 7), so the next agent can see
+what was done and why.
 
 ## 0. Decide whether it is feasible
 
-Stop and open a draft PR or issue that explains why if any of these hold:
+Stop, and record why for the maintainer, if any of these hold:
 
 - No public code, or no public weights (training from scratch is out of scope).
 - Weights sit behind a login, request form, or click-through license.
@@ -14,7 +19,13 @@ Stop and open a draft PR or issue that explains why if any of these hold:
   still proceed for unlicensed code, since nothing is vendored, but flag it).
 - The model needs a platform we cannot test (Windows-only, proprietary solver, paid API).
 
-Record the reason in `manifest.yaml` with `status.state: blocked` and `status.reason`.
+Record the reason in `manifest.yaml` with `status.state: blocked` and `status.reason`, and in
+`inference/TRIAGE.md`.
+
+Scope is general inorganic materials. Models specialized to one material class (MOFs, a few
+structure families) go under "Out of focus" in `TRIAGE.md`. When a model's own authors maintain
+inference code, weights, and a demo, link those from the catalog entry and list the model under
+"Referenced, not wrapped here" instead of duplicating them (AlphaDiffract).
 
 ## 1. Read upstream before writing code
 
@@ -47,32 +58,127 @@ python inference/_benchmark/benchmark.py inference/<id> --python <env python> --
 ```
 
 Declare the input settings the model supports under `benchmark.settings` in the manifest.
-The run must complete on every case, and the mismatched-pattern control must score clearly
-below the matched setting. If it does not, the wrapper is probably not passing the pattern
-through correctly. Run one model's benchmark at a time: GPU memory use varies a lot between
+The run must complete on every case (if it cannot for reasons inside upstream, see 6b and the
+`limited` status), and the mismatched-pattern control must score clearly below the matched
+setting. If it does not, the wrapper is probably not passing the pattern through correctly;
+check that before concluding the model ignores the pattern. Run one model's benchmark at a time: GPU memory use varies a lot between
 models (deCIFer can take ~19 GB), and out-of-memory failures look like model failures.
 
 Commit a script that reruns the upstream-example check (see `uni3dar/reproduce_upstream.py`)
 when it needs more than a single `run.py` command.
 
+### Keep the machine alive
+
+The test machine has one 24 GB GPU and 30 GB of RAM, shared with the agent session itself. A
+kernel out-of-memory kill takes the session down with the job, so:
+
+- Run every benchmark inside a memory cap, leaving several GB for the system:
+  `systemd-run --user --scope -p MemoryMax=22G -p MemorySwapMax=2G <python> inference/_benchmark/benchmark.py ...`.
+  A wrapper whose upstream spawns worker processes caps and cleans them up itself (see
+  `ab_pxrd_solver/run.py`: a named scope, stopped after every run, with `Result=oom-kill` read
+  before stopping).
+- Run one GPU benchmark at a time, and do not start a CPU-heavy job next to it if the two caps
+  add up to more than the RAM.
+- Launch anything longer than a few minutes detached (`nohup setsid ... < /dev/null > log 2>&1 &`)
+  and pass `--resume`, so an interrupted run continues where it stopped. `--resume` reuses a case
+  only if its command and the wrapper and shared code are unchanged.
+- Do not use `pkill -f`/`pgrep -f` with a pattern that also appears in your own command line; it
+  matches and kills your own shell. Kill by PID.
+
+### Choose the status
+
+Statuses are defined in `inference/README.md#what-verified-means`:
+
+- `verified`: setup from scratch, the authors' example, the full benchmark, a control that scores
+  clearly lower, and a clean review.
+- `reproduced`: the same, except the control is not clearly lower. "Clearly" means lower by more
+  than the model's run-to-run variation; if in doubt, rerun the matched setting and compare.
+- `limited`: setup, example, and review pass, but most benchmark runs cannot complete for reasons
+  inside upstream or by design. List every failure and its cause in the README.
+- `blocked`: step 0 failed. `untested`: work in progress.
+
 ## 4b. Independent review
 
-Have a second model review the wrapper against the pinned upstream checkout before marking it
-verified (read-only, one pass, narrow brief: input representation, prompt format, upstream call,
-weights, README claims). Verify every finding before changing code; test disputed scientific
-choices with an extra benchmark setting rather than taking either side on trust. Rerun the
-benchmark after fixes that change the model's input.
+Have a model other than the author review the wrapper against the pinned upstream checkout before
+setting a status. Changes to shared code, or a branch with several wrappers, get two independent
+reviewers from different model families, each with the same brief.
 
-## 5. Document and open the PR
+- **Brief.** Read-only (no edits, no setup, inference, or benchmarks); the repository path, the
+  commits or files in scope, and where the pinned upstream checkouts are; priorities in order:
+  scientifically wrong input or output (wavelength, Kα handling, peak picking, cell and Z, formula
+  and space-group format, ranking), mismatches with upstream's own code (cite upstream file:line),
+  benchmark scoring, crash paths and `setup.sh`, then documentation that contradicts the code or
+  `benchmark.json`. Ask for severity, file:line, a concrete failure scenario, the evidence, a
+  confidence, and whether the reviewer traced the code path or is inferring; ask it to list what
+  it checked and found correct. Exclude style.
+- **Verify every finding** by reading the code path or with a minimal test (a simulated pattern,
+  a modified input file) before changing anything. Reviewers can be wrong in either direction:
+  one claimed an unresolved Kα doublet is picked at its centroid; a simulation showed the maximum
+  sits near Kα1, which in turn exposed a real error for data labelled averaged Cu Kα.
+- Test disputed scientific choices with an extra benchmark setting or a simulation rather than
+  taking either side on trust.
+- Summarize the review in the model README ("Independent review": reviewer, what was fixed) and
+  list each finding's outcome (fixed, rejected with evidence) in the commit message.
+- Rerun the benchmark after fixes that change the model's input (step 6).
+
+## 5. Document and prepare the PR
 
 - `README.md` for the model: quick start, inputs, preprocessing, the upstream-example result,
   the benchmark table, and known limitations.
-- Set `status` in the manifest (`verified`, date, hardware) only after steps 3-4 pass.
+- Set `status` in the manifest (state chosen as in step 4, date, hardware) only after steps 3-4b.
 - Add the run.py/environment/setup links to the resource's `inference` field in
   `data/resources.json` and its id to `inference_order`, then run
   `python3 scripts/catalog.py render && python3 scripts/catalog.py check && python3 -m unittest discover -s tests`.
 - The PR description lists: upstream commit, weights + checksum, the example reproduction,
   the benchmark summary (with control), and anything you were unsure about.
+- Commit one wrapper or one logical fix at a time. The message says why, with the evidence
+  (numbers before and after, the test that showed it). Commit `benchmark.json` together with the
+  README numbers taken from it, check that the report contains no local paths, and run the catalog
+  checks above before every commit.
+
+## 6. Changing shared code: rerun what it touches
+
+A change to `inference/_common/`, `utils/parse_cifs.py`, or the benchmark harness can move every
+wrapper that uses it.
+
+1. Find the affected wrappers (`grep -l pick_peaks inference/*/run.py`, and so on) and check
+   whether the change alters what they feed their models: compare the prepared inputs (peak
+   lists, profiles) before and after on the benchmark files.
+2. If inputs change, rerun those wrappers' benchmarks one at a time, moving the old run
+   directories aside.
+3. Compare the new and old reports case by case, not only the summaries. A change is real if it
+   follows the cases whose input changed; if cases with unchanged input move as much, it is
+   run-to-run noise (XRDSol's GPU sampling is not bit-reproducible). Say which in the commit.
+4. Update every README number from the new report and recheck the README's per-case claims;
+   revisit the status if the control comparison changed.
+5. A metric may be added to an old report without rerunning only when the stored data fully
+   determine it (top-1 from stored ranked candidate rows), and only if every existing summary
+   field recomputes identically.
+
+## 6b. Diagnosing a model that fails on the benchmark
+
+Before spending hours on a model that mostly fails, establish whether the fault is in the
+wrapper or upstream:
+
+1. Inspect the exact file the model receives (the wrapper writes it to the output directory).
+2. Score the reference structure against that input with upstream's own figure of merit. If it
+   scores as high as on upstream's own example, the input is fine.
+3. Check the benchmark data for the case: radiation and Kα2, extra phases, impurity peaks.
+4. Find the phase where upstream stops (indexing, memory, a crash) from its own logs, and
+   measure memory over time under a cap if runs are killed.
+5. Validate any simulated control before trusting it: a simulated pattern that upstream's
+   scoring does not match to its own source structure says nothing about the model.
+
+Do not patch upstream. Document each failure class with counts and evidence in the README and
+set the status accordingly.
+
+## 7. Log the pass
+
+Append a dated section to `curation_protocal.md` in the format of the existing inference entries
+("## <Month D YYYY> inference ..."): a numbered entry naming who built and who reviewed, then
+"Material changes" bullets covering wrappers added or replaced, status changes and why, fixes to
+shared code, data problems found, and anything left open. Update the "Open Gaps" list when a gap
+is closed.
 
 ## Lessons from earlier wrappers
 
