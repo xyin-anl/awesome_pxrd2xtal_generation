@@ -5,7 +5,7 @@ a runnable wrapper under `inference/`. "Feasible" means public code and weights,
 and an inference entry point; it says nothing about quality. Checked 2026-10-04 by reading each
 repository, its weights location, and its inference code.
 
-## Wrapped (status in each manifest: verified or reproduced)
+## Wrapped (status in each manifest: verified, reproduced, or limited)
 
 | Model | Directory |
 |-------|-----------|
@@ -16,6 +16,7 @@ repository, its weights location, and its inference code.
 | DiffractGPT | `diffractgpt/` |
 | PXRDnet | `pxrdnet/` |
 | XRDSol | `xrdsol/` |
+| Ab-PXRD-Solver | `ab_pxrd_solver/` |
 
 Scope: general inorganic materials. Models specialized to one material class are recorded under
 "Out of focus".

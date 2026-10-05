@@ -93,6 +93,11 @@ benchmark after fixes that change the model's input.
   per trial; the wrapper exports the state the pipeline actually selected.
 - **Check the benchmark data too.** One "experimental" pdCIF turned out to be a two-phase
   sample, and two files carried a processed wavelength that differed from the source wavelength.
+  Radiation labels are unreliable: `ks5409BTsup2` declares Cu Kα1 (1.54056 Å) yet shows Kα2
+  shoulders, and several Cu files give no wavelength at all.
+- **Test the scoring before blaming the search.** For a search-based solver, compute upstream's
+  own figure of merit for the reference structure against your prepared input (Ab-PXRD-Solver:
+  0.986, as high as its own example). That separates input-preparation errors from search failures.
 
 - **CrystaLLM-pi** conditions on the 20 strongest *picked peaks*. Upstream does not check this;
   passing a raw profile silently produces meaningless conditioning. Its `--search_zs` keeps only

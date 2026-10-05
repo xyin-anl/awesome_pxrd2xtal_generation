@@ -39,6 +39,20 @@ MATCHER_KW = {"stol": 0.5, "angle_tol": 10, "ltol": 0.3}
 FLAG_FOR_INPUT = {"composition": "--composition", "z": "--z", "spacegroup": "--spacegroup", "cell": "--cell"}
 
 
+def failure(output, out_dir):
+    # Keep the tail of the output without machine-specific paths; wrappers that record why they
+    # stopped (timeout, memory limit) in results.json before exiting non-zero contribute that too.
+    tail = output[-2000:].replace(REPO_ROOT, "<repo>").replace(os.path.expanduser("~"), "~")
+    res = {"error": tail}
+    path = os.path.join(out_dir, "results.json")
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as fin:
+            status = json.load(fin).get("status")
+        if status:
+            res["status"] = status
+    return res
+
+
 def run_case(model_dir, python, case, pattern_case, inputs, n_samples, out_dir, extra_args):
     cmd = [python, os.path.join(model_dir, "run.py"), "--n-samples", str(n_samples), "--out", out_dir]
     cmd += ["--pattern", os.path.join(REPO_ROOT, pattern_case["pattern"])]
@@ -49,7 +63,7 @@ def run_case(model_dir, python, case, pattern_case, inputs, n_samples, out_dir, 
     cmd += extra_args
     proc = subprocess.run(cmd, capture_output=True, text=True)
     if proc.returncode != 0:
-        return {"error": (proc.stderr or proc.stdout)[-2000:]}
+        return failure(proc.stderr or proc.stdout, out_dir)
     with open(os.path.join(out_dir, "results.json"), encoding="utf-8") as fin:
         return json.load(fin)
 

@@ -60,6 +60,10 @@ A model is marked `verified` in its manifest only when all of these hold on the 
 A model is marked `reproduced` when 1-3 and 5 hold but the control is not clearly lower: the
 wrapper behaves like upstream, yet on this benchmark the output barely depends on the pattern.
 
+A model is marked `limited` when 1, 2 and 5 hold but most benchmark runs cannot complete for
+reasons inside upstream or by design (for example, memory use beyond a workstation, an upstream
+crash, or a single supported radiation). The model README lists each failure and its cause.
+
 Benchmark numbers come from a small set of 12 experimental patterns. They are a sanity check for
 the wrapper, not a ranking of models, and they are not comparable to numbers in the papers.
 
