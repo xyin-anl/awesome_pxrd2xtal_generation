@@ -71,8 +71,8 @@ Fractions are over all returned candidates. Full report: [`benchmark.json`](benc
 | Setting | Any match | Mean match fraction | Mean correct-space-group fraction | Mean candidates |
 |---------|-----------|---------------------|-----------------------------------|-----------------|
 | composition + Z (all centerings tried) | 8/12 | 0.42 | 0.29 | 45 |
-| composition + Z + space group (exact primitive Z) | 8/12 | 0.67 | 0.54 | 20 |
-| control: composition + Z, another case's pattern | 7/12 | 0.30 | 0.10 | 44 |
+| composition + Z + space group (exact primitive Z) | 8/12 | 0.67 | 0.55 | 20 |
+| control: composition + Z, another case's pattern | 7/12 | 0.29 | 0.10 | 44 |
 
 Without a space group, candidates from wrong-Z hypotheses lower the match fraction; the
 space-group row is the fairer view of the model. The pattern clearly drives Mg2Si (0.92 → 0.37
@@ -81,7 +81,7 @@ fractions overall (0.29 → 0.10). BaTiO3, KCaCO3F, LaInO3, and EuI2 come out th
 pattern, i.e. composition alone decides them. Uni-3DAR found no match for AlPO4, CdBiClO2,
 KLaTiO4, or Rb2S phase III in any setting.
 
-Runtime: 14-66 s per case (model load included). Peak GPU memory 22.4 GB on LaInO3
+Runtime: 14-66 s per case (model load included). Peak GPU memory about 22 GB on LaInO3
 (20-atom primitive cell) at batch size 64; 6.2 GB at batch size 32.
 
 **Independent review.** Reviewed against the pinned upstream by Codex (gpt-5.6-sol, high).

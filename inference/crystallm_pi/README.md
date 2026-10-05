@@ -69,7 +69,7 @@ candidates; failed runs would count as misses (there were none). Full report:
 | composition + Z | 10/12 | 0.60 | 0.59 | 19 |
 | composition + Z + space group | 12/12 | 0.89 | 1.00 | 20 |
 | composition only (Z searched) | 12/12 | 0.18 | 0.13 | 92 |
-| control: composition + Z, another case's pattern | 8/12 | 0.29 | 0.28 | 18 |
+| control: composition + Z, another case's pattern | 8/12 | 0.30 | 0.28 | 18 |
 
 The control halves the match fraction. Cases that depend on the pattern (Mg2Si, Mg2Sn,
 Na2LiAlF6, Rb2S phase II, KLaTiO4, LaInO3) drop sharply with the wrong pattern, while BaTiO3,

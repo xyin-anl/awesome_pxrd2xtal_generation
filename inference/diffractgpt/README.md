@@ -87,10 +87,11 @@ which made the training prompts, computes intensities differently from pymatgen.
 | composition, sampled (harness peaks) | 3/12 | 0.125 | 0.03 | 20 |
 | composition, sampled (upstream peaks) | 5/12 | 0.17 | 0.05 | 20 |
 | composition, greedy (harness peaks) | 1/12 | 0.08 | 0.00 | 1 |
-| control: composition, sampled (harness peaks), another case's pattern | 3/12 | 0.12 | 0.04 | 20 |
+| control: composition, sampled (harness peaks), another case's pattern | 4/12 | 0.125 | 0.04 | 20 |
 
-The sampled harness setting and its mismatched-pattern control both match 3/12 cases
-(Mg2Si, Mg2Sn, and BaTiO3), with mean match fractions of 0.125 and 0.117. The control is not
+The sampled harness setting matches 3/12 cases (Mg2Si, Mg2Sn, and BaTiO3); its
+mismatched-pattern control matches the same three plus a loose EuI2 match (fraction 0.10, RMS
+0.476), and both have a mean match fraction of 0.125. The control is not
 clearly lower: on this benchmark the pattern has little measurable effect on the output, so
 matches mostly reflect the composition.
 

@@ -104,20 +104,21 @@ candidates and averaged across cases; no runs failed in either setting. Full rep
 
 | Setting | Any match | Top-1 match | Mean match fraction | Mean correct-space-group fraction | Mean candidates |
 |---------|-----------|-------------|---------------------|-----------------------------------|-----------------|
-| composition + Z + cell + space group | 10/12 | 8/12 | 0.608 | 0.321 | 20 |
-| control: same inputs, another case's pattern | 10/12 | 7/12 | 0.646 | 0.354 | 20 |
+| composition + Z + cell + space group | 10/12 | 8/12 | 0.567 | 0.312 | 20 |
+| control: same inputs, another case's pattern | 10/12 | 9/12 | 0.600 | 0.321 | 20 |
 
-The control is not lower: any-match is 10/12 in both settings, top-1 loses one case (8/12 to
-7/12), and the mean match fraction is higher with the wrong pattern (0.646 versus 0.608), as is
-the correct-space-group fraction. This does not show a benefit from the correct diffraction
-pattern on this benchmark. Sampling is not bit-reproducible on the GPU: an earlier run, which differed only in Kα2 handling
-for three patterns, gave 11/12 any-match and a 0.592 control match fraction, and cases whose input
-did not change moved as much (AlPO4: 0.45 to 0.35), so differences of this size are noise.
+The control is not lower: any-match is 10/12 in both settings, and top-1 (9/12 versus 8/12), the
+mean match fraction (0.600 versus 0.567), and the correct-space-group fraction are all slightly
+higher with the wrong pattern. This does not show a benefit from the correct diffraction pattern
+on this benchmark. Sampling is not bit-reproducible on the GPU: earlier runs, which differed only
+in peak positions for the Cu patterns, gave 11/12 any-match and 7/12 control top-1, and cases
+whose input did not change moved as much (AlPO4: 0.45 to 0.35 between two runs), so differences of
+this size are noise.
 Reference cells come from the solved structures, so these results are an upper bound on how well
 users with a correct indexed cell would do. The space-group input selects the primitive cell and
 atom count; it does not enforce the output symmetry.
 
-Median per-case `runtime_s`: 13.65 s for the matched setting and 13.3 s for the control.
+Median per-case `runtime_s`: 12.75 s for the matched setting and 12.85 s for the control.
 
 **Independent review.** Reviewed against the pinned upstream by Codex (gpt-5.6-sol, high).
 Fixed as a result: the paper's R_cos top-1 protocol in `run.py` and `reproduce_upstream.py`
