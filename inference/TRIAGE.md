@@ -1,9 +1,10 @@
 # Inference feasibility triage
 
-Status of every `core_solver` in `data/resources.json` (plus one supporting module) with respect to
-a runnable wrapper under `inference/`. "Feasible" means public code and weights, a usable license,
-and an inference entry point; it says nothing about quality. Checked 2026-10-04 by reading each
-repository, its weights location, and its inference code.
+Status of every `core_solver` in `data/resources.json` (plus one pipeline module, AlphaDiffract)
+with respect to a runnable wrapper under `inference/`. "Feasible" means public code and weights, a
+usable license, and an inference entry point; it says nothing about quality. Checked 2026-10-04 by
+reading each repository, its weights location, and its inference code; updated 2026-10-05 after
+the catalog scope correction removed DeepStruc (pair-distribution-function input).
 
 ## Wrapped (status in each manifest: verified, reproduced, or limited)
 
@@ -44,4 +45,3 @@ Scope: general inorganic materials. Models specialized to one material class are
 | XRDiff | No public code or weights. |
 | AGAPI-XRD | Agent/web service; its reproducibility repository (atomgptlab/agapixrd) has no license, needs an AGAPI key and external databases, and ships no standalone model. |
 | CrystalNet (deep-crystallography) | No license; no released weights found. |
-| DeepStruc | Input is a pair distribution function for metal nanoparticles, not a PXRD pattern. |

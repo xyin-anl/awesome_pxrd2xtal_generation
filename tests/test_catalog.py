@@ -26,10 +26,21 @@ class CatalogTests(unittest.TestCase):
         schema_path = REPO_ROOT / "data" / "resources.schema.json"
         schema = json.loads(schema_path.read_text(encoding="utf-8"))
         self.assertEqual(schema["$schema"], "https://json-schema.org/draft/2020-12/schema")
+        self.assertEqual(
+            schema["properties"]["schema_version"]["const"],
+            self.catalog["schema_version"],
+        )
 
     def test_generated_readme_regions_are_current(self) -> None:
         current = README_PATH.read_text(encoding="utf-8")
         self.assertEqual(render_readme(self.catalog, current), current)
+
+    def test_readme_date_is_rendered_from_catalog(self) -> None:
+        catalog = copy.deepcopy(self.catalog)
+        catalog["last_updated"] = "2099-12-31"
+        current = README_PATH.read_text(encoding="utf-8")
+        rendered = render_readme(catalog, current)
+        self.assertIn("**Last update:** 2099-12-31.", rendered)
 
     def test_duplicate_id_is_rejected(self) -> None:
         catalog = copy.deepcopy(self.catalog)
@@ -49,6 +60,23 @@ class CatalogTests(unittest.TestCase):
         del catalog["resources"][0]["paper_links"]
         errors = validate_catalog(catalog, check_local_paths=False)
         self.assertTrue(any("paper_links is required" in error for error in errors))
+
+    def test_missing_scope_relation_is_rejected(self) -> None:
+        catalog = copy.deepcopy(self.catalog)
+        del catalog["resources"][0]["scope_relation"]
+        errors = validate_catalog(catalog, check_local_paths=False)
+        self.assertTrue(any("scope_relation" in error for error in errors))
+
+    def test_supporting_entry_cannot_be_a_core_solver(self) -> None:
+        catalog = copy.deepcopy(self.catalog)
+        catalog["resources"][0]["scope_relation"] = "supporting"
+        errors = validate_catalog(catalog, check_local_paths=False)
+        self.assertTrue(
+            any(
+                "supporting is only valid for datasets or utilities" in error
+                for error in errors
+            )
+        )
 
     def test_inference_order_must_cover_inference_resources(self) -> None:
         catalog = copy.deepcopy(self.catalog)

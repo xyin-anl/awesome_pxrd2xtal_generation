@@ -260,9 +260,31 @@ Representative discovery queries included:
 
 Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog.py check` (66 resources); `python3 -m unittest discover -s tests -v` (8 passed); and `git diff --check`.
 
+## October 5 2026 scope correction
+
+19. **Codex full-catalog PXRD scope audit - Oct 5 2026**
+    Classified all 66 post-refresh entries by their actual diffraction input rather than their title or possible downstream use, using their cataloged primary records plus targeted source checks for boundary cases. Existing `verified_at` dates were retained when the underlying metadata and links were not reopened. Two Claude Opus 5.5 review sessions with follow-ups checked the classification and corrective diff; their MP-20, CHILI, PhiGen, AutoXRD, opXRD-HKUST, and schema findings were adopted, and the final review reported no blocking issue. High effort was requested and the model was confirmed as `claude-opus-5-5`, but the CLI does not report whether the requested effort was honored. The temporary invocation records were `/tmp/pxrd-scope-audit-claude.json`, `/tmp/pxrd-scope-correction-review-brief.md`, `/tmp/pxrd-scope-correction-review.json`, `/tmp/pxrd-scope-correction-rereview-brief.md`, `/tmp/pxrd-scope-correction-rereview.json`, `/tmp/pxrd-scope-correction-final-review-brief.md`, `/tmp/pxrd-scope-correction-final-review.json`, `/tmp/pxrd-scope-correction-approval-brief.md`, and `/tmp/pxrd-scope-correction-approval-review.json`; each review exited successfully. These files document the delegation, not the scientific evidence, which comes from the primary sources cited below.
+
+Material scope corrections:
+
+- Retained **PhiGen** as a powder-derived pipeline module, not a raw-profile PXRD solver. Its general model consumes indexed structure-factor amplitudes plus a known unit cell and space group. The powder-specific evidence comes from a separately trained 3 A zeolite branch; its simulated benchmark models reflection overlap, while only the two experimental demonstrations first extract amplitudes by Le Bail fitting. The preprint's broader 210-space-group results are not powder results. Source: https://arxiv.org/abs/2609.28987.
+- Retained **HyPhID** as direct PXRD because its released workflow consumes one-dimensional simulated powder patterns. Its RRUFF evaluation remains explicitly labeled as simulation from RRUFF CIFs rather than measured-profile testing. Sources: https://arxiv.org/abs/2609.31888 and https://github.com/lab-mids/xrd_classification.
+- Removed **DeepStruc** and **diffpy/PDF tools** from the canonical PXRD list. They operate on atomic pair distribution functions from total scattering, an adjacent inverse problem rather than conventional Bragg PXRD. Sources: https://pubs.rsc.org/en/content/articlelanding/2023/dd/d2dd00086e, https://github.com/EmilSkaaning/DeepStruc, and https://www.diffpy.org/.
+- Removed **ERAF4XRD** and its benchmark from the canonical PXRD list. They extract figures and metadata from publications and do not provide numerical diffraction-pattern-to-structure tasks. Sources: https://arxiv.org/abs/2609.18583, https://github.com/niaz60/ERAF4XRD, and https://doi.org/10.5281/zenodo.22683615.
+- Removed **Perov-5** and **Carbon-24** because the linked artifacts are generic structure-generation benchmarks and no retained PXRD workflow was verified to use them for a powder task. Sources reviewed: https://figshare.com/articles/dataset/Perov5/22705189 and https://huggingface.co/datasets/albertvillanova/carbon_24.
+- Removed the repository-local **parse_cifs.py** entry from the external-resource catalog; the tool remains documented beside the runnable inference scripts.
+- Retained **MP-20-PXRD** as a direct simulated-PXRD benchmark after confirming that PXRDnet releases precomputed unbroadened patterns in pickled PyTorch tensors. The files carry `.csv` names but are not structure-only CSV records. PXRDGen instead starts from the same MP-20 structures and calculates a different GSAS-II pattern representation. Sources: https://github.com/gabeguo/cdvae_xrd/tree/main/data/mp_20, https://arxiv.org/abs/2406.10796, and https://arxiv.org/abs/2409.04727.
+- Reclassified **JARVIS-DFT/JARVIS-XRD** and **COD** as supporting substrate rather than standalone PXRD datasets. JARVIS-DFT provides structures alongside a separate simulation module, while COD is primarily a structure database with optional deposited diffraction content. Sources: https://pages.nist.gov/jarvis/ and https://www.crystallography.net/cod/.
+- Reclassified **CHILI-3K/100K** as supporting substrate. Its own Debye-equation XRD channel describes finite-cluster total scattering, but deCIFer uses periodic CHILI-100K CIFs as an out-of-distribution structure set and calculates Bragg PXRD from them. Sources: https://github.com/UlrikFriisJensen/CHILI and https://arxiv.org/abs/2502.02189.
+- Replaced the generic **pymatgen XRDCalculator** and GSAS-II links with their direct official documentation/repository pages. Corrected the **opXRD-HKUST and literature** row to the data card's 1,277-pattern composition. The XCCP paper explicitly links that collection plus a separate 22-MPEA CIF repository in its data-availability statement, so both are attached to XCCP while the absence of public source code remains explicit. Sources: https://pymatgen.org/pymatgen.analysis.diffraction.html, https://github.com/AdvancedPhotonSource/GSAS-II, https://huggingface.co/datasets/caobin/opxrd_hkust_expdata, https://github.com/George-JieXIONG/Materials-Dataset/tree/main/XRD-Files, and https://www.nature.com/articles/s41524-026-02015-y.
+
+The corrected canonical catalog contains 59 resources: 44 direct PXRD, four powder-derived, eight multimodal with PXRD, and three supporting substrates. Pair distribution function/total-scattering, single-crystal, electron-diffraction, literature-mining, and generic structure-only resources are now explicitly outside the catalog scope. The schema is version 2 because `scope_relation` is now required, and README rendering now keeps the displayed update date synchronized with `data/resources.json:last_updated`.
+
+Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog.py check` (59 resources); `python3 -m unittest discover -s tests -v` (11 passed); and `git diff --check`.
+
 ## October 5 2026 inference follow-up
 
-19. **Claude Code inference wrappers and branch review - Oct 5 2026**
+20. **Claude Code inference wrappers and branch review - Oct 5 2026**
     Extended the inference layout to two more solvers, narrowed the triage to general inorganic materials, and had the whole branch reviewed independently by Codex (gpt-6-astra) and Claude (Fable 5.1); every finding was verified before it was fixed or rejected.
 
 Material changes:
@@ -272,6 +294,8 @@ Material changes:
 - **AlphaDiffract** is referenced to its authors' own resources (OpenAlphaDiffract code, Hugging Face weights and example script, live demo) instead of being wrapped here; MOF- and structure-family-specific models (XtalNet, Xrd2Mof, CrySTARNet) are recorded as out of focus.
 - Cu Kα2 handling now looks at the data: wavelength labels proved unreliable (four benchmark files declared as Kα1 contain the doublet). Stripped peaks are expressed at averaged Cu Kα, the merge window is limited to half the doublet splitting, and the peak-based benchmarks were rerun.
 - Benchmark harness: resumed runs are checked against the command and wrapper code, partial (`--only`) runs must go to a separate report, and error entries no longer contain local paths. pdCIF input no longer needs a solved structure, and `_pd_proc_wavelength`-only files are accepted.
+
+## May 9 2026 detailed record
 
 ### Search strategy for the May 9 2026 pass
 
@@ -289,7 +313,7 @@ Representative search targets included:
 - `XRD-Rust XRDCalculator powder diffraction simulation`
 - `machine learning Rietveld refinement powder X-ray diffraction 2026`
 
-#### Main additions from the May 9 2026 pass
+### Main additions from the May 9 2026 pass
 
 The README was updated with the following new or substantially expanded resources:
 
