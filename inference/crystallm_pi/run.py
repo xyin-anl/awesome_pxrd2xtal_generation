@@ -92,7 +92,7 @@ def main() -> None:
     p.add_argument("--wavelength", help="Angstrom or name (CuKa, MoKa, ...); read from pdCIF if omitted")
     p.add_argument("--x-unit", choices=["2theta", "q"], default="2theta", help="Unit of the pattern's first column")
     p.add_argument("--strip-ka2", choices=["auto", "on", "off"], default="auto",
-                   help="Merge Cu Ka2 satellites into Ka1 peaks (auto: on only for data declared at averaged Cu Ka, 1.5418 A)")
+                   help="Merge Cu Ka2 satellites into Ka1 peaks (auto: on for data declared at averaged Cu Ka and for other Cu data whose profile shows the doublet)")
     p.add_argument("--composition", required=True, help="Reduced formula, e.g. TiO2 (required by this model)")
     p.add_argument("--z", type=int, help="Formula units per cell; every Z in 1,2,3,4,6 is tried if omitted")
     p.add_argument("--spacegroup", help="Optional Hermann-Mauguin symbol, e.g. P4_2/mnm")

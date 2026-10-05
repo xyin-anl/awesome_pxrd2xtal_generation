@@ -118,7 +118,7 @@ def main() -> None:
                    help="harness: shared peak picker + the training prompt generator; "
                         "upstream: atomgpt load_exp_file peak selection on the profile")
     p.add_argument("--strip-ka2", choices=["auto", "on", "off"], default="auto",
-                   help="harness method: merge Cu Ka2 satellites (auto: on only for data declared at averaged Cu Ka, 1.5418 A)")
+                   help="harness method: merge Cu Ka2 satellites (auto: on for data declared at averaged Cu Ka and for other Cu data whose profile shows the doublet)")
     p.add_argument("--n-samples", type=int, default=1,
                    help="1 = upstream's greedy decoding; >1 = that many sampled structures (not upstream)")
     p.add_argument("--temperature", type=float, default=0.7, help="Sampling temperature when --n-samples > 1")

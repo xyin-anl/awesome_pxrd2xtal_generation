@@ -21,7 +21,7 @@ Outputs: `results/candidates/*.cif` and `results/results.json` (including the ex
 | `--pattern` / `--peaks` | Raw profile (peak-picked here) or your own `2theta,intensity` CSV (needs `--wavelength`) |
 | `--composition` | Required; prompted as JARVIS's reduced formula, as in training. Z and space group are not inputs |
 | `--peak-method` | `harness` (default): shared peak picker + the training prompt generator; `upstream`: atomgpt's `load_exp_file` peak selection |
-| `--strip-ka2` | `auto` (merge resolved Cu Kα2 satellites for Cu data), `on`, or `off` for monochromated Kα1 (harness method) |
+| `--strip-ka2` | `auto` (merge resolved Cu Kα2 satellites for data declared at averaged Cu Kα, or for other Cu data whose profile shows the doublet), `on`, or `off` for monochromated Kα1 (harness method) |
 | `--n-samples` | 1 (default) = upstream's greedy decoding; more = sampled structures at `--temperature` (0.7), our addition |
 
 Needs an NVIDIA GPU (bitsandbytes 4-bit).
@@ -84,17 +84,17 @@ which made the training prompts, computes intensities differently from pymatgen.
 
 | Setting | Any match | Mean match fraction | Mean correct-space-group fraction | Mean candidates |
 |---------|-----------|---------------------|-----------------------------------|-----------------|
-| composition, sampled (harness peaks) | 3/12 | 0.13 | 0.03 | 20 |
+| composition, sampled (harness peaks) | 3/12 | 0.125 | 0.03 | 20 |
 | composition, sampled (upstream peaks) | 5/12 | 0.17 | 0.05 | 20 |
 | composition, greedy (harness peaks) | 1/12 | 0.08 | 0.00 | 1 |
 | control: composition, sampled (harness peaks), another case's pattern | 3/12 | 0.12 | 0.04 | 20 |
 
 The sampled harness setting and its mismatched-pattern control both match 3/12 cases
-(Mg2Si, Mg2Sn, and BaTiO3), with mean match fractions of 0.13 and 0.12. The control is not
+(Mg2Si, Mg2Sn, and BaTiO3), with mean match fractions of 0.125 and 0.117. The control is not
 clearly lower: on this benchmark the pattern has little measurable effect on the output, so
 matches mostly reflect the composition.
 
-Upstream peaks give 5/12 any-match and a 0.17 mean match fraction, versus 3/12 and 0.13 for
+Upstream peaks give 5/12 any-match and a 0.17 mean match fraction, versus 3/12 and 0.125 for
 harness peaks. The additional matches, Na2LiAlF6 and LaInO3, each occur in only 0.05 of the
 candidates and are loose (best RMS 0.250 and 0.371). Mean best RMS over matched cases is
 0.130 with upstream peaks versus 0.010 with harness peaks, over different sets of cases.

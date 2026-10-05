@@ -20,7 +20,7 @@ Outputs: `results/candidates/*.cif`, `results/results.json`, and `results/peaks_
 |--------|-------|
 | `--pattern` / `--peaks` | Raw profile (peak-picked here) or your own `2theta,intensity` CSV of picked peaks |
 | `--wavelength`, `--x-unit` | Needed for column files; peaks are converted to averaged Cu Kα |
-| `--strip-ka2` | `auto` (default: merge resolved Cu Kα2 satellites for Cu data), `on`, or `off` for monochromated Kα1 |
+| `--strip-ka2` | `auto` (default: merge resolved Cu Kα2 satellites for data declared at averaged Cu Kα, or for other Cu data whose profile shows the Kα1/Kα2 doublet), `on`, or `off` for monochromated Kα1 |
 | `--composition` | Required |
 | `--z` | Optional; if omitted, Z = 1, 2, 3, 4, 6 are each sampled `--n-samples` times |
 | `--spacegroup` | Optional; tokenizer spelling such as `P4_2/mnm` (other spellings are rejected) |
@@ -69,7 +69,7 @@ candidates; failed runs would count as misses (there were none). Full report:
 | composition + Z | 10/12 | 0.60 | 0.59 | 19 |
 | composition + Z + space group | 12/12 | 0.89 | 1.00 | 20 |
 | composition only (Z searched) | 12/12 | 0.18 | 0.13 | 92 |
-| control: composition + Z, another case's pattern | 8/12 | 0.29 | 0.29 | 18 |
+| control: composition + Z, another case's pattern | 8/12 | 0.29 | 0.28 | 18 |
 
 The control halves the match fraction. Cases that depend on the pattern (Mg2Si, Mg2Sn,
 Na2LiAlF6, Rb2S phase II, KLaTiO4, LaInO3) drop sharply with the wrong pattern, while BaTiO3,

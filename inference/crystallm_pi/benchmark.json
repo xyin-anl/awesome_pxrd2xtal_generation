@@ -1,6 +1,6 @@
 {
   "model": "crystallm_pi",
-  "date": "2026-10-04",
+  "date": "2026-10-05",
   "n_samples": 20,
   "matcher": {
     "stol": 0.5,
@@ -28,7 +28,7 @@
         "z"
       ],
       "extra_args": [],
-      "date": "2026-10-04",
+      "date": "2026-10-05",
       "n_samples": 20,
       "summary": {
         "n_cases": 12,
@@ -213,7 +213,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 11.1
+          "runtime_s": 10.6
         },
         {
           "id": "br1340Isup2",
@@ -735,7 +735,7 @@
               "rms": 0.0
             }
           ],
-          "runtime_s": 14.4
+          "runtime_s": 14.0
         },
         {
           "id": "iz1026Isup2",
@@ -909,7 +909,7 @@
               "rms": 0.023
             }
           ],
-          "runtime_s": 12.2
+          "runtime_s": 12.0
         },
         {
           "id": "ks5409BTsup2",
@@ -976,7 +976,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0717
+              "rms": 0.0731
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_16.cif",
@@ -992,7 +992,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0412
+              "rms": 0.034
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_18.cif",
@@ -1000,15 +1000,15 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.034
+              "rms": 0.0466
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_19.cif",
               "valid": true,
-              "spacegroup_number": 123,
+              "spacegroup_number": 221,
               "spacegroup_correct": false,
               "match": true,
-              "rms": 0.0311
+              "rms": 0.0313
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_2.cif",
@@ -1016,7 +1016,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0412
+              "rms": 0.0546
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_20.cif",
@@ -1064,7 +1064,7 @@
               "spacegroup_number": 47,
               "spacegroup_correct": false,
               "match": true,
-              "rms": 0.4254
+              "rms": 0.426
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_8.cif",
@@ -1083,7 +1083,7 @@
               "rms": 0.4561
             }
           ],
-          "runtime_s": 10.3
+          "runtime_s": 10.2
         },
         {
           "id": "sq1033Isup2",
@@ -1257,7 +1257,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 10.1
+          "runtime_s": 9.6
         },
         {
           "id": "sq3214Isup2",
@@ -1431,7 +1431,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 9.3
+          "runtime_s": 8.8
         },
         {
           "id": "wh5012phaseIIIsup3",
@@ -1469,7 +1469,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 12.7
+          "runtime_s": 12.2
         },
         {
           "id": "wh5012phaseIIsup2",
@@ -1643,7 +1643,7 @@
               "rms": 0.0665
             }
           ],
-          "runtime_s": 10.9
+          "runtime_s": 10.5
         },
         {
           "id": "wm2446Isup2",
@@ -1817,7 +1817,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 13.0
+          "runtime_s": 11.9
         },
         {
           "id": "wn6225Isup2",
@@ -1868,7 +1868,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0018
+              "rms": 0.3396
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_14.cif",
@@ -1932,7 +1932,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0053
+              "rms": 0.0052
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_3.cif",
@@ -1980,7 +1980,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0164
+              "rms": 0.0163
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_9.cif",
@@ -1991,7 +1991,7 @@
               "rms": 0.0076
             }
           ],
-          "runtime_s": 11.8
+          "runtime_s": 11.1
         }
       ]
     },
@@ -2000,16 +2000,16 @@
         "composition"
       ],
       "extra_args": [],
-      "date": "2026-10-04",
+      "date": "2026-10-05",
       "n_samples": 20,
       "summary": {
         "n_cases": 12,
         "n_failed_runs": 0,
         "match_rate_any": 1.0,
         "match_rate_top1": 0.167,
-        "mean_match_fraction": 0.181,
-        "mean_spacegroup_fraction": 0.128,
-        "mean_candidates": 91.3,
+        "mean_match_fraction": 0.18,
+        "mean_spacegroup_fraction": 0.125,
+        "mean_candidates": 91.9,
         "mean_best_rms": 0.0352
       },
       "cases": [
@@ -2825,7 +2825,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 38.8
+          "runtime_s": 36.1
         },
         {
           "id": "br1340Isup2",
@@ -3639,7 +3639,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 32.7
+          "runtime_s": 30.3
         },
         {
           "id": "gw5052Mg2Si_100K_LTsup2",
@@ -4453,7 +4453,7 @@
               "rms": 0.0
             }
           ],
-          "runtime_s": 31.7
+          "runtime_s": 30.0
         },
         {
           "id": "gw5052Mg2Sn_100K_LTsup23",
@@ -5267,7 +5267,7 @@
               "rms": 0.0
             }
           ],
-          "runtime_s": 26.2
+          "runtime_s": 24.3
         },
         {
           "id": "iz1026Isup2",
@@ -6081,7 +6081,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 43.9
+          "runtime_s": 41.3
         },
         {
           "id": "ks5409BTsup2",
@@ -6091,7 +6091,7 @@
           "match_any": true,
           "match_top1": true,
           "match_fraction": 0.6,
-          "best_rms": 0.0267,
+          "best_rms": 0.0268,
           "spacegroup_fraction": 0.1,
           "candidates": [
             {
@@ -6148,7 +6148,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0717
+              "rms": 0.0731
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_16.cif",
@@ -6164,7 +6164,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0412
+              "rms": 0.034
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_18.cif",
@@ -6172,15 +6172,15 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.034
+              "rms": 0.0466
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_19.cif",
               "valid": true,
-              "spacegroup_number": 123,
+              "spacegroup_number": 221,
               "spacegroup_correct": false,
               "match": true,
-              "rms": 0.0311
+              "rms": 0.0313
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_2.cif",
@@ -6188,7 +6188,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0412
+              "rms": 0.0546
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_20.cif",
@@ -6236,7 +6236,7 @@
               "spacegroup_number": 47,
               "spacegroup_correct": false,
               "match": true,
-              "rms": 0.4254
+              "rms": 0.426
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_8.cif",
@@ -6420,7 +6420,7 @@
               "spacegroup_number": 160,
               "spacegroup_correct": false,
               "match": true,
-              "rms": 0.0382
+              "rms": 0.037
             },
             {
               "file": "candidates/Ba3_Ti3_O9_BaTiO3_Z3_10.cif",
@@ -6436,7 +6436,7 @@
               "spacegroup_number": 160,
               "spacegroup_correct": false,
               "match": true,
-              "rms": 0.0307
+              "rms": 0.0378
             },
             {
               "file": "candidates/Ba3_Ti3_O9_BaTiO3_Z3_12.cif",
@@ -6484,7 +6484,7 @@
               "spacegroup_number": 160,
               "spacegroup_correct": false,
               "match": true,
-              "rms": 0.0438
+              "rms": 0.0429
             },
             {
               "file": "candidates/Ba3_Ti3_O9_BaTiO3_Z3_18.cif",
@@ -6516,7 +6516,7 @@
               "spacegroup_number": 160,
               "spacegroup_correct": false,
               "match": true,
-              "rms": 0.0421
+              "rms": 0.042
             },
             {
               "file": "candidates/Ba3_Ti3_O9_BaTiO3_Z3_3.cif",
@@ -6524,7 +6524,7 @@
               "spacegroup_number": 160,
               "spacegroup_correct": false,
               "match": true,
-              "rms": 0.0267
+              "rms": 0.0268
             },
             {
               "file": "candidates/Ba3_Ti3_O9_BaTiO3_Z3_4.cif",
@@ -6540,7 +6540,7 @@
               "spacegroup_number": 160,
               "spacegroup_correct": false,
               "match": true,
-              "rms": 0.0328
+              "rms": 0.0346
             },
             {
               "file": "candidates/Ba3_Ti3_O9_BaTiO3_Z3_6.cif",
@@ -6895,7 +6895,7 @@
               "rms": 0.0313
             }
           ],
-          "runtime_s": 33.4
+          "runtime_s": 31.1
         },
         {
           "id": "sq1033Isup2",
@@ -7709,7 +7709,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 27.0
+          "runtime_s": 24.7
         },
         {
           "id": "sq3214Isup2",
@@ -8523,7 +8523,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 19.2
+          "runtime_s": 18.1
         },
         {
           "id": "wh5012phaseIIIsup3",
@@ -8929,7 +8929,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 52.1
+          "runtime_s": 45.5
         },
         {
           "id": "wh5012phaseIIsup2",
@@ -9743,7 +9743,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 23.2
+          "runtime_s": 21.6
         },
         {
           "id": "wm2446Isup2",
@@ -10437,18 +10437,18 @@
               "rms": null
             }
           ],
-          "runtime_s": 46.3
+          "runtime_s": 43.2
         },
         {
           "id": "wn6225Isup2",
           "pattern_from": "wn6225Isup2",
-          "n_candidates": 62,
-          "n_valid": 62,
+          "n_candidates": 69,
+          "n_valid": 69,
           "match_any": true,
           "match_top1": true,
-          "match_fraction": 0.323,
+          "match_fraction": 0.304,
           "best_rms": 0.0012,
-          "spacegroup_fraction": 0.323,
+          "spacegroup_fraction": 0.29,
           "candidates": [
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_1.cif",
@@ -10488,7 +10488,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0018
+              "rms": 0.3396
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_14.cif",
@@ -10552,7 +10552,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0053
+              "rms": 0.0052
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_3.cif",
@@ -10600,7 +10600,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0164
+              "rms": 0.0163
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_9.cif",
@@ -10619,9 +10619,41 @@
               "rms": null
             },
             {
-              "file": "candidates/K2_Ca2_C2_O6_F2_KCaCO3F_Z2_2.cif",
+              "file": "candidates/K2_Ca2_C2_O6_F2_KCaCO3F_Z2_10.cif",
               "valid": true,
               "spacegroup_number": 176,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/K2_Ca2_C2_O6_F2_KCaCO3F_Z2_11.cif",
+              "valid": true,
+              "spacegroup_number": 176,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/K2_Ca2_C2_O6_F2_KCaCO3F_Z2_12.cif",
+              "valid": true,
+              "spacegroup_number": 176,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/K2_Ca2_C2_O6_F2_KCaCO3F_Z2_13.cif",
+              "valid": true,
+              "spacegroup_number": 176,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/K2_Ca2_C2_O6_F2_KCaCO3F_Z2_2.cif",
+              "valid": true,
+              "spacegroup_number": 186,
               "spacegroup_correct": false,
               "match": false,
               "rms": null
@@ -10652,6 +10684,30 @@
             },
             {
               "file": "candidates/K2_Ca2_C2_O6_F2_KCaCO3F_Z2_6.cif",
+              "valid": true,
+              "spacegroup_number": 176,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/K2_Ca2_C2_O6_F2_KCaCO3F_Z2_7.cif",
+              "valid": true,
+              "spacegroup_number": 38,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.06
+            },
+            {
+              "file": "candidates/K2_Ca2_C2_O6_F2_KCaCO3F_Z2_8.cif",
+              "valid": true,
+              "spacegroup_number": 176,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/K2_Ca2_C2_O6_F2_KCaCO3F_Z2_9.cif",
               "valid": true,
               "spacegroup_number": 176,
               "spacegroup_correct": false,
@@ -10779,7 +10835,71 @@
               "rms": null
             },
             {
+              "file": "candidates/K4_Ca4_C4_O12_F4_KCaCO3F_Z4_13.cif",
+              "valid": true,
+              "spacegroup_number": 63,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/K4_Ca4_C4_O12_F4_KCaCO3F_Z4_14.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/K4_Ca4_C4_O12_F4_KCaCO3F_Z4_15.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/K4_Ca4_C4_O12_F4_KCaCO3F_Z4_16.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/K4_Ca4_C4_O12_F4_KCaCO3F_Z4_17.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/K4_Ca4_C4_O12_F4_KCaCO3F_Z4_18.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/K4_Ca4_C4_O12_F4_KCaCO3F_Z4_19.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
               "file": "candidates/K4_Ca4_C4_O12_F4_KCaCO3F_Z4_2.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/K4_Ca4_C4_O12_F4_KCaCO3F_Z4_20.cif",
               "valid": true,
               "spacegroup_number": 12,
               "spacegroup_correct": false,
@@ -10851,38 +10971,6 @@
               "rms": null
             },
             {
-              "file": "candidates/K6_Ca6_C6_O18_F6_KCaCO3F_Z6_10.cif",
-              "valid": true,
-              "spacegroup_number": 166,
-              "spacegroup_correct": false,
-              "match": false,
-              "rms": null
-            },
-            {
-              "file": "candidates/K6_Ca6_C6_O18_F6_KCaCO3F_Z6_11.cif",
-              "valid": true,
-              "spacegroup_number": 166,
-              "spacegroup_correct": false,
-              "match": false,
-              "rms": null
-            },
-            {
-              "file": "candidates/K6_Ca6_C6_O18_F6_KCaCO3F_Z6_12.cif",
-              "valid": true,
-              "spacegroup_number": 166,
-              "spacegroup_correct": false,
-              "match": false,
-              "rms": null
-            },
-            {
-              "file": "candidates/K6_Ca6_C6_O18_F6_KCaCO3F_Z6_13.cif",
-              "valid": true,
-              "spacegroup_number": 166,
-              "spacegroup_correct": false,
-              "match": false,
-              "rms": null
-            },
-            {
               "file": "candidates/K6_Ca6_C6_O18_F6_KCaCO3F_Z6_2.cif",
               "valid": true,
               "spacegroup_number": 166,
@@ -10913,41 +11001,9 @@
               "spacegroup_correct": false,
               "match": false,
               "rms": null
-            },
-            {
-              "file": "candidates/K6_Ca6_C6_O18_F6_KCaCO3F_Z6_6.cif",
-              "valid": true,
-              "spacegroup_number": 166,
-              "spacegroup_correct": false,
-              "match": false,
-              "rms": null
-            },
-            {
-              "file": "candidates/K6_Ca6_C6_O18_F6_KCaCO3F_Z6_7.cif",
-              "valid": true,
-              "spacegroup_number": 166,
-              "spacegroup_correct": false,
-              "match": false,
-              "rms": null
-            },
-            {
-              "file": "candidates/K6_Ca6_C6_O18_F6_KCaCO3F_Z6_8.cif",
-              "valid": true,
-              "spacegroup_number": 166,
-              "spacegroup_correct": false,
-              "match": false,
-              "rms": null
-            },
-            {
-              "file": "candidates/K6_Ca6_C6_O18_F6_KCaCO3F_Z6_9.cif",
-              "valid": true,
-              "spacegroup_number": 166,
-              "spacegroup_correct": false,
-              "match": false,
-              "rms": null
             }
           ],
-          "runtime_s": 60.6
+          "runtime_s": 58.4
         }
       ]
     },
@@ -10958,7 +11014,7 @@
         "spacegroup"
       ],
       "extra_args": [],
-      "date": "2026-10-04",
+      "date": "2026-10-05",
       "n_samples": 20,
       "summary": {
         "n_cases": 12,
@@ -10968,7 +11024,7 @@
         "mean_match_fraction": 0.885,
         "mean_spacegroup_fraction": 1.0,
         "mean_candidates": 19.9,
-        "mean_best_rms": 0.0166
+        "mean_best_rms": 0.0173
       },
       "cases": [
         {
@@ -11143,7 +11199,7 @@
               "rms": 0.0176
             }
           ],
-          "runtime_s": 10.6
+          "runtime_s": 9.5
         },
         {
           "id": "br1340Isup2",
@@ -11317,7 +11373,7 @@
               "rms": 0.0435
             }
           ],
-          "runtime_s": 9.6
+          "runtime_s": 8.3
         },
         {
           "id": "gw5052Mg2Si_100K_LTsup2",
@@ -11491,7 +11547,7 @@
               "rms": 0.0
             }
           ],
-          "runtime_s": 17.3
+          "runtime_s": 13.9
         },
         {
           "id": "gw5052Mg2Sn_100K_LTsup23",
@@ -11665,7 +11721,7 @@
               "rms": 0.0
             }
           ],
-          "runtime_s": 14.0
+          "runtime_s": 13.8
         },
         {
           "id": "iz1026Isup2",
@@ -11839,7 +11895,7 @@
               "rms": 0.019
             }
           ],
-          "runtime_s": 9.6
+          "runtime_s": 9.4
         },
         {
           "id": "ks5409BTsup2",
@@ -11849,7 +11905,7 @@
           "match_any": true,
           "match_top1": true,
           "match_fraction": 1.0,
-          "best_rms": 0.0111,
+          "best_rms": 0.0192,
           "spacegroup_fraction": 1.0,
           "candidates": [
             {
@@ -11866,7 +11922,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0111
+              "rms": 0.0218
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_11.cif",
@@ -11874,7 +11930,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0192
+              "rms": 0.0367
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_12.cif",
@@ -11882,7 +11938,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0748
+              "rms": 0.0192
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_13.cif",
@@ -11890,7 +11946,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0305
+              "rms": 0.0298
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_14.cif",
@@ -11898,7 +11954,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0236
+              "rms": 0.0305
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_15.cif",
@@ -11906,7 +11962,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0388
+              "rms": 0.0236
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_16.cif",
@@ -11914,7 +11970,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0277
+              "rms": 0.0487
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_17.cif",
@@ -11922,7 +11978,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0664
+              "rms": 0.0325
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_18.cif",
@@ -11930,7 +11986,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0388
+              "rms": 0.0664
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_19.cif",
@@ -11938,7 +11994,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0615
+              "rms": 0.0388
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_2.cif",
@@ -11954,7 +12010,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.043
+              "rms": 0.0615
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_3.cif",
@@ -11986,7 +12042,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0634
+              "rms": 0.086
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_7.cif",
@@ -11994,7 +12050,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0532
+              "rms": 0.026
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_8.cif",
@@ -12002,7 +12058,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0267
+              "rms": 0.0658
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_9.cif",
@@ -12010,10 +12066,10 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0218
+              "rms": 0.0267
             }
           ],
-          "runtime_s": 9.5
+          "runtime_s": 9.3
         },
         {
           "id": "sq1033Isup2",
@@ -12187,7 +12243,7 @@
               "rms": 0.0295
             }
           ],
-          "runtime_s": 9.2
+          "runtime_s": 9.0
         },
         {
           "id": "sq3214Isup2",
@@ -12361,7 +12417,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 9.2
+          "runtime_s": 9.1
         },
         {
           "id": "wh5012phaseIIIsup3",
@@ -12527,7 +12583,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 11.2
+          "runtime_s": 10.7
         },
         {
           "id": "wh5012phaseIIsup2",
@@ -12701,7 +12757,7 @@
               "rms": 0.0695
             }
           ],
-          "runtime_s": 8.6
+          "runtime_s": 8.2
         },
         {
           "id": "wm2446Isup2",
@@ -12875,7 +12931,7 @@
               "rms": 0.0376
             }
           ],
-          "runtime_s": 11.5
+          "runtime_s": 10.8
         },
         {
           "id": "wn6225Isup2",
@@ -12902,7 +12958,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0074
+              "rms": 0.0067
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_11.cif",
@@ -12910,7 +12966,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.3446
+              "rms": 0.0074
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_12.cif",
@@ -12918,7 +12974,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0083
+              "rms": 0.3446
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_13.cif",
@@ -12926,7 +12982,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0082
+              "rms": 0.0083
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_14.cif",
@@ -12934,7 +12990,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0018
+              "rms": 0.0082
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_15.cif",
@@ -12942,7 +12998,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0111
+              "rms": 0.0018
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_16.cif",
@@ -12950,7 +13006,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0043
+              "rms": 0.0111
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_17.cif",
@@ -12958,7 +13014,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0138
+              "rms": 0.0043
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_18.cif",
@@ -12966,7 +13022,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.3476
+              "rms": 0.0138
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_19.cif",
@@ -12974,7 +13030,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0156
+              "rms": 0.3476
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_2.cif",
@@ -12990,7 +13046,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0109
+              "rms": 0.0156
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_3.cif",
@@ -13022,7 +13078,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0115
+              "rms": 0.0079
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_7.cif",
@@ -13049,7 +13105,7 @@
               "rms": 0.0077
             }
           ],
-          "runtime_s": 10.7
+          "runtime_s": 9.8
         }
       ]
     },
@@ -13059,7 +13115,7 @@
         "z"
       ],
       "extra_args": [],
-      "date": "2026-10-04",
+      "date": "2026-10-05",
       "n_samples": 20,
       "summary": {
         "n_cases": 12,
@@ -13067,9 +13123,9 @@
         "match_rate_any": 0.667,
         "match_rate_top1": 0.333,
         "mean_match_fraction": 0.292,
-        "mean_spacegroup_fraction": 0.288,
+        "mean_spacegroup_fraction": 0.279,
         "mean_candidates": 18.4,
-        "mean_best_rms": 0.0256
+        "mean_best_rms": 0.0252
       },
       "cases": [
         {
@@ -13244,7 +13300,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 9.8
+          "runtime_s": 8.8
         },
         {
           "id": "br1340Isup2",
@@ -13418,7 +13474,7 @@
               "rms": 0.0446
             }
           ],
-          "runtime_s": 9.4
+          "runtime_s": 8.9
         },
         {
           "id": "gw5052Mg2Si_100K_LTsup2",
@@ -13592,7 +13648,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 11.4
+          "runtime_s": 10.9
         },
         {
           "id": "gw5052Mg2Sn_100K_LTsup23",
@@ -13766,7 +13822,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 11.9
+          "runtime_s": 10.7
         },
         {
           "id": "iz1026Isup2",
@@ -13940,7 +13996,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 11.1
+          "runtime_s": 10.1
         },
         {
           "id": "ks5409BTsup2",
@@ -13950,8 +14006,8 @@
           "match_any": true,
           "match_top1": true,
           "match_fraction": 1.0,
-          "best_rms": 0.0311,
-          "spacegroup_fraction": 0.5,
+          "best_rms": 0.0271,
+          "spacegroup_fraction": 0.4,
           "candidates": [
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_1.cif",
@@ -13964,10 +14020,10 @@
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_10.cif",
               "valid": true,
-              "spacegroup_number": 47,
-              "spacegroup_correct": false,
+              "spacegroup_number": 99,
+              "spacegroup_correct": true,
               "match": true,
-              "rms": 0.3863
+              "rms": 0.0485
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_11.cif",
@@ -13980,13 +14036,21 @@
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_12.cif",
               "valid": true,
-              "spacegroup_number": 99,
-              "spacegroup_correct": true,
+              "spacegroup_number": 221,
+              "spacegroup_correct": false,
               "match": true,
-              "rms": 0.0485
+              "rms": 0.0313
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_13.cif",
+              "valid": true,
+              "spacegroup_number": 99,
+              "spacegroup_correct": true,
+              "match": true,
+              "rms": 0.0717
+            },
+            {
+              "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_14.cif",
               "valid": true,
               "spacegroup_number": 123,
               "spacegroup_correct": false,
@@ -13994,20 +14058,12 @@
               "rms": 0.0311
             },
             {
-              "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_14.cif",
-              "valid": true,
-              "spacegroup_number": 99,
-              "spacegroup_correct": true,
-              "match": true,
-              "rms": 0.0492
-            },
-            {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_15.cif",
               "valid": true,
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0731
+              "rms": 0.034
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_16.cif",
@@ -14020,18 +14076,18 @@
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_17.cif",
               "valid": true,
-              "spacegroup_number": 99,
-              "spacegroup_correct": true,
+              "spacegroup_number": 221,
+              "spacegroup_correct": false,
               "match": true,
-              "rms": 0.034
+              "rms": 0.0313
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_18.cif",
               "valid": true,
-              "spacegroup_number": 123,
+              "spacegroup_number": 221,
               "spacegroup_correct": false,
               "match": true,
-              "rms": 0.0311
+              "rms": 0.0313
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_19.cif",
@@ -14052,10 +14108,10 @@
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_20.cif",
               "valid": true,
-              "spacegroup_number": 221,
+              "spacegroup_number": 123,
               "spacegroup_correct": false,
               "match": true,
-              "rms": 0.0313
+              "rms": 0.0312
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_3.cif",
@@ -14068,10 +14124,10 @@
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_4.cif",
               "valid": true,
-              "spacegroup_number": 99,
-              "spacegroup_correct": true,
+              "spacegroup_number": 47,
+              "spacegroup_correct": false,
               "match": true,
-              "rms": 0.0514
+              "rms": 0.4586
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_5.cif",
@@ -14087,7 +14143,7 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0438
+              "rms": 0.0271
             },
             {
               "file": "candidates/Ba1_Ti1_O3_BaTiO3_Z1_7.cif",
@@ -14111,10 +14167,10 @@
               "spacegroup_number": 99,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0733
+              "rms": 0.0732
             }
           ],
-          "runtime_s": 11.3
+          "runtime_s": 10.4
         },
         {
           "id": "sq1033Isup2",
@@ -14288,7 +14344,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 10.2
+          "runtime_s": 9.5
         },
         {
           "id": "sq3214Isup2",
@@ -14462,7 +14518,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 9.7
+          "runtime_s": 8.8
         },
         {
           "id": "wh5012phaseIIIsup3",
@@ -14484,7 +14540,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 24.3
+          "runtime_s": 22.5
         },
         {
           "id": "wh5012phaseIIsup2",
@@ -14658,7 +14714,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 15.2
+          "runtime_s": 14.1
         },
         {
           "id": "wm2446Isup2",
@@ -14832,7 +14888,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 12.6
+          "runtime_s": 11.9
         },
         {
           "id": "wn6225Isup2",
@@ -14842,7 +14898,7 @@
           "match_any": true,
           "match_top1": true,
           "match_fraction": 1.0,
-          "best_rms": 0.0012,
+          "best_rms": 0.0021,
           "spacegroup_fraction": 1.0,
           "candidates": [
             {
@@ -14899,7 +14955,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0012
+              "rms": 0.0072
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_16.cif",
@@ -14947,7 +15003,7 @@
               "spacegroup_number": 187,
               "spacegroup_correct": true,
               "match": true,
-              "rms": 0.0052
+              "rms": 0.0053
             },
             {
               "file": "candidates/K1_Ca1_C1_O3_F1_KCaCO3F_Z1_3.cif",
@@ -15006,7 +15062,7 @@
               "rms": 0.0076
             }
           ],
-          "runtime_s": 11.7
+          "runtime_s": 11.4
         }
       ]
     }

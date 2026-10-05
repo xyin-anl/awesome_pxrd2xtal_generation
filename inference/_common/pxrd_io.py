@@ -145,6 +145,37 @@ def _subtract_background(y: np.ndarray, window: int) -> np.ndarray:
     return np.clip(y - base, 0.0, None)
 
 
+def ka2_asymmetry(pattern: Pattern, min_two_theta: float = 40.0, min_rel_height: float = 0.08) -> tuple[float, int]:
+    """Measure whether a Cu profile contains the K-alpha1/K-alpha2 doublet.
+
+    For each strong peak above min_two_theta (where the doublet splits by >= 0.1 deg), compares
+    the background-subtracted intensity at the K-alpha2 offset above the peak with the intensity
+    the same distance below it, relative to the peak height. Returns (median, number of peaks).
+    Single-wavelength profiles give about 0 (at most 0.05); the doublet gives 0.1-0.47.
+    """
+    x, y = _resample_uniform(pattern)
+    step = x[1] - x[0]
+    y_net = _subtract_background(y, max(5, int(round(3.0 / step))))
+    if y_net.max() <= 0:
+        return float("nan"), 0
+    idx, _ = find_peaks(y_net, height=min_rel_height * y_net.max(), distance=max(1, int(round(0.05 / step))))
+    # Positions are taken as K-alpha1 lines whatever the label says; the offset depends only on angle.
+    t = x[idx][x[idx] >= min_two_theta]
+    h = y_net[idx][x[idx] >= min_two_theta]
+    d = convert_two_theta(t, CU_KA1, CU_KA2) - t
+    ok = np.isfinite(d) & (t + d <= x[-1])
+    if not ok.any():
+        return float("nan"), 0
+    score = (np.interp(t + d, x, y_net) - np.interp(t - d, x, y_net))[ok] / h[ok]
+    return float(np.median(score)), int(ok.sum())
+
+
+# Simulated controls: -0.04 to 0.05 without the doublet, 0.24 to 0.47 with it; Ka1-labeled
+# benchmark files that contain it: 0.11 to 0.34.
+KA2_ASYMMETRY_THRESHOLD = 0.09
+KA2_MIN_PEAKS = 3
+
+
 def pick_peaks(
     pattern: Pattern,
     max_peaks: int | None = None,
@@ -159,17 +190,22 @@ def pick_peaks(
     FWHM), which tracks integrated intensities from simulation better than raw heights.
 
     strip_ka2 merges resolved Cu K-alpha2 satellites into their K-alpha1 parents; merged
-    parents are re-expressed at the pattern's wavelength. By default it is enabled only for data
-    declared at the averaged Cu K-alpha wavelength (1.5418); pass True to force it for Cu data. A satellite must sit at the K-alpha2 position
+    parents are re-expressed at the pattern's wavelength. By default (None) it is enabled for Cu
+    data declared at the averaged Cu K-alpha wavelength and for other Cu data whose profile shows the
+    doublet (ka2_asymmetry); pass True or False to override. A satellite must sit at the K-alpha2 position
     with 30-75% of the parent's area, and each parent absorbs at most one satellite.
     """
     x, y = _resample_uniform(pattern)
     step = x[1] - x[0]
     is_cu = abs(pattern.wavelength - CU_KA) < 0.003 or abs(pattern.wavelength - CU_KA1) < 0.003
     if strip_ka2 is None:
-        # Data declared at the averaged Cu Ka wavelength contain the Ka1/Ka2 doublet; data declared
-        # as Ka1 (1.5406 A) are taken to be monochromated or already stripped.
+        # Data declared at the averaged Cu Ka wavelength contain the Ka1/Ka2 doublet. Labels are
+        # unreliable the other way round (files declared as Ka1 can still contain Ka2), so other
+        # Cu data are stripped when the profile itself shows the doublet.
         strip_ka2 = abs(pattern.wavelength - CU_KA) < 0.0008
+        if is_cu and not strip_ka2:
+            score, n = ka2_asymmetry(pattern)
+            strip_ka2 = n >= KA2_MIN_PEAKS and score >= KA2_ASYMMETRY_THRESHOLD
     elif strip_ka2 and not is_cu:
         raise ValueError(f"K-alpha2 stripping only applies to Cu radiation, not {pattern.wavelength} A")
 

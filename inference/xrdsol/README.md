@@ -104,23 +104,26 @@ candidates and averaged across cases; no runs failed in either setting. Full rep
 
 | Setting | Any match | Top-1 match | Mean match fraction | Mean correct-space-group fraction | Mean candidates |
 |---------|-----------|-------------|---------------------|-----------------------------------|-----------------|
-| composition + Z + cell + space group | 11/12 | 8/12 | 0.608 | 0.312 | 20 |
-| control: same inputs, another case's pattern | 10/12 | 7/12 | 0.592 | 0.321 | 20 |
+| composition + Z + cell + space group | 10/12 | 8/12 | 0.608 | 0.321 | 20 |
+| control: same inputs, another case's pattern | 10/12 | 7/12 | 0.646 | 0.354 | 20 |
 
-The control is barely lower: any-match and top-1 each lose one case, and mean match fraction
-changes from 0.608 to 0.592. The correct-space-group fraction is slightly higher in the control.
-This does not show a clear benefit from the correct diffraction pattern on this benchmark.
+The control is not lower: any-match is 10/12 in both settings, top-1 loses one case (8/12 to
+7/12), and the mean match fraction is higher with the wrong pattern (0.646 versus 0.608), as is
+the correct-space-group fraction. This does not show a benefit from the correct diffraction
+pattern on this benchmark. Sampling is not bit-reproducible on the GPU: an earlier run, which differed only in Kα2 handling
+for three patterns, gave 11/12 any-match and a 0.592 control match fraction, and cases whose input
+did not change moved as much (AlPO4: 0.45 to 0.35), so differences of this size are noise.
 Reference cells come from the solved structures, so these results are an upper bound on how well
 users with a correct indexed cell would do. The space-group input selects the primitive cell and
 atom count; it does not enforce the output symmetry.
 
-Median per-case `runtime_s`: 13.3 s for the matched setting and 13.65 s for the control.
+Median per-case `runtime_s`: 13.65 s for the matched setting and 13.3 s for the control.
 
 **Independent review.** Reviewed against the pinned upstream by Codex (gpt-5.6-sol, high).
 Fixed as a result: the paper's R_cos top-1 protocol in `run.py` and `reproduce_upstream.py`
 (the earlier any-of-25 figure used the looser repository metric), explicit R-setting handling,
 pymatgen pinned to upstream's 2023.5.10, Cu Kα2 auto-stripping restricted to data declared at
-averaged Cu Kα in the shared loader, and manifest wording clarifying that Q input needs no
+averaged Cu Kα in the shared loader (later extended to Cu data whose profile shows the doublet), and manifest wording clarifying that Q input needs no
 wavelength. Raw-profile peak picking remains a heuristic adapter and is documented as such.
 
 **Status: reproduced.** The mismatched-pattern control is not clearly lower, so this does not
@@ -135,7 +138,8 @@ meet the repository's [`verified` criterion](../README.md#what-verified-means).
   subtraction can change the conditioning; curated integrated peak intensities are closer to
   upstream's experimental input.
 - Wavelength conversion moves peak positions without correcting wavelength-dependent intensities.
-- Cu Kα2 stripping is heuristic. `auto` only strips data declared at averaged Cu Kα; data declared
-  as Kα1 are treated as monochromated or already stripped. Use `off` for already stripped data or
-  `on` to force stripping for Cu profiles. Curated `--peaks` lists bypass this step and must already
+- Cu Kα2 stripping is heuristic. `auto` strips data declared at averaged Cu Kα, and other Cu data
+  whose profile shows the Kα1/Kα2 doublet (`pxrd_io.ka2_asymmetry`; wavelength labels are
+  unreliable, and four benchmark files declared as Kα1 contain the doublet). Use `off` for
+  already stripped data or `on` to force stripping for Cu profiles. Curated `--peaks` lists bypass this step and must already
   have the intended doublet treatment.
