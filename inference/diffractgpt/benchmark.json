@@ -33,7 +33,8 @@
         "n_cases": 12,
         "n_failed_runs": 0,
         "match_rate_any": 0.25,
-        "mean_match_fraction": 0.125,
+        "match_rate_top1": 0.083,
+        "mean_match_fraction": 0.129,
         "mean_spacegroup_fraction": 0.029,
         "mean_candidates": 20.0,
         "mean_best_rms": 0.0104
@@ -45,6 +46,7 @@
           "n_candidates": 20,
           "n_valid": 19,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -206,7 +208,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 31.3
+          "runtime_s": 32.0
         },
         {
           "id": "br1340Isup2",
@@ -214,6 +216,7 @@
           "n_candidates": 20,
           "n_valid": 19,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -383,6 +386,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": true,
+          "match_top1": true,
           "match_fraction": 1.0,
           "best_rms": 0.0,
           "spacegroup_fraction": 0.3,
@@ -556,6 +560,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": true,
+          "match_top1": false,
           "match_fraction": 0.15,
           "best_rms": 0.0,
           "spacegroup_fraction": 0.05,
@@ -721,7 +726,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 6.7
+          "runtime_s": 6.8
         },
         {
           "id": "iz1026Isup2",
@@ -729,6 +734,7 @@
           "n_candidates": 20,
           "n_valid": 19,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -890,15 +896,16 @@
               "valid": false
             }
           ],
-          "runtime_s": 27.4
+          "runtime_s": 27.6
         },
         {
           "id": "ks5409BTsup2",
           "pattern_from": "ks5409BTsup2",
           "n_candidates": 20,
-          "n_valid": 18,
+          "n_valid": 19,
           "match_any": true,
-          "match_fraction": 0.35,
+          "match_top1": false,
+          "match_fraction": 0.4,
           "best_rms": 0.0313,
           "spacegroup_fraction": 0.0,
           "candidates": [
@@ -924,7 +931,11 @@
             },
             {
               "file": "candidates/candidate_004.cif",
-              "valid": false
+              "valid": true,
+              "spacegroup_number": 221,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0313
             },
             {
               "file": "candidates/candidate_005.cif",
@@ -993,7 +1004,7 @@
             {
               "file": "candidates/candidate_013.cif",
               "valid": true,
-              "spacegroup_number": 8,
+              "spacegroup_number": 160,
               "spacegroup_correct": false,
               "match": false,
               "rms": null
@@ -1017,7 +1028,7 @@
             {
               "file": "candidates/candidate_016.cif",
               "valid": true,
-              "spacegroup_number": 160,
+              "spacegroup_number": 156,
               "spacegroup_correct": false,
               "match": false,
               "rms": null
@@ -1055,7 +1066,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 14.5
+          "runtime_s": 14.3
         },
         {
           "id": "sq1033Isup2",
@@ -1063,6 +1074,7 @@
           "n_candidates": 20,
           "n_valid": 19,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -1224,7 +1236,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 26.1
+          "runtime_s": 26.3
         },
         {
           "id": "sq3214Isup2",
@@ -1232,6 +1244,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -1397,7 +1410,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 23.1
+          "runtime_s": 23.3
         },
         {
           "id": "wh5012phaseIIIsup3",
@@ -1405,6 +1418,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -1570,7 +1584,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.8
+          "runtime_s": 5.9
         },
         {
           "id": "wh5012phaseIIsup2",
@@ -1578,6 +1592,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -1743,7 +1758,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 15.8
+          "runtime_s": 15.9
         },
         {
           "id": "wm2446Isup2",
@@ -1751,6 +1766,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -1916,14 +1932,15 @@
               "rms": null
             }
           ],
-          "runtime_s": 39.5
+          "runtime_s": 39.7
         },
         {
           "id": "wn6225Isup2",
           "pattern_from": "wn6225Isup2",
           "n_candidates": 20,
-          "n_valid": 15,
+          "n_valid": 14,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -1947,7 +1964,7 @@
             {
               "file": "candidates/candidate_003.cif",
               "valid": true,
-              "spacegroup_number": 8,
+              "spacegroup_number": 156,
               "spacegroup_correct": false,
               "match": false,
               "rms": null
@@ -1974,11 +1991,7 @@
             },
             {
               "file": "candidates/candidate_007.cif",
-              "valid": true,
-              "spacegroup_number": 160,
-              "spacegroup_correct": false,
-              "match": false,
-              "rms": null
+              "valid": false
             },
             {
               "file": "candidates/candidate_008.cif",
@@ -2002,11 +2015,7 @@
             },
             {
               "file": "candidates/candidate_011.cif",
-              "valid": true,
-              "spacegroup_number": 47,
-              "spacegroup_correct": false,
-              "match": false,
-              "rms": null
+              "valid": false
             },
             {
               "file": "candidates/candidate_012.cif",
@@ -2042,7 +2051,11 @@
             },
             {
               "file": "candidates/candidate_017.cif",
-              "valid": false
+              "valid": true,
+              "spacegroup_number": 160,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
             },
             {
               "file": "candidates/candidate_018.cif",
@@ -2069,7 +2082,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 10.9
+          "runtime_s": 11.0
         }
       ]
     },
@@ -2087,6 +2100,7 @@
         "n_cases": 12,
         "n_failed_runs": 0,
         "match_rate_any": 0.417,
+        "match_rate_top1": 0.167,
         "mean_match_fraction": 0.167,
         "mean_spacegroup_fraction": 0.046,
         "mean_candidates": 19.9,
@@ -2099,6 +2113,7 @@
           "n_candidates": 20,
           "n_valid": 18,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -2256,7 +2271,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 30.2
+          "runtime_s": 30.6
         },
         {
           "id": "br1340Isup2",
@@ -2264,6 +2279,7 @@
           "n_candidates": 19,
           "n_valid": 19,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.053,
@@ -2421,7 +2437,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 75.6
+          "runtime_s": 75.9
         },
         {
           "id": "gw5052Mg2Si_100K_LTsup2",
@@ -2429,6 +2445,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": true,
+          "match_top1": true,
           "match_fraction": 1.0,
           "best_rms": 0.0,
           "spacegroup_fraction": 0.3,
@@ -2594,7 +2611,7 @@
               "rms": 0.0
             }
           ],
-          "runtime_s": 6.2
+          "runtime_s": 6.4
         },
         {
           "id": "gw5052Mg2Sn_100K_LTsup23",
@@ -2602,6 +2619,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": true,
+          "match_top1": true,
           "match_fraction": 0.5,
           "best_rms": 0.0,
           "spacegroup_fraction": 0.15,
@@ -2767,7 +2785,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 6.6
+          "runtime_s": 6.5
         },
         {
           "id": "iz1026Isup2",
@@ -2775,6 +2793,7 @@
           "n_candidates": 20,
           "n_valid": 19,
           "match_any": true,
+          "match_top1": false,
           "match_fraction": 0.05,
           "best_rms": 0.2496,
           "spacegroup_fraction": 0.0,
@@ -2936,7 +2955,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 55.0
+          "runtime_s": 54.9
         },
         {
           "id": "ks5409BTsup2",
@@ -2944,6 +2963,7 @@
           "n_candidates": 20,
           "n_valid": 18,
           "match_any": true,
+          "match_top1": false,
           "match_fraction": 0.4,
           "best_rms": 0.0313,
           "spacegroup_fraction": 0.0,
@@ -3109,6 +3129,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": true,
+          "match_top1": false,
           "match_fraction": 0.05,
           "best_rms": 0.3705,
           "spacegroup_fraction": 0.0,
@@ -3274,7 +3295,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 26.0
+          "runtime_s": 25.9
         },
         {
           "id": "sq3214Isup2",
@@ -3282,6 +3303,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -3455,6 +3477,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -3628,6 +3651,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.05,
@@ -3793,7 +3817,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 16.1
+          "runtime_s": 16.0
         },
         {
           "id": "wm2446Isup2",
@@ -3801,6 +3825,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -3974,6 +3999,7 @@
           "n_candidates": 20,
           "n_valid": 11,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -4103,7 +4129,7 @@
               "valid": false
             }
           ],
-          "runtime_s": 11.1
+          "runtime_s": 11.2
         }
       ]
     },
@@ -4121,6 +4147,7 @@
         "n_cases": 12,
         "n_failed_runs": 0,
         "match_rate_any": 0.083,
+        "match_rate_top1": 0.083,
         "mean_match_fraction": 0.083,
         "mean_spacegroup_fraction": 0.0,
         "mean_candidates": 1.0,
@@ -4133,6 +4160,7 @@
           "n_candidates": 1,
           "n_valid": 1,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -4146,7 +4174,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.1
+          "runtime_s": 5.2
         },
         {
           "id": "br1340Isup2",
@@ -4154,6 +4182,7 @@
           "n_candidates": 1,
           "n_valid": 1,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -4167,7 +4196,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 6.9
+          "runtime_s": 7.3
         },
         {
           "id": "gw5052Mg2Si_100K_LTsup2",
@@ -4175,6 +4204,7 @@
           "n_candidates": 1,
           "n_valid": 1,
           "match_any": true,
+          "match_top1": true,
           "match_fraction": 1.0,
           "best_rms": 0.4673,
           "spacegroup_fraction": 0.0,
@@ -4188,7 +4218,7 @@
               "rms": 0.4673
             }
           ],
-          "runtime_s": 3.6
+          "runtime_s": 3.7
         },
         {
           "id": "gw5052Mg2Sn_100K_LTsup23",
@@ -4196,6 +4226,7 @@
           "n_candidates": 1,
           "n_valid": 1,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -4209,7 +4240,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 3.5
+          "runtime_s": 3.7
         },
         {
           "id": "iz1026Isup2",
@@ -4217,6 +4248,7 @@
           "n_candidates": 1,
           "n_valid": 0,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -4226,7 +4258,7 @@
               "valid": false
             }
           ],
-          "runtime_s": 11.2
+          "runtime_s": 12.1
         },
         {
           "id": "ks5409BTsup2",
@@ -4234,6 +4266,7 @@
           "n_candidates": 1,
           "n_valid": 1,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -4247,7 +4280,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 4.4
+          "runtime_s": 4.6
         },
         {
           "id": "sq1033Isup2",
@@ -4255,6 +4288,7 @@
           "n_candidates": 1,
           "n_valid": 0,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -4264,7 +4298,7 @@
               "valid": false
             }
           ],
-          "runtime_s": 4.3
+          "runtime_s": 4.7
         },
         {
           "id": "sq3214Isup2",
@@ -4272,6 +4306,7 @@
           "n_candidates": 1,
           "n_valid": 1,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -4285,7 +4320,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 4.9
+          "runtime_s": 5.3
         },
         {
           "id": "wh5012phaseIIIsup3",
@@ -4293,6 +4328,7 @@
           "n_candidates": 1,
           "n_valid": 1,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -4314,6 +4350,7 @@
           "n_candidates": 1,
           "n_valid": 1,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -4327,7 +4364,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.1
+          "runtime_s": 5.3
         },
         {
           "id": "wm2446Isup2",
@@ -4335,6 +4372,7 @@
           "n_candidates": 1,
           "n_valid": 1,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -4348,28 +4386,25 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.6
+          "runtime_s": 5.8
         },
         {
           "id": "wn6225Isup2",
           "pattern_from": "wn6225Isup2",
           "n_candidates": 1,
-          "n_valid": 1,
+          "n_valid": 0,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
           "candidates": [
             {
               "file": "candidates/candidate_001.cif",
-              "valid": true,
-              "spacegroup_number": 8,
-              "spacegroup_correct": false,
-              "match": false,
-              "rms": null
+              "valid": false
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 5.6
         }
       ]
     },
@@ -4384,6 +4419,7 @@
         "n_cases": 12,
         "n_failed_runs": 0,
         "match_rate_any": 0.25,
+        "match_rate_top1": 0.083,
         "mean_match_fraction": 0.117,
         "mean_spacegroup_fraction": 0.037,
         "mean_candidates": 20.0,
@@ -4396,6 +4432,7 @@
           "n_candidates": 20,
           "n_valid": 19,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -4557,7 +4594,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 69.3
+          "runtime_s": 69.4
         },
         {
           "id": "br1340Isup2",
@@ -4565,6 +4602,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.05,
@@ -4730,7 +4768,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 46.2
+          "runtime_s": 46.1
         },
         {
           "id": "gw5052Mg2Si_100K_LTsup2",
@@ -4738,6 +4776,7 @@
           "n_candidates": 20,
           "n_valid": 19,
           "match_any": true,
+          "match_top1": true,
           "match_fraction": 0.9,
           "best_rms": 0.0,
           "spacegroup_fraction": 0.3,
@@ -4899,7 +4938,7 @@
               "rms": 0.0
             }
           ],
-          "runtime_s": 10.9
+          "runtime_s": 10.7
         },
         {
           "id": "gw5052Mg2Sn_100K_LTsup23",
@@ -4907,6 +4946,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": true,
+          "match_top1": false,
           "match_fraction": 0.2,
           "best_rms": 0.0,
           "spacegroup_fraction": 0.05,
@@ -5080,6 +5120,7 @@
           "n_candidates": 20,
           "n_valid": 19,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -5249,6 +5290,7 @@
           "n_candidates": 20,
           "n_valid": 19,
           "match_any": true,
+          "match_top1": false,
           "match_fraction": 0.3,
           "best_rms": 0.0313,
           "spacegroup_fraction": 0.0,
@@ -5296,7 +5338,7 @@
             {
               "file": "candidates/candidate_006.cif",
               "valid": true,
-              "spacegroup_number": 8,
+              "spacegroup_number": 71,
               "spacegroup_correct": false,
               "match": false,
               "rms": null
@@ -5376,7 +5418,7 @@
             {
               "file": "candidates/candidate_016.cif",
               "valid": true,
-              "spacegroup_number": 160,
+              "spacegroup_number": 8,
               "spacegroup_correct": false,
               "match": false,
               "rms": null
@@ -5410,7 +5452,7 @@
               "valid": false
             }
           ],
-          "runtime_s": 14.3
+          "runtime_s": 14.1
         },
         {
           "id": "sq1033Isup2",
@@ -5418,6 +5460,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -5583,7 +5626,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 13.9
+          "runtime_s": 14.0
         },
         {
           "id": "sq3214Isup2",
@@ -5591,6 +5634,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.05,
@@ -5756,7 +5800,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 28.4
+          "runtime_s": 28.5
         },
         {
           "id": "wh5012phaseIIIsup3",
@@ -5764,6 +5808,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -5937,6 +5982,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -6102,7 +6148,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 10.0
+          "runtime_s": 9.9
         },
         {
           "id": "wm2446Isup2",
@@ -6110,6 +6156,7 @@
           "n_candidates": 20,
           "n_valid": 20,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
@@ -6275,37 +6322,50 @@
               "rms": null
             }
           ],
-          "runtime_s": 38.9
+          "runtime_s": 38.8
         },
         {
           "id": "wn6225Isup2",
           "pattern_from": "ks5409BTsup2",
           "n_candidates": 20,
-          "n_valid": 12,
+          "n_valid": 16,
           "match_any": false,
+          "match_top1": false,
           "match_fraction": 0.0,
           "best_rms": null,
           "spacegroup_fraction": 0.0,
           "candidates": [
             {
               "file": "candidates/candidate_001.cif",
-              "valid": false
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
             },
             {
               "file": "candidates/candidate_002.cif",
               "valid": true,
-              "spacegroup_number": 146,
+              "spacegroup_number": 5,
               "spacegroup_correct": false,
               "match": false,
               "rms": null
             },
             {
               "file": "candidates/candidate_003.cif",
-              "valid": false
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
             },
             {
               "file": "candidates/candidate_004.cif",
-              "valid": false
+              "valid": true,
+              "spacegroup_number": 3,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
             },
             {
               "file": "candidates/candidate_005.cif",
@@ -6330,7 +6390,7 @@
             {
               "file": "candidates/candidate_008.cif",
               "valid": true,
-              "spacegroup_number": 8,
+              "spacegroup_number": 160,
               "spacegroup_correct": false,
               "match": false,
               "rms": null
@@ -6350,7 +6410,7 @@
             {
               "file": "candidates/candidate_011.cif",
               "valid": true,
-              "spacegroup_number": 5,
+              "spacegroup_number": 47,
               "spacegroup_correct": false,
               "match": false,
               "rms": null
@@ -6366,7 +6426,7 @@
             {
               "file": "candidates/candidate_013.cif",
               "valid": true,
-              "spacegroup_number": 5,
+              "spacegroup_number": 1,
               "spacegroup_correct": false,
               "match": false,
               "rms": null
@@ -6397,7 +6457,11 @@
             },
             {
               "file": "candidates/candidate_018.cif",
-              "valid": false
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
             },
             {
               "file": "candidates/candidate_019.cif",
@@ -6416,7 +6480,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 11.0
+          "runtime_s": 10.8
         }
       ]
     }

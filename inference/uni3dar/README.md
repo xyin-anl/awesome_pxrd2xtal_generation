@@ -71,13 +71,13 @@ Fractions are over all returned candidates. Full report: [`benchmark.json`](benc
 | Setting | Any match | Mean match fraction | Mean correct-space-group fraction | Mean candidates |
 |---------|-----------|---------------------|-----------------------------------|-----------------|
 | composition + Z (all centerings tried) | 8/12 | 0.42 | 0.29 | 45 |
-| composition + Z + space group (exact primitive Z) | 8/12 | 0.67 | 0.54 | 20 |
-| control: composition + Z, another case's pattern | 7/12 | 0.30 | 0.10 | 44 |
+| composition + Z + space group (exact primitive Z) | 8/12 | 0.67 | 0.53 | 20 |
+| control: composition + Z, another case's pattern | 7/12 | 0.30 | 0.11 | 44 |
 
 Without a space group, candidates from wrong-Z hypotheses lower the match fraction; the
 space-group row is the fairer view of the model. The pattern clearly drives Mg2Si (0.92 → 0.37
 with the wrong pattern), Mg2Sn (0.67 → 0.13), Rb2S phase II (0.33 → 0), and the space-group
-fractions overall (0.29 → 0.10). BaTiO3, KCaCO3F, LaInO3, and EuI2 come out the same with either
+fractions overall (0.29 → 0.11). BaTiO3, KCaCO3F, LaInO3, and EuI2 come out the same with either
 pattern, i.e. composition alone decides them. Uni-3DAR found no match for AlPO4, CdBiClO2,
 KLaTiO4, or Rb2S phase III in any setting.
 
