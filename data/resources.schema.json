@@ -15,7 +15,7 @@
   ],
   "properties": {
     "$schema": { "const": "./resources.schema.json" },
-    "schema_version": { "const": 1 },
+    "schema_version": { "const": 2 },
     "last_updated": { "$ref": "#/$defs/date" },
     "website_url": { "type": "string", "format": "uri", "pattern": "^https://" },
     "inference_order": {
@@ -80,12 +80,20 @@
     "resource": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "name", "category", "verified_at"],
+      "required": ["id", "name", "category", "scope_relation", "verified_at"],
       "properties": {
         "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
         "name": { "type": "string", "minLength": 1 },
         "category": {
           "enum": ["core_solver", "pipeline_module", "dataset", "utility"]
+        },
+        "scope_relation": {
+          "enum": [
+            "direct_pxrd",
+            "powder_derived",
+            "multimodal_pxrd",
+            "supporting"
+          ]
         },
         "verified_at": { "$ref": "#/$defs/date" },
         "year": { "type": "string", "minLength": 4 },
@@ -105,6 +113,16 @@
         "inference": { "$ref": "#/$defs/inference" }
       },
       "allOf": [
+        {
+          "if": {
+            "properties": { "scope_relation": { "const": "supporting" } }
+          },
+          "then": {
+            "properties": {
+              "category": { "enum": ["dataset", "utility"] }
+            }
+          }
+        },
         {
           "if": { "properties": { "category": { "const": "core_solver" } } },
           "then": {

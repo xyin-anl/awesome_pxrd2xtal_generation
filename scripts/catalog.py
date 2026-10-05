@@ -20,6 +20,12 @@ CATALOG_PATH = REPO_ROOT / "data" / "resources.json"
 README_PATH = REPO_ROOT / "README.md"
 
 CATEGORIES = {"core_solver", "pipeline_module", "dataset", "utility"}
+SCOPE_RELATIONS = {
+    "direct_pxrd": "Direct PXRD",
+    "powder_derived": "Powder-derived input",
+    "multimodal_pxrd": "Multimodal with PXRD",
+    "supporting": "Supporting substrate",
+}
 REQUIRED_LINK_GROUPS = {
     "core_solver": ("paper_links", "artifact_links"),
     "pipeline_module": ("paper_links", "artifact_links"),
@@ -40,6 +46,9 @@ INFERENCE_FIELDS = ("local", "cloud", "support", "environment")
 
 ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+LAST_UPDATE_RE = re.compile(
+    r"^(\*\*Last update:\*\* )\d{4}-\d{2}-\d{2}(\.)", re.MULTILINE
+)
 
 
 class CatalogError(ValueError):
@@ -63,8 +72,8 @@ def validate_catalog(
 ) -> list[str]:
     errors: list[str] = []
 
-    if catalog.get("schema_version") != 1:
-        errors.append("schema_version must be 1")
+    if catalog.get("schema_version") != 2:
+        errors.append("schema_version must be 2")
     if catalog.get("$schema") != "./resources.schema.json":
         errors.append("$schema must be ./resources.schema.json")
     _validate_date(catalog.get("last_updated"), "last_updated", errors)
@@ -114,6 +123,7 @@ def validate_catalog(
         resource_id = resource.get("id")
         name = resource.get("name")
         category = resource.get("category")
+        scope_relation = resource.get("scope_relation")
         if not isinstance(resource_id, str) or not ID_RE.fullmatch(resource_id):
             errors.append(f"{location}.id must match {ID_RE.pattern}")
             resource_id = location
@@ -126,6 +136,19 @@ def validate_catalog(
         if category not in CATEGORIES:
             errors.append(f"{location}.category must be one of {sorted(CATEGORIES)}")
             continue
+        if scope_relation not in SCOPE_RELATIONS:
+            errors.append(
+                f"{location}.scope_relation must be one of "
+                f"{sorted(SCOPE_RELATIONS)}"
+            )
+        elif scope_relation == "supporting" and category not in {
+            "dataset",
+            "utility",
+        }:
+            errors.append(
+                f"{location}.scope_relation supporting is only valid for "
+                "datasets or utilities"
+            )
 
         for field in _required_fields(category):
             value = resource.get(field)
@@ -249,7 +272,11 @@ def render_generated_regions(catalog: dict[str, Any]) -> dict[str, str]:
 
 
 def render_readme(catalog: dict[str, Any], current: str) -> str:
-    rendered = current
+    if len(LAST_UPDATE_RE.findall(current)) != 1:
+        raise CatalogError("README must contain exactly one Last update line")
+    rendered = LAST_UPDATE_RE.sub(
+        rf"\g<1>{catalog['last_updated']}\g<2>", current, count=1
+    )
     for region_name, body in render_generated_regions(catalog).items():
         start = f"<!-- BEGIN GENERATED: {region_name} -->"
         end = f"<!-- END GENERATED: {region_name} -->"
@@ -285,7 +312,7 @@ def check_readme(catalog: dict[str, Any]) -> list[str]:
 
 
 def _required_fields(category: str) -> tuple[str, ...]:
-    common = ("id", "name", "category", "verified_at")
+    common = ("id", "name", "category", "scope_relation", "verified_at")
     fields = {
         "core_solver": (
             "year",
@@ -317,13 +344,14 @@ def _link_groups_for(resource: dict[str, Any]) -> list[tuple[str, Any]]:
 
 def _render_core(resources: list[dict[str, Any]]) -> str:
     lines = [
-        "| Model | Year | Inputs / Target | Method / Architecture | Reported Performance† | Paper | Implementation / Data |",
-        "|-------|------|-----------------|-----------------------|------------------------|-------|-----------------------|",
+        "| Model | Scope | Year | Inputs / Target | Method / Architecture | Reported Performance† | Paper | Implementation / Data |",
+        "|-------|-------|------|-----------------|-----------------------|------------------------|-------|-----------------------|",
     ]
     for item in _of_category(resources, "core_solver"):
         lines.append(
             _row(
                 f"**{item['name']}**",
+                _scope_label(item),
                 item["year"],
                 item["inputs_target"],
                 item["method"],
@@ -339,13 +367,14 @@ def _render_core(resources: list[dict[str, Any]]) -> str:
 
 def _render_modules(resources: list[dict[str, Any]]) -> str:
     lines = [
-        "| Resource | Year | Task | Method | Reported Result / Note | Paper | Code / Data |",
-        "|----------|------|------|--------|------------------------|-------|-------------|",
+        "| Resource | Scope | Year | Task | Method | Reported Result / Note | Paper | Code / Data |",
+        "|----------|-------|------|------|--------|------------------------|-------|-------------|",
     ]
     for item in _of_category(resources, "pipeline_module"):
         lines.append(
             _row(
                 f"**{item['name']}**",
+                _scope_label(item),
                 item["year"],
                 item["task"],
                 item["method"],
@@ -361,13 +390,14 @@ def _render_modules(resources: list[dict[str, Any]]) -> str:
 
 def _render_datasets(resources: list[dict[str, Any]]) -> str:
     lines = [
-        "| Dataset / Benchmark | Size | Sim / Exp | Format | Notes / Use | Link |",
-        "|---------------------|------|-----------|--------|-------------|------|",
+        "| Dataset / Benchmark | Scope | Size | Sim / Exp | Format | Notes / Use | Link |",
+        "|---------------------|-------|------|-----------|--------|-------------|------|",
     ]
     for item in _of_category(resources, "dataset"):
         lines.append(
             _row(
                 f"**{item['name']}**",
+                _scope_label(item),
                 item["size"],
                 item["sim_exp"],
                 item["format"],
@@ -380,13 +410,14 @@ def _render_datasets(resources: list[dict[str, Any]]) -> str:
 
 def _render_utilities(resources: list[dict[str, Any]]) -> str:
     lines = [
-        "| Tool | Task | Notes | Link |",
-        "|------|------|-------|------|",
+        "| Tool | Scope | Task | Notes | Link |",
+        "|------|-------|------|-------|------|",
     ]
     for item in _of_category(resources, "utility"):
         lines.append(
             _row(
                 f"**{item['name']}**",
+                _scope_label(item),
                 item["task"],
                 item["notes"],
                 _render_links(item.get("resource_links", [])),
@@ -426,6 +457,10 @@ def _of_category(
 
 def _row(*cells: str) -> str:
     return "| " + " | ".join(cells) + " |"
+
+
+def _scope_label(resource: dict[str, Any]) -> str:
+    return SCOPE_RELATIONS[resource["scope_relation"]]
 
 
 def _render_links(links: list[dict[str, Any]]) -> str:
