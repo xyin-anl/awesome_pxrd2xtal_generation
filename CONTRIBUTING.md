@@ -24,6 +24,16 @@ Thank you for helping keep the PXRD-to-crystal catalog accurate and useful.
 
 Pair distribution function/total-scattering methods, single-crystal or electron-diffraction methods, literature-mining systems, and generic structure datasets with no named PXRD use are out of scope. Record their review in `curation_protocal.md` rather than adding them to the canonical resource list.
 
+## Add or update an inference wrapper
+
+Runnable wrappers live in `inference/<model>/` and follow [`inference/AGENTS.md`](inference/AGENTS.md); `inference/README.md` describes the directory contract and the status definitions.
+
+1. Check feasibility first: public code and weights without a login, a usable license, and a platform that can be tested. Record blocked, out-of-focus, and externally maintained models in `inference/TRIAGE.md`.
+2. Reuse upstream's own inference code at a pinned commit, pin and checksum the weights, and use `inference/_common/` for pattern loading and peak picking.
+3. Reproduce the authors' own example, run `inference/_benchmark/benchmark.py` with `--control`, and have the wrapper reviewed independently before setting `verified`, `reproduced`, or `limited`.
+4. If you change shared code in `inference/_common/`, `utils/parse_cifs.py`, or the benchmark harness, rerun the benchmarks of every wrapper it affects.
+5. Add the wrapper's links to the resource's `inference` field and `inference_order` in `data/resources.json`, and log the pass in `curation_protocal.md`.
+
 ## Validate the change
 
 Run:

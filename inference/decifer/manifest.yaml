@@ -1,0 +1,43 @@
+# Inference manifest: the contract between this directory, the benchmark harness, and the
+# catalog. Fields are documented in inference/README.md.
+id: decifer
+name: deCIFer
+catalog_id: decifer
+upstream:
+  repo: https://github.com/FrederikLizakJohansen/deCIFer
+  commit: 5b22c0151b1129fad9b30dc3016a5d7977ca3232
+  license: MIT
+weights:
+  - id: decifer_v1_ckpt.pt
+    url: https://www.erda.dk/archives/b7342461e7c932bd99e8273c6a49e97b/Nanostructure_Data/Data_for_MachineLearning/deCIFer/deCIFer-frozen/decifer_v1_ckpt.pt
+    sha256: 6d97e352f99dc6dbc5ced102ed10ee0693651a81f429f20ea50c2bc1fe18b78b
+    note: published checkpoint from the deCIFer data archive (NOMA-trained)
+inputs:
+  pattern: required (full profile; upstream preprocessing converts to Q and normalizes)
+  wavelength: required for 2theta column files; read from pdCIF; not needed with --x-unit q
+  composition: optional (prompted as the full-cell formula, e.g. TiO2 with Z=2 -> Ti2O4)
+  z: used with composition (default 1)
+  spacegroup: not supported (upstream's experimental pipeline ignores it)
+  usable_range: Q 0-10 1/Angstrom (training grid); --q-min/--q-max crop, e.g. 1.5-8 as in the authors' experiments
+hardware:
+  gpu_memory_gb: 20  # peak observed on the benchmark; grows with CIF length
+  cpu_ok: true
+  platform: tested on Linux x86-64 only (pure PyTorch; other platforms untested)
+environment:
+  file: environment.yml
+  setup: setup.sh
+  conda_env: decifer
+benchmark:
+  settings:
+    - name: composition_z
+      inputs: [composition, z]
+    - name: pattern_only
+      inputs: []
+    - name: composition_z_q1.5-8
+      inputs: [composition, z]
+      extra_args: ["--q-min", "1.5", "--q-max", "8"]
+status:
+  state: verified
+  verified_on: 2026-10-04
+  verified_by: Claude Code agent with Codex review (pending maintainer review)
+  hardware: NVIDIA RTX 4090 24 GB, driver 595.91, Linux

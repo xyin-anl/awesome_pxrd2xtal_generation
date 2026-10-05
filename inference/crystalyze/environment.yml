@@ -1,0 +1,41 @@
+# Conda environment for Crystalyze inference. setup.sh creates it, clones upstream, installs it,
+# and downloads the checkpoint. Library versions follow upstream's env.yml (Python 3.8, PyTorch
+# Lightning 1.3.8, torch-geometric 1.7.2, pymatgen 2023.8.10) except torch: upstream's torch 1.8.1
+# (CUDA 10.2, or the 11.1 build) cannot create cuSPARSE/cuSOLVER handles on current GPUs and
+# drivers, so this uses torch 1.13.1 with CUDA 11.7. run.py patches the one torch-geometric 1.7.2
+# incompatibility with newer torch (see run.py: _patch_dimenet_init).
+name: crystalyze
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - pip
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cu117
+      - --find-links https://data.pyg.org/whl/torch-1.13.1+cu117.html
+      - torch==1.13.1+cu117
+      - torch-scatter==2.1.1+pt113cu117
+      - torch-sparse==0.6.17+pt113cu117
+      - torch-cluster==1.6.1+pt113cu117
+      - torch-spline-conv==1.2.2+pt113cu117
+      - torch-geometric==1.7.2
+      - pytorch-lightning==1.3.8
+      - torchmetrics==0.6.0
+      - hydra-core==1.1.0
+      - omegaconf==2.1.2
+      - antlr4-python3-runtime==4.8
+      - pymatgen==2023.8.10
+      - spglib==2.3.0
+      - smact==2.2.1
+      - numpy==1.23.5
+      - scipy==1.10.1
+      - pandas==2.0.3
+      - scikit-learn==1.3.2
+      - sympy==1.12
+      - networkx==3.1
+      - p-tqdm==1.3.3
+      - python-dotenv==1.0.0
+      - matplotlib==3.7.5
+      - setuptools==59.5.0
+      - pyyaml
+      - gdown==5.2.0  # downloads the checkpoint from the authors' Google Drive folder

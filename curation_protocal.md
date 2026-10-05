@@ -2,6 +2,8 @@
 
 This file records how the repository content was generated, checked, and updated. The repository intentionally uses the filename `curation_protocal.md` to match the existing historical file name.
 
+Inference wrappers follow a separate procedure, [`inference/AGENTS.md`](inference/AGENTS.md) (feasibility, upstream fidelity, benchmark, independent review, reruns after shared-code changes, statuses, and machine safety); each inference pass is logged here like a catalog refresh.
+
 ## Historical curation record
 
 1. **OpenAI Deep Research — Jun 8 2025**  
@@ -204,9 +206,25 @@ Representative discovery queries included:
 - exact paper/artifact searches for GALAXI, ChatXRD, ERAF4XRD, PXRD2Seq, XRDiff, XCCP, AIdex-R2, MatDiffract, and the invariant lattice-bispectrum predictor;
 - September 2026 PXRD, indexing, refinement, and machine-learning searches restricted to arXiv, ACS, Nature, Wiley, and IUCr, followed by primary-source cross-reference checks.
 
+## October 4 2026 inference verification pass
+
+17. **Claude Code inference build and Codex review - Oct 4 2026**
+    Introduced a common inference layout (`inference/README.md`, `inference/AGENTS.md`): pinned upstream commits and weights, a shared `run.py` interface, a shared PXRD loader/peak picker, and a 12-pattern experimental benchmark with a mismatched-pattern control. Each wrapper was checked against the authors' own example, benchmarked on an RTX 4090, and reviewed against the pinned upstream code by Codex (gpt-5.6-sol and gpt-6-astra); every review finding was verified before it was fixed or rejected.
+
+Material changes:
+
+- Added a verified **CrystaLLM-π** wrapper. The released XRD checkpoints condition on picked peaks; the wrapper picks peaks and converts them to the averaged Cu Kα wavelength used in training.
+- Replaced the **deCIFer** script. The previous script prompted with the reduced formula (`CeO2`), which gave 0/24 correct CeO2 structures versus 22/25 with the full-cell formula (`Ce4O8`) that the model was trained on. The previous checkpoint link served a different file; the wrapper now downloads the published `decifer_v1_ckpt.pt` and verifies its checksum.
+- Replaced the **Uni3DAR** local and Modal scripts. They passed a raw profile without wavelength conversion, conditioned on distinct elements instead of the primitive-cell atom list, and skipped upstream's composition filtering and ranking. The new wrapper reproduces the paper's MP-20 PXRD-guided result (0.750 top-1 on 40 test records vs 75.08% reported).
+- Fixed `utils/parse_cifs.py`: processed wavelengths take precedence, standard uncertainties are parsed, observed columns are preferred over calculated ones, net intensities are not background-subtracted, and neutron data are rejected.
+- Recorded that `exp_pxrd_data/decifer/HEO/crystalline_CeO2_BM31.xye` is 2θ at 0.2545 Å (not Q, as upstream's README states), and excluded a two-phase pdCIF (`av5088sup4`) from the benchmark.
+- Replaced the **Crystalyze**, **DiffractGPT**, and **PXRDnet** scripts with wrappers in the same layout. Crystalyze now converts wavelengths and runs on current GPUs (torch 1.13.1 with a documented torch-geometric shim); 5 of the paper's 8 example compounds give raw matches before refinement. DiffractGPT's weights were re-uploaded in October 2025 and now expect peak-list prompts with JARVIS-style formulas, which the old script did not produce; the wrapper reproduces upstream's own inference but its output barely depends on the pattern on our benchmark, so it is marked `reproduced` rather than `verified`. PXRDnet now calls upstream's experimental pipeline directly, with primitive-cell atom counts as upstream uses.
+- Added `inference/TRIAGE.md` with the feasibility status of every other catalogued solver (XRDSol, Ab-PXRD-Solver, CrySTARNet, XtalNet, Xrd2Mof, and OpenAlphaDiffract feasible; RealPXRD-Solver, PXRDGen, XRDiff, AGAPI-XRD, CrystalNet, and DeepStruc blocked or out of scope).
+- Codex (gpt-6-astra) drafted the benchmark sections of the Crystalyze, DiffractGPT, and PXRDnet READMEs from the benchmark reports; every number was checked against the JSON before committing.
+
 ## October 5 2026 biweekly refresh
 
-17. **Codex primary-source and artifact audit - Oct 5 2026**
+18. **Codex primary-source and artifact audit - Oct 5 2026**
     Started from a clean checkout and fast-forwarded `main` to `07c087f`, including the merged Sep 21 refresh. Searched inclusively from the catalog's Sep 21 date because the cutoff has no timestamp. The official arXiv searches returned five broadly matched records; two became catalog entries and one withdrawn benchmark remains on the watchlist. The competing `Bin-Cao/awesome-xrd2crystal` board still had no commit after Jul 14 and supplied no new candidate. Technical claims were checked against papers, official repositories, publisher metadata, and official archives rather than copied from discovery indexes.
 
 Material additions and corrections:
@@ -244,7 +262,7 @@ Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog
 
 ## October 5 2026 scope correction
 
-18. **Codex full-catalog PXRD scope audit - Oct 5 2026**
+19. **Codex full-catalog PXRD scope audit - Oct 5 2026**
     Classified all 66 post-refresh entries by their actual diffraction input rather than their title or possible downstream use, using their cataloged primary records plus targeted source checks for boundary cases. Existing `verified_at` dates were retained when the underlying metadata and links were not reopened. Two Claude Opus 5.5 review sessions with follow-ups checked the classification and corrective diff; their MP-20, CHILI, PhiGen, AutoXRD, opXRD-HKUST, and schema findings were adopted, and the final review reported no blocking issue. High effort was requested and the model was confirmed as `claude-opus-5-5`, but the CLI does not report whether the requested effort was honored. The temporary invocation records were `/tmp/pxrd-scope-audit-claude.json`, `/tmp/pxrd-scope-correction-review-brief.md`, `/tmp/pxrd-scope-correction-review.json`, `/tmp/pxrd-scope-correction-rereview-brief.md`, `/tmp/pxrd-scope-correction-rereview.json`, `/tmp/pxrd-scope-correction-final-review-brief.md`, `/tmp/pxrd-scope-correction-final-review.json`, `/tmp/pxrd-scope-correction-approval-brief.md`, and `/tmp/pxrd-scope-correction-approval-review.json`; each review exited successfully. These files document the delegation, not the scientific evidence, which comes from the primary sources cited below.
 
 Material scope corrections:
@@ -263,6 +281,19 @@ Material scope corrections:
 The corrected canonical catalog contains 59 resources: 44 direct PXRD, four powder-derived, eight multimodal with PXRD, and three supporting substrates. Pair distribution function/total-scattering, single-crystal, electron-diffraction, literature-mining, and generic structure-only resources are now explicitly outside the catalog scope. The schema is version 2 because `scope_relation` is now required, and README rendering now keeps the displayed update date synchronized with `data/resources.json:last_updated`.
 
 Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog.py check` (59 resources); `python3 -m unittest discover -s tests -v` (11 passed); and `git diff --check`.
+
+## October 5 2026 inference follow-up
+
+20. **Claude Code inference wrappers and branch review - Oct 5 2026**
+    Extended the inference layout to two more solvers, narrowed the triage to general inorganic materials, and had the whole branch reviewed independently by Codex (gpt-6-astra) and Claude (Fable 5.1); every finding was verified before it was fixed or rejected.
+
+Material changes:
+
+- Added an **XRDSol** wrapper (`reproduced`): the paper's top-1-by-R_cos protocol is reproduced on MP-20, but the model compresses the pattern to one scalar and the mismatched-pattern control is not lower on the experimental benchmark.
+- Added an **Ab-PXRD-Solver** wrapper (`limited`, a new status): upstream's example reproduces exactly, but on experimental data most runs exceed memory, fail to index, time out, or crash inside upstream; non-Cu data are rejected because refinement uses a fixed Cu Kα instrument model.
+- **AlphaDiffract** is referenced to its authors' own resources (OpenAlphaDiffract code, Hugging Face weights and example script, live demo) instead of being wrapped here; MOF- and structure-family-specific models (XtalNet, Xrd2Mof, CrySTARNet) are recorded as out of focus.
+- Cu Kα2 handling now looks at the data: wavelength labels proved unreliable (four benchmark files declared as Kα1 contain the doublet). Stripped peaks are expressed at averaged Cu Kα, the merge window is limited to half the doublet splitting, and the peak-based benchmarks were rerun.
+- Benchmark harness: resumed runs are checked against the command and wrapper code, partial (`--only`) runs must go to a separate report, and error entries no longer contain local paths. pdCIF input no longer needs a solved structure, and `_pd_proc_wavelength`-only files are accepted.
 
 ## May 9 2026 detailed record
 
@@ -357,7 +388,7 @@ The README was reorganized to avoid conflating different levels of the PXRD pipe
 
 ### Open Gaps and Suggested Contributions
 
-- Add runnable inference wrappers for **XRDSol** and **RealPXRD-Solver**.
+- Add a runnable inference wrapper for **RealPXRD-Solver** once a checkpoint is released (see `inference/TRIAGE.md`).
 - Normalize input/output schemas across CIF-generating methods: CIF text, pymatgen `Structure`, lattice+fractional coordinates, and PXRD arrays.
 - Add a small, open, experimental smoke-test set that can be used without ICDD/PDF/ICSD license restrictions.
 - Add a common structure-matching script with configurable tolerances and clear reporting of lattice/composition assumptions.
@@ -374,7 +405,7 @@ The README was reorganized to avoid conflating different levels of the PXRD pipe
 4. Record required inputs: PXRD only, composition, formula, lattice parameters, unit cell, space group, candidate database, or experimental metadata.
 5. Record whether reported metrics are simulated, experimental, or mixed.
 6. Prefer reproducible links to papers, repositories, model cards, data cards, CodeOcean/Zenodo artifacts, and Hugging Face pages.
-7. Add inference wrappers only after confirming environment reproducibility and license compatibility.
+7. Add or change inference wrappers only by following [`inference/AGENTS.md`](inference/AGENTS.md), and log the pass here.
 8. Edit [`data/resources.json`](data/resources.json), which is the canonical source for resource tables; do not edit generated README rows directly.
 9. Set `verified_at` on every reviewed resource, update the catalog-level `last_updated` date when content changes, and allowlist only intentionally shared external URLs in `shared_urls`.
 10. Run `python3 scripts/catalog.py render`, then `python3 scripts/catalog.py check` and `python3 -m unittest discover -s tests -v` before opening a pull request.

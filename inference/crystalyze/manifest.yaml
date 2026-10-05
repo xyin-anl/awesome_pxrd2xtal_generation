@@ -1,0 +1,46 @@
+# Inference manifest: the contract between this directory, the benchmark harness, and the
+# catalog. Fields are documented in inference/README.md.
+id: crystalyze
+name: Crystalyze
+catalog_id: crystalyze
+upstream:
+  repo: https://github.com/ML-PXRD/Crystalyze
+  commit: d265e8b4687fda9586a73f3eb881bb881171b05b
+  license: MIT
+weights:
+  - id: model_folder
+    url: https://drive.google.com/drive/folders/1iANYLKp4pscNSA1VirSSSrPnt-2BNfzx
+    files:
+      epoch=804-step=57154.ckpt: ee95964d8ca104cdc9fbb55ce54f9e52d891154d35ee1a47031fe01b0d523ee0
+      hparams.yaml: d1053e8bbaa5a0d1dbfe528c28d2750dc29b193f75046028ae06a3ec3051af3f
+      lattice_scaler.pt: 8d099eecd61b35f49eb77ef8444312a6def60e7b830ac1fb97b44723424a1e2b
+      prop_scaler.pt: 84c119ca9b32ac7278373c0c3591315064940bef5af192f9faccca54bc08a6af
+    note: checkpoint trained on augmented MP-20 (Google Drive folder from the upstream README)
+inputs:
+  pattern: required (full profile; interpolated onto 5-90 degrees 2theta at 1.5406 A like upstream xy_data_prep)
+  wavelength: required for column files; read from pdCIF
+  composition: required (constrains the element set)
+  z: optional (conventional cell; fixes atom count and types in the primitive cell, all centerings tried without a space group)
+  spacegroup: optional, only used to convert Z to the primitive cell
+  usable_range: 15-90 degrees 2theta at 1.5406 A (upstream zeroes 5-15 deg of its 5-90 deg grid); at most 20 atoms in the cell
+hardware:
+  gpu_memory_gb: 1.5
+  cpu_ok: false  # upstream hard-codes .cuda(0) when atom types are sampled
+  platform: tested on Linux x86-64 only
+environment:
+  file: environment.yml
+  setup: setup.sh
+  conda_env: crystalyze
+benchmark:
+  settings:
+    - name: composition_z
+      inputs: [composition, z]
+    - name: composition_z_spacegroup
+      inputs: [composition, z, spacegroup]
+    - name: composition_only
+      inputs: [composition]
+status:
+  state: verified
+  verified_on: 2026-10-04
+  verified_by: Claude Code agent with Codex review (pending maintainer review)
+  hardware: NVIDIA RTX 4090 24 GB, driver 595.91, Linux

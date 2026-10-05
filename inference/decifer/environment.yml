@@ -1,0 +1,24 @@
+# Conda environment for deCIFer inference. setup.sh creates it, clones upstream, and downloads
+# the checkpoint. torch is pinned to 2.5.1 (CUDA 12.4 wheel): torch >= 2.6 refuses to load the
+# published checkpoint by default (weights_only=True and the file stores omegaconf objects).
+name: decifer
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - torch==2.5.1
+      - numpy==1.26.4
+      - pandas==2.3.3
+      - pymatgen==2025.10.7
+      - scipy==1.15.3
+      - ase==3.26.0
+      - h5py==3.14.0
+      - omegaconf==2.3.0
+      - periodictable==2.0.2
+      - scikit-learn==1.7.2
+      - matplotlib==3.10.7
+      - seaborn==0.13.2
+      - tqdm
+      - pyyaml

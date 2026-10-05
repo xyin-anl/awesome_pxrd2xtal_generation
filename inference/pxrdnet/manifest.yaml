@@ -1,0 +1,41 @@
+# Inference manifest: the contract between this directory, the benchmark harness, and the
+# catalog. Fields are documented in inference/README.md.
+id: pxrdnet
+name: PXRDnet
+catalog_id: pxrdnet
+upstream:
+  repo: https://github.com/gabeguo/cdvae_xrd
+  commit: 1ce3845f5b30c7dab703793122298423dcec79bc
+  license: MIT
+weights:
+  - id: therealgabeguo/cdvae_xrd_sinc10
+    url: https://huggingface.co/therealgabeguo/cdvae_xrd_sinc10
+    revision: 299e965ef2a8b2216ef542e031e1f550f65f9158
+    sha256:
+      mp_20_sinc100: ddff14ab8e4c05ea8442ebdc25a7908979155c0a8742565e4c26def0f004d631
+      mp_20_sinc10: eedb29796f5f223f517516a09362df2969f766d8ba4a395eb91f95a67f96c9a4
+    note: contains mp_20_sinc100 (default; used for the paper's experimental results) and mp_20_sinc10
+inputs:
+  pattern: required (full profile, binned by Q onto the model's 4096-point Cu Ka 0-180 deg grid as in upstream read_real_xrd.py)
+  wavelength: required for column files; read from pdCIF
+  composition: required
+  z: required (conventional cell; converted to the primitive cell, as upstream's CifParser.get_structures() gives; at most 20 atoms)
+  spacegroup: optional, only used to convert Z to the primitive cell (all centerings tried otherwise)
+  usable_range: Q up to 4 pi / 1.54184 A (Cu Ka, 2theta 180 deg)
+hardware:
+  gpu_memory_gb: 8
+  cpu_ok: false
+  platform: tested on Linux x86-64 only
+environment:
+  file: environment.yml
+  setup: setup.sh
+  conda_env: pxrdnet
+benchmark:
+  settings:
+    - name: composition_z_spacegroup
+      inputs: [composition, z, spacegroup]
+status:
+  state: verified
+  verified_on: 2026-10-04
+  verified_by: Claude Code agent with Codex review (pending maintainer review)
+  hardware: NVIDIA RTX 4090 24 GB, driver 595.91, Linux

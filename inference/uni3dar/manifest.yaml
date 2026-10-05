@@ -1,0 +1,43 @@
+# Inference manifest: the contract between this directory, the benchmark harness, and the
+# catalog. Fields are documented in inference/README.md.
+id: uni3dar
+name: Uni-3DAR
+catalog_id: uni3dar
+upstream:
+  repo: https://github.com/dptech-corp/Uni-3DAR
+  commit: bba82f5ffdcd85963e1dff68a52415cbf046e6c7
+  license: MIT
+  extra: Uni-Core at ace6fae1c8479a9751f2bb1e1d6e4047427bc134 (built without CUDA extensions)
+weights:
+  - id: mp20_pxrd.pt
+    url: https://huggingface.co/dptech/Uni-3DAR/resolve/f51306a4b12f7a2f8df45a124b1238f72e37805d/mp20_pxrd.pt
+    revision: f51306a4b12f7a2f8df45a124b1238f72e37805d
+    sha256: 0cf91fb568a04e5699df1dd6c80cfb00df50b8676d1b58f977f2596baf1db6ab
+    note: MP-20 PXRD-guided crystal structure prediction checkpoint
+inputs:
+  pattern: required (raw profile is peak-picked by inference/_common/pxrd_io.py, or pass --peaks)
+  wavelength: required for column files; read from pdCIF
+  composition: required
+  z: required (conventional cell; converted to the primitive cell the model was trained on, each candidate primitive Z ranked separately)
+  spacegroup: optional, only used to convert Z to the primitive cell (all centerings tried otherwise)
+  usable_range: 0-120 degrees 2theta at averaged Cu Ka; at most 128 atoms in the primitive cell
+hardware:
+  gpu_memory_gb: 23  # peak at the default --batch-size 64 on 20-atom cells (~8 GB for 5 atoms); --batch-size 32 peaks at ~6 GB
+  cpu_ok: false
+  platform: Linux x86-64 only (prebuilt flash-attn wheel)
+  note: flash-attn requires an NVIDIA GPU with compute capability >= 8.0
+environment:
+  file: environment.yml
+  setup: setup.sh
+  conda_env: uni3dar
+benchmark:
+  settings:
+    - name: composition_z
+      inputs: [composition, z]
+    - name: composition_z_spacegroup
+      inputs: [composition, z, spacegroup]
+status:
+  state: verified
+  verified_on: 2026-10-04
+  verified_by: Claude Code agent with Codex review (pending maintainer review)
+  hardware: NVIDIA RTX 4090 24 GB, driver 595.91, Linux

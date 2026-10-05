@@ -1,0 +1,4246 @@
+{
+  "model": "pxrdnet",
+  "date": "2026-10-04",
+  "n_samples": 20,
+  "matcher": {
+    "stol": 0.5,
+    "angle_tol": 10,
+    "ltol": 0.3
+  },
+  "case_ids": [
+    "br1322Isup2",
+    "br1340Isup2",
+    "gw5052Mg2Si_100K_LTsup2",
+    "gw5052Mg2Sn_100K_LTsup23",
+    "iz1026Isup2",
+    "ks5409BTsup2",
+    "sq1033Isup2",
+    "sq3214Isup2",
+    "wh5012phaseIIIsup3",
+    "wh5012phaseIIsup2",
+    "wm2446Isup2",
+    "wn6225Isup2"
+  ],
+  "settings": {
+    "composition_z_spacegroup": {
+      "inputs": [
+        "composition",
+        "z",
+        "spacegroup"
+      ],
+      "extra_args": [],
+      "date": "2026-10-04",
+      "n_samples": 20,
+      "summary": {
+        "n_cases": 12,
+        "n_failed_runs": 0,
+        "match_rate_any": 0.917,
+        "match_rate_top1": 0.5,
+        "mean_match_fraction": 0.254,
+        "mean_spacegroup_fraction": 0.008,
+        "mean_candidates": 20.0,
+        "mean_best_rms": 0.1824
+      },
+      "cases": [
+        {
+          "id": "br1322Isup2",
+          "pattern_from": "br1322Isup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": true,
+          "match_top1": true,
+          "match_fraction": 0.05,
+          "best_rms": 0.0283,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp2_001.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0283
+            },
+            {
+              "file": "candidates/candidate_zp2_002.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_004.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_005.cif",
+              "valid": true,
+              "spacegroup_number": 13,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_006.cif",
+              "valid": true,
+              "spacegroup_number": 11,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_007.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_008.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_009.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_010.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_011.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_013.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_014.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_015.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_016.cif",
+              "valid": true,
+              "spacegroup_number": 3,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_017.cif",
+              "valid": true,
+              "spacegroup_number": 10,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_018.cif",
+              "valid": true,
+              "spacegroup_number": 5,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_019.cif",
+              "valid": true,
+              "spacegroup_number": 22,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_020.cif",
+              "valid": true,
+              "spacegroup_number": 3,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 178.2
+        },
+        {
+          "id": "br1340Isup2",
+          "pattern_from": "br1340Isup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": true,
+          "match_top1": false,
+          "match_fraction": 0.05,
+          "best_rms": 0.4863,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp2_001.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_002.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_004.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_005.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_006.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_007.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_008.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_009.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_010.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_011.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_013.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_014.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_015.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_016.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_017.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_018.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_019.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.4863
+            },
+            {
+              "file": "candidates/candidate_zp2_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 249.1
+        },
+        {
+          "id": "gw5052Mg2Si_100K_LTsup2",
+          "pattern_from": "gw5052Mg2Si_100K_LTsup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": true,
+          "match_top1": true,
+          "match_fraction": 0.95,
+          "best_rms": 0.0038,
+          "spacegroup_fraction": 0.05,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp1_001.cif",
+              "valid": true,
+              "spacegroup_number": 5,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0053
+            },
+            {
+              "file": "candidates/candidate_zp1_002.cif",
+              "valid": true,
+              "spacegroup_number": 225,
+              "spacegroup_correct": true,
+              "match": true,
+              "rms": 0.0067
+            },
+            {
+              "file": "candidates/candidate_zp1_003.cif",
+              "valid": true,
+              "spacegroup_number": 166,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0048
+            },
+            {
+              "file": "candidates/candidate_zp1_004.cif",
+              "valid": true,
+              "spacegroup_number": 71,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0072
+            },
+            {
+              "file": "candidates/candidate_zp1_005.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0099
+            },
+            {
+              "file": "candidates/candidate_zp1_006.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0038
+            },
+            {
+              "file": "candidates/candidate_zp1_007.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0096
+            },
+            {
+              "file": "candidates/candidate_zp1_008.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0107
+            },
+            {
+              "file": "candidates/candidate_zp1_009.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0064
+            },
+            {
+              "file": "candidates/candidate_zp1_010.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0081
+            },
+            {
+              "file": "candidates/candidate_zp1_011.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0131
+            },
+            {
+              "file": "candidates/candidate_zp1_012.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.01
+            },
+            {
+              "file": "candidates/candidate_zp1_013.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0118
+            },
+            {
+              "file": "candidates/candidate_zp1_014.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0072
+            },
+            {
+              "file": "candidates/candidate_zp1_015.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0095
+            },
+            {
+              "file": "candidates/candidate_zp1_016.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0112
+            },
+            {
+              "file": "candidates/candidate_zp1_017.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0197
+            },
+            {
+              "file": "candidates/candidate_zp1_018.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0095
+            },
+            {
+              "file": "candidates/candidate_zp1_019.cif",
+              "valid": true,
+              "spacegroup_number": 10,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_020.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.2511
+            }
+          ],
+          "runtime_s": 122.1
+        },
+        {
+          "id": "gw5052Mg2Sn_100K_LTsup23",
+          "pattern_from": "gw5052Mg2Sn_100K_LTsup23",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": true,
+          "match_top1": true,
+          "match_fraction": 1.0,
+          "best_rms": 0.0034,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp1_001.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0102
+            },
+            {
+              "file": "candidates/candidate_zp1_002.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0099
+            },
+            {
+              "file": "candidates/candidate_zp1_003.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0034
+            },
+            {
+              "file": "candidates/candidate_zp1_004.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0061
+            },
+            {
+              "file": "candidates/candidate_zp1_005.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0079
+            },
+            {
+              "file": "candidates/candidate_zp1_006.cif",
+              "valid": true,
+              "spacegroup_number": 166,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.007
+            },
+            {
+              "file": "candidates/candidate_zp1_007.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0042
+            },
+            {
+              "file": "candidates/candidate_zp1_008.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0055
+            },
+            {
+              "file": "candidates/candidate_zp1_009.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0427
+            },
+            {
+              "file": "candidates/candidate_zp1_010.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0072
+            },
+            {
+              "file": "candidates/candidate_zp1_011.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0065
+            },
+            {
+              "file": "candidates/candidate_zp1_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.4547
+            },
+            {
+              "file": "candidates/candidate_zp1_013.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0152
+            },
+            {
+              "file": "candidates/candidate_zp1_014.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0055
+            },
+            {
+              "file": "candidates/candidate_zp1_015.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0527
+            },
+            {
+              "file": "candidates/candidate_zp1_016.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.007
+            },
+            {
+              "file": "candidates/candidate_zp1_017.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.006
+            },
+            {
+              "file": "candidates/candidate_zp1_018.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.012
+            },
+            {
+              "file": "candidates/candidate_zp1_019.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0059
+            },
+            {
+              "file": "candidates/candidate_zp1_020.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0072
+            }
+          ],
+          "runtime_s": 122.3
+        },
+        {
+          "id": "iz1026Isup2",
+          "pattern_from": "iz1026Isup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": true,
+          "match_top1": true,
+          "match_fraction": 0.05,
+          "best_rms": 0.0331,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp2_001.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0331
+            },
+            {
+              "file": "candidates/candidate_zp2_002.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_004.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_005.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_006.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_007.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_008.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_009.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_010.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_011.cif",
+              "valid": true,
+              "spacegroup_number": 6,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_013.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_014.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_015.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_016.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_017.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_018.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_019.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 252.2
+        },
+        {
+          "id": "ks5409BTsup2",
+          "pattern_from": "ks5409BTsup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": true,
+          "match_top1": true,
+          "match_fraction": 0.65,
+          "best_rms": 0.0266,
+          "spacegroup_fraction": 0.05,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp1_001.cif",
+              "valid": true,
+              "spacegroup_number": 99,
+              "spacegroup_correct": true,
+              "match": true,
+              "rms": 0.0283
+            },
+            {
+              "file": "candidates/candidate_zp1_002.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0297
+            },
+            {
+              "file": "candidates/candidate_zp1_003.cif",
+              "valid": true,
+              "spacegroup_number": 38,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0303
+            },
+            {
+              "file": "candidates/candidate_zp1_004.cif",
+              "valid": true,
+              "spacegroup_number": 38,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.028
+            },
+            {
+              "file": "candidates/candidate_zp1_005.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0273
+            },
+            {
+              "file": "candidates/candidate_zp1_006.cif",
+              "valid": true,
+              "spacegroup_number": 123,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0281
+            },
+            {
+              "file": "candidates/candidate_zp1_007.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_008.cif",
+              "valid": true,
+              "spacegroup_number": 123,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0293
+            },
+            {
+              "file": "candidates/candidate_zp1_009.cif",
+              "valid": true,
+              "spacegroup_number": 123,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0266
+            },
+            {
+              "file": "candidates/candidate_zp1_010.cif",
+              "valid": true,
+              "spacegroup_number": 25,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0298
+            },
+            {
+              "file": "candidates/candidate_zp1_011.cif",
+              "valid": true,
+              "spacegroup_number": 10,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0281
+            },
+            {
+              "file": "candidates/candidate_zp1_012.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0271
+            },
+            {
+              "file": "candidates/candidate_zp1_013.cif",
+              "valid": true,
+              "spacegroup_number": 38,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_014.cif",
+              "valid": true,
+              "spacegroup_number": 25,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0287
+            },
+            {
+              "file": "candidates/candidate_zp1_015.cif",
+              "valid": true,
+              "spacegroup_number": 35,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_016.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_017.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0327
+            },
+            {
+              "file": "candidates/candidate_zp1_018.cif",
+              "valid": true,
+              "spacegroup_number": 38,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_019.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 133.4
+        },
+        {
+          "id": "sq1033Isup2",
+          "pattern_from": "sq1033Isup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": true,
+          "match_top1": false,
+          "match_fraction": 0.1,
+          "best_rms": 0.4936,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp4_001.cif",
+              "valid": true,
+              "spacegroup_number": 7,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_002.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_004.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_005.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.4936
+            },
+            {
+              "file": "candidates/candidate_zp4_006.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_007.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_008.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_009.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_010.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_011.cif",
+              "valid": true,
+              "spacegroup_number": 143,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_013.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_014.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.4991
+            },
+            {
+              "file": "candidates/candidate_zp4_015.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_016.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_017.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_018.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_019.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 254.8
+        },
+        {
+          "id": "sq3214Isup2",
+          "pattern_from": "sq3214Isup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": true,
+          "match_top1": false,
+          "match_fraction": 0.05,
+          "best_rms": 0.3949,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp4_001.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_002.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_004.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_005.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_006.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_007.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_008.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_009.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_010.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_011.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_013.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_014.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_015.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_016.cif",
+              "valid": true,
+              "spacegroup_number": 71,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_017.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_018.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_019.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.3949
+            },
+            {
+              "file": "candidates/candidate_zp4_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 176.2
+        },
+        {
+          "id": "wh5012phaseIIIsup3",
+          "pattern_from": "wh5012phaseIIIsup3",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": true,
+          "match_top1": false,
+          "match_fraction": 0.05,
+          "best_rms": 0.3601,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp2_001.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_002.cif",
+              "valid": true,
+              "spacegroup_number": 5,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_004.cif",
+              "valid": true,
+              "spacegroup_number": 15,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_005.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_006.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.3601
+            },
+            {
+              "file": "candidates/candidate_zp2_007.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_008.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_009.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_010.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_011.cif",
+              "valid": true,
+              "spacegroup_number": 6,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_013.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_014.cif",
+              "valid": true,
+              "spacegroup_number": 74,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_015.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_016.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_017.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_018.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_019.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_020.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 141.3
+        },
+        {
+          "id": "wh5012phaseIIsup2",
+          "pattern_from": "wh5012phaseIIsup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": true,
+          "match_top1": true,
+          "match_fraction": 0.05,
+          "best_rms": 0.1666,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp4_001.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.1666
+            },
+            {
+              "file": "candidates/candidate_zp4_002.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_004.cif",
+              "valid": true,
+              "spacegroup_number": 14,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_005.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_006.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_007.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_008.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_009.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_010.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_011.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_013.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_014.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_015.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_016.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_017.cif",
+              "valid": true,
+              "spacegroup_number": 35,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_018.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_019.cif",
+              "valid": true,
+              "spacegroup_number": 35,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 176.8
+        },
+        {
+          "id": "wm2446Isup2",
+          "pattern_from": "wm2446Isup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": false,
+          "match_top1": false,
+          "match_fraction": 0.0,
+          "best_rms": null,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp2_001.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_002.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_004.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_005.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_006.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_007.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_008.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_009.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_010.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_011.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_013.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_014.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_015.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_016.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_017.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_018.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_019.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 188.5
+        },
+        {
+          "id": "wn6225Isup2",
+          "pattern_from": "wn6225Isup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": true,
+          "match_top1": false,
+          "match_fraction": 0.05,
+          "best_rms": 0.01,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp1_001.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_002.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_004.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_005.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_006.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_007.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_008.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_009.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_010.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_011.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_012.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_013.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.01
+            },
+            {
+              "file": "candidates/candidate_zp1_014.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_015.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_016.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_017.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_018.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_019.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 146.2
+        }
+      ]
+    },
+    "composition_z_spacegroup__mismatched_pattern": {
+      "inputs": [
+        "composition",
+        "z",
+        "spacegroup"
+      ],
+      "extra_args": [],
+      "date": "2026-10-04",
+      "n_samples": 20,
+      "summary": {
+        "n_cases": 12,
+        "n_failed_runs": 0,
+        "match_rate_any": 0.417,
+        "match_rate_top1": 0.0,
+        "mean_match_fraction": 0.088,
+        "mean_spacegroup_fraction": 0.004,
+        "mean_candidates": 20.0,
+        "mean_best_rms": 0.1358
+      },
+      "cases": [
+        {
+          "id": "br1322Isup2",
+          "pattern_from": "sq1033Isup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": false,
+          "match_top1": false,
+          "match_fraction": 0.0,
+          "best_rms": null,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp2_001.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_002.cif",
+              "valid": true,
+              "spacegroup_number": 6,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_004.cif",
+              "valid": true,
+              "spacegroup_number": 6,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_005.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_006.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_007.cif",
+              "valid": true,
+              "spacegroup_number": 9,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_008.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_009.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_010.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_011.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_013.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_014.cif",
+              "valid": true,
+              "spacegroup_number": 25,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_015.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_016.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_017.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_018.cif",
+              "valid": true,
+              "spacegroup_number": 25,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_019.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 174.8
+        },
+        {
+          "id": "br1340Isup2",
+          "pattern_from": "sq3214Isup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": false,
+          "match_top1": false,
+          "match_fraction": 0.0,
+          "best_rms": null,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp2_001.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_002.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_004.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_005.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_006.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_007.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_008.cif",
+              "valid": true,
+              "spacegroup_number": 5,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_009.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_010.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_011.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_013.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_014.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_015.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_016.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_017.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_018.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_019.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 163.1
+        },
+        {
+          "id": "gw5052Mg2Si_100K_LTsup2",
+          "pattern_from": "wh5012phaseIIIsup3",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": true,
+          "match_top1": false,
+          "match_fraction": 0.25,
+          "best_rms": 0.0128,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp1_001.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_002.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.4504
+            },
+            {
+              "file": "candidates/candidate_zp1_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.3985
+            },
+            {
+              "file": "candidates/candidate_zp1_004.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_005.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_006.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_007.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_008.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_009.cif",
+              "valid": true,
+              "spacegroup_number": 38,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_010.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_011.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.4058
+            },
+            {
+              "file": "candidates/candidate_zp1_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_013.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_014.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.2651
+            },
+            {
+              "file": "candidates/candidate_zp1_015.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_016.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_017.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_018.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_019.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0128
+            },
+            {
+              "file": "candidates/candidate_zp1_020.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 121.8
+        },
+        {
+          "id": "gw5052Mg2Sn_100K_LTsup23",
+          "pattern_from": "wh5012phaseIIsup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": true,
+          "match_top1": false,
+          "match_fraction": 0.5,
+          "best_rms": 0.0052,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp1_001.cif",
+              "valid": true,
+              "spacegroup_number": 164,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_002.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.3127
+            },
+            {
+              "file": "candidates/candidate_zp1_004.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_005.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.4644
+            },
+            {
+              "file": "candidates/candidate_zp1_006.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_007.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.007
+            },
+            {
+              "file": "candidates/candidate_zp1_008.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0061
+            },
+            {
+              "file": "candidates/candidate_zp1_009.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_010.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0572
+            },
+            {
+              "file": "candidates/candidate_zp1_011.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_012.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0155
+            },
+            {
+              "file": "candidates/candidate_zp1_013.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_014.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_015.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0084
+            },
+            {
+              "file": "candidates/candidate_zp1_016.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_017.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0052
+            },
+            {
+              "file": "candidates/candidate_zp1_018.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0112
+            },
+            {
+              "file": "candidates/candidate_zp1_019.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_020.cif",
+              "valid": true,
+              "spacegroup_number": 44,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.4679
+            }
+          ],
+          "runtime_s": 123.4
+        },
+        {
+          "id": "iz1026Isup2",
+          "pattern_from": "wm2446Isup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": false,
+          "match_top1": false,
+          "match_fraction": 0.0,
+          "best_rms": null,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp2_001.cif",
+              "valid": true,
+              "spacegroup_number": 6,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_002.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_004.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_005.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_006.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_007.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_008.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_009.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_010.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_011.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_013.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_014.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_015.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_016.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_017.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_018.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_019.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 253.5
+        },
+        {
+          "id": "ks5409BTsup2",
+          "pattern_from": "wn6225Isup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": true,
+          "match_top1": false,
+          "match_fraction": 0.1,
+          "best_rms": 0.0294,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp1_001.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_002.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_004.cif",
+              "valid": true,
+              "spacegroup_number": 10,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.0294
+            },
+            {
+              "file": "candidates/candidate_zp1_005.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_006.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_007.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.1756
+            },
+            {
+              "file": "candidates/candidate_zp1_008.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_009.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_010.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_011.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_013.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_014.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_015.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_016.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_017.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_018.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_019.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 134.6
+        },
+        {
+          "id": "sq1033Isup2",
+          "pattern_from": "br1322Isup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": false,
+          "match_top1": false,
+          "match_fraction": 0.0,
+          "best_rms": null,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp4_001.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_002.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_004.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_005.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_006.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_007.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_008.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_009.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_010.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_011.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_013.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_014.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_015.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_016.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_017.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_018.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_019.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 251.3
+        },
+        {
+          "id": "sq3214Isup2",
+          "pattern_from": "br1340Isup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": false,
+          "match_top1": false,
+          "match_fraction": 0.0,
+          "best_rms": null,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp4_001.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_002.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_004.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_005.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_006.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_007.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_008.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_009.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_010.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_011.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_012.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_013.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_014.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_015.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_016.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_017.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_018.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_019.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 176.9
+        },
+        {
+          "id": "wh5012phaseIIIsup3",
+          "pattern_from": "gw5052Mg2Si_100K_LTsup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": true,
+          "match_top1": false,
+          "match_fraction": 0.15,
+          "best_rms": 0.1656,
+          "spacegroup_fraction": 0.05,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp2_001.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_002.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.1709
+            },
+            {
+              "file": "candidates/candidate_zp2_003.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_004.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_005.cif",
+              "valid": true,
+              "spacegroup_number": 164,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_006.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_007.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_008.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_009.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_010.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_011.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_012.cif",
+              "valid": true,
+              "spacegroup_number": 156,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.3029
+            },
+            {
+              "file": "candidates/candidate_zp2_013.cif",
+              "valid": true,
+              "spacegroup_number": 194,
+              "spacegroup_correct": true,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_014.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_015.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.1656
+            },
+            {
+              "file": "candidates/candidate_zp2_016.cif",
+              "valid": true,
+              "spacegroup_number": 129,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_017.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_018.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_019.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_020.cif",
+              "valid": true,
+              "spacegroup_number": 12,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 141.5
+        },
+        {
+          "id": "wh5012phaseIIsup2",
+          "pattern_from": "gw5052Mg2Sn_100K_LTsup23",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": true,
+          "match_top1": false,
+          "match_fraction": 0.05,
+          "best_rms": 0.4661,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp4_001.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_002.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_003.cif",
+              "valid": true,
+              "spacegroup_number": 13,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_004.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_005.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_006.cif",
+              "valid": true,
+              "spacegroup_number": 5,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_007.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_008.cif",
+              "valid": true,
+              "spacegroup_number": 6,
+              "spacegroup_correct": false,
+              "match": true,
+              "rms": 0.4661
+            },
+            {
+              "file": "candidates/candidate_zp4_009.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_010.cif",
+              "valid": true,
+              "spacegroup_number": 10,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_011.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_013.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_014.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_015.cif",
+              "valid": true,
+              "spacegroup_number": 6,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_016.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_017.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_018.cif",
+              "valid": true,
+              "spacegroup_number": 2,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_019.cif",
+              "valid": true,
+              "spacegroup_number": 4,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp4_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 178.8
+        },
+        {
+          "id": "wm2446Isup2",
+          "pattern_from": "iz1026Isup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": false,
+          "match_top1": false,
+          "match_fraction": 0.0,
+          "best_rms": null,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp2_001.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_002.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_003.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_004.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_005.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_006.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_007.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_008.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_009.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_010.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_011.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_013.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_014.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_015.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_016.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_017.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_018.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_019.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp2_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 191.3
+        },
+        {
+          "id": "wn6225Isup2",
+          "pattern_from": "ks5409BTsup2",
+          "n_candidates": 20,
+          "n_valid": 20,
+          "match_any": false,
+          "match_top1": false,
+          "match_fraction": 0.0,
+          "best_rms": null,
+          "spacegroup_fraction": 0.0,
+          "candidates": [
+            {
+              "file": "candidates/candidate_zp1_001.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_002.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_003.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_004.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_005.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_006.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_007.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_008.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_009.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_010.cif",
+              "valid": true,
+              "spacegroup_number": 25,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_011.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_012.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_013.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_014.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_015.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_016.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_017.cif",
+              "valid": true,
+              "spacegroup_number": 8,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_018.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_019.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            },
+            {
+              "file": "candidates/candidate_zp1_020.cif",
+              "valid": true,
+              "spacegroup_number": 1,
+              "spacegroup_correct": false,
+              "match": false,
+              "rms": null
+            }
+          ],
+          "runtime_s": 146.9
+        }
+      ]
+    }
+  }
+}

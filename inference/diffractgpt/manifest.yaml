@@ -1,0 +1,50 @@
+# Inference manifest: the contract between this directory, the benchmark harness, and the
+# catalog. Fields are documented in inference/README.md.
+id: diffractgpt
+name: DiffractGPT
+catalog_id: diffractgpt
+upstream:
+  repo: https://github.com/atomgptlab/atomgpt
+  commit: 40fb1bdf0037997e5cd35cdb4bb1d2b43fd88b8d
+  license: NIST public-domain terms (code); adapter card says MIT; base model Apache-2.0
+  note: no upstream code is needed at inference time; run.py reimplements the prompt construction
+    (scripts/diffractgpt/dataset_atomgpt_spectra2.py) and output parsing (inverse_models/utils.py)
+weights:
+  - id: knc6/diffractgpt_mistral_chemical_formula
+    url: https://huggingface.co/knc6/diffractgpt_mistral_chemical_formula
+    revision: a4b14720aa2b5ef124f794e581dfd5ce4dc2ab49
+    note: LoRA adapter (weights re-uploaded 2025-10-24; trained on peak-list prompts)
+  - id: unsloth/mistral-7b-bnb-4bit
+    url: https://huggingface.co/unsloth/mistral-7b-bnb-4bit
+    revision: 3c47be0aa392c058e26ede776ecd2d5416fa5d28
+    note: 4-bit base model
+inputs:
+  pattern: required (peak-picked by inference/_common/pxrd_io.py or, with --peak-method upstream, by atomgpt's load_exp_file rules; or pass --peaks)
+  wavelength: required for column files; read from pdCIF
+  composition: required (prompted as JARVIS's reduced formula, as in training)
+  z: not used (the model chooses the cell)
+  spacegroup: not used
+  usable_range: 0-90 degrees 2theta at averaged Cu Ka
+hardware:
+  gpu_memory_gb: 10  # peak observed during sampling
+  cpu_ok: false
+  platform: tested on Linux x86-64 only; bitsandbytes 4-bit inference needs an NVIDIA GPU
+environment:
+  file: environment.yml
+  setup: setup.sh
+  conda_env: diffractgpt
+benchmark:
+  settings:
+    - name: composition_sampled
+      inputs: [composition]
+    - name: composition_sampled_upstream_peaks
+      inputs: [composition]
+      extra_args: ["--peak-method", "upstream"]
+    - name: composition_greedy
+      inputs: [composition]
+      extra_args: ["--n-samples", "1"]
+status:
+  state: reproduced  # upstream behaviour reproduced; mismatched-pattern control not clearly lower
+  verified_on: 2026-10-04
+  verified_by: Claude Code agent with Codex review (pending maintainer review)
+  hardware: NVIDIA RTX 4090 24 GB, driver 595.91, Linux

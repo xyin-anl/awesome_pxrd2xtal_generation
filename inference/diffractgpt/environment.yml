@@ -1,0 +1,25 @@
+# Conda environment for DiffractGPT inference: a PEFT LoRA adapter on a 4-bit Mistral-7B base,
+# loaded with transformers + peft + bitsandbytes (upstream wraps the same in an unsloth-style
+# loader). bitsandbytes 4-bit inference needs an NVIDIA GPU.
+name: diffractgpt
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - torch==2.6.0
+      - transformers==4.46.3
+      - peft==0.15.2  # the adapter config uses fields (corda_config, trainable_token_indices) added in 0.15
+      - bitsandbytes==0.45.5
+      - accelerate==1.2.1
+      - sentencepiece==0.2.0
+      - protobuf==5.29.3
+      - safetensors==0.5.3
+      - numpy==2.2.4
+      - scipy==1.15.3
+      - pymatgen==2025.10.7
+      - pandas==2.2.3
+      - pyarrow==19.0.1
+      - jarvis-tools==2024.10.30  # formula canonicalization used for the training prompts
+      - pyyaml

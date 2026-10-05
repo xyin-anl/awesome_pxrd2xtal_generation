@@ -8,7 +8,10 @@
     "pxrdnet",
     "decifer",
     "crystalyze",
-    "diffractgpt"
+    "diffractgpt",
+    "crystallm-pi",
+    "xrdsol",
+    "ab-pxrd-solver"
   ],
   "shared_urls": [
     "https://academic.oup.com/nsr/article/12/12/nwaf421/8268901",
@@ -75,8 +78,8 @@
       "inference": {
         "local": [
           {
-            "label": "crystalyze_inference.py",
-            "url": "inference/crystalyze/crystalyze_inference.py",
+            "label": "run.py",
+            "url": "inference/crystalyze/run.py",
             "role": "inference",
             "code_label": true
           }
@@ -84,16 +87,34 @@
         "cloud": [],
         "support": [
           {
-            "label": "crystalyze_utils.py",
-            "url": "inference/crystalyze/crystalyze_utils.py",
+            "label": "setup.sh",
+            "url": "inference/crystalyze/setup.sh",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "manifest.yaml",
+            "url": "inference/crystalyze/manifest.yaml",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "README.md",
+            "url": "inference/crystalyze/README.md",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "reproduce_examples.py",
+            "url": "inference/crystalyze/reproduce_examples.py",
             "role": "inference",
             "code_label": true
           }
         ],
         "environment": [
           {
-            "label": "crystalyze_env.yml",
-            "url": "inference/crystalyze/crystalyze_env.yml",
+            "label": "environment.yml",
+            "url": "inference/crystalyze/environment.yml",
             "role": "inference",
             "code_label": true
           }
@@ -157,25 +178,37 @@
       "inference": {
         "local": [
           {
-            "label": "pxrdnet_inference.py",
-            "url": "inference/pxrdnet/pxrdnet_inference.py",
+            "label": "run.py",
+            "url": "inference/pxrdnet/run.py",
             "role": "inference",
             "code_label": true
           }
         ],
-        "cloud": [
+        "cloud": [],
+        "support": [
           {
-            "label": "pxrdnet_modal.py",
-            "url": "inference/pxrdnet/pxrdnet_modal.py",
+            "label": "setup.sh",
+            "url": "inference/pxrdnet/setup.sh",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "manifest.yaml",
+            "url": "inference/pxrdnet/manifest.yaml",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "README.md",
+            "url": "inference/pxrdnet/README.md",
             "role": "inference",
             "code_label": true
           }
         ],
-        "support": [],
         "environment": [
           {
-            "label": "pxrdnet_env.yml",
-            "url": "inference/pxrdnet/pxrdnet_env.yml",
+            "label": "environment.yml",
+            "url": "inference/pxrdnet/environment.yml",
             "role": "inference",
             "code_label": true
           }
@@ -240,8 +273,8 @@
       "inference": {
         "local": [
           {
-            "label": "decifer_inference.py",
-            "url": "inference/decifer/decifer_inference.py",
+            "label": "run.py",
+            "url": "inference/decifer/run.py",
             "role": "inference",
             "code_label": true
           }
@@ -249,16 +282,28 @@
         "cloud": [],
         "support": [
           {
-            "label": "decifer_utils.py",
-            "url": "inference/decifer/decifer_utils.py",
+            "label": "setup.sh",
+            "url": "inference/decifer/setup.sh",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "manifest.yaml",
+            "url": "inference/decifer/manifest.yaml",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "README.md",
+            "url": "inference/decifer/README.md",
             "role": "inference",
             "code_label": true
           }
         ],
         "environment": [
           {
-            "label": "decifer_env.yml",
-            "url": "inference/decifer/decifer_env.yml",
+            "label": "environment.yml",
+            "url": "inference/decifer/environment.yml",
             "role": "inference",
             "code_label": true
           }
@@ -292,22 +337,47 @@
       "inference": {
         "local": [
           {
-            "label": "diffractgpt_inference.py",
-            "url": "inference/diffractgpt/diffractgpt_inference.py",
+            "label": "run.py",
+            "url": "inference/diffractgpt/run.py",
             "role": "inference",
             "code_label": true
           }
         ],
-        "cloud": [
+        "cloud": [],
+        "support": [
           {
-            "label": "diffractgpt_modal.py",
-            "url": "inference/diffractgpt/diffractgpt_modal.py",
+            "label": "setup.sh",
+            "url": "inference/diffractgpt/setup.sh",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "manifest.yaml",
+            "url": "inference/diffractgpt/manifest.yaml",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "README.md",
+            "url": "inference/diffractgpt/README.md",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "reproduce_upstream.py",
+            "url": "inference/diffractgpt/reproduce_upstream.py",
             "role": "inference",
             "code_label": true
           }
         ],
-        "support": [],
-        "environment": []
+        "environment": [
+          {
+            "label": "environment.yml",
+            "url": "inference/diffractgpt/environment.yml",
+            "role": "inference",
+            "code_label": true
+          }
+        ]
       }
     },
     {
@@ -337,25 +407,43 @@
       "inference": {
         "local": [
           {
-            "label": "uni3dar_inference.py",
-            "url": "inference/uni3dar/uni3dar_inference.py",
+            "label": "run.py",
+            "url": "inference/uni3dar/run.py",
             "role": "inference",
             "code_label": true
           }
         ],
-        "cloud": [
+        "cloud": [],
+        "support": [
           {
-            "label": "uni3dar_modal.py",
-            "url": "inference/uni3dar/uni3dar_modal.py",
+            "label": "setup.sh",
+            "url": "inference/uni3dar/setup.sh",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "manifest.yaml",
+            "url": "inference/uni3dar/manifest.yaml",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "README.md",
+            "url": "inference/uni3dar/README.md",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "reproduce_upstream.py",
+            "url": "inference/uni3dar/reproduce_upstream.py",
             "role": "inference",
             "code_label": true
           }
         ],
-        "support": [],
         "environment": [
           {
-            "label": "uni3dar_env.yml",
-            "url": "inference/uni3dar/uni3dar_env.yml",
+            "label": "environment.yml",
+            "url": "inference/uni3dar/environment.yml",
             "role": "inference",
             "code_label": true
           }
@@ -426,7 +514,46 @@
           "url": "https://huggingface.co/c-bone/CrystaLLM-pi_Chili100K-XRD",
           "role": "model"
         }
-      ]
+      ],
+      "inference": {
+        "local": [
+          {
+            "label": "run.py",
+            "url": "inference/crystallm_pi/run.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "cloud": [],
+        "support": [
+          {
+            "label": "setup.sh",
+            "url": "inference/crystallm_pi/setup.sh",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "manifest.yaml",
+            "url": "inference/crystallm_pi/manifest.yaml",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "README.md",
+            "url": "inference/crystallm_pi/README.md",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "environment": [
+          {
+            "label": "environment.yml",
+            "url": "inference/crystallm_pi/environment.yml",
+            "role": "inference",
+            "code_label": true
+          }
+        ]
+      }
     },
     {
       "id": "crystarnet",
@@ -507,7 +634,52 @@
           "url": "https://doi.org/10.5281/zenodo.17837824",
           "role": "data"
         }
-      ]
+      ],
+      "inference": {
+        "local": [
+          {
+            "label": "run.py",
+            "url": "inference/xrdsol/run.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "cloud": [],
+        "support": [
+          {
+            "label": "setup.sh",
+            "url": "inference/xrdsol/setup.sh",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "manifest.yaml",
+            "url": "inference/xrdsol/manifest.yaml",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "README.md",
+            "url": "inference/xrdsol/README.md",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "reproduce_upstream.py",
+            "url": "inference/xrdsol/reproduce_upstream.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "environment": [
+          {
+            "label": "environment.yml",
+            "url": "inference/xrdsol/environment.yml",
+            "role": "inference",
+            "code_label": true
+          }
+        ]
+      }
     },
     {
       "id": "realpxrd-solver",
@@ -562,7 +734,52 @@
           "url": "https://mmi.charlotte.edu/ab_pxrd_solver",
           "role": "data"
         }
-      ]
+      ],
+      "inference": {
+        "local": [
+          {
+            "label": "run.py",
+            "url": "inference/ab_pxrd_solver/run.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "cloud": [],
+        "support": [
+          {
+            "label": "setup.sh",
+            "url": "inference/ab_pxrd_solver/setup.sh",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "manifest.yaml",
+            "url": "inference/ab_pxrd_solver/manifest.yaml",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "README.md",
+            "url": "inference/ab_pxrd_solver/README.md",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "solve_driver.py",
+            "url": "inference/ab_pxrd_solver/solve_driver.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "environment": [
+          {
+            "label": "environment.yml",
+            "url": "inference/ab_pxrd_solver/environment.yml",
+            "role": "inference",
+            "code_label": true
+          }
+        ]
+      }
     },
     {
       "id": "xrdiff",
@@ -589,7 +806,7 @@
       "name": "AlphaDiffract",
       "category": "pipeline_module",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-10-04",
       "year": "2026",
       "task": "Crystal system, space group, and lattice parameter prediction from PXRD",
       "method": "1D ConvNeXt / deep diffraction encoder",
@@ -608,7 +825,17 @@
           "role": "model"
         },
         {
-          "label": "training code",
+          "label": "example inference script",
+          "url": "https://huggingface.co/linked-liszt/OpenAlphaDiffract/blob/main/example_inference.py",
+          "role": "inference"
+        },
+        {
+          "label": "live demo",
+          "url": "https://huggingface.co/spaces/linked-liszt/OpenAlphaDiffract-UI",
+          "role": "tool"
+        },
+        {
+          "label": "OpenAlphaDiffract (training, simulation, inference app)",
           "url": "https://github.com/AdvancedPhotonSource/OpenAlphaDiffract",
           "role": "code"
         }

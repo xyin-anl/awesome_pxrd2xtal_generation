@@ -1,0 +1,47 @@
+# Inference manifest: the contract between this directory, the benchmark harness, and the
+# catalog. Fields are documented in inference/README.md.
+id: ab_pxrd_solver
+name: Ab-PXRD-Solver
+catalog_id: ab-pxrd-solver
+upstream:
+  repo: https://github.com/MaterSim/Ab-PXRD-Solver
+  commit: 0d67964dfcbd2e2fa09e79bbbac2f5d020a121e9
+  license: MIT
+  extra: GSAS-II (AdvancedPhotonSource/GSAS-II) built from source at 6e98f6383dfec399a431c9985b22fa87b953af68
+weights:
+  - id: bundled
+    url: https://github.com/MaterSim/Ab-PXRD-Solver/tree/0d67964dfcbd2e2fa09e79bbbac2f5d020a121e9/pxrd_app/tools/models
+    note: peak detector, space-group predictor, and Roost density ensemble ship with upstream
+  - id: mace-mp small (20231210mace128L0_energy_epoch249model)
+    url: https://github.com/ACEsuit/mace-mp
+    sha256: 2ddb079cee0e131eaaf6912ba581b394551ead283e95c99cfe78c605d10b5736
+    note: downloaded by setup.sh via mace_mp(model="small")
+inputs:
+  pattern: required (Cu Ka or Ka1 full profile only; written on upstream's 10-80 deg, 0.02 deg grid at averaged Cu Ka, scaled to 100)
+  wavelength: required for column files (must be Cu Ka or Ka1); read from pdCIF
+  composition: required (integer stoichiometry; the solver chooses Z, capped by max_Z 24, 20 atoms per primitive cell, and its predicted density range)
+  z: not used
+  spacegroup: optional (otherwise inferred by the solver)
+  usable_range: 10-80 degrees 2theta, Cu radiation only (fixed Cu Ka instrument model in GSAS-II)
+hardware:
+  gpu_memory_gb: 0
+  cpu_ok: true
+  platform: tested on Linux x86-64 only; MACE runs on CPU (forked workers cannot use CUDA)
+  memory: monoclinic cell searches exceed 20 GB within seconds (about 26 GB seen uncapped); run.py caps the solver at --memory-limit (default 12 GB) via systemd-run
+environment:
+  file: environment.yml
+  setup: setup.sh
+  conda_env: ab_pxrd_solver
+benchmark:
+  settings:
+    - name: composition_spacegroup
+      inputs: [composition, spacegroup]
+      extra_args: ["--timeout", "1800"]
+    - name: composition_only
+      inputs: [composition]
+      extra_args: ["--timeout", "1800"]
+status:
+  state: limited  # example reproduced from a fresh setup; most benchmark runs fail inside upstream (memory, indexing, crash) or are non-Cu
+  verified_on: 2026-10-05
+  verified_by: Claude Code agent with Codex review (pending maintainer review)
+  hardware: CPU only (MACE on CPU), 30 GB RAM, Linux

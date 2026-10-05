@@ -1,0 +1,36 @@
+# Conda environment for Ab-PXRD-Solver, following upstream environment.yml (Python 3.11, PyXtal,
+# ASE, MACE, PyTorch, pymatgen, GSAS-II). GSAS-II is built from source at the commit that was
+# current when the pinned Ab-PXRD-Solver commit was made; conda-forge supplies the Fortran
+# compiler and build tools, so no system compiler is needed beyond a C compiler. Versions are
+# the ones resolved and tested on 2026-10-04.
+name: ab_pxrd_solver
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - numpy=1.26
+  - pandas=3.0.6
+  - scipy=1.17.1
+  - matplotlib=3.11.2
+  - tqdm=4.70.1
+  - scikit-learn=1.9.1
+  - pymatgen=2026.9.24
+  - pyxtal=1.1.5
+  - ase=3.29.0
+  - monty=2026.7.16
+  - spglib=2.7.0
+  - typing_extensions
+  - gfortran
+  - meson
+  - ninja
+  - meson-python
+  - cython
+  - pip:
+      - numpy==1.26.4  # upstream pins numpy<2 (np.linalg.solve broadcasting changed in 2.x)
+      - torch==2.6.0
+      - mace-torch==0.3.14
+      - pyyaml
+      - wandb==0.19.11  # imported by the bundled Roost code
+      - tensorboard
+      - git+https://github.com/AdvancedPhotonSource/GSAS-II.git@6e98f6383dfec399a431c9985b22fa87b953af68
