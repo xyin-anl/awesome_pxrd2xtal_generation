@@ -42,6 +42,6 @@ Scope: general inorganic materials. Models specialized to one material class are
 | RealPXRD-Solver | Training and sampling code only; no released checkpoint. |
 | PXRDGen | Code and weights only inside a CodeOcean capsule. |
 | XRDiff | No public code or weights. |
-| AGAPI-XRD | Agent/web service; repository has no license and no standalone model. |
+| AGAPI-XRD | Agent/web service; its reproducibility repository (atomgptlab/agapixrd) has no license, needs an AGAPI key and external databases, and ships no standalone model. |
 | CrystalNet (deep-crystallography) | No license; no released weights found. |
 | DeepStruc | Input is a pair distribution function for metal nanoparticles, not a PXRD pattern. |
