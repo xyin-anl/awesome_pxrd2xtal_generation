@@ -82,6 +82,15 @@ benchmark after fixes that change the model's input.
   (Uni-3DAR's peak positions were confirmed against pymatgen's averaged Cu Kα record by record).
 - **Look for silently swallowed errors upstream.** Uni-3DAR builds structures inside a bare
   `except:`; a missing `ase` produced zero candidates without an error.
+- **Check which metric the paper actually reports.** XRDSol's repository scores "any of 25 runs"
+  while the paper ranks 25 candidates by pattern similarity and scores the top one; reproduce the
+  paper's protocol, and report the repository's metric only as a secondary number.
+- **Look at how the pattern enters the network.** XRDSol compresses the whole pattern to one scalar
+  (`nn.Linear(4500, 1)`), which explains why its output barely changes with a wrong pattern.
+- **Refinement tools are instrument-specific.** Ab-PXRD-Solver refines against a fixed Cu Kα
+  instrument model, so other radiation must be rejected rather than converted.
+- **Do not trust output files named "best"/"match" blindly.** Ab-PXRD-Solver rewrites its Match CIF
+  per trial; the wrapper exports the state the pipeline actually selected.
 - **Check the benchmark data too.** One "experimental" pdCIF turned out to be a two-phase
   sample, and two files carried a processed wavelength that differed from the source wavelength.
 

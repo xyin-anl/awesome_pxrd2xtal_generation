@@ -71,6 +71,8 @@ under `excluded` with the reason. Matching uses pymatgen `StructureMatcher(stol=
 ltol=0.3)`, the setting used by CDVAE/DiffCSP-style benchmarks. Reported metrics:
 
 - `match_rate_any`: fraction of cases where at least one candidate matches the reference
+- `match_rate_top1`: fraction of cases where the first candidate matches; meaningful only for
+  wrappers that rank their output (Uni-3DAR, PXRDnet, XRDSol)
 - `mean_match_fraction`: average fraction of returned candidates that match
 - `mean_spacegroup_fraction`: average fraction of returned candidates with the reference space
   group (unreadable CIFs count as wrong)

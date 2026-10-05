@@ -9,7 +9,8 @@
     "decifer",
     "crystalyze",
     "diffractgpt",
-    "crystallm-pi"
+    "crystallm-pi",
+    "xrdsol"
   ],
   "shared_urls": [
     "https://academic.oup.com/nsr/article/12/12/nwaf421/8268901",
@@ -637,7 +638,52 @@
           "url": "https://doi.org/10.5281/zenodo.17837824",
           "role": "data"
         }
-      ]
+      ],
+      "inference": {
+        "local": [
+          {
+            "label": "run.py",
+            "url": "inference/xrdsol/run.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "cloud": [],
+        "support": [
+          {
+            "label": "setup.sh",
+            "url": "inference/xrdsol/setup.sh",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "manifest.yaml",
+            "url": "inference/xrdsol/manifest.yaml",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "README.md",
+            "url": "inference/xrdsol/README.md",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "reproduce_upstream.py",
+            "url": "inference/xrdsol/reproduce_upstream.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "environment": [
+          {
+            "label": "environment.yml",
+            "url": "inference/xrdsol/environment.yml",
+            "role": "inference",
+            "code_label": true
+          }
+        ]
+      }
     },
     {
       "id": "realpxrd-solver",
@@ -715,7 +761,7 @@
       "id": "alphadiffract",
       "name": "AlphaDiffract",
       "category": "pipeline_module",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-10-04",
       "year": "2026",
       "task": "Crystal system, space group, and lattice parameter prediction from PXRD",
       "method": "1D ConvNeXt / deep diffraction encoder",
@@ -734,7 +780,17 @@
           "role": "model"
         },
         {
-          "label": "training code",
+          "label": "example inference script",
+          "url": "https://huggingface.co/linked-liszt/OpenAlphaDiffract/blob/main/example_inference.py",
+          "role": "inference"
+        },
+        {
+          "label": "live demo",
+          "url": "https://huggingface.co/spaces/linked-liszt/OpenAlphaDiffract-UI",
+          "role": "tool"
+        },
+        {
+          "label": "OpenAlphaDiffract (training, simulation, inference app)",
           "url": "https://github.com/AdvancedPhotonSource/OpenAlphaDiffract",
           "role": "code"
         }
