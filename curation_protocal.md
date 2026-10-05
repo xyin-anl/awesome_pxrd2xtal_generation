@@ -220,6 +220,19 @@ Material changes:
 - Added `inference/TRIAGE.md` with the feasibility status of every other catalogued solver (XRDSol, Ab-PXRD-Solver, CrySTARNet, XtalNet, Xrd2Mof, and OpenAlphaDiffract feasible; RealPXRD-Solver, PXRDGen, XRDiff, AGAPI-XRD, CrystalNet, and DeepStruc blocked or out of scope).
 - Codex (gpt-6-astra) drafted the benchmark sections of the Crystalyze, DiffractGPT, and PXRDnet READMEs from the benchmark reports; every number was checked against the JSON before committing.
 
+## October 5 2026 inference follow-up
+
+18. **Claude Code inference wrappers and branch review - Oct 5 2026**
+    Extended the inference layout to two more solvers, narrowed the triage to general inorganic materials, and had the whole branch reviewed independently by Codex (gpt-6-astra) and Claude (Fable 5.1); every finding was verified before it was fixed or rejected.
+
+Material changes:
+
+- Added an **XRDSol** wrapper (`reproduced`): the paper's top-1-by-R_cos protocol is reproduced on MP-20, but the model compresses the pattern to one scalar and the mismatched-pattern control is not lower on the experimental benchmark.
+- Added an **Ab-PXRD-Solver** wrapper (`limited`, a new status): upstream's example reproduces exactly, but on experimental data most runs exceed memory, fail to index, time out, or crash inside upstream; non-Cu data are rejected because refinement uses a fixed Cu Kα instrument model.
+- **AlphaDiffract** is referenced to its authors' own resources (OpenAlphaDiffract code, Hugging Face weights and example script, live demo) instead of being wrapped here; MOF- and structure-family-specific models (XtalNet, Xrd2Mof, CrySTARNet) are recorded as out of focus.
+- Cu Kα2 handling now looks at the data: wavelength labels proved unreliable (four benchmark files declared as Kα1 contain the doublet). Stripped peaks are expressed at averaged Cu Kα, the merge window is limited to half the doublet splitting, and the peak-based benchmarks were rerun.
+- Benchmark harness: resumed runs are checked against the command and wrapper code, partial (`--only`) runs must go to a separate report, and error entries no longer contain local paths. pdCIF input no longer needs a solved structure, and `_pd_proc_wavelength`-only files are accepted.
+
 ### Search strategy for the May 9 2026 pass
 
 Representative search targets included:
@@ -311,7 +324,7 @@ The README was reorganized to avoid conflating different levels of the PXRD pipe
 
 ### Open Gaps and Suggested Contributions
 
-- Add runnable inference wrappers for **XRDSol** and **RealPXRD-Solver**.
+- Add a runnable inference wrapper for **RealPXRD-Solver** once a checkpoint is released (see `inference/TRIAGE.md`).
 - Normalize input/output schemas across CIF-generating methods: CIF text, pymatgen `Structure`, lattice+fractional coordinates, and PXRD arrays.
 - Add a small, open, experimental smoke-test set that can be used without ICDD/PDF/ICSD license restrictions.
 - Add a common structure-matching script with configurable tolerances and clear reporting of lattice/composition assumptions.

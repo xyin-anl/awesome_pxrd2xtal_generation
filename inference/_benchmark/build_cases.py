@@ -43,6 +43,8 @@ def main() -> None:
             structure = CifParser.from_str(result[1]).parse_structures(primitive=False)[0]
         conv = SpacegroupAnalyzer(structure, symprec=0.1).get_conventional_standard_structure()
         reduced, z = conv.composition.get_reduced_formula_and_factor()
+        if not float(z).is_integer():  # pymatgen's special formulas (O2, H2O2, ...) halve the factor
+            raise ValueError(f"{name}: Z={z} for {reduced} is not an integer; add the case by hand")
         sga = SpacegroupAnalyzer(conv, symprec=0.1)
         case_id = name.split(".")[0]
         CifWriter(conv).write_file(os.path.join(gt_dir, f"{case_id}.cif"))

@@ -12,7 +12,11 @@ ENV_NAME="${ENV_NAME:-ab_pxrd_solver}"
 CONDA="$(command -v micromamba || command -v mamba || command -v conda || true)"
 [ -n "$CONDA" ] || { echo "Install conda, mamba, or micromamba first." >&2; exit 1; }
 
-"$CONDA" env create -y -n "$ENV_NAME" -f "$HERE/environment.yml"
+if "$CONDA" env list | awk '{print $1}' | grep -qx "$ENV_NAME"; then
+  echo "Environment $ENV_NAME already exists; reusing it (remove it to rebuild from environment.yml)."
+else
+  "$CONDA" env create -y -n "$ENV_NAME" -f "$HERE/environment.yml"
+fi
 "$CONDA" run -n "$ENV_NAME" python -c "from GSASII import GSASIIscriptable; print('GSAS-II OK')"
 
 if [ ! -d "$HERE/.upstream/.git" ]; then

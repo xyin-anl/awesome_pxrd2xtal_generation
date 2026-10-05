@@ -83,9 +83,9 @@ def load_pattern(path: str, wavelength: str | float | None = None, x_unit: str =
 
         with open(path, encoding="utf-8", errors="ignore") as fin:
             text = fin.read()
-        if "_diffrn_radiation_wavelength" not in text and "_diffrn_radiation_type" not in text:
+        if not any(tag in text for tag in ("_pd_proc_wavelength", "_diffrn_radiation_wavelength", "_diffrn_radiation_type")):
             raise ValueError(f"{path} records no wavelength; convert it to a 2theta column file and pass --wavelength")
-        result = read_experimental_cif(filepath=path)
+        result = read_experimental_cif(filepath=path, require_structure=False)
         two_theta, intensity, cif_lam = result[6], result[8], float(result[9])
         # Angles from d-spacing columns are derived with the file's wavelength, so an override
         # would silently shift every peak.
@@ -151,7 +151,7 @@ def ka2_asymmetry(pattern: Pattern, min_two_theta: float = 40.0, min_rel_height:
     For each strong peak above min_two_theta (where the doublet splits by >= 0.1 deg), compares
     the background-subtracted intensity at the K-alpha2 offset above the peak with the intensity
     the same distance below it, relative to the peak height. Returns (median, number of peaks).
-    Single-wavelength profiles give about 0 (at most 0.05); the doublet gives 0.1-0.47.
+    Single-wavelength profiles give about 0 (at most 0.05); the doublet gives 0.13-0.5.
     """
     x, y = _resample_uniform(pattern)
     step = x[1] - x[0]
@@ -163,15 +163,18 @@ def ka2_asymmetry(pattern: Pattern, min_two_theta: float = 40.0, min_rel_height:
     t = x[idx][x[idx] >= min_two_theta]
     h = y_net[idx][x[idx] >= min_two_theta]
     d = convert_two_theta(t, CU_KA1, CU_KA2) - t
-    ok = np.isfinite(d) & (t + d <= x[-1])
+    # A resolved K-alpha2 satellite is itself a peak and would score strongly negative; skip peaks
+    # with a stronger signal where their K-alpha1 parent would be.
+    satellite = np.interp(convert_two_theta(t, CU_KA2, CU_KA1), x, y_net) > h
+    ok = np.isfinite(d) & (t + d <= x[-1]) & ~satellite
     if not ok.any():
         return float("nan"), 0
     score = (np.interp(t + d, x, y_net) - np.interp(t - d, x, y_net))[ok] / h[ok]
     return float(np.median(score)), int(ok.sum())
 
 
-# Simulated controls: -0.04 to 0.05 without the doublet, 0.24 to 0.47 with it; Ka1-labeled
-# benchmark files that contain it: 0.11 to 0.34.
+# Simulated controls: -0.02 to 0.05 without the doublet, 0.19 to 0.50 with it; Ka1-labeled
+# benchmark files that contain it: 0.13 to 0.36.
 KA2_ASYMMETRY_THRESHOLD = 0.09
 KA2_MIN_PEAKS = 3
 
@@ -186,11 +189,11 @@ def pick_peaks(
 
     Returns (two_theta, intensity, wavelength): peak positions, intensities scaled so the
     strongest peak is 100, sorted by decreasing intensity, and the wavelength the positions
-    refer to (the pattern's own). Intensity is an area estimate (background-subtracted height x
+    refer to (the pattern's own, or averaged Cu K-alpha when K-alpha2 is stripped). Intensity is an area estimate (background-subtracted height x
     FWHM), which tracks integrated intensities from simulation better than raw heights.
 
     strip_ka2 merges resolved Cu K-alpha2 satellites into their K-alpha1 parents; merged
-    parents are re-expressed at the pattern's wavelength. By default (None) it is enabled for Cu
+    peaks then refer to averaged Cu K-alpha. By default (None) it is enabled for Cu
     data declared at the averaged Cu K-alpha wavelength and for other Cu data whose profile shows the
     doublet (ka2_asymmetry); pass True or False to override. A satellite must sit at the K-alpha2 position
     with 30-75% of the parent's area, and each parent absorbs at most one satellite.
@@ -241,7 +244,9 @@ def pick_peaks(
         for i in np.argsort(-area):
             if not keep[i]:
                 continue
-            tol = max(0.02, 0.6 * widths[i])
+            # Within half the doublet splitting, so a real neighbouring reflection of a broad
+            # pattern is not taken for a satellite.
+            tol = min(max(0.02, 0.6 * widths[i]), 0.5 * (expected[i] - pos[i]))
             ratio = area / area[i]
             cand = np.where(
                 keep & ~parent & (np.abs(pos - expected[i]) < tol) & (ratio >= 0.3) & (ratio <= 0.75)
@@ -252,9 +257,13 @@ def pick_peaks(
                 keep[k] = False
                 area[i] += area[k]
                 parent[i] = True
-        # A merged parent is a resolved K-alpha1 line: express it at the pattern's wavelength
-        # like every unmerged (unresolved) peak, so all positions share one wavelength.
-        pos = np.where(parent, convert_two_theta(pos, CU_KA1, lam), pos)
+        # With the doublet present, a picked maximum sits at (or, for an unresolved doublet, close
+        # to) the stronger K-alpha1 line, not at the intensity-weighted average: treat every
+        # position as K-alpha1 and express it at averaged Cu Ka. On simulated doublet patterns this
+        # cut the median position error 2-5x for 0.06-0.1 deg peaks compared with keeping unmerged
+        # peaks as they are.
+        lam = CU_KA
+        pos = convert_two_theta(pos, CU_KA1, lam)
         pos, area = pos[keep], area[keep]
 
     order = np.argsort(-area)

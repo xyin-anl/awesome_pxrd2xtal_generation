@@ -28,7 +28,7 @@ checkpoint, configuration, and scalers.
 | `--wavelength`, `--x-unit` | Wavelength in Å or a name such as `CuKa`; required for 2θ column files, read from pdCIF. `--x-unit q` accepts Q in Å⁻¹ without a wavelength; default is `2theta` |
 | `--composition`, `--z` | Required reduced formula and formula units per conventional cell |
 | `--cell` | Required conventional `a,b,c,alpha,beta,gamma`, comma-separated, in Å and degrees |
-| `--spacegroup` | Hermann–Mauguin symbol; required to convert cell and Z to the primitive cell unless `--cell-is-primitive` is supplied. R groups accept hexagonal or rhombohedral axes, detected from the cell |
+| `--spacegroup` | Hermann–Mauguin symbol or number; required to convert cell and Z to the primitive cell unless `--cell-is-primitive` is supplied. R groups accept hexagonal or rhombohedral axes, detected from the cell; Z always refers to the hexagonal axes |
 | `--cell-is-primitive` | Declares that both `--cell` and `--z` already describe the primitive cell |
 | `--n-samples`, `--seed` | Number of candidates (default 10) and random seed (default 0) |
 | `--strip-ka2` | `auto` (default), `on`, or `off`; applies only to peak picking from `--pattern`, not `--peaks` |

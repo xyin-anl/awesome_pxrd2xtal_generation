@@ -8,6 +8,21 @@ from __future__ import annotations
 CENTERING = {"P": 1, "A": 2, "B": 2, "C": 2, "I": 2, "F": 4, "R": 3}
 
 
+def lattice_letter(spacegroup: str) -> str:
+    """Centering letter of a Hermann-Mauguin symbol (P4mm) or space-group number (99)."""
+    symbol = str(spacegroup).strip()
+    if symbol.isdigit():
+        from pymatgen.symmetry.groups import SpaceGroup
+
+        if not 1 <= int(symbol) <= 230:
+            raise SystemExit(f"Space-group number must be 1-230, got {symbol}")
+        symbol = SpaceGroup.from_int_number(int(symbol)).symbol
+    letter = symbol[:1].upper()
+    if letter not in CENTERING:
+        raise SystemExit(f"Unrecognized space group {spacegroup!r}; give a Hermann-Mauguin symbol (e.g. P4mm) or a number")
+    return letter
+
+
 def primitive_z_candidates(z: int, spacegroup: str | None) -> list[int]:
     """Formula units in the primitive cell for a conventional-cell Z.
 
@@ -15,7 +30,7 @@ def primitive_z_candidates(z: int, spacegroup: str | None) -> list[int]:
     returned, so callers can try each hypothesis separately.
     """
     if spacegroup:
-        m = CENTERING[spacegroup.strip()[0].upper()]
+        m = CENTERING[lattice_letter(spacegroup)]
         if z % m:
             raise SystemExit(f"Z={z} is not divisible by the {m} lattice points of {spacegroup}")
         return [z // m]

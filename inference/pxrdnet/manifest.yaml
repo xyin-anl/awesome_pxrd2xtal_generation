@@ -11,6 +11,9 @@ weights:
   - id: therealgabeguo/cdvae_xrd_sinc10
     url: https://huggingface.co/therealgabeguo/cdvae_xrd_sinc10
     revision: 299e965ef2a8b2216ef542e031e1f550f65f9158
+    sha256:
+      mp_20_sinc100: ddff14ab8e4c05ea8442ebdc25a7908979155c0a8742565e4c26def0f004d631
+      mp_20_sinc10: eedb29796f5f223f517516a09362df2969f766d8ba4a395eb91f95a67f96c9a4
     note: contains mp_20_sinc100 (default; used for the paper's experimental results) and mp_20_sinc10
 inputs:
   pattern: required (full profile, binned by Q onto the model's 4096-point Cu Ka 0-180 deg grid as in upstream read_real_xrd.py)

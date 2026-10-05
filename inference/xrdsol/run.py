@@ -25,7 +25,7 @@ import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(os.path.dirname(HERE)))
 
-from inference._common.cells import CENTERING, atom_list  # noqa: E402
+from inference._common.cells import CENTERING, atom_list, lattice_letter  # noqa: E402
 from inference._common.pxrd_io import (  # noqa: E402
     CU_KA,
     convert_two_theta,
@@ -60,13 +60,17 @@ def primitive_cell(cell: list[float], spacegroup: str | None, z: int, cell_is_pr
     if not spacegroup:
         raise SystemExit("XRDSol works in the primitive cell: give --spacegroup to convert the conventional "
                          "cell, or --cell-is-primitive if --cell and --z already describe the primitive cell")
-    letter = spacegroup.strip()[0].upper()
+    letter = lattice_letter(spacegroup)
     if letter == "R":
         a, b, c, al, be, ga = cell
         if np.allclose([al, be, ga], [90, 90, 120], atol=0.5) and abs(a - b) < 1e-3:
             pass  # hexagonal axes: three lattice points, converted below
         elif np.allclose([a, b], c, rtol=1e-3) and np.allclose([al, be], ga, atol=0.05):
-            return cell, z  # rhombohedral axes are already primitive
+            # Rhombohedral axes are already primitive; Z is quoted for the hexagonal axes, as for
+            # every other conventional cell (see inference/_common/cells.py).
+            if z % 3:
+                raise SystemExit(f"Z={z} must be given for the hexagonal axes of {spacegroup} (3 x the rhombohedral Z)")
+            return cell, z // 3
         else:
             raise SystemExit("R space group with a cell in neither the hexagonal nor the rhombohedral setting")
     m = CENTERING[letter]
@@ -124,7 +128,8 @@ def main() -> None:
     p.add_argument("--strip-ka2", choices=["auto", "on", "off"], default="auto",
                    help="Merge Cu Ka2 satellites into Ka1 peaks (auto: on for data declared at averaged Cu Ka and for other Cu data whose profile shows the doublet)")
     p.add_argument("--composition", required=True, help="Reduced formula, e.g. LuOF")
-    p.add_argument("--z", type=int, required=True, help="Formula units per conventional cell")
+    p.add_argument("--z", type=int, required=True,
+                   help="Formula units per conventional cell (for R groups, the hexagonal axes, even with a rhombohedral --cell)")
     p.add_argument("--cell", required=True, help="Conventional cell a,b,c,alpha,beta,gamma (Angstrom, degrees)")
     p.add_argument("--spacegroup", help="Hermann-Mauguin symbol; used to convert the cell and Z to the primitive cell")
     p.add_argument("--cell-is-primitive", action="store_true", help="--cell and --z already describe the primitive cell")

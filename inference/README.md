@@ -84,6 +84,8 @@ ltol=0.3)`, the setting used by CDVAE/DiffCSP-style benchmarks. Reported metrics
   more candidates and therefore get more chances in `match_rate_any`
 - `mean_best_rms`: average normalized RMS displacement of the best match
 
-Failed runs count as misses in every rate. Each setting records its date, sample count, and
-extra arguments; `--settings` reruns merge into an existing report only if the case set and
-matcher are unchanged.
+Failed runs count as misses in every rate. Each setting records its date, sample count (an
+`--n-samples` in its extra arguments takes precedence), and extra arguments; `--settings` reruns
+merge into an existing report only if the case set and matcher are unchanged. `--resume` reuses
+a completed case only when its command and the wrapper and shared code are unchanged. `--only`
+runs a subset of cases and must write to a separate `--report`.

@@ -80,6 +80,10 @@ benchmark after fixes that change the model's input.
   shifts peaks by ~0.1° at 90°; primitive vs conventional cell changes the atom list; full
   vs reduced formula breaks prompts. Check against the released training data when available
   (Uni-3DAR's peak positions were confirmed against pymatgen's averaged Cu Kα record by record).
+- **Peak maxima of a Cu Kα doublet sit at Kα1**, even when the doublet is unresolved: the
+  stronger line dominates the maximum. Converting such maxima from Kα1 to averaged Cu Kα cut the
+  median position error 2-5x for peaks 0.06-0.1° wide in simulations, compared with treating them
+  as already averaged (`pxrd_io.pick_peaks`).
 - **Look for silently swallowed errors upstream.** Uni-3DAR builds structures inside a bare
   `except:`; a missing `ase` produced zero candidates without an error.
 - **Check which metric the paper actually reports.** XRDSol's repository scores "any of 25 runs"

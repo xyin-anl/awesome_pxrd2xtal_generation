@@ -11,10 +11,12 @@ weights:
   - id: c-bone/CrystaLLM-pi_Mattergen-XRD
     url: https://huggingface.co/c-bone/CrystaLLM-pi_Mattergen-XRD
     revision: 0051c70854553f1e95682770a83cad82657e190a
+    sha256: 67aee98d637b33db829f0408374865bdf2600235bcd6975bea0abaf9678c434f  # model.safetensors
     note: default (--model mattergen); trained on simulated XRD of MatterGen/Alex-MP structures
   - id: c-bone/CrystaLLM-pi_Chili100K-XRD
     url: https://huggingface.co/c-bone/CrystaLLM-pi_Chili100K-XRD
     revision: f5a4e7848693889f5591702009fe6ee198002a5c
+    sha256: aaf7f836dc5e78caf4a195304eb901b2c484fd6b5ab3dc39ae33292e6811a836  # model.safetensors
     note: --model chili100k; trained on CHILI-100K structures
 inputs:
   pattern: required (raw profile is peak-picked by inference/_common/pxrd_io.py, or pass --peaks)

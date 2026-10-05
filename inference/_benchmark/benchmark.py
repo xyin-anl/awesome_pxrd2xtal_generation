@@ -20,6 +20,7 @@ import argparse
 import contextlib
 import datetime
 import glob
+import hashlib
 import io
 import json
 import os
@@ -53,18 +54,39 @@ def failure(output, out_dir):
     return res
 
 
-def run_case(model_dir, python, case, pattern_case, inputs, n_samples, out_dir, extra_args):
+def build_cmd(model_dir, python, case, pattern_case, inputs, n_samples, out_dir, extra_args):
     cmd = [python, os.path.join(model_dir, "run.py"), "--n-samples", str(n_samples), "--out", out_dir]
     cmd += ["--pattern", os.path.join(REPO_ROOT, pattern_case["pattern"])]
     if not pattern_case["pattern"].endswith(".cif"):  # pdCIF files carry their own wavelength
         cmd += ["--wavelength", str(pattern_case["wavelength"])]
     for name in inputs:
         cmd += [FLAG_FOR_INPUT[name], str(case[name])]
-    cmd += extra_args
+    return cmd + list(extra_args)
+
+
+def effective_n_samples(extra_args, default):
+    # argparse keeps the last value, so an --n-samples in a setting's extra_args wins.
+    values = [extra_args[i + 1] for i, arg in enumerate(extra_args[:-1]) if arg == "--n-samples"]
+    return int(values[-1]) if values else default
+
+
+def fingerprint(cmd, model_dir):
+    """Identifies a run for --resume: the exact command plus the wrapper and shared code."""
+    digest = hashlib.sha256(json.dumps(cmd).encode())
+    for path in sorted(glob.glob(os.path.join(model_dir, "*.py")) + glob.glob(os.path.join(REPO_ROOT, "inference", "_common", "*.py"))):
+        with open(path, "rb") as fin:
+            digest.update(fin.read())
+    return digest.hexdigest()
+
+
+def run_case(cmd, out_dir):
     proc = subprocess.run(cmd, capture_output=True, text=True)
     if proc.returncode != 0:
         return failure(proc.stderr or proc.stdout, out_dir)
-    with open(os.path.join(out_dir, "results.json"), encoding="utf-8") as fin:
+    path = os.path.join(out_dir, "results.json")
+    if not os.path.exists(path):
+        return failure("run.py exited 0 without writing results.json\n" + (proc.stderr or proc.stdout), out_dir)
+    with open(path, encoding="utf-8") as fin:
         return json.load(fin)
 
 
@@ -138,7 +160,7 @@ def main() -> None:
     p.add_argument("--only", nargs="*", help="Run only these case ids")
     p.add_argument("--control", action="store_true", help="Also run the mismatched-pattern control")
     p.add_argument("--resume", action="store_true",
-                   help="Reuse cases whose output directory already has results.json (written only by completed runs)")
+                   help="Reuse completed cases whose command and wrapper code are unchanged")
     p.add_argument("--settings", nargs="*", help="Run only these settings and merge them into an existing report")
     p.add_argument("--work", default=os.path.join(HERE, "runs"), help="Scratch directory for model outputs")
     p.add_argument("--report", help="Where to write the JSON report (default: <model_dir>/benchmark.json)")
@@ -153,8 +175,8 @@ def main() -> None:
     # Control donors are fixed on the full case list, so --only cannot create self-pairs.
     donor = {c["id"]: all_cases[(i + len(all_cases) // 2) % len(all_cases)] for i, c in enumerate(all_cases)}
     cases = [c for c in all_cases if c["id"] in args.only] if args.only else all_cases
-    if args.only and args.settings:
-        p.error("--only produces a partial run; write it to a separate --report instead of merging")
+    if args.only and (args.settings or not args.report):
+        p.error("--only produces a partial run; write it to a separate --report (and do not merge with --settings)")
 
     settings = [(s["name"], s["inputs"], s.get("extra_args", []), False) for s in bench["settings"]]
     if args.settings:
@@ -178,7 +200,7 @@ def main() -> None:
         "date": datetime.date.today().isoformat(),
         "n_samples": args.n_samples,
         "matcher": MATCHER_KW,
-        "case_ids": [c["id"] for c in all_cases],
+        "case_ids": [c["id"] for c in cases],
         "settings": dict(previous),
     }
     for name, inputs, extra, mismatched in settings:
@@ -187,16 +209,19 @@ def main() -> None:
             pattern_case = donor[case["id"]] if mismatched else case
             out_dir = os.path.join(args.work, manifest["id"], name, case["id"])
             marker = os.path.join(out_dir, ".benchmark_complete")
-            if args.resume and os.path.exists(marker):
+            cmd = build_cmd(model_dir, args.python, case, pattern_case, inputs, args.n_samples, out_dir, extra)
+            key = fingerprint(cmd, model_dir)
+            if args.resume and os.path.exists(marker) and open(marker, encoding="utf-8").read() == key:
                 with open(os.path.join(out_dir, "results.json"), encoding="utf-8") as fin:
                     res = json.load(fin)
             else:
                 for stale in (marker, os.path.join(out_dir, "results.json")):
                     if os.path.exists(stale):
                         os.remove(stale)
-                res = run_case(model_dir, args.python, case, pattern_case, inputs, args.n_samples, out_dir, extra)
+                res = run_case(cmd, out_dir)
                 if "error" not in res:
-                    open(marker, "w").close()
+                    with open(marker, "w", encoding="utf-8") as fout:
+                        fout.write(key)
             gt_path = os.path.join(HERE, case["ground_truth"])
             entry = {"id": case["id"], "pattern_from": pattern_case["id"]}
             entry.update(res if "error" in res else score(out_dir, res, gt_path))
@@ -211,7 +236,7 @@ def main() -> None:
             "inputs": inputs,
             "extra_args": extra,
             "date": datetime.date.today().isoformat(),
-            "n_samples": args.n_samples,
+            "n_samples": effective_n_samples(extra, args.n_samples),
             "summary": summarize(per_case),
             "cases": per_case,
         }

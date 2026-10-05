@@ -109,7 +109,7 @@ def main() -> None:
         scope = None
         if args.memory_limit > 0 and shutil.which("systemd-run"):
             scope = f"ab-pxrd-solver-{os.getpid()}-{int(time.time())}"
-            cmd = ["systemd-run", "--user", "--scope", "--quiet", "--collect", f"--unit={scope}",
+            cmd = ["systemd-run", "--user", "--scope", "--quiet", f"--unit={scope}",
                    "-p", f"MemoryMax={int(args.memory_limit * 1024)}M", "-p", "MemorySwapMax=0"] + cmd
         # MACE relaxations run in forked workers, which cannot use CUDA: run on CPU as upstream does.
         env = dict(os.environ, CUDA_VISIBLE_DEVICES="")
@@ -119,6 +119,7 @@ def main() -> None:
             # process group so a timeout can stop all of them.
             proc = subprocess.Popen(cmd, cwd=upstream, env=env, stdout=log, stderr=subprocess.STDOUT,
                                     start_new_session=True)
+            status = "interrupted"
             try:
                 proc.wait(timeout=args.timeout)
                 status = "finished" if proc.returncode == 0 else (
@@ -133,10 +134,17 @@ def main() -> None:
                     proc.wait()
                 status = f"timed out after {args.timeout} s"
             finally:
-                # Spawned MACE/GSAS-II workers can outlive the process group; stopping the scope
-                # kills everything left in its cgroup.
                 if scope:
-                    subprocess.run(["systemctl", "--user", "stop", f"{scope}.scope"], capture_output=True)
+                    unit = f"{scope}.scope"
+                    # The cap may kill a worker rather than the solver itself; the scope records it.
+                    result = subprocess.run(["systemctl", "--user", "show", "-p", "Result", "--value", unit],
+                                            capture_output=True, text=True).stdout.strip()
+                    if result == "oom-kill" and not status.startswith("timed out"):
+                        status = f"killed (memory limit {args.memory_limit:g} GB)"
+                    # Spawned MACE/GSAS-II workers can outlive the process group; stopping the scope
+                    # kills everything left in its cgroup.
+                    subprocess.run(["systemctl", "--user", "stop", unit], capture_output=True)
+                    subprocess.run(["systemctl", "--user", "reset-failed", unit], capture_output=True)
         runtime = round(time.time() - start, 1)
 
         summary = {}

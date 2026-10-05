@@ -73,13 +73,14 @@ AlPO4, CdBiClO2, and LaInO3 among its examples.
 `StructureMatcher(stol=0.5, angle_tol=10, ltol=0.3)` and fractions over all returned candidates,
 averaged across cases; no runs failed (full report: [`benchmark.json`](benchmark.json)).
 
-| Setting | Any match | Mean match fraction | Mean correct-space-group fraction | Mean candidates |
-|---------|-----------|---------------------|-----------------------------------|-----------------|
-| composition + Z + space group (paper's experimental settings, sinc100) | 11/12 | 0.25 | 0.01 | 20 |
-| control: composition + Z + space group, another case's pattern | 5/12 | 0.09 | 0.00 | 20 |
+| Setting | Any match | Top-1 match | Mean match fraction | Mean correct-space-group fraction | Mean candidates |
+|---------|-----------|-------------|---------------------|-----------------------------------|-----------------|
+| composition + Z + space group (paper's experimental settings, sinc100) | 11/12 | 6/12 | 0.25 | 0.01 | 20 |
+| control: composition + Z + space group, another case's pattern | 5/12 | 0/12 | 0.09 | 0.00 | 20 |
 
 Replacing each case's pattern with another case's lowers any-match from 11/12 to 5/12 and the
-mean match fraction from 0.25 to 0.09. The pattern clearly helps Mg2Si (0.95 to 0.25), Mg2Sn
+mean match fraction from 0.25 to 0.09; the top-ranked candidate (lowest pattern loss) matches in 6/12
+cases with the correct pattern and in none with the wrong one. The pattern clearly helps Mg2Si (0.95 to 0.25), Mg2Sn
 (1.00 to 0.50), and BaTiO3 (0.65 to 0.10). AlPO4, CdBiClO2, Na2LiAlF6, EuI2, and KCaCO3F
 each drop from 0.05 to 0.00, and LaInO3 from 0.10 to 0.00. There is no match-fraction benefit
 for Rb2S phase II (0.05 in both), though its best RMS worsens from 0.167 to 0.466 with the

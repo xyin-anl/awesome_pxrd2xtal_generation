@@ -3,6 +3,7 @@
 # Curated by: Xiangyu Yin (xiangyu-yin.com)
 
 import os
+import re
 import numpy as np
 import matplotlib.pyplot as plt
 import pickle
@@ -117,7 +118,9 @@ def auto_identify_columns(field_list):
     return two_theta_idx, d_spacing_idx, tof_idx, intensity_idx, bg_idx
 
 
-def read_experimental_cif(filepath, plot=False, save_pickle=False, pickle_path=None):
+def read_experimental_cif(filepath, plot=False, save_pickle=False, pickle_path=None, require_structure=True):
+    # With require_structure=False, a pdCIF that carries a measured pattern but no solved
+    # structure is accepted; the structure fields of the result are then None.
 
     if not os.path.isfile(filepath):
         raise FileNotFoundError(f"Could not find file: {filepath}")
@@ -167,7 +170,7 @@ def read_experimental_cif(filepath, plot=False, save_pickle=False, pickle_path=N
         ).lower()
     except ValueError:
         rad_type = ""
-    if "neutron" in rad_type or "_diffrn_radiation_probe neutron" in " ".join(all_lines).lower():
+    if "neutron" in rad_type or re.search(r"_diffrn_radiation_probe\s+['\"]?neutron", "\n".join(all_lines), re.I):
         raise ValueError("Neutron diffraction data is not supported in this script.")
 
     # A processed wavelength (e.g. after K-alpha2 stripping) describes the data as published,
@@ -354,17 +357,22 @@ def read_experimental_cif(filepath, plot=False, save_pickle=False, pickle_path=N
     i_vals = raw_i_vals[sort_idx]
     two_theta_vals = raw_2theta_vals[sort_idx]
 
-    cif_parser = CifParser(filepath)
-    structure = cif_parser.get_structures()[0]
-    cif_writer = CifWriter(structure)
-    cif_str = cif_writer.__str__()
+    try:
+        structure = CifParser(filepath).get_structures()[0]
+    except Exception:
+        if require_structure:
+            raise
+        structure = None
 
     source_file_name = os.path.basename(filepath)
-    pretty_formula = structure.composition.reduced_formula
-    frac_coords = structure.frac_coords
-    atom_types = structure.atomic_numbers
-    sga = SpacegroupAnalyzer(structure)
-    spacegroup_number = sga.get_space_group_number()
+    if structure is None:
+        cif_str = pretty_formula = frac_coords = atom_types = spacegroup_number = None
+    else:
+        cif_str = CifWriter(structure).__str__()
+        pretty_formula = structure.composition.reduced_formula
+        frac_coords = structure.frac_coords
+        atom_types = structure.atomic_numbers
+        spacegroup_number = SpacegroupAnalyzer(structure).get_space_group_number()
 
     if plot:
         plt.figure(figsize=(12, 6))

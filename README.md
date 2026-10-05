@@ -162,7 +162,7 @@ A practical leaderboard should split at least the following settings:
 
 Unlike typical "awesome" repositories that only list resources, this repository also tries to solve the "last-mile" problem by providing runnable inference scripts when practical. Scripts live in the [`inference`](inference) folder and are meant to run on your own GPU or CPU.
 
-All six entries (CrystaLLM-π, deCIFer, Uni-3DAR, Crystalyze, DiffractGPT, PXRDnet) share one command-line interface (`run.py --pattern ... --composition ... --out ...`), pin the upstream commit and weights in a `manifest.yaml`, and are verified by reproducing the authors' own example, running a shared 12-pattern experimental benchmark with a mismatched-pattern control, and an independent review against the upstream code. Each model's `README.md` reports those results. See [`inference/README.md`](inference/README.md) for usage and [`inference/AGENTS.md`](inference/AGENTS.md) for how new models are added.
+All eight wrappers share one command-line interface (`run.py --pattern ... --composition ... --out ...`) and pin the upstream commit and weights in a `manifest.yaml`. Each is checked by reproducing the authors' own example, running a shared 12-pattern experimental benchmark with a mismatched-pattern control, and an independent review against the upstream code; the manifest status records the outcome. CrystaLLM-π, deCIFer, Uni-3DAR, Crystalyze, and PXRDnet are `verified`; DiffractGPT and XRDSol are `reproduced` (their output barely depends on the pattern on this benchmark); Ab-PXRD-Solver is `limited` (its example reproduces, but most benchmark runs fail inside upstream). Each model's `README.md` reports those results. See [`inference/README.md`](inference/README.md) for usage and [`inference/AGENTS.md`](inference/AGENTS.md) for how new models are added.
 
 <!-- BEGIN GENERATED: inference -->
 | Model | Local Inference | Cloud Inference | Utils/Support | Environment |
@@ -177,7 +177,7 @@ All six entries (CrystaLLM-π, deCIFer, Uni-3DAR, Crystalyze, DiffractGPT, PXRDn
 | **Ab-PXRD-Solver** | [`run.py`](inference/ab_pxrd_solver/run.py) | N/A | [`setup.sh`](inference/ab_pxrd_solver/setup.sh), [`manifest.yaml`](inference/ab_pxrd_solver/manifest.yaml), [`README.md`](inference/ab_pxrd_solver/README.md), [`solve_driver.py`](inference/ab_pxrd_solver/solve_driver.py) | [`environment.yml`](inference/ab_pxrd_solver/environment.yml) |
 <!-- END GENERATED: inference -->
 
-`utils/parse_cifs.py` provides general utilities for parsing and processing CIF files that contain experimental PXRD patterns across different model formats. [`inference/TRIAGE.md`](inference/TRIAGE.md) records which other catalogued models could be wrapped next (for example XRDSol) and which are blocked (no public weights or code).
+`utils/parse_cifs.py` provides general utilities for parsing and processing CIF files that contain experimental PXRD patterns across different model formats. [`inference/TRIAGE.md`](inference/TRIAGE.md) records which other catalogued models are referenced elsewhere, out of scope, or blocked (no public weights or code).
 
 ## Contributing
 
