@@ -335,6 +335,20 @@ Two independent Claude Opus 5.5 passes checked the diff and primary sources with
 
 Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog.py check` (68 resources); `python3 -m unittest discover -s tests -v` (11 passed); and `git diff --check`.
 
+## October 16 2026 inference triage
+
+22. **Post-catalog wrapper feasibility and duplicate audit - Oct 16 2026**
+    After opening draft catalog PR #11, searched open and closed issues, implementation pull requests, and repository-local wrappers by catalog ID, model name/aliases, and upstream repository. No prior issue or wrapper was found for the new candidates; the only search result was the pending catalog PR itself. No inference issue was opened because no candidate both needed a wrapper and met the feasibility requirements.
+
+- **Bragglite** is blocked because the public repository explicitly marks its pretrained Bragglite and two-phase checkpoints TBA.
+- **XDecomposer** is referenced rather than wrapped because its authors already maintain source, checkpoints, an MP500 candidate database, a notebook, a FastAPI service, and a local browser app.
+- **Gan Jiang** is blocked because no complete downloadable agent release was public on Oct 16; the official paid-credit site listed the download as coming soon.
+- **PXtal** is blocked because no public code, pretrained encoders, or prepared paired datasets were found.
+- **PhaseMatcher** was excluded because it identifies/decomposes a set of known phases rather than producing a crystal structure, and its code, checkpoints, and PhaseMix-135K data are not public.
+- **AriadneX** was excluded because it assigns known phases and recovers anomaly patterns rather than producing a crystal structure; its authors already publish the runnable workflow, checkpoint, and examples.
+- **PXRD-Bench**, **DeltaXRDbench**, and **kaisetsu** are a dataset, dataset, and utility respectively, so they do not qualify for solver-wrapper issues.
+- Previously blocked **RealPXRD-Solver**, **AGAPI-XRD**, **CrystalNet**, and **XRDiff** still lacked the artifacts needed to change their status.
+
 ## May 9 2026 detailed record
 
 ### Search strategy for the May 9 2026 pass
