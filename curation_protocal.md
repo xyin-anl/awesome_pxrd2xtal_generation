@@ -295,6 +295,46 @@ Material changes:
 - Cu Kα2 handling now looks at the data: wavelength labels proved unreliable (four benchmark files declared as Kα1 contain the doublet). Stripped peaks are expressed at averaged Cu Kα, the merge window is limited to half the doublet splitting, and the peak-based benchmarks were rerun.
 - Benchmark harness: resumed runs are checked against the command and wrapper code, partial (`--only`) runs must go to a separate report, and error entries no longer contain local paths. pdCIF input no longer needs a solved structure, and `_pd_proc_wavelength`-only files are accepted.
 
+## October 16 2026 weekly refresh
+
+21. **Codex primary-source and artifact audit - Oct 16 2026**
+    Started from a clean checkout on an up-to-date `main` and searched inclusively from the catalog's Oct 5 cutoff because `last_updated` records a date rather than a timestamp. The official arXiv query returned 23 broad PXRD/diffraction candidates. Publisher searches, official GitHub repository searches, and exact artifact searches were checked against original papers, repositories, release pages, and model/data pages. The competing `Bin-Cao/awesome-xrd2crystal` board had no commit after Jul 14 and supplied no post-cutoff candidate.
+
+Material additions:
+
+- Added **Bragglite** as a `core_solver` and **PXRD-Bench** as its dataset/benchmark. For Bragglite trained on PXRD-Bench, 100 experimental RRUFF patterns with known composition yield a mean 44.2% top-1 match over five seeds, 24.6 percentage points above its strongest retrained prior baseline under strict unrefined structure matching. Source and single-phase corpus-building machinery are public, but pretrained Bragglite/two-phase checkpoints and the experimental/two-phase evaluation inputs are not distributed. The two-phase benchmark is MP-20-derived rather than part of the 4.26-million-structure corpus. The dataset's own contributions are CC BY-NC 4.0, and AFLOW imposes additional bulk-retrieval, repackaging, and nonacademic-use restrictions. Sources: https://arxiv.org/abs/2610.16480 and https://github.com/dongyeop3813/PXRD-Bench.
+- Added **AriadneX** as a `pipeline_module` for known-phase assignment and unknown-phase anomaly recovery. MIT source, an approximately 820 MB checkpoint, and 56 measured example patterns are public. Reproducing the examples also requires user-supplied PCD or ICSD structures and a Gurobi license. Sources: https://doi.org/10.26434/chemrxiv.15010300/v1 and https://github.com/lrcfmd/AriadneX.
+- Added **XDecomposer** as a `pipeline_module` after its Oct 6 preprint revision and inference-app release. The entry records its current two-to-four-phase design range and that its five-fold RRUFF tests use software-composed mixtures of measured single-phase patterns. The paper calls that benchmark zero-shot while the repository documents a five-fold fine-tuning command, so the exact evaluation path remains ambiguous. Both repositories are MIT-licensed; the paper-linked project publishes a checkpoint and MP500 database, while the Gan Jiang project adds a notebook, FastAPI service, and local browser interface. Mixing coefficients are not treated as quantitative mass fractions because components are max-normalized without scale-factor calibration. Sources: https://arxiv.org/abs/2605.05866, https://github.com/Licht0812/XDecomposer, and https://github.com/DeltaGanjiang/XDecomposer.
+- Added **PhaseMatcher** as a `pipeline_module`. Its reported exact-set results use author-constructed one-to-four-phase mixtures, including mixtures generated from RRUFF single-phase patterns rather than raw multiphase observations. All splits contain the same phase identities with different perturbations. No public code, checkpoints, or PhaseMix-135K download were found. Source: https://arxiv.org/abs/2610.05844.
+- Added **Gan Jiang** as a `pipeline_module` and **DeltaXRDbench** as its associated dataset. The three headline results are closed-library identification, not open-ended structure solution. The candidate library is drawn from the same sources as the tests (1,159 RRUFF structures versus 1,164 test pairs; 848 combined opXRD/private structures versus 880 opXRD test pairs), but the paper does not document ID-level exclusion or how many of the 848 are opXRD. Public benchmark and component repositories are available, but no complete agent download was public on Oct 16. DeltaXRDbench's 62,044 records include 50,000 generated linear mixtures, exposes answers beside pattern pointers in its manifests, and declares no project or dataset license. Sources: https://arxiv.org/abs/2610.07862, https://ganjiang.asia/, and https://github.com/DeltaGanjiang/deltaxrdbench.
+- Added **PXtal** as a `pipeline_module` for simulated PXRD-to-crystal retrieval and transferable representation learning. The catalog distinguishes its simulated benchmark results from experimental validation and notes that the million-pair experiments used 16 GPUs across four nodes. No public code, pretrained encoders, or prepared paired datasets were found. Source: https://arxiv.org/abs/2610.10653.
+- Added **kaisetsu** as a `utility`. It is a Japanese-first Python and Windows application for Rietveld/Le Bail/Pawley refinement, pair-distribution-function fitting, and maximum-entropy analysis. The LICENSE file and package metadata specify MIT, although one stale README section says the license is undecided. The repository publishes alpha releases and comparisons with GSAS-II and diffpy.pdffit2, but no paper or independent experimental certification; v0.1.13 fixed five result-affecting defects. Source: https://github.com/kinjo-tohoku/kaisetsu.
+
+Availability audit and unchanged blockers:
+
+- Rechecked 124 catalog URL references representing 114 unique URLs before editing: 105 checks returned HTTP 200, two returned HTTP 202, sixteen publisher endpoints returned HTTP 403, and the GALAXI service produced one TLS failure. The 403 responses were treated as anti-bot/inconclusive rather than broken; no URL returned 404.
+- Rechecked **RealPXRD-Solver**, **AGAPI-XRD**, **CrystalNet**, **PXRD2Seq**, **HyPhID**, **XRDiff**, **X2SBench**, and the invariant lattice-bispectrum predictor. Their previously recorded artifact blockers did not change. Existing entries kept their prior `verified_at` dates because the audit did not reopen their full technical claims.
+- Large model and dataset archives were not downloaded, and author-reported performance was not presented as independently reproduced.
+
+Candidates reviewed but not added:
+
+- `qiaoqinyu/pxrd-space-group-predictor` is a molecular-crystal space-group classifier without a software license, released checkpoints/data, or a paper; its repository describes only a synthetic smoke test.
+- `milesdougan/crystal_clear` is a one-line repository stub without a paper, license, or release.
+- `Dong-li-y/XRD-Rietveld-Skill-MCP` is an unlicensed bundle with unresolved upstream licenses, absent scripts, and only Windows-local validation.
+- `owenxyzhang-seseTJ/pxrd-chemistry-refine` is a specialized MOF-oriented skill with synthetic checks but no paper or public experimental validation artifact.
+- `jmigartua/diff-ref-struct-site` is only a rendered site for a private macOS Rietveld application; no source, license, paper, or inspectable validation artifact is public.
+
+Representative discovery queries included:
+
+- official arXiv API queries for `powder diffraction`, `PXRD`, `Rietveld`, `phase identification`, and diffraction-conditioned structure determination, bounded inclusively to Oct 5-16;
+- official GitHub searches for `PXRD`, `powder X-ray diffraction`, `Rietveld`, `XRD crystal structure`, and `phase identification` with post-cutoff creation/update filters;
+- exact searches for PhaseMatcher, Gan Jiang, PXtal, PXRD-Bench/Bragglite, AriadneX, XDecomposer, XRDiff, RealPXRD-Solver, AGAPI-XRD, CrystalNet, PXRD2Seq, HyPhID, X2SBench, and the invariant lattice-bispectrum predictor;
+- 2026 PXRD, phase-decomposition, indexing, refinement, and structure-prediction searches on arXiv, IUCr, ACS, Nature, Wiley, and official project pages.
+
+Two independent Claude Opus 5.5 passes checked the diff and primary sources without receiving Codex's conclusions. They confirmed the classifications and headline numbers, found no material literature omission, and identified method, closed-library, licensing, availability, release-link, and blind-evaluation caveats that were corrected above. The reviewers did not download or run the large model/data artifacts; Gan Jiang's candidate-library relationship is reported from aggregate counts rather than an ID-level comparison, and XDecomposer's experimental fine-tuning path remains ambiguous between the paper and repository.
+
+Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog.py check` (68 resources); `python3 -m unittest discover -s tests -v` (11 passed); and `git diff --check`.
+
 ## May 9 2026 detailed record
 
 ### Search strategy for the May 9 2026 pass

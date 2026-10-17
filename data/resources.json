@@ -1,7 +1,7 @@
 {
   "$schema": "./resources.schema.json",
   "schema_version": 2,
-  "last_updated": "2026-10-05",
+  "last_updated": "2026-10-16",
   "website_url": "https://nodeology.ai/resources/pxrd2xtal",
   "inference_order": [
     "uni3dar",
@@ -19,8 +19,11 @@
     "https://arxiv.org/abs/2603.23367",
     "https://arxiv.org/abs/2609.00070",
     "https://arxiv.org/abs/2609.06908",
+    "https://arxiv.org/abs/2610.07862",
+    "https://arxiv.org/abs/2610.16480",
     "https://github.com/Bin-Cao/XQueryer",
     "https://github.com/ai4mat-zhu/XRDSol",
+    "https://github.com/dongyeop3813/PXRD-Bench",
     "https://github.com/liqi-529/RealPXRD-Solver",
     "https://huggingface.co/datasets/caobin/opxrd_hkust_expdata",
     "https://huggingface.co/linked-liszt/OpenAlphaDiffract"
@@ -802,6 +805,32 @@
       "artifact_note": "code/data not found during the 2026-10-05 verification pass"
     },
     {
+      "id": "bragglite",
+      "name": "Bragglite",
+      "category": "core_solver",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-16",
+      "year": "2026",
+      "inputs_target": "PXRD + exact stoichiometry, or element set + total atom count → crystal structure candidates",
+      "method": "Crystalite-derived diffusion Transformer retaining its EDM formulation and sampler, with peak position, intensity, width, and prominence supplied by in-context conditioning",
+      "reported_performance": "For the model trained on PXRD-Bench, 100 experimental RRUFF test patterns with known composition yield a mean 44.2% Top-1 match over five sampling seeds (±2.49), 24.6 percentage points above the strongest retrained prior baseline under strict unrefined structure matching",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.16480",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "dongyeop3813/PXRD-Bench",
+          "url": "https://github.com/dongyeop3813/PXRD-Bench",
+          "role": "code"
+        }
+      ],
+      "artifact_note": "The repository provides model code, locked environments, training/evaluation configurations, and a reproducible dataset builder. Pretrained Bragglite and two-phase checkpoints are explicitly TBA, so the reported inference result cannot yet be reproduced from released weights. Original Bragglite code is MIT, while retained FlowMM-derived helpers are CC BY-NC 4.0"
+    },
+    {
       "id": "alphadiffract",
       "name": "AlphaDiffract",
       "category": "pipeline_module",
@@ -1253,6 +1282,154 @@
       ]
     },
     {
+      "id": "ariadnex",
+      "name": "AriadneX",
+      "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-16",
+      "year": "2026",
+      "task": "Known-phase assignment and unknown-phase anomaly recovery from high-throughput multiphase PXRD",
+      "method": "Chemistry-specific diffraction-basis construction and mixed-integer unmixing with crystallographic and optimal-transport-inspired constraints, aided by a PXRD-patch Transformer",
+      "reported_result": "The ChemRxiv preprint reports that controlled leave-one-out tests prioritize samples containing withheld phases and that a real discovery dataset yields two unexplained anomaly-pattern families consistent with two unknown phases identified by experts",
+      "paper_links": [
+        {
+          "label": "ChemRxiv",
+          "url": "https://doi.org/10.26434/chemrxiv.15010300/v1",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "lrcfmd/AriadneX",
+          "url": "https://github.com/lrcfmd/AriadneX",
+          "role": "code"
+        },
+        {
+          "label": "model checkpoint",
+          "url": "https://github.com/lrcfmd/AriadneX/releases/tag/checkpoint-v1",
+          "role": "model"
+        },
+        {
+          "label": "experimental examples",
+          "url": "https://github.com/lrcfmd/AriadneX/releases/tag/example-data-v5",
+          "role": "data"
+        }
+      ],
+      "artifact_note": "MIT source, an approximately 820 MB checkpoint, and 56 measured example patterns are public. Reproducing the paper examples also requires user-supplied PCD or ICSD CIFs and a Gurobi license; the released data do not redistribute those proprietary structures"
+    },
+    {
+      "id": "xdecomposer",
+      "name": "XDecomposer",
+      "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-16",
+      "year": "2026",
+      "task": "Prior-free set decomposition, phase retrieval, and normalized-pattern mixing-coefficient estimation for multiphase PXRD",
+      "method": "Query-based blind source separation with permutation-invariant set prediction, activity slots, and physics-consistent mixture reconstruction",
+      "reported_result": "The revised NeurIPS 2026 preprint reports improved reconstruction and phase identification on simulated mixtures and five-fold tests using software-composed mixtures from 662 measured single-phase RRUFF patterns, while documenting a substantial simulation-to-experiment gap and a current two-to-four-phase design range; the paper calls the RRUFF benchmark zero-shot, whereas the repository documents a five-fold fine-tuning command",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2605.05866",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "paper-linked source",
+          "url": "https://github.com/Licht0812/XDecomposer",
+          "role": "code"
+        },
+        {
+          "label": "Gan Jiang inference app",
+          "url": "https://github.com/DeltaGanjiang/XDecomposer",
+          "role": "code"
+        },
+        {
+          "label": "checkpoints",
+          "url": "https://github.com/Licht0812/XDecomposer/releases/tag/V_0.0.1",
+          "role": "model"
+        },
+        {
+          "label": "MP500 candidate database",
+          "url": "https://github.com/Licht0812/XDecomposer/releases/tag/d_0.0.1",
+          "role": "data"
+        }
+      ],
+      "artifact_note": "Both repositories are MIT-licensed. The paper-linked repository publishes the approximately 799 MB V_0.0.1 checkpoint and MP500.db; the Gan Jiang repository adds a documented notebook, FastAPI service, and local browser interface. Because mixtures are constructed from max-normalized component patterns without scale-factor calibration, the reported mixing coefficients should not be read as quantitative mass fractions. The app's default checkpoint directory intentionally begins with a space and retains the upstream 'sepration' spelling"
+    },
+    {
+      "id": "phasematcher",
+      "name": "PhaseMatcher",
+      "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-16",
+      "year": "2026",
+      "task": "Complete phase-set identification plus contribution and residual reconstruction from mixed PXRD",
+      "method": "Autoregressive phase prediction with joint physics-guided re-estimation of all selected phase contributions after each step",
+      "reported_result": "On author-constructed one-to-four-phase mixtures, Beam search reports 81.98% exact-set accuracy on PhaseMix-135K and 80.59% on RRUFF-derived mixtures. Both benchmarks use generated mixtures rather than raw multiphase measurements, and train/validation/test splits contain the same phase identities with different perturbations",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.05844",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [],
+      "artifact_note": "No public code, checkpoints, or PhaseMix-135K download were linked from the paper or found in exact official-repository searches on 2026-10-16; the authors say implementation is planned after acceptance"
+    },
+    {
+      "id": "gan-jiang",
+      "name": "Gan Jiang",
+      "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-16",
+      "year": "2026",
+      "task": "Agent-orchestrated phase identification, multiphase decomposition, evidence inspection, and optional structure refinement from PXRD",
+      "method": "Language-model orchestration over versioned analytical skills and XMatcher, XQueryer, XDecomposer, PyWPEM, FullProf, and GSAS-II tools",
+      "reported_result": "Without supplied composition, the preprint reports closed-library single-phase Top-1 identification of 96.30% on simulated MP500, 81.78% on experimental RRUFF, and 40.83% on experimental opXRD. The candidate library comes from the same sources as the tests (1,159 RRUFF structures versus 1,164 test pairs; 848 combined opXRD/private structures versus 880 opXRD test pairs), and the paper does not document whether test structures were excluded. Refinement-skill revisions were selected on development data before held-out evaluation",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.07862",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "official project site",
+          "url": "https://ganjiang.asia/",
+          "role": "tool"
+        },
+        {
+          "label": "public project organization",
+          "url": "https://github.com/DeltaGanjiang",
+          "role": "code"
+        }
+      ],
+      "artifact_note": "The official organization exposes benchmark and component repositories, but no complete agent repository or downloadable release was public on 2026-10-16. The paid-credit project site described its download as coming soon and advertised a global V0.1.0 release for 2026-10-20, so availability should be rechecked after that date"
+    },
+    {
+      "id": "pxtal",
+      "name": "PXtal",
+      "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-16",
+      "year": "2026",
+      "task": "PXRD-to-crystal candidate retrieval and transferable PXRD/crystal representation learning",
+      "method": "Dual PXRD/crystal encoders aligned with unbalanced optimal transport and coupling-level generalized Kullback-Leibler supervision",
+      "reported_result": "The preprint reports exact Acc@1 of 74.45% on simulated MP-100 versus 67.26% for its CLIP baseline, and 70.18% zero-shot Acc@1 on JARVIS-DFT-3D versus 61.66%; all six reported benchmarks use simulated PXRD",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.10653",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [],
+      "artifact_note": "No public code, pretrained encoders, or prepared paired datasets were linked from the preprint or found in exact official-repository searches on 2026-10-16; the million-pair experiments used a 16-GPU, four-node setup"
+    },
+    {
       "id": "automation-of-rietveld-refinement-through-machine-learning",
       "name": "RAPID",
       "category": "pipeline_module",
@@ -1277,6 +1454,57 @@
         }
       ],
       "artifact_note": "GPL-3.0 code is public; the current workflow is Windows-only and requires separate Python 2.7 and 3.11 environments plus AutoFP/FullProf"
+    },
+    {
+      "id": "pxrd-bench",
+      "name": "PXRD-Bench",
+      "category": "dataset",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-16",
+      "size": "4,262,691 curated structures; 4,107,627 in the effective training split",
+      "sim_exp": "Sim single-phase corpus + separately sourced Exp RRUFF/opXRD and two-phase evaluations",
+      "format": "Rebuild registry + Parquet splits + tensor shards + LMDB caches + Bragg sidecars",
+      "notes": "Large inorganic PXRD-to-structure benchmark with composition, prototype, element-set, and two-phase tasks. Cu Kα profiles are simulated over 5-90 degrees. The repository rebuilds only the 4.26-million-structure simulated single-phase corpus from pinned AFLOW, Alexandria, Materials Project, and OQMD sources; its documented build took about 7 h with 64 workers. The separately defined evaluation includes 100 RRUFF and 83 opXRD patterns, plus 125,064 MP-20-derived two-phase mixtures and 21 GALAXI mixtures; those inputs are not built or distributed. The authors' dataset contributions are CC BY-NC 4.0; source-specific terms still apply, and AFLOW restricts bulk retrieval, repackaging, and nonacademic use",
+      "resource_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.16480",
+          "role": "paper"
+        },
+        {
+          "label": "dongyeop3813/PXRD-Bench",
+          "url": "https://github.com/dongyeop3813/PXRD-Bench",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "deltaxrdbench",
+      "name": "DeltaXRDbench",
+      "category": "dataset",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-16",
+      "size": "62,044 patterns: 12,044 single-phase and 50,000 two- or three-phase mixtures",
+      "sim_exp": "Sim MP500 + Exp RRUFF/opXRD + generated mixtures",
+      "format": "JSONL manifests/submissions + PXRD arrays + reference CIFs + evaluation tools",
+      "notes": "Structure-aware single-phase, multiphase, and refinement benchmark used by Gan Jiang. The v1.0.0 release is a 1.34 GB archive with 40,000 MP500, 11,164 RRUFF, and 10,880 opXRD records. Mixtures are linear combinations of single-phase patterns with at least 10% per phase and do not model every experimental interaction. Manifests colocate true phase IDs and reference-CIF paths with pattern pointers, so blind solvers must receive isolated inputs rather than the full manifest. The repository and release currently declare no project or dataset license beyond preserving source-specific terms",
+      "resource_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.07862",
+          "role": "paper"
+        },
+        {
+          "label": "DeltaGanjiang/deltaxrdbench",
+          "url": "https://github.com/DeltaGanjiang/deltaxrdbench",
+          "role": "data"
+        },
+        {
+          "label": "v1.0.0 dataset release",
+          "url": "https://github.com/DeltaGanjiang/deltaxrdbench/releases/tag/v1.0.0",
+          "role": "data"
+        }
+      ]
     },
     {
       "id": "galaxi-experimental-benchmark",
@@ -1699,6 +1927,32 @@
           "label": "AdvancedPhotonSource/GSAS-II",
           "url": "https://github.com/AdvancedPhotonSource/GSAS-II",
           "role": "code"
+        }
+      ]
+    },
+    {
+      "id": "kaisetsu",
+      "name": "kaisetsu",
+      "category": "utility",
+      "scope_relation": "multimodal_pxrd",
+      "verified_at": "2026-10-16",
+      "task": "Rietveld, Le Bail, and Pawley refinement plus pair-distribution-function and maximum-entropy analysis",
+      "notes": "MIT-licensed Japanese-first Python/Windows application with source, command-line and graphical interfaces, and packaged v0.1.13 releases. Repository validation documents compare selected structure factors, profiles, refinements, pair-distribution fits, and time-of-flight neutron results with GSAS-II or diffpy.pdffit2. This is an alpha-stage, rapidly changing project without a paper or independent experimental certification; the v0.1.13 notes disclose fixes for five result-affecting defects. The LICENSE file and package metadata say MIT, although one stale README section still says the license is undecided",
+      "resource_links": [
+        {
+          "label": "kinjo-tohoku/kaisetsu",
+          "url": "https://github.com/kinjo-tohoku/kaisetsu",
+          "role": "tool"
+        },
+        {
+          "label": "v0.1.13 release",
+          "url": "https://github.com/kinjo-tohoku/kaisetsu/releases/tag/v0.1.13",
+          "role": "tool"
+        },
+        {
+          "label": "validation notes",
+          "url": "https://github.com/kinjo-tohoku/kaisetsu/tree/master/docs/validation",
+          "role": "docs"
         }
       ]
     },
