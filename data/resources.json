@@ -1,7 +1,7 @@
 {
   "$schema": "./resources.schema.json",
   "schema_version": 2,
-  "last_updated": "2026-10-16",
+  "last_updated": "2026-10-23",
   "website_url": "https://nodeology.ai/resources/pxrd2xtal",
   "inference_order": [
     "uni3dar",
@@ -1383,7 +1383,7 @@
       "name": "Gan Jiang",
       "category": "pipeline_module",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-10-16",
+      "verified_at": "2026-10-23",
       "year": "2026",
       "task": "Agent-orchestrated phase identification, multiphase decomposition, evidence inspection, and optional structure refinement from PXRD",
       "method": "Language-model orchestration over versioned analytical skills and XMatcher, XQueryer, XDecomposer, PyWPEM, FullProf, and GSAS-II tools",
@@ -1402,12 +1402,63 @@
           "role": "tool"
         },
         {
+          "label": "v0.1.0 release center",
+          "url": "https://ganjiang.yangtzeailab.com/",
+          "role": "tool"
+        },
+        {
+          "label": "user manual",
+          "url": "https://ganjiang.asia/booklet/index.html",
+          "role": "docs"
+        },
+        {
           "label": "public project organization",
           "url": "https://github.com/DeltaGanjiang",
           "role": "code"
         }
       ],
-      "artifact_note": "The official organization exposes benchmark and component repositories, but no complete agent repository or downloadable release was public on 2026-10-16. The paid-credit project site described its download as coming soon and advertised a global V0.1.0 release for 2026-10-20, so availability should be rechecked after that date"
+      "artifact_note": "The author-maintained v0.1.0 desktop client was released on 2026-10-21 for Apple-silicon macOS and x86-64 Windows. The manual documents phase identification, decomposition, refinement, simulation, and visualization workflows, currently with fixed Cu K-alpha input interfaces. The installers are public, but the client requires an account and uses a hosted, credit-metered service with separate model-token costs; the complete agent source and model weights are not public"
+    },
+    {
+      "id": "qualx",
+      "name": "QualX",
+      "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-23",
+      "year": "2015/2026",
+      "task": "Qualitative phase identification by search-match against PDF-2, COD, or user-built CIF databases",
+      "method": "Top-d-spacing indexing and profile search-match in a graphical application with command-line database construction and search interfaces",
+      "reported_result": "The peer-reviewed QUALX/QUALX2.0 papers describe and demonstrate the search-match method; the current QualX 3 v1.0.8 release provides Windows, macOS, and Linux packages but does not publish a new benchmark that would support cross-method performance comparison",
+      "paper_links": [
+        {
+          "label": "Journal of Applied Crystallography",
+          "url": "https://doi.org/10.1107/S1600576715002319",
+          "role": "paper"
+        },
+        {
+          "label": "Powder Diffraction",
+          "url": "https://doi.org/10.1017/S0885715617000240",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "ccorrado71/qualx3",
+          "url": "https://github.com/ccorrado71/qualx3",
+          "role": "code"
+        },
+        {
+          "label": "v1.0.8 release",
+          "url": "https://github.com/ccorrado71/qualx3/releases/tag/v1.0.8",
+          "role": "tool"
+        },
+        {
+          "label": "COD reference databases",
+          "url": "https://doi.org/10.5281/zenodo.23297506",
+          "role": "data"
+        }
+      ],
+      "artifact_note": "The official repository includes source and packaged applications. A reference database is required: open COD-derived databases are available, while PDF-2 is separately licensed. Licensing metadata conflict: the repository LICENSE file and GitHub detector say GPL-3.0, but the README says LGPL-3.0; downstream users should treat the license as unresolved until the maintainer clarifies it"
     },
     {
       "id": "pxtal",
@@ -1899,6 +1950,34 @@
       ]
     },
     {
+      "id": "xrd-clip-organic-benchmark",
+      "name": "XRD-CLIP organic retrieval benchmark",
+      "category": "dataset",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-23",
+      "size": "196 identified organic opXRD patterns and 19 external patterns; 308,861 CSD reference codes; open COD replica with 190 queries and 108,902 simulated library entries",
+      "sim_exp": "Experimental query patterns + simulated CSD or COD reference libraries",
+      "format": "Zenodo ZIP archives containing truth sets, reference-code lists, rank arrays, scripts, and sharded NumPy stick libraries",
+      "notes": "Measured-pattern retrieval benchmark for a submitted RSC Advances article comparing learned XRD-CLIP retrieval with classical full-profile scores. The deposit includes code, benchmark definitions, per-pattern ranks, verification scripts, and a fully open COD replica. CSD structures, CSD-simulated patterns, and the CSD-trained checkpoint are excluded under the CSD license; the source opXRD profiles remain in their separate CC BY 4.0 archive. Deposit metadata assign MIT to code, CC BY 4.0 to data/results, and CC0 to COD-derived content",
+      "resource_links": [
+        {
+          "label": "Zenodo deposit",
+          "url": "https://doi.org/10.5281/zenodo.23446290",
+          "role": "data"
+        },
+        {
+          "label": "fronkt/xrd-clip",
+          "url": "https://github.com/fronkt/xrd-clip",
+          "role": "code"
+        },
+        {
+          "label": "source opXRD archive",
+          "url": "https://doi.org/10.5281/zenodo.15298026",
+          "role": "data"
+        }
+      ]
+    },
+    {
       "id": "pymatgen-xrdcalculator",
       "name": "pymatgen XRDCalculator",
       "category": "utility",
@@ -1953,6 +2032,105 @@
           "label": "validation notes",
           "url": "https://github.com/kinjo-tohoku/kaisetsu/tree/master/docs/validation",
           "role": "docs"
+        }
+      ]
+    },
+    {
+      "id": "diffpxrd",
+      "name": "diffPXRD",
+      "category": "utility",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-23",
+      "task": "Differentiable constant-wavelength PXRD simulation and batched profile fitting",
+      "notes": "BSD-3-Clause PyTorch engine with automatic derivatives through crystal and profile parameters. The paper reports batched fitting more than seven times faster than serial fitting and a 68.4% reduction in lattice-parameter variability at 10% photon counts for one operando cathode series. The repository provides CPU-capable synthetic examples and reproduction scripts, but its raw experimental data and large reference arrays are not included; the paper data deposit named by the documentation was not publicly linked when checked",
+      "resource_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.28564",
+          "role": "paper"
+        },
+        {
+          "label": "AdvancedPhotonSource/DiffPXRD",
+          "url": "https://github.com/AdvancedPhotonSource/DiffPXRD",
+          "role": "code"
+        }
+      ]
+    },
+    {
+      "id": "hexrd-hexrdgui",
+      "name": "HEXRD / HEXRDGUI",
+      "category": "utility",
+      "scope_relation": "multimodal_pxrd",
+      "verified_at": "2026-10-23",
+      "task": "Multi-detector X-ray diffraction calibration, transformation, visualization, and whole-pattern fitting",
+      "notes": "BSD-licensed Python library and graphical application spanning powder, Laue, and high-energy diffraction microscopy. The paper reports agreement with pyFAI to numerical precision for a single-detector calibration and 0.18-degree ring-position RMS for a joint dual-source calibration, compared with about 0.6 degrees of cross-source error from either single-source fit. The official v0.10.7 library and v1.2.6 GUI releases, state files, and validation scripts are public",
+      "resource_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.24989",
+          "role": "paper"
+        },
+        {
+          "label": "HEXRD 0.10.7",
+          "url": "https://github.com/HEXRD/hexrd/releases/tag/0.10.7",
+          "role": "tool"
+        },
+        {
+          "label": "HEXRDGUI 1.2.6",
+          "url": "https://github.com/HEXRD/hexrdgui/releases/tag/1.2.6",
+          "role": "tool"
+        },
+        {
+          "label": "validation data and scripts",
+          "url": "https://doi.org/10.5281/zenodo.23440009",
+          "role": "data"
+        }
+      ]
+    },
+    {
+      "id": "topas-editor-topilot",
+      "name": "topas-editor / TOPilot",
+      "category": "utility",
+      "scope_relation": "multimodal_pxrd",
+      "verified_at": "2026-10-23",
+      "task": "AI-assisted authoring and execution of TOPAS diffraction and total-scattering workflows",
+      "notes": "The arXiv paper demonstrates workflows for Rietveld refinement, multi-dataset analysis, indexing through structure solution and refinement, phase identification, incommensurate diffraction, and pair-distribution-function fitting. The public MIT topas-inp-writer v1.2.0 skill packages reference documents, helper scripts, and worked examples; topas-editor is a VS Code extension. Operation still requires a separately installed TOPAS license and a configured cloud or local language model, and the demonstrations are author-reported rather than an independent benchmark",
+      "resource_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.23512",
+          "role": "paper"
+        },
+        {
+          "label": "topas-inp-writer v1.2.0",
+          "url": "https://github.com/johnsoevans/topas-inp-writer/releases/tag/v1.2.0",
+          "role": "tool"
+        },
+        {
+          "label": "topas-editor extension",
+          "url": "https://marketplace.visualstudio.com/items?itemName=johnsoevans.topas-editor",
+          "role": "tool"
+        }
+      ]
+    },
+    {
+      "id": "xrd-phase-finder",
+      "name": "XRD Phase Finder",
+      "category": "utility",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-23",
+      "task": "Interactive PXRD phase search-match, residual inspection, and project-based analysis",
+      "notes": "MIT desktop application that imports measured patterns and CIFs, searches user libraries and configured crystallographic databases, compares calculated profiles, and tracks unexplained residual peaks. The v1.6.6 release provides Windows and Apple-silicon macOS installers; the Linux package remains at v1.6.4 and source execution is documented. The tutorial explicitly labels its candidate scores and fitted curves illustrative, and no paper or independent validation benchmark was found",
+      "resource_links": [
+        {
+          "label": "ABKuznetsov/XRD_Analysis_Toolkit",
+          "url": "https://github.com/ABKuznetsov/XRD_Analysis_Toolkit",
+          "role": "code"
+        },
+        {
+          "label": "v1.6.6 release",
+          "url": "https://github.com/ABKuznetsov/XRD_Analysis_Toolkit/releases/tag/v1.6.6",
+          "role": "tool"
         }
       ]
     },
