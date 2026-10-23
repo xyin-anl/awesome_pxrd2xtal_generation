@@ -382,6 +382,17 @@ Representative discovery queries included the official arXiv API for `powder dif
 
 An independent Claude Opus review was requested without receiving Codex's conclusions, but the installed Claude session could not authenticate because its OAuth session had expired. No substitute was represented as cross-family review.
 
+## October 23 2026 inference triage
+
+24. **Post-catalog wrapper feasibility and duplicate audit - Oct 23 2026**
+    After opening draft catalog PR #12, searched open and closed issues, pull requests, and repository-local wrappers for `Gan Jiang`, `GanJiang`, `gan-jiang`, both official domains, and the `DeltaGanjiang` organization. The only matches were catalog PRs #11 and #12; no inference issue or wrapper exists.
+
+- No new `core_solver` was added. **QualX** is database-backed phase identification rather than crystal-structure production, and the other new entries are a dataset or utilities, so they do not qualify for inference-wrapper issues.
+- **Gan Jiang** was reconsidered because its Oct 21 installers changed the prior availability blocker. It is now listed as author-maintained rather than blocked: the official desktop client and manual are public, but inference remains a closed, account- and credit-metered service without public complete agent source or model weights. An independent wrapper would not reproduce the maintained service, so no `needs-inference` issue was opened.
+- **topas-editor / TOPilot** can orchestrate structure-solution workflows but is an author-maintained utility around separately licensed TOPAS, not a cataloged core solver or structure-producing pipeline module. No wrapper issue was opened.
+- The new **XRD-CLIP** artifact is a retrieval benchmark and does not produce structures. **diffPXRD**, **HEXRD/HEXRDGUI**, and **XRD Phase Finder** are analysis utilities. None qualifies for an inference wrapper.
+- The newly released `qiaoqinyu/pxrd-space-group-predictor` checkpoint did not trigger an issue because the project remains outside the catalog pending a public paper and a software/model license.
+
 ## May 9 2026 detailed record
 
 ### Search strategy for the May 9 2026 pass
