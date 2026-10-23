@@ -349,6 +349,39 @@ Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog
 - **PXRD-Bench**, **DeltaXRDbench**, and **kaisetsu** are a dataset, dataset, and utility respectively, so they do not qualify for solver-wrapper issues.
 - Previously blocked **RealPXRD-Solver**, **AGAPI-XRD**, **CrystalNet**, and **XRDiff** still lacked the artifacts needed to change their status.
 
+## October 23 2026 weekly refresh
+
+23. **Codex primary-source and artifact audit - Oct 23 2026**
+    Started from a clean checkout, fast-forwarded `main` to the merged Oct 16 catalog, and searched inclusively from Oct 16 because the catalog cutoff is a date rather than a timestamp. Technical claims were checked against arXiv or publisher pages, official repositories and releases, official data/model records, and the `Bin-Cao/awesome-xrd2crystal` board. That board's latest commit remained Jul 14 and supplied no new candidate.
+
+Material additions and correction:
+
+- Added **diffPXRD** as a `utility`. The Oct 20 arXiv paper introduces a BSD-3-Clause PyTorch engine for differentiable constant-wavelength PXRD and reports more than sevenfold batched-fitting speedup plus a 68.4% reduction in lattice-parameter variability for one low-count operando example. Public source includes synthetic CPU examples and reproduction scripts, but not the raw experimental inputs or large reference arrays; the separate data deposit named in the documentation was not publicly linked when checked. Sources: https://arxiv.org/abs/2610.28564 and https://github.com/AdvancedPhotonSource/DiffPXRD.
+- Added **HEXRD / HEXRDGUI** as a multimodal `utility`. The Oct 18 paper covers powder, Laue, and high-energy diffraction microscopy workflows, including whole-pattern fitting. HEXRD 0.10.7, HEXRDGUI 1.2.6, and the 97 MB validation deposit are public under BSD/CC BY terms. Sources: https://arxiv.org/abs/2610.24989, https://github.com/HEXRD/hexrd/releases/tag/0.10.7, https://github.com/HEXRD/hexrdgui/releases/tag/1.2.6, and https://doi.org/10.5281/zenodo.23440009.
+- Added **topas-editor / TOPilot** as a multimodal `utility`. The Oct 16 paper demonstrates AI-assisted TOPAS workflows from indexing through structure solution and refinement, phase identification, and total-scattering analysis. The MIT `topas-inp-writer` v1.2.0 skill and editor extension are public, but operation requires separately licensed TOPAS and a configured language-model provider. Sources: https://arxiv.org/abs/2610.23512, https://github.com/johnsoevans/topas-inp-writer/releases/tag/v1.2.0, and https://marketplace.visualstudio.com/items?itemName=johnsoevans.topas-editor.
+- Added **QualX** as a `pipeline_module` for database-backed qualitative phase identification after the v1.0.8 release. Source and cross-platform packages are public, and open COD-derived databases are available; PDF-2 remains separately licensed. The repository's `LICENSE` and GitHub detector say GPL-3.0 while the README says LGPL-3.0, so the catalog records the conflict rather than selecting one. Sources: https://github.com/ccorrado71/qualx3, https://github.com/ccorrado71/qualx3/releases/tag/v1.0.8, and https://doi.org/10.1107/S1600576715002319.
+- Added **XRD Phase Finder** as a `utility` after its v1.6.6 release. It provides source plus Windows and Apple-silicon macOS packages for interactive database search-match and residual inspection. The official tutorial marks its scores illustrative; no paper or independent validation benchmark was found. Sources: https://github.com/ABKuznetsov/XRD_Analysis_Toolkit and https://github.com/ABKuznetsov/XRD_Analysis_Toolkit/releases/tag/v1.6.6.
+- Added the **XRD-CLIP organic retrieval benchmark** as a `dataset`. The Oct 18 Zenodo record contains measured-pattern truth sets, reference-code lists, per-pattern ranks, verification scripts, and an open COD replica. CSD structures, CSD-derived patterns, and the CSD-trained checkpoint are excluded by the CSD license. The associated article was submitted but had no public publisher or preprint page, so the catalog treats the deposit as a dataset rather than promoting XRD-CLIP as a method entry. Sources: https://doi.org/10.5281/zenodo.23446290 and https://github.com/fronkt/xrd-clip.
+- Reverified **Gan Jiang** after its advertised launch date. The official release service now publishes v0.1.0 Apple-silicon macOS and x86-64 Windows installers, and the manual documents phase identification, decomposition, refinement, simulation, and visualization. The complete agent source and model weights remain closed; use requires an account, hosted credits, and separate model-token charges. Sources: https://ganjiang.asia/, https://ganjiang.yangtzeailab.com/, and https://ganjiang.asia/booklet/index.html.
+
+Availability audit and unchanged blockers:
+
+- Rechecked all 135 previously cataloged unique URLs: 115 returned HTTP 200, two returned 202, sixteen publisher/DOI endpoints returned anti-bot HTTP 403, the GALAXI site failed local TLS verification, and the Gan Jiang landing page failed `curl` transport but remained readable in an independent browser fetch. No URL returned 404. New links were checked directly through their official APIs or pages.
+- Exact repository and release checks found no new usable checkpoint or license for **Bragglite**, **RealPXRD-Solver**, **AGAPI-XRD**, or **CrystalNet**, and no official code/weights repository for **XRDiff** or **PXtal**. Their catalog claims were not reopened, so their `verified_at` dates were intentionally left unchanged.
+- Large installers, model files, and dataset archives were not downloaded or executed. Performance statements remain attributed to their authors; no paper result is presented as independently reproduced.
+
+Candidates reviewed but not added:
+
+- `qiaoqinyu/pxrd-space-group-predictor` released one approximately 19 MB molecular-crystal checkpoint on Oct 21, changing its artifact status, but the repository still has no software/model license or public paper and requires separate ChemBERTa, BOMLIP, and MACE components for its full candidate pipeline.
+- `gabegraves/phase_eval` is a new Apache-2.0 expert-review workbench with an associated Hugging Face run dataset, but it has no tagged release or citation record and documents major task-building and search components as incomplete.
+- `anuarmincache/rie-agent` is an unreleased, paperless BiFeO3-focused GSAS-II agent whose benchmarking is explicitly in progress.
+- `fronkt/pxrd-diff` currently exposes only a Phase 0 data pipeline, not the proposed generative model, and has no license.
+- `drthyang/materia-platform` and `yue-here/rietx` were active during the interval, but their latest releases predated the Oct 16 cutoff; neither supplied a new publication or release requiring a catalog change this week.
+
+Representative discovery queries included the official arXiv API for `powder diffraction`, `PXRD`, `Rietveld`, `phase identification`, and diffraction-conditioned structure determination over Oct 16-23; GitHub repository and release searches for those terms plus exact candidate names; Zenodo records linked by official projects; and exact blocker searches for every unwrapped core solver. The arXiv interval yielded six broad records: the three added tools above and three material-specific or non-method studies outside catalog scope.
+
+An independent Claude Opus review was requested without receiving Codex's conclusions, but the installed Claude session could not authenticate because its OAuth session had expired. No substitute was represented as cross-family review.
+
 ## May 9 2026 detailed record
 
 ### Search strategy for the May 9 2026 pass
