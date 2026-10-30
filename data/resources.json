@@ -1,7 +1,7 @@
 {
   "$schema": "./resources.schema.json",
   "schema_version": 2,
-  "last_updated": "2026-10-23",
+  "last_updated": "2026-10-30",
   "website_url": "https://nodeology.ai/resources/pxrd2xtal",
   "inference_order": [
     "uni3dar",
@@ -943,6 +943,26 @@
       "artifact_note": "The paper-linked repository supplies code and notebooks but excludes large datasets and intermediate outputs. Its README claims LGPL-3.0, but no LICENSE file or repository-detected license was present; the linked Zenodo record was not publicly registered on 2026-10-05"
     },
     {
+      "id": "xrd-jepa",
+      "name": "JEPA for PXRD",
+      "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-30",
+      "year": "2026",
+      "task": "Self-supervised PXRD representation learning with downstream space-group classification and lattice-parameter regression",
+      "method": "Joint-Embedding Predictive Architecture pretraining on masked one-dimensional diffraction-pattern patches, followed by frozen-encoder attentive probes",
+      "reported_result": "On simulated MP-20 patterns, the depth-8 JEPA plus attentive probe reports 65.22 +/- 0.17% top-1 and 88.12 +/- 0.21% top-5 space-group accuracy, with 0.387 +/- 0.002 A Selling-reduced S6 lattice error over five seeds. Supervised ViT-Small and ViT-Base baselines have higher top-1 accuracy, ViT-Base has higher top-5 accuracy, and ResNet-50 and ViT-Base have lower lattice errors; the paper's advantage claim is parameter efficiency, not best absolute accuracy",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.33310",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [],
+      "artifact_note": "The paper uses the MP-20 split and patterns simulated over q = 8-60 nm^-1 with strain, broadening, and Gaussian-noise augmentations. Results are simulation-only. No public code, trained weights, or prepared pattern dataset was found during the 2026-10-30 audit"
+    },
+    {
       "id": "chatxrd",
       "name": "ChatXRD",
       "category": "pipeline_module",
@@ -973,7 +993,7 @@
       "name": "GALAXI",
       "category": "pipeline_module",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-10-05",
+      "verified_at": "2026-10-30",
       "year": "2026",
       "task": "Single- and multi-phase identification from PXRD against a supplied reference-structure library",
       "method": "Independent phase-specific binary CNN screening followed by Dara multiple-hypothesis Rietveld refinement",
@@ -1002,7 +1022,7 @@
           "role": "tool"
         }
       ],
-      "artifact_note": "MIT source and example weights are public; the complete hosted weight library was not verified downloadable. The advertised service remained unverifiable from the audit network on 2026-10-05 because HTTPS clients failed during connection setup. The paper's refinement stage uses Dara/BGMN; pretrained examples require a 5-105 degree, 7001-point grid"
+      "artifact_note": "MIT source and example weights are public; the complete hosted weight library was not verified downloadable. On 2026-10-28 the authors renamed ten pristine test patterns from Li4Ti7O16 to their corrected Li4Ti5O12 phase and added a Li4Ti5O12 CIF and model directly to the repository. The current example therefore has 366 references/models, whereas the paper and Figshare archive use 365; exact-phase labels and filenames differ from the published snapshot. The authors report that the two phases remain in the same profile-similarity group, so their group-level results are unaffected. Service availability could not be verified on 2026-10-30. The paper's refinement stage uses Dara/BGMN; pretrained examples require a 5-105 degree, 7001-point grid"
     },
     {
       "id": "xqueryer",
@@ -1562,11 +1582,11 @@
       "name": "GALAXI experimental benchmark",
       "category": "dataset",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-09-21",
+      "verified_at": "2026-10-30",
       "size": "128 public XY files; paper describes 130 experimental test patterns",
       "sim_exp": "Exp / experimental stress tests",
       "format": "XY profiles + reference CIFs + model configurations",
-      "notes": "The public example includes 365 reference CIFs and artifact-grouped patterns. The paper separates 61 pristine patterns from 69 stress tests; the inspected snapshot has 128 XY files, so full paper-cohort completeness is not established. Phase labels occur in filenames and must be hidden in blind evaluation",
+      "notes": "The public example has 128 XY files. On 2026-10-28 the authors renamed ten pristine files from Li4Ti7O16 to the corrected Li4Ti5O12 phase and added the corresponding CIF and model, increasing the current repository library to 366 references/models; the paper and Figshare snapshot use 365. The authors report that both phases fall in the same profile-similarity group, so group-level results are unaffected, but exact-phase labels and filenames differ from the published snapshot. The paper describes 130 test patterns (61 pristine and 69 stress tests), so full paper-cohort completeness is not established. Phase labels occur in filenames and must be hidden in blind evaluation",
       "resource_links": [
         {
           "label": "arXiv",
@@ -1978,6 +1998,29 @@
       ]
     },
     {
+      "id": "mineral-mixture-xrpd-phase-picking",
+      "name": "Mineral-mixture XRPD phase-picking data",
+      "category": "dataset",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-30",
+      "size": "37 deposited mineral-mixture profiles plus one phase-weight workbook",
+      "sim_exp": "Experimental profiles from prepared mineral mixtures",
+      "format": "TXT intensity vectors + XLSX phase-weight table",
+      "notes": "CC BY 4.0 data deposit for a manuscript titled 'Deep Learning for Phase Picking in X-Ray Powder Diffraction Analysis of Mineral Mixtures.' Each deposited profile has 3,001 intensity values spanning 5-65 degrees 2theta at 0.02-degree increments, and the workbook supplies mineral-group weight percentages. The workbook labels 4-15 nonzero groups per deposited profile (median 9), including an amorphous component in 8 of 37 profiles, but supplies no reference CIFs. Radiation, wavelength, instrument, split, and evaluation protocol are not stated. A 2025 BYU thesis appears to describe the same 37-pattern empirical cohort and reports an approximately 70% precision/recall result, but the deposit does not link the thesis, so the relationship is not confirmed. The workbook also names a 28-pattern ZnO-grouped cohort whose pattern files are absent from the deposit. No public manuscript page, model, or code was found",
+      "resource_links": [
+        {
+          "label": "Zenodo data deposit",
+          "url": "https://doi.org/10.5281/zenodo.23692859",
+          "role": "data"
+        },
+        {
+          "label": "Likely related 2025 BYU thesis",
+          "url": "https://scholarsarchive.byu.edu/etd/11389/",
+          "role": "paper"
+        }
+      ]
+    },
+    {
       "id": "pymatgen-xrdcalculator",
       "name": "pymatgen XRDCalculator",
       "category": "utility",
@@ -2118,9 +2161,9 @@
       "name": "XRD Phase Finder",
       "category": "utility",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-10-23",
+      "verified_at": "2026-10-30",
       "task": "Interactive PXRD phase search-match, residual inspection, and project-based analysis",
-      "notes": "MIT desktop application that imports measured patterns and CIFs, searches user libraries and configured crystallographic databases, compares calculated profiles, and tracks unexplained residual peaks. The v1.6.6 release provides Windows and Apple-silicon macOS installers; the Linux package remains at v1.6.4 and source execution is documented. The tutorial explicitly labels its candidate scores and fitted curves illustrative, and no paper or independent validation benchmark was found",
+      "notes": "MIT desktop application that imports measured patterns and CIFs, searches user libraries and configured crystallographic databases, compares calculated profiles, and tracks unexplained residual peaks. The v1.6.7 release provides current Windows, macOS, and Linux amd64 packages and adds manual peak lists, background-aware detection, reversible angle calibration, and measured-range-limited search/reference display. The tutorial explicitly labels its candidate scores and fitted curves illustrative, and no paper or independent validation benchmark was found",
       "resource_links": [
         {
           "label": "ABKuznetsov/XRD_Analysis_Toolkit",
@@ -2128,8 +2171,34 @@
           "role": "code"
         },
         {
-          "label": "v1.6.6 release",
-          "url": "https://github.com/ABKuznetsov/XRD_Analysis_Toolkit/releases/tag/v1.6.6",
+          "label": "v1.6.7 release",
+          "url": "https://github.com/ABKuznetsov/XRD_Analysis_Toolkit/releases/tag/v1.6.7",
+          "role": "tool"
+        }
+      ]
+    },
+    {
+      "id": "diff-ref-struct-web",
+      "name": "diff-ref-struct Web",
+      "category": "utility",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-10-30",
+      "task": "Browser-local visualization and analysis of powder-diffraction series",
+      "notes": "Apache-2.0 application whose Rust core runs as WebAssembly in the browser without uploading user files. The v1.1.0 release supports overlays, stacks, WinPLOTR-style projections, intensity maps against temperature or time, difference maps, surfaces, and selected-peak growth curves. It analyzes pattern series but does not claim crystal-structure solution or publish an independent validation benchmark. This is a single-author project first released on 2026-10-27, and the public repository is a generated mirror of a private upstream repository",
+      "resource_links": [
+        {
+          "label": "jmigartua/diff-ref-struct-web",
+          "url": "https://github.com/jmigartua/diff-ref-struct-web",
+          "role": "code"
+        },
+        {
+          "label": "v1.1.0 release",
+          "url": "https://github.com/jmigartua/diff-ref-struct-web/releases/tag/v1.1.0",
+          "role": "tool"
+        },
+        {
+          "label": "Zenodo software record",
+          "url": "https://doi.org/10.5281/zenodo.23683238",
           "role": "tool"
         }
       ]
