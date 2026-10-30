@@ -393,6 +393,39 @@ An independent Claude Opus review was requested without receiving Codex's conclu
 - The new **XRD-CLIP** artifact is a retrieval benchmark and does not produce structures. **diffPXRD**, **HEXRD/HEXRDGUI**, and **XRD Phase Finder** are analysis utilities. None qualifies for an inference wrapper.
 - The newly released `qiaoqinyu/pxrd-space-group-predictor` checkpoint did not trigger an issue because the project remains outside the catalog pending a public paper and a software/model license.
 
+## October 30 2026 weekly refresh
+
+25. **Codex primary-source and artifact audit - Oct 30 2026**
+    Started from a clean checkout, pruned stale remote branches, and fast-forwarded `main` to the merged Oct 23 catalog. Searches were inclusive of Oct 23 because the catalog records a date rather than a timestamp. Technical claims were checked against official arXiv, publisher, repository, release, data, model, and thesis pages. The competing `Bin-Cao/awesome-xrd2crystal` board still had no commit after Jul 14 and supplied no new candidate.
+
+Material additions and corrections:
+
+- Added **JEPA for PXRD** as a `pipeline_module` from the Oct 23 arXiv submission. The paper evaluates masked joint-embedding predictive pretraining on simulated MP-20 patterns, then freezes the encoder for space-group and lattice probes. Its depth-8 result is reported with the supervised comparisons that limit the claim: the advantage is parameter efficiency, not best absolute accuracy. No public source, weights, or prepared pattern data were found. Source: https://arxiv.org/abs/2610.33310.
+- Added the **Mineral-mixture XRPD phase-picking data** as a `dataset`. The CC BY 4.0 deposit contains 37 profiles with 3,001 intensities from 5 to 65 degrees 2theta at 0.02-degree spacing and a workbook of mineral-group weights. A direct workbook check found 4-15 nonzero groups per deposited profile (median 9), with an amorphous component in 8 of 37. Radiation, wavelength, instrument, reference structures, split, and evaluation protocol are absent. A 2025 BYU thesis appears to describe the same 37-profile cohort, but the deposit does not link it, so the relationship remains unconfirmed. Sources: https://doi.org/10.5281/zenodo.23692859 and https://scholarsarchive.byu.edu/etd/11389/.
+- Added **diff-ref-struct Web** as a `utility`. The Apache-2.0 Rust/WebAssembly application performs browser-local visualization and analysis of powder-diffraction series. It was first released on Oct 27 by one author, the public repository is a generated mirror of a private upstream repository, and no independent validation benchmark is published. Sources: https://github.com/jmigartua/diff-ref-struct-web, https://github.com/jmigartua/diff-ref-struct-web/releases/tag/v1.1.0, and https://doi.org/10.5281/zenodo.23683238.
+- Corrected **GALAXI** and its experimental benchmark after the authors changed the public ground truth. Ten pristine patterns formerly named Li4Ti7O16 were renamed to Li4Ti5O12, and a Li4Ti5O12 CIF and model were added directly to the repository. The live example now has 366 references/models, while the paper and Figshare snapshot use 365. The authors report unchanged group-level results because the two phases fall in the same profile-similarity group, but exact-phase labels and filenames differ from the published snapshot. Source: https://github.com/Szymanski-Group/galaxi.
+- Reverified **XRD Phase Finder** at v1.6.7. Its current Windows, macOS, and Linux amd64 packages add manual peak lists, background-aware detection, reversible angle calibration, and measured-range-limited search/reference display. Source: https://github.com/ABKuznetsov/XRD_Analysis_Toolkit/releases/tag/v1.6.7.
+
+Availability audit and unchanged blockers:
+
+- Rechecked 156 unique catalog URLs before editing: 130 returned HTTP 200, two returned 202, eighteen publisher or data endpoints returned anti-bot HTTP 403, five timed out or failed TLS, and the TOPAS Marketplace URL returned 404 to a scripted HEAD request but loaded correctly in a browser. No catalog link was confirmed dead. The GALAXI service and Gan Jiang pages were also checked in an independent browser; service availability is not inferred from a failed audit-network request.
+- Exact artifact searches found no newly usable checkpoint for **Bragglite** or **RealPXRD-Solver**, no standalone model for **AGAPI-XRD**, no released weights for **CrystalNet**, and no official public code or weights for **XRDiff** or **PXtal**. Their catalog claims were not fully reopened, so their `verified_at` dates were not changed.
+- Large model archives and installers were not downloaded or executed. The small mineral workbook was parsed directly; reported model performance remains author-reported rather than independently reproduced.
+
+Candidates reviewed but not added:
+
+- **PhaseEval** remains excluded. Post-cutoff commits changed its interface, not the prior evidence gap: there is still no tagged release, citation, expert-labeled evaluation set, public candidate library, or public reinforcement-learning wrapper.
+- `spotato-1/DSH-XRD` v0.9.1 is an author-maintained Windows DeepSeek Harness plug-in that orchestrates FullProf, lmfit, and GSAS-II, but its release explicitly provides no sample data or test set and no paper or independent scientific validation was found.
+- **XRD-AutoAnalyzer** is MIT-licensed source with a submitted but unavailable paper; its tests use synthetic data only, and the README retains a placeholder repository URL. **XRD Phase Analyzer** and **XRD Mixture Generator** are preliminary applications without publication-backed validation.
+- **PXRD2Seq** still publishes preliminary data construction only; the model, code, and checkpoints remain planned. `qiaoqinyu/pxrd-space-group-predictor` still has no software/model license or public paper. `Kishan-No1/pxrd-physics-augmentation` offers code only on request and uses a private 20-pattern dataset.
+- **DGGP** was excluded because its generative search is not primarily PXRD-conditioned; the deposited beta-S8 neutron example is an application rather than the method's defining input. Teaching applications and material-specific analysis scripts were also outside scope.
+
+Representative discovery queries included official arXiv API searches for `powder diffraction`, `PXRD`, `Rietveld`, `phase identification`, and diffraction-conditioned structure determination over Oct 23-30; GitHub repository, commit, and release searches for those terms plus exact candidate and blocker names; Hugging Face model and dataset searches for PXRD and powder diffraction; Crossref and Zenodo searches for new methods, software, and datasets; and the competing board's commit history.
+
+An independent Claude Opus 5.5 review received the diff and primary-source set without Codex's conclusions. It rejected the proposed PhaseEval addition, identified the exact GALAXI ground-truth consequence, and tightened the JEPA comparison, dataset limitations, and diff-ref-struct maturity caveats. Those findings were verified against the artifacts and incorporated. The requested high reasoning effort could not be confirmed from the command output; the model identity was confirmed.
+
+Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog.py check` (77 resources); `python3 -m unittest discover -s tests -v` (11 passed); and `git diff --check`.
+
 ## May 9 2026 detailed record
 
 ### Search strategy for the May 9 2026 pass
