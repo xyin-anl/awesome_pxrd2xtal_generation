@@ -426,6 +426,16 @@ An independent Claude Opus 5.5 review received the diff and primary-source set w
 
 Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog.py check` (77 resources); `python3 -m unittest discover -s tests -v` (11 passed); and `git diff --check`.
 
+## October 30 2026 inference triage
+
+26. **Post-catalog wrapper feasibility and duplicate audit - Oct 30 2026**
+    After opening draft catalog PR #13, searched all open and closed issues, all implementation pull requests, and repository-local wrappers by catalog ID, model name and aliases, paper identifier, and upstream repository. The repository has no issues of either state. Merged PR #9 contains the eight existing wrappers; no duplicate wrapper or implementation pull request was found for the candidates below. No `needs-inference` issue was opened because this refresh added or materially changed no eligible structure-producing model.
+
+- **JEPA for PXRD** predicts space group and lattice parameters from a frozen representation but does not produce a crystal structure. It also has no public code or weights. **GALAXI** identifies phases from a supplied reference library and performs refinement; the ground-truth correction did not turn it into a structure-producing module.
+- The new mineral-mixture record is a dataset, and **diff-ref-struct Web** and **XRD Phase Finder** are utilities. None qualifies for an inference-wrapper issue.
+- **Bragglite** still marks its pretrained single- and two-phase checkpoints TBA and has no release assets. **RealPXRD-Solver** still has no release or checkpoint file. **AGAPI-XRD** still has no repository license or standalone model. **CrystalNet** still has no project license or released weights; its only repository license file belongs to the bundled PointNet dependency.
+- Exact GitHub repository and code searches still found no official public implementation or weights for **XRDiff** or **PXtal**. The **PXRDGen** Code Ocean capsule remained inaccessible to the audit client, and no new public checkpoint location was found. None of these blockers changed, so no existing issue needed reconsideration.
+
 ## May 9 2026 detailed record
 
 ### Search strategy for the May 9 2026 pass

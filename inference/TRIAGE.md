@@ -6,6 +6,7 @@ weights, a usable license, and an inference entry point; it says nothing about q
 2026-10-04 by reading each repository, its weights location, and its inference code; updated
 2026-10-16 after the catalog refresh and a duplicate search across open/closed issues, pull
 requests, and existing wrappers; updated 2026-10-23 after the Gan Jiang v0.1.0 release.
+The blocked set and duplicate search were rechecked on 2026-10-30; no blocker changed.
 
 ## Wrapped (status in each manifest: verified, reproduced, or limited)
 
