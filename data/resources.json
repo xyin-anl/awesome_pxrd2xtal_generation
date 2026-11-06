@@ -1,7 +1,7 @@
 {
   "$schema": "./resources.schema.json",
   "schema_version": 2,
-  "last_updated": "2026-10-30",
+  "last_updated": "2026-11-06",
   "website_url": "https://nodeology.ai/resources/pxrd2xtal",
   "inference_order": [
     "uni3dar",
@@ -21,10 +21,13 @@
     "https://arxiv.org/abs/2609.06908",
     "https://arxiv.org/abs/2610.07862",
     "https://arxiv.org/abs/2610.16480",
+    "https://arxiv.org/abs/2611.01525",
     "https://github.com/Bin-Cao/XQueryer",
     "https://github.com/ai4mat-zhu/XRDSol",
     "https://github.com/dongyeop3813/PXRD-Bench",
     "https://github.com/liqi-529/RealPXRD-Solver",
+    "https://github.com/scattering/InformedXRD",
+    "https://huggingface.co/datasets/informedxrd/informedxrd-benchmarks",
     "https://huggingface.co/datasets/caobin/opxrd_hkust_expdata",
     "https://huggingface.co/linked-liszt/OpenAlphaDiffract"
   ],
@@ -809,7 +812,7 @@
       "name": "Bragglite",
       "category": "core_solver",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-10-16",
+      "verified_at": "2026-11-06",
       "year": "2026",
       "inputs_target": "PXRD + exact stoichiometry, or element set + total atom count → crystal structure candidates",
       "method": "Crystalite-derived diffusion Transformer retaining its EDM formulation and sampler, with peak position, intensity, width, and prominence supplied by in-context conditioning",
@@ -826,9 +829,71 @@
           "label": "dongyeop3813/PXRD-Bench",
           "url": "https://github.com/dongyeop3813/PXRD-Bench",
           "role": "code"
+        },
+        {
+          "label": "Bragglite model weights v1",
+          "url": "https://zenodo.org/records/23878332",
+          "role": "model"
         }
       ],
-      "artifact_note": "The repository provides model code, locked environments, training/evaluation configurations, and a reproducible dataset builder. Pretrained Bragglite and two-phase checkpoints are explicitly TBA, so the reported inference result cannot yet be reproduced from released weights. Original Bragglite code is MIT, while retained FlowMM-derived helpers are CC BY-NC 4.0"
+      "artifact_note": "The repository provides model code, locked environments, training/evaluation configurations, and a reproducible dataset builder. The authors released the single- and two-phase checkpoints on 2026-11-02 as a 1.58 GB Zenodo archive under CC BY 4.0. The Zenodo record has no repository DOI of its own. The archive was not downloaded in this audit, so its internal filenames and compatibility with the documented configurations remain unverified. Original Bragglite code is MIT, while retained FlowMM-derived helpers are CC BY-NC 4.0"
+    },
+    {
+      "id": "attention-is-not-all-you-need-for-diffraction",
+      "name": "Attention Is Not All You Need for Diffraction",
+      "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-11-06",
+      "year": "2026",
+      "task": "Extinction-group probability prediction from experimental PXRD; extinction groups combine space groups with indistinguishable systematic absences",
+      "method": "Physics-informed Transformer with sin-squared-theta coordinates, diffraction-aware positional encoding, direct and factorized prediction heads, and synthetic-to-experimental curriculum training",
+      "reported_result": "On the authors' 473-pattern experimental RRUFF benchmark, Stage-2b with fused decoding reaches 16.70% Top-1 accuracy and Stage-2a with Bayesian auxiliary decoding reaches 52.22% Top-5; these are different checkpoints and decoders. The later InformedXRD audit reports an input-blind oracle-prior baseline of 12.9% Top-1 and 51.4% Top-5 on the same set, so the aggregate maxima only modestly exceed the benchmark's frequency-only ceiling",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2604.23811",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "scattering/paper-ai-diffraction",
+          "url": "https://github.com/scattering/paper-ai-diffraction",
+          "role": "code"
+        },
+        {
+          "label": "original-paper Zenodo archive",
+          "url": "https://doi.org/10.5281/zenodo.19558452",
+          "role": "model"
+        }
+      ],
+      "artifact_note": "The MIT repository includes inference and evaluation code but does not bundle model checkpoints or benchmark HDF5 files. The exact Stage-2a and Stage-2b checkpoints behind the cited paper results are in the 556.1 MB MIT-licensed Zenodo record linked here. A later 65.7 MB revision archive contains different checkpoints and reference results. This module predicts diffraction symmetry rather than atomic coordinates"
+    },
+    {
+      "id": "pownet",
+      "name": "POWnet",
+      "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-11-06",
+      "year": "2026",
+      "task": "Nanocrystalline PXRD profile sharpening before indexing, intensity extraction, and structure solution",
+      "method": "Temporal convolutional network trained to map broadened simulated profiles to idealized narrow-peak profiles",
+      "reported_result": "Across 33 experimental profiles, the authors report indexing efficiency increasing from 69.7% to 81.8%, mean EXPO combined likelihood probability increasing from 19.5% to 31.0%, and four rather than one case above 80%; downstream structures still require solution and refinement against the original profile",
+      "paper_links": [
+        {
+          "label": "IUCrJ",
+          "url": "https://doi.org/10.1107/S2052252526008444",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "f48r1/pownet",
+          "url": "https://github.com/f48r1/pownet",
+          "role": "code"
+        }
+      ],
+      "artifact_note": "The MIT repository contains training and inference code, 33 experimental examples, a 198.7 MB Git LFS checkpoint, and a multi-part CHNO training archive. The documented profile convention is Cu K-alpha1, 5-80 degrees 2theta at 0.02-degree spacing after background subtraction. The authors trained on eight GPUs. POWnet outputs an idealized profile, not a crystal structure, and the paper cautions that disorder and imperfections must be refined against the measured profile"
     },
     {
       "id": "alphadiffract",
@@ -1444,11 +1509,11 @@
       "name": "QualX",
       "category": "pipeline_module",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-10-23",
+      "verified_at": "2026-11-06",
       "year": "2015/2026",
       "task": "Qualitative phase identification by search-match against PDF-2, COD, or user-built CIF databases",
       "method": "Top-d-spacing indexing and profile search-match in a graphical application with command-line database construction and search interfaces",
-      "reported_result": "The peer-reviewed QUALX/QUALX2.0 papers describe and demonstrate the search-match method; the current QualX 3 v1.0.8 release provides Windows, macOS, and Linux packages but does not publish a new benchmark that would support cross-method performance comparison",
+      "reported_result": "The peer-reviewed QUALX/QUALX2.0 papers describe and demonstrate the search-match method; the current QualX 3 v1.1.0 release provides Windows, macOS, and Linux packages but does not publish a new benchmark that would support cross-method performance comparison",
       "paper_links": [
         {
           "label": "Journal of Applied Crystallography",
@@ -1468,8 +1533,8 @@
           "role": "code"
         },
         {
-          "label": "v1.0.8 release",
-          "url": "https://github.com/ccorrado71/qualx3/releases/tag/v1.0.8",
+          "label": "v1.1.0 release",
+          "url": "https://github.com/ccorrado71/qualx3/releases/tag/v1.1.0",
           "role": "tool"
         },
         {
@@ -1478,7 +1543,7 @@
           "role": "data"
         }
       ],
-      "artifact_note": "The official repository includes source and packaged applications. A reference database is required: open COD-derived databases are available, while PDF-2 is separately licensed. Licensing metadata conflict: the repository LICENSE file and GitHub detector say GPL-3.0, but the README says LGPL-3.0; downstream users should treat the license as unresolved until the maintainer clarifies it"
+      "artifact_note": "The GPL-3.0 repository includes source and packaged applications. A reference database is required: open COD-derived databases are available, while PDF-2 is separately licensed. Version 1.1.0 keeps the background in the displayed and searched pattern while computing the figure of merit from net intensities, so its figure-of-merit values can differ from earlier releases"
     },
     {
       "id": "pxtal",
@@ -1525,6 +1590,34 @@
         }
       ],
       "artifact_note": "GPL-3.0 code is public; the current workflow is Windows-only and requires separate Python 2.7 and 3.11 environments plus AutoFP/FullProf"
+    },
+    {
+      "id": "informedxrd-benchmarks",
+      "name": "InformedXRD benchmark suite",
+      "category": "dataset",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-11-06",
+      "size": "473 RRUFF patterns, including a 325-pattern cleaner subset, plus 98 opXRD patterns",
+      "sim_exp": "Experimental RRUFF evaluation sets + experimental opXRD stress test",
+      "format": "HDF5 benchmark files + NPZ/CSV/JSON stress-test files and manifests",
+      "notes": "CC BY 4.0 fixed evaluation suite for diffraction-symmetry classification using Cu K-alpha laboratory data. RRUFF-473 covers 46 of 99 extinction groups, while its cleaner 325-pattern subset covers 45; opXRD-98 is designated a stress test rather than a leaderboard benchmark. Input-blind oracle-prior baselines reach 12.9%/51.4% Top-1/Top-5 on RRUFF-473, 12.6%/43.7% on RRUFF-325, and 22.45%/66.33% on opXRD-98, exceeding or nearly matching several model results. The 31.6 MB Hugging Face release provides evaluation arrays and metadata but not the synthetic training corpus, raw ICSD structures, or a complete training snapshot. The release license does not replace the original RRUFF and opXRD terms of use",
+      "resource_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2611.01525",
+          "role": "paper"
+        },
+        {
+          "label": "Hugging Face benchmark data",
+          "url": "https://huggingface.co/datasets/informedxrd/informedxrd-benchmarks",
+          "role": "data"
+        },
+        {
+          "label": "scattering/InformedXRD",
+          "url": "https://github.com/scattering/InformedXRD",
+          "role": "code"
+        }
+      ]
     },
     {
       "id": "pxrd-bench",
@@ -2021,6 +2114,37 @@
       ]
     },
     {
+      "id": "informedxrd",
+      "name": "InformedXRD",
+      "category": "utility",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-11-06",
+      "task": "Reproducible benchmarking and physics-informed evaluation of PXRD symmetry classifiers",
+      "notes": "MIT framework that maps 230 space groups to 99 extinction groups, supplies fixed RRUFF benchmark subsets and an opXRD stress test, and evaluates prior-only behavior, label-permutation sensitivity, calibration, and hierarchy-aware error on a condensed translationengleiche-subgroup graph. The paper introduces evaluation infrastructure rather than a new production classifier. Public checkpoints cover the paper's case studies, but the release omits the complete synthetic training corpus and full training snapshot",
+      "resource_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2611.01525",
+          "role": "paper"
+        },
+        {
+          "label": "scattering/InformedXRD",
+          "url": "https://github.com/scattering/InformedXRD",
+          "role": "code"
+        },
+        {
+          "label": "benchmark data",
+          "url": "https://huggingface.co/datasets/informedxrd/informedxrd-benchmarks",
+          "role": "data"
+        },
+        {
+          "label": "case-study checkpoints",
+          "url": "https://huggingface.co/informedxrd/informedxrd-checkpoints",
+          "role": "model"
+        }
+      ]
+    },
+    {
       "id": "pymatgen-xrdcalculator",
       "name": "pymatgen XRDCalculator",
       "category": "utility",
@@ -2161,9 +2285,9 @@
       "name": "XRD Phase Finder",
       "category": "utility",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-10-30",
+      "verified_at": "2026-11-06",
       "task": "Interactive PXRD phase search-match, residual inspection, and project-based analysis",
-      "notes": "MIT desktop application that imports measured patterns and CIFs, searches user libraries and configured crystallographic databases, compares calculated profiles, and tracks unexplained residual peaks. The v1.6.7 release provides current Windows, macOS, and Linux amd64 packages and adds manual peak lists, background-aware detection, reversible angle calibration, and measured-range-limited search/reference display. The tutorial explicitly labels its candidate scores and fitted curves illustrative, and no paper or independent validation benchmark was found",
+      "notes": "MIT desktop application that imports measured patterns and CIFs, searches user libraries and configured crystallographic databases, compares calculated profiles, and tracks unexplained residual peaks. Version 1.7.0 adds reusable SQLite reference libraries, portable library archives, and restoration of saved profiles, peak assignments, and Le Bail results. Windows and macOS packages are current at 1.7.0, while Linux remains at 1.6.9. The release discloses a possible crash on window close after changing phase-legend modes. The tutorial explicitly labels its candidate scores and fitted curves illustrative, and no paper or independent validation benchmark was found",
       "resource_links": [
         {
           "label": "ABKuznetsov/XRD_Analysis_Toolkit",
@@ -2171,8 +2295,8 @@
           "role": "code"
         },
         {
-          "label": "v1.6.7 release",
-          "url": "https://github.com/ABKuznetsov/XRD_Analysis_Toolkit/releases/tag/v1.6.7",
+          "label": "v1.7.0 release",
+          "url": "https://github.com/ABKuznetsov/XRD_Analysis_Toolkit/releases/tag/v1.7.0",
           "role": "tool"
         }
       ]
@@ -2208,9 +2332,9 @@
       "name": "PowderLine",
       "category": "utility",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-09-07",
+      "verified_at": "2026-11-06",
       "task": "Programmatic Rietveld refinement and single-peak fitting",
-      "notes": "Encodes a full refinement as a versioned declarative JSON recipe and returns structured results through GSAS-II, TOPAS v7, or EasyDiffraction; the paper's two-phase worked example reports Rwp = 8.46%. Hosted and repository-local documentation are available",
+      "notes": "BSD-3-Clause package that encodes constant-wavelength X-ray refinements on a 2theta axis as declarative JSON recipes and returns structured results through GSAS-II 5.7.9, TOPAS 6, or EasyDiffraction 0.21.1. Version 0.2.0 replaces the earlier unified recipe with one engine-specific recipe per backend and does not translate recipes between engines; a converter is provided for old GSAS-II recipes. It adds validation, uniform fit statistics, returned output recipes, provenance, and structured failures. TOPAS execution requires Windows and a separate TOPAS license. The paper's two-phase worked example reports Rwp = 8.46% using the earlier interface, so that value is not a validation of the current contract",
       "resource_links": [
         {
           "label": "arXiv",
@@ -2223,8 +2347,39 @@
           "role": "tool"
         },
         {
+          "label": "v0.2.0 tag",
+          "url": "https://github.com/NSLS2/PowderLine/tree/v0.2.0",
+          "role": "tool"
+        },
+        {
           "label": "documentation",
           "url": "https://nsls2.github.io/PowderLine/",
+          "role": "docs"
+        }
+      ]
+    },
+    {
+      "id": "rietx",
+      "name": "rietx",
+      "category": "utility",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-11-06",
+      "task": "Programmatic powder indexing, Le Bail/Pawley extraction, Rietveld refinement, and sequential analysis",
+      "notes": "MIT Python package with multi-phase X-ray and constant-wavelength neutron refinement, staged plans, quantitative phase analysis, joint and sequential refinement, indexing, structured reports, and interchange with major refinement formats. Version 1.11.0 validates index candidates by Pawley fitting and screens predicted-but-absent lines. The repository publishes a detailed real-data acceptance matrix with measured bounds and explicit known gaps; it is author validation rather than an independent benchmark or peer-reviewed software paper",
+      "resource_links": [
+        {
+          "label": "yue-here/rietx",
+          "url": "https://github.com/yue-here/rietx",
+          "role": "code"
+        },
+        {
+          "label": "v1.11.0 release",
+          "url": "https://github.com/yue-here/rietx/releases/tag/v1.11.0",
+          "role": "tool"
+        },
+        {
+          "label": "validation matrix",
+          "url": "https://github.com/yue-here/rietx/blob/v1.11.0/docs/VALIDATION.md",
           "role": "docs"
         }
       ]
