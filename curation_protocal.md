@@ -469,6 +469,16 @@ An independent Claude Opus 5.5 review received the diff and primary-source links
 
 Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog.py check` (82 resources); `python3 -m unittest discover -s tests -v` (11 passed); and `git diff --check`.
 
+## November 6 2026 inference triage
+
+28. **Post-catalog wrapper feasibility and duplicate audit - Nov 6 2026**
+    After opening draft catalog PR #14, searched all open and closed issues, all pull requests, and repository-local wrappers by catalog ID, model name/aliases, paper identifier, Zenodo record, and upstream repository. The only Bragglite matches were catalog PRs #11, #13, and #14; no existing wrapper issue or implementation was found.
+
+- **Bragglite** now meets the initial feasibility requirements because public source, evaluation entry points, licenses, and official single-/two-phase weights are available. Opened [issue #15](https://github.com/xyin-anl/awesome_pxrd2xtal_generation/issues/15), **Wrap Bragglite for inference**, labelled `needs-inference`. The issue scopes the first implementation to single-phase known-composition inference, pins upstream commit `2a791ca33d2adc10ec1f247817cddd8adb9f6fc1`, records the 1.58 GB archive and deposited checksum, distinguishes code/data/model licenses, specifies the required profile/composition inputs, and marks inference hardware unknown. Archive contents, checkpoint/configuration mapping, runtime memory, and any inference-time cache dependency must be established during implementation.
+- **POWnet** transforms a broadened profile into an idealized profile and relies on downstream EXPO for indexing and structure solution. Its authors already provide inference code and a checkpoint, but it does not itself emit a structure, so no wrapper issue was opened. **Attention Is Not All You Need for Diffraction** predicts extinction-group probabilities rather than atomic coordinates.
+- **InformedXRD** is evaluation infrastructure and a dataset; **rietx**, **QualX**, **XRD Phase Finder**, and **PowderLine** are utilities or refinement/search tools. None qualifies for a structure-generation wrapper issue.
+- Reconsidered the previously blocked core solvers. **RealPXRD-Solver** still has no checkpoint; **AGAPI-XRD** has no licensed standalone model; **CrystalNet** has no project license or released weights; exact searches still found no official code/weights for **XRDiff** or **PXtal**; and the **PXRDGen** Code Ocean artifact could not be independently audited. No existing issue needed reopening for those unchanged blockers.
+
 ## May 9 2026 detailed record
 
 ### Search strategy for the May 9 2026 pass
