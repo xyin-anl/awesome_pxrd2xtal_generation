@@ -1,7 +1,7 @@
 {
   "$schema": "./resources.schema.json",
   "schema_version": 2,
-  "last_updated": "2026-11-06",
+  "last_updated": "2026-11-07",
   "website_url": "https://nodeology.ai/resources/pxrd2xtal",
   "inference_order": [
     "uni3dar",
@@ -11,7 +11,8 @@
     "diffractgpt",
     "crystallm-pi",
     "xrdsol",
-    "ab-pxrd-solver"
+    "ab-pxrd-solver",
+    "bragglite"
   ],
   "shared_urls": [
     "https://academic.oup.com/nsr/article/12/12/nwaf421/8268901",
@@ -812,7 +813,7 @@
       "name": "Bragglite",
       "category": "core_solver",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-11-06",
+      "verified_at": "2026-11-07",
       "year": "2026",
       "inputs_target": "PXRD + exact stoichiometry, or element set + total atom count → crystal structure candidates",
       "method": "Crystalite-derived diffusion Transformer retaining its EDM formulation and sampler, with peak position, intensity, width, and prominence supplied by in-context conditioning",
@@ -836,7 +837,52 @@
           "role": "model"
         }
       ],
-      "artifact_note": "The repository provides model code, locked environments, training/evaluation configurations, and a reproducible dataset builder. The authors released the single- and two-phase checkpoints on 2026-11-02 as a 1.58 GB Zenodo archive under CC BY 4.0. The Zenodo record has no repository DOI of its own. The archive was not downloaded in this audit, so its internal filenames and compatibility with the documented configurations remain unverified. Original Bragglite code is MIT, while retained FlowMM-derived helpers are CC BY-NC 4.0"
+      "artifact_note": "The repository provides model code, locked environments, training/evaluation configurations, and a reproducible dataset builder. The authors released the single- and two-phase checkpoints on 2026-11-02 as a 1.58 GB Zenodo archive under CC BY 4.0. The Zenodo record has no repository DOI of its own. Downloaded on 2026-11-07 for the inference wrapper, the archive holds four single-phase checkpoints (PXRD-Bench and MP-20 training, known composition and element set) with their evaluation settings, plus the two-phase Bragglite and XDecomposer checkpoints. Original Bragglite code is MIT, while retained FlowMM-derived helpers are CC BY-NC 4.0",
+      "inference": {
+        "local": [
+          {
+            "label": "run.py",
+            "url": "inference/bragglite/run.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "cloud": [],
+        "support": [
+          {
+            "label": "setup.sh",
+            "url": "inference/bragglite/setup.sh",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "manifest.yaml",
+            "url": "inference/bragglite/manifest.yaml",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "README.md",
+            "url": "inference/bragglite/README.md",
+            "role": "inference",
+            "code_label": true
+          },
+          {
+            "label": "reproduce_upstream.py",
+            "url": "inference/bragglite/reproduce_upstream.py",
+            "role": "inference",
+            "code_label": true
+          }
+        ],
+        "environment": [
+          {
+            "label": "environment.yml",
+            "url": "inference/bragglite/environment.yml",
+            "role": "inference",
+            "code_label": true
+          }
+        ]
+      }
     },
     {
       "id": "attention-is-not-all-you-need-for-diffraction",
