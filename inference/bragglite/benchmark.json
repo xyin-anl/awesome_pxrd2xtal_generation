@@ -214,7 +214,7 @@
               "rms": 0.1235
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "br1340Isup2",
@@ -388,7 +388,7 @@
               "rms": 0.0488
             }
           ],
-          "runtime_s": 5.0
+          "runtime_s": 2.9
         },
         {
           "id": "gw5052Mg2Si_100K_LTsup2",
@@ -562,7 +562,7 @@
               "rms": 0.0028
             }
           ],
-          "runtime_s": 5.3
+          "runtime_s": 2.9
         },
         {
           "id": "gw5052Mg2Sn_100K_LTsup23",
@@ -736,7 +736,7 @@
               "rms": 0.0022
             }
           ],
-          "runtime_s": 5.3
+          "runtime_s": 2.8
         },
         {
           "id": "iz1026Isup2",
@@ -910,7 +910,7 @@
               "rms": 0.0476
             }
           ],
-          "runtime_s": 5.2
+          "runtime_s": 3.0
         },
         {
           "id": "ks5409BTsup2",
@@ -1084,7 +1084,7 @@
               "rms": 0.0288
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "sq1033Isup2",
@@ -1258,7 +1258,7 @@
               "rms": 0.0335
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 3.0
         },
         {
           "id": "sq3214Isup2",
@@ -1432,7 +1432,7 @@
               "rms": 0.4263
             }
           ],
-          "runtime_s": 5.2
+          "runtime_s": 2.9
         },
         {
           "id": "wh5012phaseIIIsup3",
@@ -1606,7 +1606,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 3.0
         },
         {
           "id": "wh5012phaseIIsup2",
@@ -1780,7 +1780,7 @@
               "rms": 0.0727
             }
           ],
-          "runtime_s": 4.8
+          "runtime_s": 2.9
         },
         {
           "id": "wm2446Isup2",
@@ -1954,7 +1954,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "wn6225Isup2",
@@ -2128,7 +2128,7 @@
               "rms": 0.038
             }
           ],
-          "runtime_s": 5.3
+          "runtime_s": 2.9
         }
       ]
     },
@@ -2327,7 +2327,7 @@
               "rms": 0.132
             }
           ],
-          "runtime_s": 5.1
+          "runtime_s": 2.9
         },
         {
           "id": "br1340Isup2",
@@ -2501,7 +2501,7 @@
               "rms": 0.3462
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "gw5052Mg2Si_100K_LTsup2",
@@ -2675,7 +2675,7 @@
               "rms": 0.0015
             }
           ],
-          "runtime_s": 5.3
+          "runtime_s": 2.9
         },
         {
           "id": "gw5052Mg2Sn_100K_LTsup23",
@@ -2849,7 +2849,7 @@
               "rms": 0.0016
             }
           ],
-          "runtime_s": 5.3
+          "runtime_s": 2.8
         },
         {
           "id": "iz1026Isup2",
@@ -3023,7 +3023,7 @@
               "rms": 0.0313
             }
           ],
-          "runtime_s": 5.3
+          "runtime_s": 2.9
         },
         {
           "id": "ks5409BTsup2",
@@ -3197,7 +3197,7 @@
               "rms": 0.0283
             }
           ],
-          "runtime_s": 5.2
+          "runtime_s": 2.9
         },
         {
           "id": "sq1033Isup2",
@@ -3371,7 +3371,7 @@
               "rms": 0.0369
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "sq3214Isup2",
@@ -3545,7 +3545,7 @@
               "rms": 0.4619
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "wh5012phaseIIIsup3",
@@ -3719,7 +3719,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.2
+          "runtime_s": 3.0
         },
         {
           "id": "wh5012phaseIIsup2",
@@ -3893,7 +3893,7 @@
               "rms": 0.086
             }
           ],
-          "runtime_s": 5.2
+          "runtime_s": 2.9
         },
         {
           "id": "wm2446Isup2",
@@ -4067,7 +4067,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "wn6225Isup2",
@@ -4241,7 +4241,7 @@
               "rms": 0.0478
             }
           ],
-          "runtime_s": 4.9
+          "runtime_s": 2.8
         }
       ]
     },
@@ -4440,7 +4440,7 @@
               "rms": 0.1235
             }
           ],
-          "runtime_s": 5.2
+          "runtime_s": 2.8
         },
         {
           "id": "br1340Isup2",
@@ -4614,7 +4614,7 @@
               "rms": 0.0491
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "gw5052Mg2Si_100K_LTsup2",
@@ -4788,7 +4788,7 @@
               "rms": 0.0028
             }
           ],
-          "runtime_s": 5.1
+          "runtime_s": 2.9
         },
         {
           "id": "gw5052Mg2Sn_100K_LTsup23",
@@ -4962,7 +4962,7 @@
               "rms": 0.0022
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "iz1026Isup2",
@@ -5136,7 +5136,7 @@
               "rms": 0.0332
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "ks5409BTsup2",
@@ -5310,7 +5310,7 @@
               "rms": 0.0288
             }
           ],
-          "runtime_s": 5.3
+          "runtime_s": 3.0
         },
         {
           "id": "sq1033Isup2",
@@ -5484,7 +5484,7 @@
               "rms": 0.033
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "sq3214Isup2",
@@ -5658,7 +5658,7 @@
               "rms": 0.4271
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "wh5012phaseIIIsup3",
@@ -5832,7 +5832,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.3
+          "runtime_s": 3.0
         },
         {
           "id": "wh5012phaseIIsup2",
@@ -6006,7 +6006,7 @@
               "rms": 0.0727
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "wm2446Isup2",
@@ -6180,7 +6180,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.5
+          "runtime_s": 3.0
         },
         {
           "id": "wn6225Isup2",
@@ -6354,7 +6354,7 @@
               "rms": 0.038
             }
           ],
-          "runtime_s": 5.3
+          "runtime_s": 2.9
         }
       ]
     },
@@ -6709,7 +6709,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 7.5
+          "runtime_s": 3.6
         },
         {
           "id": "br1340Isup2",
@@ -7043,7 +7043,7 @@
               "rms": 0.3146
             }
           ],
-          "runtime_s": 7.5
+          "runtime_s": 3.6
         },
         {
           "id": "gw5052Mg2Si_100K_LTsup2",
@@ -7537,7 +7537,7 @@
               "rms": 0.0031
             }
           ],
-          "runtime_s": 9.3
+          "runtime_s": 4.6
         },
         {
           "id": "gw5052Mg2Sn_100K_LTsup23",
@@ -8031,7 +8031,7 @@
               "rms": 0.0045
             }
           ],
-          "runtime_s": 9.4
+          "runtime_s": 4.6
         },
         {
           "id": "iz1026Isup2",
@@ -8365,7 +8365,7 @@
               "rms": 0.0298
             }
           ],
-          "runtime_s": 7.2
+          "runtime_s": 3.6
         },
         {
           "id": "ks5409BTsup2",
@@ -8539,7 +8539,7 @@
               "rms": 0.0288
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "sq1033Isup2",
@@ -9033,7 +9033,7 @@
               "rms": 0.03
             }
           ],
-          "runtime_s": 9.5
+          "runtime_s": 4.6
         },
         {
           "id": "sq3214Isup2",
@@ -9527,7 +9527,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 9.7
+          "runtime_s": 4.6
         },
         {
           "id": "wh5012phaseIIIsup3",
@@ -9861,7 +9861,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 7.5
+          "runtime_s": 3.6
         },
         {
           "id": "wh5012phaseIIsup2",
@@ -10355,7 +10355,7 @@
               "rms": 0.0762
             }
           ],
-          "runtime_s": 9.6
+          "runtime_s": 4.6
         },
         {
           "id": "wm2446Isup2",
@@ -10689,7 +10689,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 7.4
+          "runtime_s": 3.6
         },
         {
           "id": "wn6225Isup2",
@@ -10863,7 +10863,7 @@
               "rms": 0.038
             }
           ],
-          "runtime_s": 5.3
+          "runtime_s": 2.9
         }
       ]
     },
@@ -11062,7 +11062,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "br1340Isup2",
@@ -11236,7 +11236,7 @@
               "rms": 0.0408
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 3.0
         },
         {
           "id": "gw5052Mg2Si_100K_LTsup2",
@@ -11410,7 +11410,7 @@
               "rms": 0.0018
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 3.0
         },
         {
           "id": "gw5052Mg2Sn_100K_LTsup23",
@@ -11584,7 +11584,7 @@
               "rms": 0.0147
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.8
         },
         {
           "id": "iz1026Isup2",
@@ -11758,7 +11758,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 3.0
         },
         {
           "id": "ks5409BTsup2",
@@ -11932,7 +11932,7 @@
               "rms": 0.0303
             }
           ],
-          "runtime_s": 5.5
+          "runtime_s": 3.0
         },
         {
           "id": "sq1033Isup2",
@@ -12106,7 +12106,7 @@
               "rms": 0.0351
             }
           ],
-          "runtime_s": 5.3
+          "runtime_s": 3.0
         },
         {
           "id": "sq3214Isup2",
@@ -12280,7 +12280,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "wh5012phaseIIIsup3",
@@ -12454,7 +12454,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.5
+          "runtime_s": 3.0
         },
         {
           "id": "wh5012phaseIIsup2",
@@ -12628,7 +12628,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.0
+          "runtime_s": 3.0
         },
         {
           "id": "wm2446Isup2",
@@ -12802,7 +12802,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "wn6225Isup2",
@@ -12976,7 +12976,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         }
       ]
     },
@@ -13175,7 +13175,7 @@
               "rms": 0.0469
             }
           ],
-          "runtime_s": 3.8
+          "runtime_s": 2.9
         },
         {
           "id": "br1340Isup2",
@@ -13349,7 +13349,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 4.2
+          "runtime_s": 3.0
         },
         {
           "id": "gw5052Mg2Si_100K_LTsup2",
@@ -13523,7 +13523,7 @@
               "rms": 0.001
             }
           ],
-          "runtime_s": 3.8
+          "runtime_s": 2.9
         },
         {
           "id": "gw5052Mg2Sn_100K_LTsup23",
@@ -13697,7 +13697,7 @@
               "rms": 0.0026
             }
           ],
-          "runtime_s": 4.1
+          "runtime_s": 2.9
         },
         {
           "id": "iz1026Isup2",
@@ -13871,7 +13871,7 @@
               "rms": 0.0233
             }
           ],
-          "runtime_s": 4.2
+          "runtime_s": 2.9
         },
         {
           "id": "ks5409BTsup2",
@@ -14045,7 +14045,7 @@
               "rms": 0.0283
             }
           ],
-          "runtime_s": 4.0
+          "runtime_s": 2.9
         },
         {
           "id": "sq1033Isup2",
@@ -14219,7 +14219,7 @@
               "rms": 0.029
             }
           ],
-          "runtime_s": 4.2
+          "runtime_s": 2.9
         },
         {
           "id": "sq3214Isup2",
@@ -14393,7 +14393,7 @@
               "rms": 0.0284
             }
           ],
-          "runtime_s": 4.2
+          "runtime_s": 3.1
         },
         {
           "id": "wh5012phaseIIIsup3",
@@ -14567,7 +14567,7 @@
               "rms": 0.0074
             }
           ],
-          "runtime_s": 4.2
+          "runtime_s": 3.0
         },
         {
           "id": "wh5012phaseIIsup2",
@@ -14741,7 +14741,7 @@
               "rms": 0.0649
             }
           ],
-          "runtime_s": 3.7
+          "runtime_s": 3.0
         },
         {
           "id": "wm2446Isup2",
@@ -14915,7 +14915,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 4.3
+          "runtime_s": 3.0
         },
         {
           "id": "wn6225Isup2",
@@ -15089,7 +15089,7 @@
               "rms": 0.0118
             }
           ],
-          "runtime_s": 3.7
+          "runtime_s": 2.9
         }
       ]
     },
@@ -15290,7 +15290,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 4.2
+          "runtime_s": 2.9
         },
         {
           "id": "br1340Isup2",
@@ -15464,7 +15464,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 4.2
+          "runtime_s": 3.0
         },
         {
           "id": "gw5052Mg2Si_100K_LTsup2",
@@ -15638,7 +15638,7 @@
               "rms": 0.0079
             }
           ],
-          "runtime_s": 4.1
+          "runtime_s": 2.9
         },
         {
           "id": "gw5052Mg2Sn_100K_LTsup23",
@@ -15812,7 +15812,7 @@
               "rms": 0.007
             }
           ],
-          "runtime_s": 4.2
+          "runtime_s": 3.0
         },
         {
           "id": "iz1026Isup2",
@@ -15986,7 +15986,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 4.3
+          "runtime_s": 2.9
         },
         {
           "id": "ks5409BTsup2",
@@ -16160,7 +16160,7 @@
               "rms": 0.0292
             }
           ],
-          "runtime_s": 4.2
+          "runtime_s": 3.0
         },
         {
           "id": "sq1033Isup2",
@@ -16334,7 +16334,7 @@
               "rms": 0.0382
             }
           ],
-          "runtime_s": 3.9
+          "runtime_s": 3.0
         },
         {
           "id": "sq3214Isup2",
@@ -16508,7 +16508,7 @@
               "rms": 0.0294
             }
           ],
-          "runtime_s": 4.2
+          "runtime_s": 3.0
         },
         {
           "id": "wh5012phaseIIIsup3",
@@ -16682,7 +16682,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 4.1
+          "runtime_s": 3.0
         },
         {
           "id": "wh5012phaseIIsup2",
@@ -16856,7 +16856,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 4.3
+          "runtime_s": 3.0
         },
         {
           "id": "wm2446Isup2",
@@ -17030,7 +17030,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 4.2
+          "runtime_s": 3.0
         },
         {
           "id": "wn6225Isup2",
@@ -17204,7 +17204,7 @@
               "rms": 0.0247
             }
           ],
-          "runtime_s": 4.1
+          "runtime_s": 3.0
         }
       ]
     },
@@ -17400,7 +17400,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "br1340Isup2",
@@ -17574,7 +17574,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.1
+          "runtime_s": 2.9
         },
         {
           "id": "gw5052Mg2Si_100K_LTsup2",
@@ -17748,7 +17748,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.3
+          "runtime_s": 3.0
         },
         {
           "id": "gw5052Mg2Sn_100K_LTsup23",
@@ -17922,7 +17922,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 3.0
         },
         {
           "id": "iz1026Isup2",
@@ -18096,7 +18096,7 @@
               "rms": 0.1753
             }
           ],
-          "runtime_s": 5.2
+          "runtime_s": 3.0
         },
         {
           "id": "ks5409BTsup2",
@@ -18270,7 +18270,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.3
+          "runtime_s": 2.9
         },
         {
           "id": "sq1033Isup2",
@@ -18444,7 +18444,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "sq3214Isup2",
@@ -18618,7 +18618,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.2
+          "runtime_s": 2.9
         },
         {
           "id": "wh5012phaseIIIsup3",
@@ -18792,7 +18792,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         },
         {
           "id": "wh5012phaseIIsup2",
@@ -18966,7 +18966,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.0
+          "runtime_s": 2.9
         },
         {
           "id": "wm2446Isup2",
@@ -19140,7 +19140,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.1
+          "runtime_s": 2.9
         },
         {
           "id": "wn6225Isup2",
@@ -19314,7 +19314,7 @@
               "rms": null
             }
           ],
-          "runtime_s": 5.4
+          "runtime_s": 2.9
         }
       ]
     }

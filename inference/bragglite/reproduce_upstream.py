@@ -1,18 +1,21 @@
-# Reproduces the paper's simulated MP-20 test evaluation (Table 1: MP-20-trained Bragglite,
-# Top-1/Top-20 match rates with the strict matcher) on a random subset of the public MP-20 test
-# split, with upstream's own code for every step: Bragg simulation (src/pxrd/bragg_simulator.py)
-# and peaks_128x4 features (src/pxrd/peaks.py:xrdiff_feature_vector) at 1.54184 A over 5-90 deg,
-# the evaluation sampler (src/pxrd/eval_task_runtime.py:_prediction_rows, EMA weights, K=20,
-# seed 777, stateless per-candidate seeds), and the scorer (src/pxrd/eval_metrics.py:
-# score_prediction_row, ltol/stol/angle_tol 0.2/0.3/5, matcher only). Upstream's frozen MP-20
-# token and feature caches are not public, so references are the CDVAE CIFs reduced to primitive
-# Niggli cells and features are recomputed from them. Targets follow upstream's order
-# (torch.randperm with the evaluation seed); results are appended per target, so an interrupted
-# run continues with --resume.
+# Approximates the paper's simulated MP-20 test evaluation (Table 1: MP-20-trained Bragglite,
+# Top-1/Top-20 match rates with the strict matcher) on the public MP-20 test split, with
+# upstream's own code for every step: Bragg simulation (src/pxrd/bragg_simulator.py) and
+# peaks_128x4 features (src/pxrd/peaks.py:xrdiff_feature_vector) at 1.54184 A over 5-90 deg, the
+# evaluation sampler (src/pxrd/eval_task_runtime.py:_prediction_rows, EMA weights, K=20, seed 777,
+# stateless per-candidate seeds), and the scorer (src/pxrd/eval_metrics.py:score_prediction_row,
+# ltol/stol/angle_tol 0.2/0.3/5, matcher only). Upstream's frozen MP-20 token, structure, and
+# feature caches are not public, so this is not upstream's exact data path: references are the
+# CDVAE CIFs reduced to primitive Niggli cells here, and features are recomputed from them.
+# Targets follow upstream's order (torch.randperm with the evaluation seed) and get upstream's
+# per-candidate seeds for their row index; results are appended per target, so an interrupted run
+# continues with --resume (refused if the configuration changed).
 #
 # With --via-wrapper the same targets instead go through run.py as experimental patterns: each
 # reference is rendered as a dense pseudo-Voigt profile (upstream's pseudo_voigt_profile, 0.02 deg
 # step) and written as a two-column file, which tests the wrapper's experimental path end to end.
+# run.py seeds each pattern as a single target, so these samples are independent of a
+# simulated-feature run on the same targets (--compare-with records that run's counts).
 #
 # Usage (bragglite environment):
 #   python reproduce_upstream.py --mp20-csv test.csv --training-set mp20 --mode composition \
@@ -64,7 +67,10 @@ def canonical(cif: str):
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
         s = Structure.from_str(cif, fmt="cif")
-    return s.get_primitive_structure().get_reduced_structure()
+    # Upstream's primitive_niggli_v1 cache builder is not public; 0.1 A is the primitive-cell tolerance
+    # upstream's own opXRD loader uses (experimental_pxrd.py). The default 0.25 A merges near-translations
+    # and changed the atom count of 27 of the first 2000 targets.
+    return s.get_primitive_structure(tolerance=0.1).get_reduced_structure()
 
 
 def make_item(material_id: str, cif: str, nmax: int):
@@ -93,7 +99,8 @@ def score_row(row: dict) -> dict:
         scored = score_prediction_row(row, topk=(1, 20), matcher_profile="strict", match_gate="matcher_only",
                                       pdd_k=100, include_formula=False, match_only=True)
     return {"sample_id": row["sample_id"], "match@1": bool(scored["topk"]["1"]["matched"]),
-            "match@20": bool(scored["topk"]["20"]["matched"]), "n_candidates": len(row["candidates"])}
+            "match@20": bool(scored["topk"]["20"]["matched"]), "n_candidates": len(row["candidates"]),
+            "failed": bool(row.get("failed", False))}
 
 
 def main() -> None:
@@ -112,6 +119,7 @@ def main() -> None:
     p.add_argument("--upstream", default=os.environ.get("BRAGGLITE_UPSTREAM", os.path.join(HERE, ".upstream")))
     p.add_argument("--out", required=True)
     p.add_argument("--resume", action="store_true")
+    p.add_argument("--compare-with", help="Another run's output directory; its rates on the same targets go into the summary")
     args = p.parse_args()
     warnings.filterwarnings("ignore")
     sys.path.insert(0, os.path.abspath(args.upstream))
@@ -134,6 +142,15 @@ def main() -> None:
         records = list(csv.DictReader(fin))
     order = torch.randperm(len(records), generator=torch.Generator().manual_seed(args.seed)).tolist()
     targets = order[: args.num_targets]
+    config = {k: getattr(args, k) for k in ("training_set", "mode", "n_samples", "seed", "via_wrapper")}
+    config["data_sha256"] = MP20_TEST_SHA256
+    config_path = os.path.join(args.out, "config.json")
+    if args.resume and os.path.exists(rows_path):
+        with open(config_path, encoding="utf-8") as fin:
+            if json.load(fin) != config:
+                raise SystemExit(f"{args.out} holds rows from a different configuration; use a new --out")
+    with open(config_path, "w", encoding="utf-8") as fout:
+        json.dump(config, fout, indent=2)
     done = {}
     if args.resume and os.path.exists(rows_path):
         with open(rows_path, encoding="utf-8") as fin:
@@ -171,9 +188,11 @@ def main() -> None:
     for b in range(0, len(todo), args.block):
         block = todo[b: b + args.block]
         if not args.via_wrapper:
-            items = [make_item(records[i]["material_id"], records[i]["cif"], nmax)[0] for i in block]
+            # Keyed by the row index in the test split, so each target gets upstream's per-candidate
+            # seeds stable_seed(domain, task, seed, dataset_index, rank) for its own index.
+            items = {i: make_item(records[i]["material_id"], records[i]["cif"], nmax)[0] for i in block}
             rows = list(_prediction_rows(task=task, args=sample_args, model=model, type_encoding=type_encoding,
-                                         dataset=items, indices=list(range(len(items))), model_args=model_args,
+                                         dataset=items, indices=list(block), model_args=model_args,
                                          sampler=sampler, device=device, metadata={}))
         else:
             from src.pxrd.eval_metrics import structure_to_record
@@ -196,14 +215,15 @@ def main() -> None:
                            "--upstream", args.upstream]
                     proc = subprocess.run(cmd, capture_output=True, text=True)
                     cands = []
-                    if proc.returncode == 0:
+                    failed = proc.returncode != 0
+                    if not failed:
                         res = json.load(open(os.path.join(out, "results.json"), encoding="utf-8"))
                         for f in res["candidates"]:
                             cands.append(structure_to_record(Structure.from_file(os.path.join(out, f))))
                     else:
                         print(proc.stderr[-500:], flush=True)
                 rows.append({"sample_id": records[i]["material_id"], "reference": structure_to_record(s),
-                             "candidates": cands})
+                             "candidates": cands, "failed": failed})
         pending += [pool.submit(score_row, row) for row in rows]
         finished = [f for f in pending if f.done()]
         pending = [f for f in pending if not f.done()]
@@ -224,12 +244,26 @@ def main() -> None:
     n = len(ids)
     top1 = sum(scored[i]["match@1"] for i in ids) / n
     top20 = sum(scored[i]["match@20"] for i in ids) / n
+    compare = None
+    if args.compare_with:
+        with open(os.path.join(args.compare_with, "scored.jsonl"), encoding="utf-8") as fin:
+            other = {r["sample_id"]: r for r in map(json.loads, fin)}
+        with open(os.path.join(args.compare_with, "config.json"), encoding="utf-8") as fin:
+            other_config = json.load(fin)
+        shared = [i for i in ids if i in other]
+        compare = {"config": other_config, "targets": len(shared),
+                   "matched@1": sum(other[i]["match@1"] for i in shared),
+                   "matched@20": sum(other[i]["match@20"] for i in shared),
+                   "this_run_matched@1": sum(scored[i]["match@1"] for i in shared),
+                   "this_run_matched@20": sum(scored[i]["match@20"] for i in shared)}
     summary = {
         "checkpoint": os.path.basename(ckpt),
         "mode": args.mode,
         "path": "run.py on rendered profiles" if args.via_wrapper else "upstream simulated peaks_128x4",
         "data": {"url": MP20_TEST_URL, "sha256": MP20_TEST_SHA256, "rows": len(records)},
         "targets": n,
+        "failed_runs": sum(scored[i].get("failed", False) for i in ids),
+        "candidates_per_target": sorted({scored[i]["n_candidates"] for i in ids}),
         "seed": args.seed,
         "n_samples": args.n_samples,
         "match_rate@1": round(100 * top1, 2),
@@ -238,6 +272,7 @@ def main() -> None:
         "binomial_se@20": round(100 * (top20 * (1 - top20) / n) ** 0.5, 2),
         "paper_table1": PAPER_TABLE1.get((args.training_set, args.mode)),
         "runtime_min": round((time.time() - start) / 60, 1),
+        "same_targets_other_run": compare,
     }
     with open(os.path.join(args.out, "summary.json"), "w", encoding="utf-8") as fout:
         json.dump(summary, fout, indent=2)

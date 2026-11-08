@@ -63,7 +63,9 @@ def source_wavelength(declared: float, mode: str) -> tuple[float, str]:
     a K-alpha1/K-alpha2 doublet sit at K-alpha1 even when the file declares the averaged Cu K-alpha
     wavelength (inference/AGENTS.md, lessons), so by default Cu data are mapped from K-alpha1.
     """
-    is_cu = abs(declared - CU_KA) < 0.003 or abs(declared - CU_KA1) < 0.003
+    # Narrow windows: 1.5404-1.5407 or 1.5410-1.5426 A (pdCIF values such as 1.54056, 1.5406,
+    # 1.5418), so a declared Cu K-alpha2 (1.54439 A) or another line is used as given.
+    is_cu = abs(declared - CU_KA1) < 0.00015 or abs(declared - CU_KA) < 0.0008
     if mode == "ka1" and is_cu:
         return CU_KA1, "Cu data: peak maxima treated as Cu K-alpha1 (1.54056 A)"
     return declared, "as declared"
@@ -75,8 +77,12 @@ def hypotheses_from_args(args, nmax: int) -> dict[str, list[str]]:
     from pymatgen.core import Composition
 
     if args.n_atoms is not None:
-        if args.elements:
-            symbols = [s.strip() for s in args.elements.split(",") if s.strip()]
+        if args.n_atoms > nmax:
+            raise SystemExit(f"--n-atoms {args.n_atoms} exceeds the checkpoint's {nmax}-atom limit")
+        if args.mode == "element-set":
+            # Only the element set and N reach the model, so N need not fit the composition.
+            symbols = ([s.strip() for s in args.elements.split(",") if s.strip()] if args.elements
+                       else [el.symbol for el in Composition(args.composition).elements])
             if len(symbols) > args.n_atoms:
                 raise SystemExit("--n-atoms must be at least the number of elements")
             # Each element appears at least once; the split between them is left to the model.
@@ -170,6 +176,7 @@ def main() -> None:
     lam_src, lam_note = source_wavelength(pattern.wavelength, args.cu_positions)
 
     import torch
+    from pymatgen.core import Element
     from pymatgen.io.cif import CifWriter
 
     from src.data.experimental_pxrd import _canonicalize_wavelength
@@ -205,6 +212,10 @@ def main() -> None:
     if args.mode == "element-set" and not model_args.get("element_set_cond"):
         raise SystemExit(f"{ckpt_path} is not an element-set checkpoint")
     hypotheses = hypotheses_from_args(args, nmax)
+    # Upstream's type vocabulary stops at Pu (VZ = 94); its element-set mask clamps larger Z to Pu.
+    beyond = sorted({s for v in hypotheses.values() for s in v if Element(s).Z > VZ})
+    if beyond:
+        raise SystemExit(f"Elements beyond Z={VZ} are outside the model's vocabulary: {', '.join(beyond)}")
 
     # Upstream's experimental loader assumes the CSV is already at the checkpoint wavelength
     # (csv_records passes target_wavelength), so convert through d-spacing first with upstream's
@@ -240,8 +251,6 @@ def main() -> None:
 
     # One token item per hypothesis: the pattern features plus the atom types (only their set and
     # count in element-set mode). F1/Y1 are placeholders that only feed upstream's reference record.
-    from pymatgen.core import Element
-
     items = []
     for label, symbols in hypotheses.items():
         a0 = torch.zeros(nmax, dtype=torch.long)

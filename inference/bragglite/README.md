@@ -34,10 +34,10 @@ Outputs: `results/candidates/candidate_<hypothesis>_<k>.cif`, `results/results.j
 | `--mode composition` (default) | Exact primitive-cell multiplicities; atom types are fixed and only coordinates and lattice are sampled |
 | `--mode element-set` | Only the element set and the atom count reach the model; it samples the multiplicities |
 | `--composition`, `--z`, `--spacegroup` | The atom list is `composition x Z_primitive`; `--spacegroup` only converts a conventional Z to the primitive cell, otherwise every compatible centering is tried and each hypothesis gets its own `--n-samples` |
-| `--n-atoms`, `--elements` | Primitive-cell atom count instead of `--z`; `--elements` (element-set mode) needs no composition |
+| `--n-atoms`, `--elements` | Primitive-cell atom count instead of `--z` (in element-set mode it need not fit the composition's stoichiometry); `--elements` (element-set mode) needs no composition |
 | `--training-set` | `pxrd_bench` (default, at most 52 atoms) or `mp20` (at most 20 atoms) checkpoints |
 | `--n-samples`, `--seed` | Candidates per hypothesis (upstream K = 20) and the evaluation seed (777) |
-| `--cu-positions` | `ka1` (default): Cu peak maxima are taken as Cu Kα1; `declared`: use the declared wavelength |
+| `--cu-positions` | `ka1` (default): Cu data (declared 1.5404-1.5407 or 1.5410-1.5426 Å) are mapped from Cu Kα1; `declared`: use the declared wavelength |
 | `--no-background-subtraction` | Skip upstream's order-5 polynomial background, for profiles that are already background-free |
 | `--device`, `--fp32` | `cuda` (default, bfloat16 autocast as upstream) or `cpu` (float32, slow) |
 
@@ -91,7 +91,9 @@ for measured opXRD profiles (`src/data/experimental_pxrd.py`, called through
    candidates, which upstream's `record_to_structure` turns into structures.
 
 Nothing in upstream is patched. The upstream dataset caches (PXRD-Bench, MP-20, RRUFF, opXRD) are
-not needed at inference time.
+not needed at inference time. Sampling runs uncompiled, as upstream's README recommends for
+reproducibility (`runtime.compile=false`); the shipped element-set settings files enable
+`torch.compile`, which changes kernels but not the model, and needs a compiler toolchain.
 
 ## Checkpoints
 
@@ -123,7 +125,26 @@ scorer; upstream's frozen MP-20 token and feature caches are not public, so feat
 recomputed from the CDVAE CIFs (primitive Niggli cells). Targets are taken in upstream's order
 (`torch.randperm`, seed 777), 20 candidates each. Summaries: [`reproduce_upstream.json`](reproduce_upstream.json).
 
-TBD_REPRO
+| Checkpoint and input | Path | Targets | Top-1 (%) | Top-20 (%) | Paper, full test (%) |
+|----------------------|------|---------|-----------|------------|----------------------|
+| MP-20, known composition | upstream simulated features | 2,000 | 74.05 ± 0.98 | 83.85 ± 0.82 | 70.85 / 82.59 |
+| MP-20, element set + N | upstream simulated features | 2,000 | 50.95 ± 1.12 | 72.30 ± 1.00 | 47.48 / 71.51 |
+| MP-20, known composition | `run.py` on rendered profiles | 100 | 67 | 81 | same targets, simulated features: 68 / 80 |
+| MP-20, element set + N | `run.py` on rendered profiles | 100 | 54 | 74 | same targets, simulated features: 54 / 74 |
+| PXRD-Bench, known composition | upstream simulated features | 500 | 69.6 ± 2.1 | 91.2 ± 1.3 | not reported (MP-20 test structures may be in PXRD-Bench training) |
+
+(± is the binomial standard error.) Top-20 agrees with the paper in both modes; top-1 is about
+3 points (3 standard errors) higher in both. TBD_FULLTEST The element-set row also confirms the
+sampler settings: the shipped checkpoints and settings files use anti-annealing (0, 10, 10) for
+element-set sampling while the paper's Table 16 lists (4, 4, 4); the shipped values reproduce the
+paper's element-set result, and `run.py` uses them, as upstream's evaluation does.
+
+The `run.py` rows send the first 100 of those targets through the wrapper's experimental path:
+each reference is rendered as a dense pseudo-Voigt profile (0.02° step), written as a two-column
+file, and passed to `run.py` with the composition and atom count. Upstream's loader then
+interpolates, smooths, subtracts a background, and extracts peaks as for a measured pattern. The
+match counts agree with the simulated-feature path on the same targets (67/81 vs 68/80 and
+54/74 vs 54/74), so the experimental path loses essentially nothing on clean profiles.
 
 **Benchmark.** 12 experimental pdCIFs from `exp_pxrd_data/pxrdnet` (see
 `inference/_benchmark/cases.json`), 20 samples per atom-count hypothesis, scored with the
@@ -164,13 +185,51 @@ tetragonal P4mm symmetry, and KCaCO3F matches 18/20 with 0.00 correct space grou
 space group, composition + Z tries every compatible centering (45 candidates on average), and
 fewer of them match (0.48), because the wrong-cell hypotheses contribute misses.
 
-**Runtime and memory.** TBD_RUNTIME
+**Runtime and memory.** On the RTX 4090 (no other job on the GPU), 20 candidates take a median
+2.4 s of sampling with either checkpoint family and 2.9 s per `run.py` call including model
+loading (per-case `runtime_s` in `benchmark.json`); 45 candidates (composition + Z) take 3.0 s
+of sampling.
+Torch allocations peak at 0.9 GB, about 1.5 GB of GPU memory per process with the CUDA context.
+Cells are padded to the checkpoint's 52 or 20 atom slots, so cost hardly depends on cell size.
+On the CPU (`--device cpu`, float32, 8 cores) 20 candidates take 85 s and give the same matches
+for BaTiO3 (20/20, best RMS 0.026). The paper reports training costs only (one RTX 3090,
+7.2-8.0 GiB peak); it states no inference requirement.
+
+**Independent review.** Reviewed read-only against the pinned upstream, the shipped settings
+files, and the paper by Codex (gpt-5.6-sol, high effort). Every finding was checked on the code
+path or with a test run before acting:
+
+- Fixed: elements beyond Pu (Z > 94, the end of upstream's type vocabulary) were silently turned
+  into Pu in element-set mode, because upstream's element mask clamps Z, and crashed composition
+  mode. `run.py` now rejects them.
+- Fixed: a declared Cu Kα2 wavelength (1.54439 Å) fell inside the Cu window and was remapped
+  as Kα1. The windows are now 1.5404-1.5407 and 1.5410-1.5426 Å; no benchmark file changes.
+- Fixed: element-set mode with `--composition` and `--n-atoms` required N to be a multiple of
+  the formula, although only the element set and N reach the model.
+- Fixed: `reproduce_upstream.py` gave every block of 16 targets the same per-candidate seeds
+  (indices restarted at 0 in each block). Targets now get upstream's seeds for their row index,
+  and every reproduction number above comes from the rerun.
+- Fixed: the reproduction's primitive cells used pymatgen's default 0.25 Å tolerance, which
+  changed the atom count of 27 of the first 2,000 targets. It now uses 0.1 Å, the tolerance of
+  upstream's own opXRD loader, and the reproduction is described as an approximation of
+  upstream's cached data path.
+- Fixed: resumed reproduction runs are checked against their configuration, failed wrapper runs
+  are counted, and the same-target counts of the two paths are recorded in
+  `reproduce_upstream.json` rather than only quoted here.
+- Kept: uncompiled sampling, although the shipped element-set settings compile. Upstream's README
+  asks for `runtime.compile=false` in reproducibility checks, compilation changes kernels and not
+  the model, and the uncompiled element-set reproduction matches the paper.
+
+The reviewer found the experimental path, wavelength and Q conversion, Z conversion, checkpoint
+and EMA loading, sampler inheritance, candidate decoding, benchmark settings and numbers, and
+the setup checksums consistent with upstream and with the reports.
 
 ## Known limitations
 
 - Single phase only. The two-phase pipeline (XDecomposer decomposition, reference and
   predicted-phase caches) is later scope; its checkpoints are in the same archive but unused.
 - The primitive-cell atom count is required (the paper's oracle-N setting); there is no Z search.
+- Elements up to Pu (Z ≤ 94) only, upstream's type vocabulary.
 - Candidates are unrefined and unranked.
 - Only angles are converted between wavelengths. Intensities are not corrected for the
   wavelength-dependent Lorentz-polarization factor, and Mo, synchrotron, or Q data are mapped
