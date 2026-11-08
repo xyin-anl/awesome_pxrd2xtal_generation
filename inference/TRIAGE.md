@@ -7,7 +7,8 @@ weights, a usable license, and an inference entry point; it says nothing about q
 2026-10-16 after the catalog refresh and a duplicate search across open/closed issues, pull
 requests, and existing wrappers; updated 2026-10-23 after the Gan Jiang v0.1.0 release.
 The blocked set and duplicate search were rechecked on 2026-10-30; no blocker changed. Updated
-2026-11-06 after Bragglite released weights and issue #15 was opened for a single-phase wrapper.
+2026-11-06 after Bragglite released weights and issue #15 was opened for a single-phase wrapper,
+and 2026-11-07 after the single-phase Bragglite wrapper was built.
 
 ## Wrapped (status in each manifest: verified, reproduced, or limited)
 
@@ -21,6 +22,7 @@ The blocked set and duplicate search were rechecked on 2026-10-30; no blocker ch
 | PXRDnet | `pxrdnet/` |
 | XRDSol | `xrdsol/` |
 | Ab-PXRD-Solver | `ab_pxrd_solver/` |
+| Bragglite (single phase: known composition, element set) | `bragglite/` |
 
 Scope: general inorganic materials. Models specialized to one material class are recorded under
 "Out of focus".
@@ -33,11 +35,11 @@ Scope: general inorganic materials. Models specialized to one material class are
 | XDecomposer (multiphase decomposition and phase retrieval) | Maintained by its authors: [paper-linked source, checkpoints, and MP500 database](https://github.com/Licht0812/XDecomposer), plus the Gan Jiang team's [notebook, FastAPI service, and local browser app](https://github.com/DeltaGanjiang/XDecomposer). |
 | Gan Jiang (agent-orchestrated identification and refinement) | Maintained by its authors as a [v0.1.0 desktop client](https://ganjiang.yangtzeailab.com/) with an [online manual](https://ganjiang.asia/booklet/index.html). The installers are public, but the client uses a closed, account- and credit-metered backend; complete agent source and model weights are not public, so an independent repository wrapper would neither reproduce nor replace the maintained service. |
 
-## Ready for wrapper
+## Later scope
 
 | Model | Status |
 |-------|--------|
-| Bragglite | Public source/configurations and the official single- and two-phase [checkpoint archive](https://zenodo.org/records/23878332) are available. [Issue #15](https://github.com/xyin-anl/awesome_pxrd2xtal_generation/issues/15) scopes the initial wrapper to single-phase known-composition inference. The 1.58 GB archive has not yet been downloaded, so checkpoint names, configuration mapping, and runtime requirements remain to be established during implementation. |
+| Bragglite two-phase pipeline | The single-phase modes are wrapped in `bragglite/`. The two-phase pipeline (`src/two_phase` at the pinned commit) adds XDecomposer phase decomposition, which needs XDecomposer's official V_0.0.1 source, weights, and dependencies, the mixture artifacts under `data/two_phase`, MP-20 reference caches, and predicted-phase caches. Its Bragglite and XDecomposer checkpoints ship in the same Zenodo archive (`checkpoints/two_phase/`, `dependencies/`). Left for a separate wrapper ([issue #15](https://github.com/xyin-anl/awesome_pxrd2xtal_generation/issues/15)). |
 
 ## Out of focus
 

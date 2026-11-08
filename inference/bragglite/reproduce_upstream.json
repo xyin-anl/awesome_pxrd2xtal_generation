@@ -1,0 +1,165 @@
+{
+  "description": "Summaries written by reproduce_upstream.py on 2026-11-07 (RTX 4090). match rates in %, strict StructureMatcher ltol/stol/angle_tol 0.2/0.3/5 deg, matcher only; paper_table1 is the reported MP-20 test Top-1/Top-20 for that checkpoint and mode (null where the paper reports none).",
+  "runs": {
+    "mp20_stoich_full": {
+      "checkpoint": "mp20_stoichiometry.pt",
+      "mode": "composition",
+      "path": "upstream simulated peaks_128x4",
+      "data": {
+        "url": "https://raw.githubusercontent.com/txie-93/cdvae/f857f598d6f6cca5dc1ea0582d228f12dcc2c2ea/data/mp_20/test.csv",
+        "sha256": "dd605c7543cf95a13e150aed630d0915e74edc8dea17e85301ee6fbfeb7f500a",
+        "rows": 9046
+      },
+      "targets": 9046,
+      "failed_runs": 0,
+      "candidates_per_target": [
+        20
+      ],
+      "seed": 777,
+      "n_samples": 20,
+      "match_rate@1": 74.45,
+      "match_rate@20": 84.45,
+      "binomial_se@1": 0.46,
+      "binomial_se@20": 0.38,
+      "paper_table1": [
+        70.85,
+        82.59
+      ],
+      "runtime_min": 86.3,
+      "same_targets_other_run": null
+    },
+    "mp20_es": {
+      "checkpoint": "mp20_element_set.pt",
+      "mode": "element-set",
+      "path": "upstream simulated peaks_128x4",
+      "data": {
+        "url": "https://raw.githubusercontent.com/txie-93/cdvae/f857f598d6f6cca5dc1ea0582d228f12dcc2c2ea/data/mp_20/test.csv",
+        "sha256": "dd605c7543cf95a13e150aed630d0915e74edc8dea17e85301ee6fbfeb7f500a",
+        "rows": 9046
+      },
+      "targets": 2000,
+      "failed_runs": 0,
+      "candidates_per_target": [
+        20
+      ],
+      "seed": 777,
+      "n_samples": 20,
+      "match_rate@1": 49.6,
+      "match_rate@20": 72.5,
+      "binomial_se@1": 1.12,
+      "binomial_se@20": 1.0,
+      "paper_table1": [
+        47.48,
+        71.51
+      ],
+      "runtime_min": 18.5,
+      "same_targets_other_run": null
+    },
+    "mp20_stoich_wrapper": {
+      "checkpoint": "mp20_stoichiometry.pt",
+      "mode": "composition",
+      "path": "run.py on rendered profiles",
+      "data": {
+        "url": "https://raw.githubusercontent.com/txie-93/cdvae/f857f598d6f6cca5dc1ea0582d228f12dcc2c2ea/data/mp_20/test.csv",
+        "sha256": "dd605c7543cf95a13e150aed630d0915e74edc8dea17e85301ee6fbfeb7f500a",
+        "rows": 9046
+      },
+      "targets": 100,
+      "failed_runs": 0,
+      "candidates_per_target": [
+        20
+      ],
+      "seed": 777,
+      "n_samples": 20,
+      "match_rate@1": 66.0,
+      "match_rate@20": 80.0,
+      "binomial_se@1": 4.74,
+      "binomial_se@20": 4.0,
+      "paper_table1": [
+        70.85,
+        82.59
+      ],
+      "runtime_min": 7.2,
+      "same_targets_other_run": {
+        "config": {
+          "training_set": "mp20",
+          "mode": "composition",
+          "n_samples": 20,
+          "seed": 777,
+          "via_wrapper": false,
+          "data_sha256": "dd605c7543cf95a13e150aed630d0915e74edc8dea17e85301ee6fbfeb7f500a"
+        },
+        "targets": 100,
+        "matched@1": 72,
+        "matched@20": 78,
+        "this_run_matched@1": 66,
+        "this_run_matched@20": 80
+      }
+    },
+    "mp20_es_wrapper": {
+      "checkpoint": "mp20_element_set.pt",
+      "mode": "element-set",
+      "path": "run.py on rendered profiles",
+      "data": {
+        "url": "https://raw.githubusercontent.com/txie-93/cdvae/f857f598d6f6cca5dc1ea0582d228f12dcc2c2ea/data/mp_20/test.csv",
+        "sha256": "dd605c7543cf95a13e150aed630d0915e74edc8dea17e85301ee6fbfeb7f500a",
+        "rows": 9046
+      },
+      "targets": 100,
+      "failed_runs": 0,
+      "candidates_per_target": [
+        20
+      ],
+      "seed": 777,
+      "n_samples": 20,
+      "match_rate@1": 53.0,
+      "match_rate@20": 73.0,
+      "binomial_se@1": 4.99,
+      "binomial_se@20": 4.44,
+      "paper_table1": [
+        47.48,
+        71.51
+      ],
+      "runtime_min": 7.2,
+      "same_targets_other_run": {
+        "config": {
+          "training_set": "mp20",
+          "mode": "element-set",
+          "n_samples": 20,
+          "seed": 777,
+          "via_wrapper": false,
+          "data_sha256": "dd605c7543cf95a13e150aed630d0915e74edc8dea17e85301ee6fbfeb7f500a"
+        },
+        "targets": 100,
+        "matched@1": 47,
+        "matched@20": 73,
+        "this_run_matched@1": 53,
+        "this_run_matched@20": 73
+      }
+    },
+    "pxrdbench_stoich": {
+      "checkpoint": "pxrd_bench_stoichiometry.pt",
+      "mode": "composition",
+      "path": "upstream simulated peaks_128x4",
+      "data": {
+        "url": "https://raw.githubusercontent.com/txie-93/cdvae/f857f598d6f6cca5dc1ea0582d228f12dcc2c2ea/data/mp_20/test.csv",
+        "sha256": "dd605c7543cf95a13e150aed630d0915e74edc8dea17e85301ee6fbfeb7f500a",
+        "rows": 9046
+      },
+      "targets": 500,
+      "failed_runs": 0,
+      "candidates_per_target": [
+        20
+      ],
+      "seed": 777,
+      "n_samples": 20,
+      "match_rate@1": 73.8,
+      "match_rate@20": 89.6,
+      "binomial_se@1": 1.97,
+      "binomial_se@20": 1.37,
+      "paper_table1": null,
+      "runtime_min": 11.3,
+      "same_targets_other_run": null
+    }
+  }
+}
