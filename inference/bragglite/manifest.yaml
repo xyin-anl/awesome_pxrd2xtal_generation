@@ -58,4 +58,7 @@ benchmark:
       inputs: [composition, z, spacegroup]
       extra_args: [--mode, element-set, --training-set, mp20]
 status:
-  state: untested
+  state: verified
+  verified_on: 2026-11-07
+  verified_by: Claude Code agent with Codex review (pending maintainer review)
+  hardware: NVIDIA RTX 4090 24 GB, driver 595.99.02, Linux

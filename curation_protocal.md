@@ -479,6 +479,20 @@ Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog
 - **InformedXRD** is evaluation infrastructure and a dataset; **rietx**, **QualX**, **XRD Phase Finder**, and **PowderLine** are utilities or refinement/search tools. None qualifies for a structure-generation wrapper issue.
 - Reconsidered the previously blocked core solvers. **RealPXRD-Solver** still has no checkpoint; **AGAPI-XRD** has no licensed standalone model; **CrystalNet** has no project license or released weights; exact searches still found no official code/weights for **XRDiff** or **PXtal**; and the **PXRDGen** Code Ocean artifact could not be independently audited. No existing issue needed reopening for those unchanged blockers.
 
+## November 7 2026 inference build
+
+29. **Claude Code Bragglite wrapper build and Codex review - Nov 7 2026**
+    Built the single-phase Bragglite wrapper for [issue #15](https://github.com/xyin-anl/awesome_pxrd2xtal_generation/issues/15) on the maintainer's RTX 4090 (Claude Opus 5.5), following `inference/AGENTS.md`, and had it reviewed read-only against the pinned upstream by Codex (gpt-5.6-sol, high effort). Every finding was checked on the code path or with a test run before it was fixed or kept.
+
+Material changes:
+
+- Added a **Bragglite** wrapper (`inference/bragglite/`, status `verified`) for the two single-phase modes, known composition and element set + atom count, with the PXRD-Bench (default, up to 52 atoms) and MP-20 (up to 20 atoms) checkpoints. Upstream PXRD-Bench is pinned at `2a791ca33d2adc10ec1f247817cddd8adb9f6fc1`; `setup.sh` downloads the 1.58 GB Zenodo archive, checks the deposited md5 and its sha256, and extracts only the four single-phase checkpoints. The pattern goes through upstream's own experimental (opXRD) loader and the candidates through upstream's evaluation sampler; nothing upstream is patched or vendored. The README states the CC BY-NC 4.0 restriction on upstream's retained FlowMM-derived helpers.
+- Mapped the archive: four single-phase checkpoints with per-checkpoint settings files, the two-phase Bragglite and XDecomposer checkpoints, and XDecomposer dependencies. The shipped element-set settings use anti-annealing (0, 10, 10), not the (4, 4, 4) of the paper's Table 16; they reproduce the paper's element-set result.
+- Upstream reproduction: upstream ships no single-pattern example, and the paper's experimental sets (RRUFF-148 from the XRDiff authors, frozen opXRD archives) are not public. `reproduce_upstream.py` approximates the paper's simulated MP-20 test evaluation with upstream's simulator, features, sampler, scorer, target order, and per-target seeds (features recomputed from the CDVAE CIFs because the frozen caches are not public). The MP-20 known-composition checkpoint gives 74.45% top-1 and 84.45% top-20 on the full 9,046-target test (paper 70.85/82.59), and the element-set checkpoint 49.6/72.5 on 2,000 targets (paper 47.48/71.51). Sending 100 targets through `run.py` as rendered profiles agrees on top-20 (80 vs 78, 73 vs 73).
+- Benchmark (PXRD-Bench checkpoint, composition + Z + space group): 10/12 cases matched, mean match fraction 0.73 (0.72 with a second seed); with another case's pattern 7/12 and 0.17, and the correct-space-group fraction falls from 0.33 to 0.01. The MP-20 checkpoints score higher on these small cells (11/12, 0.81). No runs failed; a rerun after the review fixes reproduced every case exactly. Inference takes 2.4 s and 0.9 GB of torch GPU memory for 20 candidates; CPU also works.
+- Review fixes: rejection of elements beyond Pu (upstream's vocabulary; element-set mode silently turned them into Pu), narrower Cu wavelength windows (a declared Kα2 was remapped as Kα1), element-set atom counts no longer tied to the formula, upstream's per-target seeds and a 0.1 Å primitive tolerance in the reproduction script (all reproduction numbers rerun), and configuration checks, failure counts, and same-target comparisons in its summaries. Uncompiled sampling was kept (upstream's README asks for it in reproducibility checks).
+- Left open: the two-phase pipeline (XDecomposer, mixture artifacts, reference and predicted-phase caches) is later scope and recorded under "Later scope" in `inference/TRIAGE.md`; the paper's experimental sets (RRUFF-148 from the XRDiff authors, frozen opXRD archives) are not public, so its experimental numbers could not be rerun.
+
 ## May 9 2026 detailed record
 
 ### Search strategy for the May 9 2026 pass
@@ -573,6 +587,7 @@ The README was reorganized to avoid conflating different levels of the PXRD pipe
 ### Open Gaps and Suggested Contributions
 
 - Add a runnable inference wrapper for **RealPXRD-Solver** once a checkpoint is released (see `inference/TRIAGE.md`).
+- Add a wrapper for the **Bragglite two-phase pipeline** (XDecomposer decomposition plus phase-specific Bragglite); the single-phase modes are wrapped in `inference/bragglite/` (see `inference/TRIAGE.md`, "Later scope").
 - Normalize input/output schemas across CIF-generating methods: CIF text, pymatgen `Structure`, lattice+fractional coordinates, and PXRD arrays.
 - Add a small, open, experimental smoke-test set that can be used without ICDD/PDF/ICSD license restrictions.
 - Add a common structure-matching script with configurable tolerances and clear reporting of lattice/composition assumptions.
