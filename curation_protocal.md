@@ -512,6 +512,17 @@ An independent Claude Opus 5.5 review received the uncommitted diff, repository 
 
 Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog.py check` (85 resources); `python3 -m unittest discover -s tests -v` (11 passed); and `git diff --check`.
 
+## November 13 2026 inference triage
+
+30. **Post-catalog wrapper feasibility and duplicate audit - Nov 13 2026**
+    After opening draft catalog PR #17, searched all open and closed issues, all pull requests, and repository-local wrappers by catalog ID, model name and aliases, paper identifier, upstream repository, and artifact location. The only issue is Bragglite #15. The implementation pull requests are merged wrapper PR #9 and draft Bragglite PR #16; no EXPO issue, implementation, or local wrapper exists.
+
+- **EXPO** is technically runnable from public source or packages, but no new inference issue was opened. Its authors maintain the current EXPO 2.3.13 application, examples, and command-line, no-GUI, automatic-run, and MPI interfaces. Under the local rule for author-maintained applications, the official application is linked under "Referenced, not wrapped here" rather than duplicated. The noncommercial license, incomplete migrated documentation, and Docker indexing limitation remain explicit.
+- **Bragglite** already has [issue #15](https://github.com/xyin-anl/awesome_pxrd2xtal_generation/issues/15) and draft implementation [PR #16](https://github.com/xyin-anl/awesome_pxrd2xtal_generation/pull/16). The draft reports a verified clean setup, upstream reproduction, two single-phase input modes, and a matched/control benchmark; maintainer review is pending. `main` has no Bragglite wrapper until that PR merges, so triage now records it as implementation in review rather than opening a duplicate.
+- The changed lattice-bispectrum model emits lattice parameters rather than a structure. Physics-informed augmentation and JEPA are classifiers or representation learners without released implementations; Verifiable pXRD and XRD-CLIP are benchmarks; QualX and XRD Phase Finder are search-match utilities. None qualifies for a structure-generation issue. The excluded molecular **PXRD Space Group Predictor** is not a catalog entry, lacks a public predictive evaluation and licensed weights, and is specialized to molecular crystals, so it also did not trigger an issue.
+- Reconsidered every blocked model. **RealPXRD-Solver** still has no release or checkpoint; **AGAPI-XRD** remains an unlicensed API-dependent reproduction repository with no standalone model; and **CrystalNet** still has no project license, release, or checkpoint. Exact repository and code searches found no official implementation or weights for **XRDiff** or **PXtal**. The **PXRDGen** Code Ocean capsule still returned HTTP 403 to the audit client. No blocker changed and no existing issue needed reopening.
+- No `needs-inference` issue was created in this pass.
+
 ## May 9 2026 detailed record
 
 ### Search strategy for the May 9 2026 pass
