@@ -1,7 +1,7 @@
 {
   "$schema": "./resources.schema.json",
   "schema_version": 2,
-  "last_updated": "2026-11-06",
+  "last_updated": "2026-11-13",
   "website_url": "https://nodeology.ai/resources/pxrd2xtal",
   "inference_order": [
     "uni3dar",
@@ -839,6 +839,42 @@
       "artifact_note": "The repository provides model code, locked environments, training/evaluation configurations, and a reproducible dataset builder. The authors released the single- and two-phase checkpoints on 2026-11-02 as a 1.58 GB Zenodo archive under CC BY 4.0. The Zenodo record has no repository DOI of its own. The archive was not downloaded in this audit, so its internal filenames and compatibility with the documented configurations remain unverified. Original Bragglite code is MIT, while retained FlowMM-derived helpers are CC BY-NC 4.0"
     },
     {
+      "id": "expo",
+      "name": "EXPO",
+      "category": "core_solver",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-11-13",
+      "year": "2013/2026",
+      "inputs_target": "Powder diffraction profile plus composition and optional structural fragments → indexed, phased, solved, and refined crystal structure",
+      "method": "Integrated peak extraction, indexing, space-group assignment, reciprocal- or direct-space structure solution, and Rietveld refinement",
+      "reported_performance": "The peer-reviewed EXPO2013 paper introduces the integrated structure-solution workflow through worked examples. The current EXPO 2.3.13 software and newly public documentation do not provide a new cross-method benchmark, so no current success-rate claim is inferred",
+      "paper_links": [
+        {
+          "label": "Journal of Applied Crystallography",
+          "url": "https://doi.org/10.1107/S0021889813013113",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "EXPO 2.3.13 downloads",
+          "url": "https://ccorrado71.github.io/expo-docs/download.html",
+          "role": "tool"
+        },
+        {
+          "label": "ccorrado71/expo-docs",
+          "url": "https://github.com/ccorrado71/expo-docs",
+          "role": "docs"
+        },
+        {
+          "label": "online documentation",
+          "url": "https://ccorrado71.github.io/expo-docs/",
+          "role": "docs"
+        }
+      ],
+      "artifact_note": "The Institute of Crystallography of Italy's National Research Council distributes EXPO 2.3.13 as Windows, Apple-silicon macOS, and Ubuntu packages, source, and a Docker image. Academic, scientific, educational, and other noncommercial use is free, while commercial use requires a paid license. The authors opened a CC BY 4.0 documentation repository on 2026-11-13, but label the migrated documentation a work in progress. EXPO exposes command-line, no-GUI, automatic-run, and MPI modes. On Linux and macOS, the optional DICVOL and McMaille indexing programs require Wine; the Docker image omits Wine and those programs"
+    },
+    {
       "id": "attention-is-not-all-you-need-for-diffraction",
       "name": "Attention Is Not All You Need for Diffraction",
       "category": "pipeline_module",
@@ -940,14 +976,19 @@
       "name": "Invariant lattice-bispectrum predictor",
       "category": "pipeline_module",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-10-05",
-      "year": "2026",
+      "verified_at": "2026-11-13",
+      "year": "2026/2027",
       "task": "Unit-cell parameter prediction from simulated or experimental PXRD",
-      "method": "Transformer prediction of an E(3)-invariant reciprocal-lattice bispectrum followed by dynamic-programming/gradient inversion to lattice vectors",
-      "reported_result": "On MP-20 with the same model architecture, the paper reports length MAPE decreasing from 11.18% to 2.44% and angle MAPE from 12.74% to 3.07% versus direct lattice-parameter prediction",
+      "method": "Transformer prediction of an E(3)-invariant reciprocal-lattice bispectrum followed by nearest-neighbor initialization and L-BFGS inversion to lattice vectors",
+      "reported_result": "In the revised manuscript, the fixed-architecture MP-20 comparison reports length MAPE decreasing from 11.08% to 2.43% and angle MAPE from 12.15% to 2.45% versus direct lattice-parameter prediction. The final article is assigned to the January 2027 issue",
       "paper_links": [
         {
-          "label": "arXiv",
+          "label": "Acta Crystallographica A",
+          "url": "https://doi.org/10.1107/S2053273326010284",
+          "role": "paper"
+        },
+        {
+          "label": "arXiv preprint",
           "url": "https://arxiv.org/abs/2607.21829",
           "role": "paper"
         }
@@ -957,9 +998,45 @@
           "label": "atomicarchitects/bispectrum-xrd-ml",
           "url": "https://github.com/atomicarchitects/bispectrum-xrd-ml",
           "role": "code"
+        },
+        {
+          "label": "pretrained models and data",
+          "url": "https://doi.org/10.5281/zenodo.24091709",
+          "role": "model"
         }
       ],
-      "artifact_note": "MIT source includes the training/evaluation and bispectrum-inversion code, tests, and exact split IDs. Datasets, trained checkpoints, and inversion results are not bundled and must be supplied separately"
+      "artifact_note": "MIT source includes training/evaluation and bispectrum-inversion code, tests, exact split IDs, and experimental RRUFF and opXRD identifiers. The 2026-11-09 CC BY 4.0 Zenodo release provides manuscript checkpoints, a Materials Project lookup database, inversion assets, and 8.84 GB of prepared data; the dense training profiles, about 64 GB, must be regenerated. The approximately 11.7 GB release was inventoried through Zenodo metadata but not downloaded or executed"
+    },
+    {
+      "id": "physics-informed-pxrd-augmentation",
+      "name": "Physics-informed PXRD augmentation",
+      "category": "pipeline_module",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-11-13",
+      "year": "2026",
+      "task": "Space-group classification from PXRD with simulated-to-experimental physics-informed augmentation",
+      "method": "A 230-class Swin-T classifier trained on SIMPOD-derived radial images with peak broadening, texture, background, zero-shift, and counting-noise augmentations",
+      "reported_result": "The author manuscript, reported as accepted at IEEE ONCON 2026, gives experimental Top-5 accuracy of 6/20 for the clean two-fold ensemble, 11/20 with augmentation, and 7/20 for an input-blind class-prior baseline; synthetic Top-5 decreases from 82.92% to 79.63%. The 20 measured patterns informed development rather than serving as a sealed test set. The primary fold-0 paired comparison has exact two-sided McNemar p = 0.0625, so the direction is suggestive but does not meet a 0.05 significance threshold",
+      "paper_links": [
+        {
+          "label": "author manuscript",
+          "url": "https://github.com/Kishan-No1/pxrd-physics-augmentation/blob/main/paper.pdf",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "Kishan-No1/pxrd-physics-augmentation",
+          "url": "https://github.com/Kishan-No1/pxrd-physics-augmentation",
+          "role": "resource"
+        },
+        {
+          "label": "external-validation pre-registration",
+          "url": "https://doi.org/10.5281/zenodo.24208531",
+          "role": "resource"
+        }
+      ],
+      "artifact_note": "The public repository contains the author manuscript and a preregistered journal-extension protocol, but has no repository license and does not release the training/evaluation source, checkpoints, derived COD training arrays, or the private 20-pattern experimental set. The authors state that code will be released with the journal paper and currently offer it on request; hashes in the pre-registration cannot substitute for the unavailable files"
     },
     {
       "id": "phigen",
@@ -1012,20 +1089,25 @@
       "name": "JEPA for PXRD",
       "category": "pipeline_module",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-10-30",
+      "verified_at": "2026-11-13",
       "year": "2026",
       "task": "Self-supervised PXRD representation learning with downstream space-group classification and lattice-parameter regression",
       "method": "Joint-Embedding Predictive Architecture pretraining on masked one-dimensional diffraction-pattern patches, followed by frozen-encoder attentive probes",
       "reported_result": "On simulated MP-20 patterns, the depth-8 JEPA plus attentive probe reports 65.22 +/- 0.17% top-1 and 88.12 +/- 0.21% top-5 space-group accuracy, with 0.387 +/- 0.002 A Selling-reduced S6 lattice error over five seeds. Supervised ViT-Small and ViT-Base baselines have higher top-1 accuracy, ViT-Base has higher top-5 accuracy, and ResNet-50 and ViT-Base have lower lattice errors; the paper's advantage claim is parameter efficiency, not best absolute accuracy",
       "paper_links": [
         {
-          "label": "arXiv",
+          "label": "AAAI Fall Symposium Series",
+          "url": "https://doi.org/10.1609/aaaiss.v10i1.43460",
+          "role": "paper"
+        },
+        {
+          "label": "arXiv preprint",
           "url": "https://arxiv.org/abs/2610.33310",
           "role": "paper"
         }
       ],
       "artifact_links": [],
-      "artifact_note": "The paper uses the MP-20 split and patterns simulated over q = 8-60 nm^-1 with strain, broadening, and Gaussian-noise augmentations. Results are simulation-only. No public code, trained weights, or prepared pattern dataset was found during the 2026-10-30 audit"
+      "artifact_note": "The paper uses the MP-20 split and patterns simulated over q = 8-60 nm^-1 with strain, broadening, and Gaussian-noise augmentations. Results are simulation-only. The paper received a proceedings DOI on 2026-11-06; no public code, trained weights, or prepared pattern dataset was found during the 2026-11-13 audit"
     },
     {
       "id": "chatxrd",
@@ -1509,7 +1591,7 @@
       "name": "QualX",
       "category": "pipeline_module",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-11-06",
+      "verified_at": "2026-11-13",
       "year": "2015/2026",
       "task": "Qualitative phase identification by search-match against PDF-2, COD, or user-built CIF databases",
       "method": "Top-d-spacing indexing and profile search-match in a graphical application with command-line database construction and search interfaces",
@@ -1543,7 +1625,7 @@
           "role": "data"
         }
       ],
-      "artifact_note": "The GPL-3.0 repository includes source and packaged applications. A reference database is required: open COD-derived databases are available, while PDF-2 is separately licensed. Version 1.1.0 keeps the background in the displayed and searched pattern while computing the figure of merit from net intensities, so its figure-of-merit values can differ from earlier releases"
+      "artifact_note": "The GPL-3.0 repository includes source and packaged applications. A reference database is required: open COD-derived databases are available, while PDF-2 is separately licensed. Version 1.1.0 keeps the background in the displayed and searched pattern while computing the figure of merit from net intensities, so its figure-of-merit values can differ from earlier releases. A 2026-11-11 source fix uses a generic instruction-set baseline for Windows after the authors identified silent crashes on CPUs without AVX2; the published v1.1.0 Windows installer predates that fix"
     },
     {
       "id": "pxtal",
@@ -2067,11 +2149,11 @@
       "name": "XRD-CLIP organic retrieval benchmark",
       "category": "dataset",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-10-23",
+      "verified_at": "2026-11-13",
       "size": "196 identified organic opXRD patterns and 19 external patterns; 308,861 CSD reference codes; open COD replica with 190 queries and 108,902 simulated library entries",
       "sim_exp": "Experimental query patterns + simulated CSD or COD reference libraries",
       "format": "Zenodo ZIP archives containing truth sets, reference-code lists, rank arrays, scripts, and sharded NumPy stick libraries",
-      "notes": "Measured-pattern retrieval benchmark for a submitted RSC Advances article comparing learned XRD-CLIP retrieval with classical full-profile scores. The deposit includes code, benchmark definitions, per-pattern ranks, verification scripts, and a fully open COD replica. CSD structures, CSD-simulated patterns, and the CSD-trained checkpoint are excluded under the CSD license; the source opXRD profiles remain in their separate CC BY 4.0 archive. Deposit metadata assign MIT to code, CC BY 4.0 to data/results, and CC0 to COD-derived content",
+      "notes": "Measured-pattern retrieval benchmark comparing learned XRD-CLIP retrieval with classical full-profile scores. The frozen 2026-10-18 deposit includes code, benchmark definitions, per-pattern ranks, verification scripts, and a fully open COD replica. The live repository records a later ground-truth correction that adds three packing-equivalent CSD refcodes for one query; those corrected labels and subsequent analyses are not in the Zenodo snapshot. The repository also records rejection of the original RSC Advances submission and an ongoing repair/resubmission pass, so no public article page currently supports the method claims. CSD structures, CSD-simulated patterns, and the CSD-trained checkpoint remain unavailable under the CSD license; source opXRD profiles are in a separate CC BY 4.0 archive. Deposit metadata assign MIT to code, CC BY 4.0 to data/results, and CC0 to COD-derived content",
       "resource_links": [
         {
           "label": "Zenodo deposit",
@@ -2110,6 +2192,29 @@
           "label": "Likely related 2025 BYU thesis",
           "url": "https://scholarsarchive.byu.edu/etd/11389/",
           "role": "paper"
+        }
+      ]
+    },
+    {
+      "id": "verifiable-pxrd",
+      "name": "Verifiable pXRD",
+      "category": "dataset",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-11-13",
+      "size": "Two 100-case single-phase structure benchmarks, a disjoint 50-case adaptation curriculum, a 20-case inference-scaling panel, and 15 measured multiphase scans with released result bundles",
+      "sim_exp": "Simulated single-phase PXRD plus experimental two- to six-phase powder-diffraction scans",
+      "format": "CIF, CSV, JSON, TOML, Python evaluation code, normalized submitted structures, and compressed agent traces",
+      "notes": "Apache-2.0 research artifact for blinded crystal-structure solution and agent evaluation. Solvers receive each simulated pattern plus its reduced composition. pXRD-100 deliberately selects Materials Project structures exposed to several major models' training sets; pXRD-ood supplies four generated 25-case streams with novelty certificates but makes no stability, synthesizability, or universal-novelty claim. Exact reference CIFs are public for reproducibility and must be isolated from evaluated solvers. The 15-scan Precursor Genome subset is a development evaluation with deposited refinements rather than noise-free phase truth. Reproducing the Codex-agent conditions requires a Codex login, and DICVOL14 must be supplied separately. Repository-authored code is Apache-2.0, while Materials Project, Precursor Genome, COD, model, and solver inputs retain their source-specific terms",
+      "resource_links": [
+        {
+          "label": "sache07/verifiable-pxrd",
+          "url": "https://github.com/sache07/verifiable-pxrd",
+          "role": "data"
+        },
+        {
+          "label": "Precursor Genome source data",
+          "url": "https://doi.org/10.5281/zenodo.21285546",
+          "role": "data"
         }
       ]
     },
@@ -2285,9 +2390,9 @@
       "name": "XRD Phase Finder",
       "category": "utility",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-11-06",
+      "verified_at": "2026-11-13",
       "task": "Interactive PXRD phase search-match, residual inspection, and project-based analysis",
-      "notes": "MIT desktop application that imports measured patterns and CIFs, searches user libraries and configured crystallographic databases, compares calculated profiles, and tracks unexplained residual peaks. Version 1.7.0 adds reusable SQLite reference libraries, portable library archives, and restoration of saved profiles, peak assignments, and Le Bail results. Windows and macOS packages are current at 1.7.0, while Linux remains at 1.6.9. The release discloses a possible crash on window close after changing phase-legend modes. The tutorial explicitly labels its candidate scores and fitted curves illustrative, and no paper or independent validation benchmark was found",
+      "notes": "MIT desktop application that imports measured patterns and CIFs, searches user libraries and configured crystallographic databases, compares calculated profiles, and tracks unexplained residual peaks. Version 1.7.1 preserves CIF identities across library reimport and portable transfer, clarifies one-click and refined searches, validates XPFF archives before atomic extraction, and refuses quantitative fractions for nearly indistinguishable phases. Windows and macOS packages are current at 1.7.1, while Linux remains at 1.6.9. A post-release hotfix changed candidate-preview normalization and stack offsets but not Match/Gain calculations. The release reports targeted software checks and an older 100-pattern baseline, not a new whole-dataset scientific benchmark",
       "resource_links": [
         {
           "label": "ABKuznetsov/XRD_Analysis_Toolkit",
@@ -2295,8 +2400,8 @@
           "role": "code"
         },
         {
-          "label": "v1.7.0 release",
-          "url": "https://github.com/ABKuznetsov/XRD_Analysis_Toolkit/releases/tag/v1.7.0",
+          "label": "v1.7.1 release",
+          "url": "https://github.com/ABKuznetsov/XRD_Analysis_Toolkit/releases/tag/v1.7.1",
           "role": "tool"
         }
       ]
