@@ -561,6 +561,15 @@ An independent Codex (OpenAI) review received the uncommitted diff, the scope ru
 
 Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog.py check` (88 resources); `python3 -m unittest discover -s tests -v` (11 passed); and `git diff --check`.
 
+## November 20 2026 inference triage
+
+32. **Post-catalog wrapper feasibility and duplicate audit - Nov 20 2026**
+    After opening draft catalog PR #18, searched all open and closed issues, all pull requests, and repository-local wrappers for `XCAPE`, `xcape`, `yslim1`, arXiv `2611.23760`, and the upstream repository. No existing issue, pull request, or wrapper matched.
+
+- **XCAPE** is eligible for a wrapper: it targets general inorganic materials, its source and the SevenNet potential package are public under MIT, and it has a command-line entry point. Opened [issue #19](https://github.com/xyin-anl/awesome_pxrd2xtal_generation/issues/19) (`needs-inference`). Open points recorded there: XCAPE reads its reference only from an ICDD PDF XML card or a CIF and needs the known cell, space group, and Z, so a wrapper must define a user-pattern input path that does not leak reference coordinates; the SevenNet checkpoint's size, checksum, and license and the inference hardware are not yet established.
+- The **PXRD Space Group Predictor** handles molecular crystals only (PXRD plus SMILES), its classifier weights have no license yet, and full runs need BOMLIP-CSP and the academic-use MACE-OFF23-small potential; it is recorded under "out of focus" without an issue.
+- **XRDiff**'s blocker changed: paper-linked MIT training and evaluation code is public, but no trained checkpoint is released and its datasets are announced for a Zenodo record not yet linked. **RealPXRD-Solver**, **PXRDGen**, **AGAPI-XRD**, **CrystalNet**, and **PXtal** are unchanged. Bragglite draft PR #16 was not touched.
+
 ## May 9 2026 detailed record
 
 ### Search strategy for the May 9 2026 pass
