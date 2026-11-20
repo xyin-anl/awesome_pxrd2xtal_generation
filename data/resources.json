@@ -1,7 +1,7 @@
 {
   "$schema": "./resources.schema.json",
   "schema_version": 2,
-  "last_updated": "2026-11-13",
+  "last_updated": "2026-11-20",
   "website_url": "https://nodeology.ai/resources/pxrd2xtal",
   "inference_order": [
     "uni3dar",
@@ -15,6 +15,7 @@
   ],
   "shared_urls": [
     "https://academic.oup.com/nsr/article/12/12/nwaf421/8268901",
+    "https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/advs.202410722",
     "https://arxiv.org/abs/2603.00965",
     "https://arxiv.org/abs/2603.23367",
     "https://arxiv.org/abs/2609.00070",
@@ -27,8 +28,8 @@
     "https://github.com/dongyeop3813/PXRD-Bench",
     "https://github.com/liqi-529/RealPXRD-Solver",
     "https://github.com/scattering/InformedXRD",
-    "https://huggingface.co/datasets/informedxrd/informedxrd-benchmarks",
     "https://huggingface.co/datasets/caobin/opxrd_hkust_expdata",
+    "https://huggingface.co/datasets/informedxrd/informedxrd-benchmarks",
     "https://huggingface.co/linked-liszt/OpenAlphaDiffract"
   ],
   "resources": [
@@ -62,7 +63,7 @@
       "name": "Crystalyze",
       "category": "core_solver",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-11-20",
       "year": "2024",
       "inputs_target": "PXRD → CIF / crystal structure",
       "method": "End-to-end PXRD-to-CIF pipeline",
@@ -162,7 +163,7 @@
       "name": "PXRDnet",
       "category": "core_solver",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-11-20",
       "year": "2025",
       "inputs_target": "Formula + finite-size-broadened PXRD → atomic structure candidates",
       "method": "SE(3)-equivariant score-based diffusion; post-Rietveld verification",
@@ -226,7 +227,7 @@
       "name": "PXRDGen",
       "category": "core_solver",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-11-20",
       "year": "2025",
       "inputs_target": "PXRD + optional composition constraints → structure candidates",
       "method": "Pretrained XRD encoder + diffusion/flow generator + automatic Rietveld refinement",
@@ -321,7 +322,7 @@
       "name": "DiffractGPT",
       "category": "core_solver",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-11-20",
       "year": "2025",
       "inputs_target": "PXRD-conditioned text generation → CIF-like crystal descriptions",
       "method": "Large-token GPT / AtomGPT-style generative model",
@@ -391,7 +392,7 @@
       "name": "Uni3DAR",
       "category": "core_solver",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-11-20",
       "year": "2025",
       "inputs_target": "PXRD + composition tokens → 3D crystal generation",
       "method": "Hierarchical tokenization + 3D autoregressive generation",
@@ -617,7 +618,7 @@
       "name": "XRDSol",
       "category": "core_solver",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-11-20",
       "year": "2026",
       "inputs_target": "Stoichiometry + unit cell + PXRD → atomic coordinates",
       "method": "Equivariant graph neural network diffusion model",
@@ -692,7 +693,7 @@
       "name": "RealPXRD-Solver",
       "category": "core_solver",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-11-20",
       "year": "2026",
       "inputs_target": "Experimental or simulated PXRD, with lattice-conditioned and lattice-free modes → crystal structure",
       "method": "Flow-matching / generative solver using d-I fingerprints and experiment-mimicking augmentation",
@@ -792,7 +793,7 @@
       "name": "XRDiff",
       "category": "core_solver",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-10-05",
+      "verified_at": "2026-11-20",
       "year": "2026",
       "inputs_target": "PXRD + stoichiometry, or elements + total atom count → crystal structure",
       "method": "Diffusion model with full-spectrum or peak-descriptor PXRD conditioning",
@@ -804,8 +805,14 @@
           "role": "paper"
         }
       ],
-      "artifact_links": [],
-      "artifact_note": "code/data not found during the 2026-10-05 verification pass"
+      "artifact_links": [
+        {
+          "label": "learningmatter-mit/XRDiff",
+          "url": "https://github.com/learningmatter-mit/XRDiff",
+          "role": "code"
+        }
+      ],
+      "artifact_note": "The paper-linked MIT repository, created on 2026-10-24 and prepared for external users on 2026-11-12, builds on DiffCSP and provides training, evaluation, and GSAS-II Rietveld ranking scripts for the RRUFF-148 experimental benchmark. It releases no trained checkpoints, and its Alex-MP-20-Poly, OQMD-Poly, and RRUFF dataset files are announced for a Zenodo record that was not yet linked on 2026-11-20. The pinned environment uses Python 3.8 and PyTorch 1.9"
     },
     {
       "id": "bragglite",
@@ -843,7 +850,7 @@
       "name": "EXPO",
       "category": "core_solver",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-11-13",
+      "verified_at": "2026-11-20",
       "year": "2013/2026",
       "inputs_target": "Powder diffraction profile plus composition and optional structural fragments → indexed, phased, solved, and refined crystal structure",
       "method": "Integrated peak extraction, indexing, space-group assignment, reciprocal- or direct-space structure solution, and Rietveld refinement",
@@ -858,21 +865,83 @@
       "artifact_links": [
         {
           "label": "EXPO 2.3.13 downloads",
-          "url": "https://ccorrado71.github.io/expo-docs/download.html",
+          "url": "https://iccnr-xtal.github.io/expo-docs/download.html",
           "role": "tool"
         },
         {
-          "label": "ccorrado71/expo-docs",
-          "url": "https://github.com/ccorrado71/expo-docs",
+          "label": "iccnr-xtal/expo-docs",
+          "url": "https://github.com/iccnr-xtal/expo-docs",
           "role": "docs"
         },
         {
           "label": "online documentation",
-          "url": "https://ccorrado71.github.io/expo-docs/",
+          "url": "https://iccnr-xtal.github.io/expo-docs/",
           "role": "docs"
         }
       ],
-      "artifact_note": "The Institute of Crystallography of Italy's National Research Council distributes EXPO 2.3.13 as Windows, Apple-silicon macOS, and Ubuntu packages, source, and a Docker image. Academic, scientific, educational, and other noncommercial use is free, while commercial use requires a paid license. The authors opened a CC BY 4.0 documentation repository on 2026-11-13, but label the migrated documentation a work in progress. EXPO exposes command-line, no-GUI, automatic-run, and MPI modes. On Linux and macOS, the optional DICVOL and McMaille indexing programs require Wine; the Docker image omits Wine and those programs"
+      "artifact_note": "The Institute of Crystallography of Italy's National Research Council distributes EXPO 2.3.13 as Windows, Apple-silicon macOS, and Ubuntu packages, source, and a Docker image. Academic, scientific, educational, and other noncommercial use is free, while commercial use requires a paid license. The CC BY 4.0 documentation repository opened on 2026-11-13 moved to the iccnr-xtal organization on 2026-11-18, and its earlier migration notice was removed; the previous ccorrado71 GitHub Pages addresses now return HTTP 404. EXPO exposes command-line, no-GUI, automatic-run, and MPI modes. On Linux and macOS, the optional DICVOL and McMaille indexing programs require Wine; the Docker image omits Wine and those programs"
+    },
+    {
+      "id": "xcape",
+      "name": "XCAPE",
+      "category": "core_solver",
+      "scope_relation": "powder_derived",
+      "verified_at": "2026-11-20",
+      "year": "2026",
+      "inputs_target": "Reference PXRD peaks plus known composition, unit cell, space group, and Z, read from an ICDD PDF XML card or a CIF → relaxed crystal structure candidates",
+      "method": "Symmetry-constrained evolutionary search over Wyckoff-site configurations with PyXtal generation and mutation, SevenNet universal-MLIP relaxation, and selection by diffraction agreement and energy",
+      "reported_performance": "The preprint reports recovering 71 of 77 database-derived structures (92.2%) from noise-free simulated PXRD within 100 generations; five of the six failures have space-group numbers of 12 or lower and all six exceed 40 atoms per conventional cell. It recovered all 12 reference structures from experimental ICDD patterns and proposed 12 assignments for PDF entries without ICSD matches, 10 of which lie within 10 meV/atom of the DFT convex hull",
+      "paper_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2611.23760",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "yslim1/XCAPE",
+          "url": "https://github.com/yslim1/XCAPE",
+          "role": "code"
+        },
+        {
+          "label": "figshare inputs and candidates",
+          "url": "https://doi.org/10.6084/m9.figshare.34981633",
+          "role": "data"
+        }
+      ],
+      "artifact_note": "MIT-licensed source, with tag v0.1.0 on its 2026-11-17 commit, with a command-line entry point, manual, and tests. It depends on PyXtal, pymatgen, TorchSim, and the MIT-licensed SevenNet package, whose pretrained 7net-omni potential is the example configuration's default, and the README strongly recommends a CUDA GPU. A run reads its reference from an ICDD PDF XML card or a CIF, taking composition, lattice, space group, Z, and 2θ-intensity peaks from it; no input path for a raw measured profile is documented. The CC BY 4.0 figshare record holds input configurations, candidate structures, and summary tables; ICDD PDF entries and ICSD structures are identified but not redistributed. The code was not executed in this audit"
+    },
+    {
+      "id": "pxrd-space-group-predictor",
+      "name": "PXRD Space Group Predictor",
+      "category": "core_solver",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-11-20",
+      "year": "2026",
+      "inputs_target": "Experimental Cu Kα PXRD profile + molecular SMILES → ranked space groups and, through sequential crystal structure prediction, a peak-matched molecular-crystal CIF",
+      "method": "Classifier over PXRD and a ChemBERTa molecular embedding ranking ten common space groups (an eleventh, aggregate Others class cannot be searched), which orders a per-group BOMLIP-CSP search with MACE-OFF relaxation, a 3.0 kJ/mol energy window, deduplication, cell refinement, and a peak-match stopping rule",
+      "reported_performance": "In a retrospective evaluation of 11 molecular-crystal systems, the preprint reports candidate sets containing structures that match the experimental packing in nine cases and a 97.9% median reduction in computational cost relative to exhaustive search over the 22 most common space groups",
+      "paper_links": [
+        {
+          "label": "ChemRxiv",
+          "url": "https://doi.org/10.26434/chemrxiv.15012291/v1",
+          "role": "paper"
+        }
+      ],
+      "artifact_links": [
+        {
+          "label": "pic-ai-robotic-chemistry/pxrd-space-group-predictor",
+          "url": "https://github.com/pic-ai-robotic-chemistry/pxrd-space-group-predictor",
+          "role": "code"
+        },
+        {
+          "label": "weights-v1 classifier",
+          "url": "https://github.com/pic-ai-robotic-chemistry/pxrd-space-group-predictor/releases/tag/weights-v1",
+          "role": "model"
+        }
+      ],
+      "artifact_note": "The MIT source provides the pxrd-sg predict, run, and rank commands, documentation that maps each manuscript step to code, and an agent skill. One 19.4 MB classifier checkpoint, one of the paper's five training seeds, is public; the author has authorized its distribution, but its formal license is pending and the MIT license does not cover it. Full runs need a separately installed BOMLIP-CSP engine, a pinned ChemBERTa-100M-MLM revision, the academic-use MACE-OFF23-small potential, and an NVIDIA GPU; Linux x86-64 is the only tested platform, and the current command line accepts only 1.54184 Å data; optional packing validation needs a CSD license. Training data, licensed CSD and PDF records, and the paper's candidate pools are not in the repository, so candidate generation cannot be reproduced exactly; the authors report that ranking their recorded pools reproduces the per-system outcomes. The preprint full text was blocked to the audit client, so paper claims here come from its registered abstract and the repository's paper-to-code map"
     },
     {
       "id": "attention-is-not-all-you-need-for-diffraction",
@@ -1176,7 +1245,7 @@
       "name": "XQueryer",
       "category": "pipeline_module",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-11-20",
       "year": "2025",
       "task": "Neural search-match / structure identification from PXRD",
       "method": "Fourier transform, CNN feature extraction, cross-attention, real-time diffractometer integration",
@@ -1729,11 +1798,11 @@
       "name": "DeltaXRDbench",
       "category": "dataset",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-10-16",
-      "size": "62,044 patterns: 12,044 single-phase and 50,000 two- or three-phase mixtures",
-      "sim_exp": "Sim MP500 + Exp RRUFF/opXRD + generated mixtures",
+      "verified_at": "2026-11-20",
+      "size": "69,544 patterns: Cu Kα MP500 (10,000 single-phase, 30,000 mixtures), RRUFF (1,164 / 10,000), and opXRD (880 / 10,000), plus Co, Mo, Cr, Fe, and Ag Kα MP500 sets (1,000 / 500 each)",
+      "sim_exp": "Sim MP500 at six X-ray targets + Exp RRUFF/opXRD + generated mixtures",
       "format": "JSONL manifests/submissions + PXRD arrays + reference CIFs + evaluation tools",
-      "notes": "Structure-aware single-phase, multiphase, and refinement benchmark used by Gan Jiang. The v1.0.0 release is a 1.34 GB archive with 40,000 MP500, 11,164 RRUFF, and 10,880 opXRD records. Mixtures are linear combinations of single-phase patterns with at least 10% per phase and do not model every experimental interaction. Manifests colocate true phase IDs and reference-CIF paths with pattern pointers, so blind solvers must receive isolated inputs rather than the full manifest. The repository and release currently declare no project or dataset license beyond preserving source-specific terms",
+      "notes": "Structure-aware single-phase, multiphase, and refinement benchmark used by Gan Jiang. The v1.0.0 release is a 1.34 GB archive with the Cu Kα MP500, RRUFF, and opXRD records. The v1.1.0 release of 2026-11-17 adds 7,500 simulated patterns at five further anode targets for the same 1,000 MP500 structures and 500 two- or three-phase compositions, with separate Kα1/Kα2 lines over 10-80 degrees, backgrounds, and counting and read noise; it ships as five split archive parts of about 1.77 GB in total. Mixtures are linear combinations of single-phase signals with at least 10% per phase and do not model every experimental interaction. Manifests colocate true phase IDs and reference-CIF paths with pattern pointers, so blind solvers must receive isolated inputs rather than the full manifest. The repository and releases declare no project or dataset license beyond preserving source-specific terms",
       "resource_links": [
         {
           "label": "arXiv",
@@ -1748,6 +1817,11 @@
         {
           "label": "v1.0.0 dataset release",
           "url": "https://github.com/DeltaGanjiang/deltaxrdbench/releases/tag/v1.0.0",
+          "role": "data"
+        },
+        {
+          "label": "v1.1.0 multi-target release",
+          "url": "https://github.com/DeltaGanjiang/deltaxrdbench/releases/tag/v1.1.0",
           "role": "data"
         }
       ]
@@ -1831,12 +1905,17 @@
       "name": "hMOF-100 / hMOF-400",
       "category": "dataset",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
-      "size": "100 / 400",
+      "verified_at": "2026-11-20",
+      "size": "hMOF-100: 73,332 / 9,117 / 9,081 train/validation/test structures; hMOF-400: 109,836 / 13,730 / 13,729",
       "sim_exp": "Sim",
-      "format": "CIF + PXRD",
-      "notes": "Hypothetical MOF benchmarks used by XtalNet",
+      "format": "CIF + simulated PXRD in a Zenodo archive bundled with XtalNet code and checkpoints",
+      "notes": "Hypothetical-MOF benchmarks curated by XtalNet from the hMOF database using the Uni-MOF split; the suffix is the maximum number of atoms per unit cell, not the number of structures. PXRD patterns are simulated. XtalNet reports top-10 match rates of 90.2% on hMOF-100 and 79% on hMOF-400, the latter on 3,220 randomly chosen test structures. The CC BY 4.0 Zenodo record holds a 4.16 GB data archive whose internal listing was not inspected in this audit",
       "resource_links": [
+        {
+          "label": "Advanced Science paper",
+          "url": "https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/advs.202410722",
+          "role": "paper"
+        },
         {
           "label": "Zenodo",
           "url": "https://doi.org/10.5281/zenodo.13629658",
@@ -1867,7 +1946,7 @@
       "name": "XRDSol MP-20 / ICDD-20 benchmarks",
       "category": "dataset",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-11-20",
       "size": "45,231 MP structures; 1,000 experimental ICDD-20 sets",
       "sim_exp": "Sim + Exp",
       "format": "CIF/PXRD; some restricted experimental records",
@@ -1926,7 +2005,7 @@
       "name": "SimXRD-4M",
       "category": "dataset",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-11-20",
       "size": "4,065,346 patterns from 119,569 structures",
       "sim_exp": "Sim",
       "format": "Spectra shards",
@@ -1944,7 +2023,7 @@
       "name": "SIMPOD",
       "category": "dataset",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-11-20",
       "size": "467,861",
       "sim_exp": "Sim",
       "format": "JSON structures, 1D PXRD, 2D radial images",
@@ -1967,7 +2046,7 @@
       "name": "RealPXRD-Solver training corpus",
       "category": "dataset",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-11-20",
       "size": "6,250,238 theoretical structures",
       "sim_exp": "Sim + Exp evaluation",
       "format": "d-I fingerprints, simulated/augmented PXRD, code/data links",
@@ -1990,7 +2069,7 @@
       "name": "AlphaDiffract simulation corpus",
       "category": "dataset",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-11-20",
       "size": ">31M simulated PXRD from 312,267 structures in paper; open MP-only model subset also available",
       "sim_exp": "Sim + Exp evaluation",
       "format": "Simulated PXRD, labels for lattice / symmetry",
@@ -2145,6 +2224,39 @@
       ]
     },
     {
+      "id": "cof-peak",
+      "name": "COF-PEAK",
+      "category": "dataset",
+      "scope_relation": "direct_pxrd",
+      "verified_at": "2026-11-20",
+      "size": "11,445 curves from 4,664 figures in 2,370 papers (21.9 million points); 7,558 in the clean class",
+      "sim_exp": "Exp, digitized from published figures; 204 curves are kept as model_derived calculated patterns",
+      "format": "Gzipped CSV curve, point, and paper tables + website and read-only API",
+      "notes": "Open database of covalent organic framework PXRD curves traced in a run over 3,954 articles: a vision language model locates each diffraction plot and sketches its curves, and classical computer vision calibrates the 2θ axis and snaps each trace to the drawn line. Against hand digitization of 60 panels, the preprint reports a median peak-position difference of 0.07 degrees. Curves link to their source DOI but carry no crystal-structure labels. Each curve has an admission class; the release advises clean and axis_verified curves for most work, splitting by paper rather than by curve, and not comparing intensities across curves; absolute-angle comparisons should also drop arbitrated axes, the plotted 2θ range varies so an unplotted peak is not an absent one, and most d-spacings assume Cu Kα. Code is MIT and the digitized data are CC BY 4.0, while quoted figure captions keep their source terms. Rerunning the extraction requires an OpenAI API key",
+      "resource_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2611.23680",
+          "role": "paper"
+        },
+        {
+          "label": "AaronG211/pxrd_PEAK",
+          "url": "https://github.com/AaronG211/pxrd_PEAK",
+          "role": "code"
+        },
+        {
+          "label": "data-2026-11-11 release",
+          "url": "https://github.com/AaronG211/pxrd_PEAK/releases/tag/data-2026-11-11",
+          "role": "data"
+        },
+        {
+          "label": "website and API",
+          "url": "https://pxrd-peak.vercel.app",
+          "role": "data"
+        }
+      ]
+    },
+    {
       "id": "xrd-clip-organic-benchmark",
       "name": "XRD-CLIP organic retrieval benchmark",
       "category": "dataset",
@@ -2200,12 +2312,17 @@
       "name": "Verifiable pXRD",
       "category": "dataset",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-11-13",
+      "verified_at": "2026-11-20",
       "size": "Two 100-case single-phase structure benchmarks, a disjoint 50-case adaptation curriculum, a 20-case inference-scaling panel, and 15 measured multiphase scans with released result bundles",
       "sim_exp": "Simulated single-phase PXRD plus experimental two- to six-phase powder-diffraction scans",
       "format": "CIF, CSV, JSON, TOML, Python evaluation code, normalized submitted structures, and compressed agent traces",
-      "notes": "Apache-2.0 research artifact for blinded crystal-structure solution and agent evaluation. Solvers receive each simulated pattern plus its reduced composition. pXRD-100 deliberately selects Materials Project structures exposed to several major models' training sets; pXRD-ood supplies four generated 25-case streams with novelty certificates but makes no stability, synthesizability, or universal-novelty claim. Exact reference CIFs are public for reproducibility and must be isolated from evaluated solvers. The 15-scan Precursor Genome subset is a development evaluation with deposited refinements rather than noise-free phase truth. Reproducing the Codex-agent conditions requires a Codex login, and DICVOL14 must be supplied separately. Repository-authored code is Apache-2.0, while Materials Project, Precursor Genome, COD, model, and solver inputs retain their source-specific terms",
+      "notes": "Apache-2.0 research artifact for blinded crystal-structure solution and agent evaluation. Solvers receive each simulated pattern plus its reduced composition. pXRD-100 deliberately selects Materials Project structures exposed to several major models' training sets; pXRD-ood supplies four generated 25-case streams with novelty certificates but makes no stability, synthesizability, or universal-novelty claim. Exact reference CIFs are public for reproducibility and must be isolated from evaluated solvers. The 15-scan Precursor Genome subset is a development evaluation with deposited refinements rather than noise-free phase truth. Reproducing the Codex-agent conditions requires a Codex login, and DICVOL14 must be supplied separately. Repository-authored code is Apache-2.0, while Materials Project, Precursor Genome, COD, model, and solver inputs retain their source-specific terms. The 2026-11-12 arXiv preprint names the 200 simulated single-phase problems pXRD-Bench, a different benchmark from the PXRD-Bench corpus listed separately here, and reports that agent adaptation raises selected structural recovery from 27% to 69%",
       "resource_links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2611.17539",
+          "role": "paper"
+        },
         {
           "label": "sache07/verifiable-pxrd",
           "url": "https://github.com/sache07/verifiable-pxrd",
@@ -2390,9 +2507,9 @@
       "name": "XRD Phase Finder",
       "category": "utility",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-11-13",
+      "verified_at": "2026-11-20",
       "task": "Interactive PXRD phase search-match, residual inspection, and project-based analysis",
-      "notes": "MIT desktop application that imports measured patterns and CIFs, searches user libraries and configured crystallographic databases, compares calculated profiles, and tracks unexplained residual peaks. Version 1.7.1 preserves CIF identities across library reimport and portable transfer, clarifies one-click and refined searches, validates XPFF archives before atomic extraction, and refuses quantitative fractions for nearly indistinguishable phases. Windows and macOS packages are current at 1.7.1, while Linux remains at 1.6.9. A post-release hotfix changed candidate-preview normalization and stack offsets but not Match/Gain calculations. The release reports targeted software checks and an older 100-pattern baseline, not a new whole-dataset scientific benchmark",
+      "notes": "MIT desktop application that imports measured patterns and CIFs, searches user libraries and configured crystallographic databases, compares calculated profiles, and tracks unexplained residual peaks. Version 1.7.2, released 2026-11-18, is current for Windows, macOS, and Linux and changes window handling, save prompts, plot-control layout, and startup order. Version 1.7.1 had preserved CIF identities across library reimport and portable transfer, validated XPFF archives before atomic extraction, and refused quantitative fractions for nearly indistinguishable phases. The repository now cites a forthcoming Journal of Applied Crystallography article whose DOI did not resolve on 2026-11-20, so no article link is given. The releases report targeted software checks and an older 100-pattern baseline, not a new whole-dataset scientific benchmark",
       "resource_links": [
         {
           "label": "ABKuznetsov/XRD_Analysis_Toolkit",
@@ -2400,8 +2517,8 @@
           "role": "code"
         },
         {
-          "label": "v1.7.1 release",
-          "url": "https://github.com/ABKuznetsov/XRD_Analysis_Toolkit/releases/tag/v1.7.1",
+          "label": "v1.7.2 release",
+          "url": "https://github.com/ABKuznetsov/XRD_Analysis_Toolkit/releases/tag/v1.7.2",
           "role": "tool"
         }
       ]
@@ -2468,9 +2585,9 @@
       "name": "rietx",
       "category": "utility",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-11-06",
+      "verified_at": "2026-11-20",
       "task": "Programmatic powder indexing, Le Bail/Pawley extraction, Rietveld refinement, and sequential analysis",
-      "notes": "MIT Python package with multi-phase X-ray and constant-wavelength neutron refinement, staged plans, quantitative phase analysis, joint and sequential refinement, indexing, structured reports, and interchange with major refinement formats. Version 1.11.0 validates index candidates by Pawley fitting and screens predicted-but-absent lines. The repository publishes a detailed real-data acceptance matrix with measured bounds and explicit known gaps; it is author validation rather than an independent benchmark or peer-reviewed software paper",
+      "notes": "MIT Python package with multi-phase X-ray and constant-wavelength neutron refinement, staged plans, quantitative phase analysis, joint and sequential refinement, indexing, structured reports, and interchange with major refinement formats. Version 1.12.0, released 2026-11-18, repeats Le Bail partitioning until intensities settle, gives no weight to points whose file esd is zero or negative, makes extinction opt-in per phase, and retries indexing on stronger lines when no two indexing engines agree (unless the number of unindexed lines is declared), so Le Bail and some refinement results can differ from 1.11.0. The repository publishes a detailed real-data acceptance matrix with measured bounds and explicit known gaps; it is author validation rather than an independent benchmark or peer-reviewed software paper",
       "resource_links": [
         {
           "label": "yue-here/rietx",
@@ -2478,13 +2595,13 @@
           "role": "code"
         },
         {
-          "label": "v1.11.0 release",
-          "url": "https://github.com/yue-here/rietx/releases/tag/v1.11.0",
+          "label": "v1.12.0 release",
+          "url": "https://github.com/yue-here/rietx/releases/tag/v1.12.0",
           "role": "tool"
         },
         {
           "label": "validation matrix",
-          "url": "https://github.com/yue-here/rietx/blob/v1.11.0/docs/VALIDATION.md",
+          "url": "https://github.com/yue-here/rietx/blob/v1.12.0/docs/VALIDATION.md",
           "role": "docs"
         }
       ]
