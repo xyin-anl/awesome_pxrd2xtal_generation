@@ -479,9 +479,25 @@ Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog
 - **InformedXRD** is evaluation infrastructure and a dataset; **rietx**, **QualX**, **XRD Phase Finder**, and **PowderLine** are utilities or refinement/search tools. None qualifies for a structure-generation wrapper issue.
 - Reconsidered the previously blocked core solvers. **RealPXRD-Solver** still has no checkpoint; **AGAPI-XRD** has no licensed standalone model; **CrystalNet** has no project license or released weights; exact searches still found no official code/weights for **XRDiff** or **PXtal**; and the **PXRDGen** Code Ocean artifact could not be independently audited. No existing issue needed reopening for those unchanged blockers.
 
+## November 7 2026 inference build
+
+29. **Claude Code Bragglite wrapper build and Codex review - Nov 7 2026**
+    Built the single-phase Bragglite wrapper for [issue #15](https://github.com/xyin-anl/awesome_pxrd2xtal_generation/issues/15) on the maintainer's RTX 4090 (Claude Opus 5.5), following `inference/AGENTS.md`, and had it reviewed read-only against the pinned upstream by Codex (gpt-5.6-sol, high effort). Every finding was checked on the code path or with a test run before it was fixed or kept.
+
+Material changes:
+
+- Added a **Bragglite** wrapper (`inference/bragglite/`, status `verified`) for the two single-phase modes, known composition and element set + atom count, with the PXRD-Bench (default, up to 52 atoms) and MP-20 (up to 20 atoms) checkpoints. Upstream PXRD-Bench is pinned at `2a791ca33d2adc10ec1f247817cddd8adb9f6fc1`; `setup.sh` downloads the 1.58 GB Zenodo archive, checks the deposited md5 and its sha256, and extracts only the four single-phase checkpoints. The pattern goes through upstream's own experimental (opXRD) loader and the candidates through upstream's evaluation sampler; nothing upstream is patched or vendored. The README states the CC BY-NC 4.0 restriction on upstream's retained FlowMM-derived helpers.
+- Mapped the archive: four single-phase checkpoints with per-checkpoint settings files, the two-phase Bragglite and XDecomposer checkpoints, and XDecomposer dependencies. The shipped element-set settings use anti-annealing (0, 10, 10), not the (4, 4, 4) of the paper's Table 16; they reproduce the paper's element-set result.
+- Upstream reproduction: upstream ships no single-pattern example, and the paper's experimental sets (RRUFF-148 from the XRDiff authors, frozen opXRD archives) are not public. `reproduce_upstream.py` approximates the paper's simulated MP-20 test evaluation with upstream's simulator, features, sampler, scorer, target order, and per-target seeds (features recomputed from the CDVAE CIFs because the frozen caches are not public). The MP-20 known-composition checkpoint gives 74.45% top-1 and 84.45% top-20 on the full 9,046-target test (paper 70.85/82.59), and the element-set checkpoint 49.6/72.5 on 2,000 targets (paper 47.48/71.51). Sending 100 targets through `run.py` as rendered profiles agrees on top-20 (80 vs 78, 73 vs 73).
+- Benchmark (PXRD-Bench checkpoint, composition + Z + space group): 10/12 cases matched, mean match fraction 0.73 (0.72 with a second seed); with another case's pattern 7/12 and 0.17, and the correct-space-group fraction falls from 0.33 to 0.01. The MP-20 checkpoints score higher on these small cells (11/12, 0.81). No runs failed; a rerun after the review fixes reproduced every case exactly. Inference takes 2.4 s and 0.9 GB of torch GPU memory for 20 candidates; CPU also works.
+- Review fixes: rejection of elements beyond Pu (upstream's vocabulary; element-set mode silently turned them into Pu), narrower Cu wavelength windows (a declared Kα2 was remapped as Kα1), element-set atom counts no longer tied to the formula, upstream's per-target seeds and a 0.1 Å primitive tolerance in the reproduction script (all reproduction numbers rerun), and configuration checks, failure counts, and same-target comparisons in its summaries. Uncompiled sampling was kept (upstream's README asks for it in reproducibility checks).
+- Left open: the two-phase pipeline (XDecomposer, mixture artifacts, reference and predicted-phase caches) is later scope and recorded under "Later scope" in `inference/TRIAGE.md`; the paper's experimental sets (RRUFF-148 from the XRDiff authors, frozen opXRD archives) are not public, so its experimental numbers could not be rerun.
+
+Merged into `main` on Nov 20 2026 after the Nov 13 and Nov 20 catalog refreshes; the Bragglite catalog entry, README tables, and `inference/TRIAGE.md` were reconciled with those refreshes, which are kept as merged.
+
 ## November 13 2026 weekly refresh
 
-29. **Codex primary-source and artifact audit - Nov 13 2026**
+30. **Codex primary-source and artifact audit - Nov 13 2026**
     Started from a clean checkout and fast-forwarded `main` to the catalog merged on Nov 7. Searches were inclusive of Nov 6 because the catalog records a date rather than a timestamp. Technical claims were checked against official publisher or arXiv pages, author repositories, releases, model/data records, and the `Bin-Cao/awesome-xrd2crystal` board. The competing board still had no commit after Jul 14 and supplied no post-cutoff candidate.
 
 Material additions and corrections:
@@ -514,7 +530,7 @@ Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog
 
 ## November 13 2026 inference triage
 
-30. **Post-catalog wrapper feasibility and duplicate audit - Nov 13 2026**
+31. **Post-catalog wrapper feasibility and duplicate audit - Nov 13 2026**
     After opening draft catalog PR #17, searched all open and closed issues, all pull requests, and repository-local wrappers by catalog ID, model name and aliases, paper identifier, upstream repository, and artifact location. The only issue is Bragglite #15. The implementation pull requests are merged wrapper PR #9 and draft Bragglite PR #16; no EXPO issue, implementation, or local wrapper exists.
 
 - **EXPO** is technically runnable from public source or packages, but no new inference issue was opened. Its authors maintain the current EXPO 2.3.13 application, examples, and command-line, no-GUI, automatic-run, and MPI interfaces. Under the local rule for author-maintained applications, the official application is linked under "Referenced, not wrapped here" rather than duplicated. The noncommercial license, incomplete migrated documentation, and Docker indexing limitation remain explicit.
@@ -525,7 +541,7 @@ Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog
 
 ## November 20 2026 weekly refresh
 
-31. **Claude primary-source and artifact audit - Nov 20 2026**
+32. **Claude primary-source and artifact audit - Nov 20 2026**
     Started from a clean checkout of `main` at the catalog merged from PR #17. Searches covered Nov 12-20, overlapping the previous cutoff by one day because the catalog records a date rather than a timestamp. Technical claims were checked against arXiv records and full text, Europe PMC full text of open-access articles, Crossref and Semantic Scholar metadata where publisher pages refused the audit client, author repositories, releases, figshare and Zenodo records, and the `Bin-Cao/awesome-xrd2crystal` board. The competing board still had no commit after Jul 14 and supplied no candidate.
 
 Material additions and corrections:
@@ -563,7 +579,7 @@ Validation passed: `python3 scripts/catalog.py render`; `python3 scripts/catalog
 
 ## November 20 2026 inference triage
 
-32. **Post-catalog wrapper feasibility and duplicate audit - Nov 20 2026**
+33. **Post-catalog wrapper feasibility and duplicate audit - Nov 20 2026**
     After opening draft catalog PR #18, searched all open and closed issues, all pull requests, and repository-local wrappers for `XCAPE`, `xcape`, `yslim1`, arXiv `2611.23760`, and the upstream repository. No existing issue, pull request, or wrapper matched.
 
 - **XCAPE** is eligible for a wrapper: it targets general inorganic materials, its source and the SevenNet potential package are public under MIT, and it has a command-line entry point. Opened [issue #19](https://github.com/xyin-anl/awesome_pxrd2xtal_generation/issues/19) (`needs-inference`). Open points recorded there: XCAPE reads its reference only from an ICDD PDF XML card or a CIF and needs the known cell, space group, and Z, so a wrapper must define a user-pattern input path that does not leak reference coordinates; the SevenNet checkpoint's size, checksum, and license and the inference hardware are not yet established.

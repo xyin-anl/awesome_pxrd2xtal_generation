@@ -1,0 +1,64 @@
+# Inference manifest: the contract between this directory, the benchmark harness, and the
+# catalog. Fields are documented in inference/README.md.
+id: bragglite
+name: Bragglite
+catalog_id: bragglite
+upstream:
+  repo: https://github.com/dongyeop3813/PXRD-Bench
+  commit: 2a791ca33d2adc10ec1f247817cddd8adb9f6fc1
+  license: MIT for original Bragglite code; retained FlowMM-derived helpers are CC BY-NC 4.0 (noncommercial); CDVAE-derived helpers keep their MIT notice
+weights:
+  - id: bragglite-checkpoints-v1.tar.gz
+    url: https://zenodo.org/records/23878332
+    version: v1
+    license: CC BY 4.0
+    size_bytes: 1583482073
+    md5: 6f1f8e2d60e438b79349e8f84f8eb292  # deposited on the Zenodo record
+    sha256: ccc981c46af394b61e4193d488a1cdb5b876c7bfab2659e8926637252c31a39c
+    files:  # single-phase checkpoints extracted by setup.sh (sha256)
+      checkpoints/single_phase/pxrd_bench_stoichiometry.pt: 2b6fd3ff608322aa0b48fd03349e37d0751026923a24bedcfa6a0208632a1400
+      checkpoints/single_phase/pxrd_bench_element_set.pt: fd274604696492fa2394f824acfbd2e36d01ea6431d89295336171b552440805
+      checkpoints/single_phase/mp20_stoichiometry.pt: 241bde118d1ad00ac09bb848b2159d9d9d98e4057fd7e47ed6a16a1abcc39296
+      checkpoints/single_phase/mp20_element_set.pt: 253a47efbf3c278c69ab0d21675b805c5b3e99c75b4a9f2617c5e563df3ff883
+    note: the archive also holds the two-phase Bragglite and XDecomposer checkpoints, which this wrapper does not use
+inputs:
+  pattern: required (full profile; upstream's experimental loader maps it to 1.54184 A, 850 bins over 5-90 deg, smooths, subtracts a polynomial background, and extracts up to 128 peaks)
+  wavelength: required for column files; read from pdCIF (Cu peak maxima are treated as Cu K-alpha1 by default)
+  composition: required in composition mode (exact primitive-cell multiplicities); element-set mode uses only its elements
+  z: required unless --n-atoms is given (conventional cell; converted to the primitive cell, all centerings tried without a space group)
+  spacegroup: optional, only used to convert Z to the primitive cell
+  usable_range: 5-90 degrees 2theta at 1.54184 A; at most 52 atoms in the primitive cell (PXRD-Bench checkpoints) or 20 (MP-20 checkpoints)
+hardware:
+  gpu_memory_gb: 1.6  # process peak incl. CUDA context (~1.5 GB); torch allocations peak at 0.9 GB for 45 candidates
+  cpu_ok: true  # --device cpu runs in float32, much slower
+  platform: tested on Linux x86-64 only
+environment:
+  file: environment.yml
+  setup: setup.sh
+  conda_env: bragglite
+benchmark:
+  settings:
+    - name: composition_z_spacegroup
+      inputs: [composition, z, spacegroup]
+    - name: composition_z_spacegroup_seed778
+      inputs: [composition, z, spacegroup]
+      extra_args: [--seed, "778"]
+    - name: composition_z_spacegroup_cu_declared
+      inputs: [composition, z, spacegroup]
+      extra_args: [--cu-positions, declared]
+    - name: composition_z
+      inputs: [composition, z]
+    - name: element_set_z_spacegroup
+      inputs: [composition, z, spacegroup]
+      extra_args: [--mode, element-set]
+    - name: composition_z_spacegroup_mp20
+      inputs: [composition, z, spacegroup]
+      extra_args: [--training-set, mp20]
+    - name: element_set_z_spacegroup_mp20
+      inputs: [composition, z, spacegroup]
+      extra_args: [--mode, element-set, --training-set, mp20]
+status:
+  state: verified
+  verified_on: 2026-11-07
+  verified_by: Claude Code agent with Codex review (pending maintainer review)
+  hardware: NVIDIA RTX 4090 24 GB, driver 595.99.02, Linux

@@ -11,6 +11,7 @@ The blocked set and duplicate search were rechecked on 2026-10-30; no blocker ch
 updated 2026-11-13 after EXPO entered the catalog and Bragglite draft implementation PR #16
 opened. Updated 2026-11-20 after XCAPE entered the catalog and issue #19 was opened, XRDiff's
 paper-linked code became public, and the molecular-crystal PXRD Space Group Predictor was cataloged.
+Updated again 2026-11-20 when the single-phase Bragglite wrapper (PR #16) was merged.
 
 ## Wrapped (status in each manifest: verified, reproduced, or limited)
 
@@ -27,6 +28,7 @@ paper-linked code became public, and the molecular-crystal PXRD Space Group Pred
 
 Scope: general inorganic materials. Models specialized to one material class are recorded under
 "Out of focus".
+| Bragglite (single phase: known composition, element set) | `bragglite/` |
 
 ## Referenced, not wrapped here
 
@@ -43,11 +45,11 @@ Scope: general inorganic materials. Models specialized to one material class are
 |-------|--------|
 | XCAPE | MIT [v0.1.0 source](https://github.com/yslim1/XCAPE) with a command-line entry point, using the public MIT SevenNet package and its pretrained `7net-omni` potential. [Issue #19](https://github.com/xyin-anl/awesome_pxrd2xtal_generation/issues/19) records the open points: XCAPE reads its reference only from an ICDD PDF XML card or a CIF and needs the known cell, space group, and Z, so a wrapper must define a user-pattern input path that does not leak reference coordinates; the SevenNet checkpoint's size, checksum, and license and the inference hardware are not yet established. |
 
-## Implementation in review
+## Later scope
 
 | Model | Status |
 |-------|--------|
-| Bragglite | [Issue #15](https://github.com/xyin-anl/awesome_pxrd2xtal_generation/issues/15) is implemented by draft [PR #16](https://github.com/xyin-anl/awesome_pxrd2xtal_generation/pull/16), which wraps the known-composition and element-set single-phase modes and reports a verified upstream reproduction, matched/control benchmark, and clean setup. The PR is not merged, so `main` still has no Bragglite wrapper; maintainer review is pending. |
+| Bragglite two-phase pipeline | The single-phase modes are wrapped in `bragglite/`. The two-phase pipeline (`src/two_phase` at the pinned commit) adds XDecomposer phase decomposition, which needs XDecomposer's official V_0.0.1 source, weights, and dependencies, the mixture artifacts under `data/two_phase`, MP-20 reference caches, and predicted-phase caches. Its Bragglite and XDecomposer checkpoints ship in the same Zenodo archive (`checkpoints/two_phase/`, `dependencies/`). Left for a separate wrapper ([issue #15](https://github.com/xyin-anl/awesome_pxrd2xtal_generation/issues/15)). |
 
 ## Out of focus
 
