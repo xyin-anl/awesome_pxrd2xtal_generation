@@ -1,7 +1,7 @@
 {
   "$schema": "./resources.schema.json",
   "schema_version": 2,
-  "last_updated": "2026-11-20",
+  "last_updated": "2026-11-27",
   "website_url": "https://nodeology.ai/resources/pxrd2xtal",
   "inference_order": [
     "uni3dar",
@@ -39,7 +39,7 @@
       "name": "CrystalNet",
       "category": "core_solver",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-11-27",
       "year": "2024",
       "inputs_target": "PXRD + composition information → electron density / structure",
       "method": "Coordinate-based VAE for electron density",
@@ -134,7 +134,7 @@
       "name": "XtalNet",
       "category": "core_solver",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-07-27",
+      "verified_at": "2026-11-27",
       "year": "2024/2025",
       "inputs_target": "PXRD + composition / MOF setting → crystal structure candidates",
       "method": "Contrastive PXRD-crystal pretraining + conditional equivariant diffusion",
@@ -494,7 +494,7 @@
       "name": "CrystaLLM-π",
       "category": "core_solver",
       "scope_relation": "powder_derived",
-      "verified_at": "2026-07-27",
+      "verified_at": "2026-11-27",
       "year": "2025/2026",
       "inputs_target": "Pre-picked PXRD peak positions/intensities + composition and unit-cell stoichiometry → CIF candidates",
       "method": "Autoregressive CIF language model with residual-attention PXRD conditioning and perplexity ranking",
@@ -510,6 +510,11 @@
         {
           "label": "C-Bone-UCL/CrystaLLM-pi",
           "url": "https://github.com/C-Bone-UCL/CrystaLLM-pi",
+          "role": "code"
+        },
+        {
+          "label": "CrystaLLM-pi-paper (paper reproduction)",
+          "url": "https://github.com/C-Bone-UCL/CrystaLLM-pi-paper",
           "role": "code"
         },
         {
@@ -561,14 +566,15 @@
             "code_label": true
           }
         ]
-      }
+      },
+      "artifact_note": "Since v2.0.0 (2026-09-29) the paper notebooks, configurations, and Prepend/Raw baselines live in the separate MIT CrystaLLM-pi-paper repository. The main repository generates with the `application` screening profile by default; its `benchmark` profile reproduces the screening behind the published MP-20 numbers"
     },
     {
       "id": "crystarnet",
       "name": "CrySTARNet",
       "category": "core_solver",
       "scope_relation": "multimodal_pxrd",
-      "verified_at": "2026-08-24",
+      "verified_at": "2026-11-27",
       "year": "2025/2026",
       "inputs_target": "PXRD + composition, with optional TEM → crystal structure with fractional occupancies",
       "method": "Contrastive XRD/TEM representation learning + conditional diffusion generation + diffraction-based candidate screening",
@@ -586,7 +592,7 @@
           "role": "data"
         }
       ],
-      "artifact_note": "No paper or preprint was found during the 2026-08-24 pass; performance is reported only by the official repository and Zenodo record"
+      "artifact_note": "No paper or preprint was found in arXiv, Crossref, or Europe PMC searches on 2026-11-27; performance is reported only by the official repository and Zenodo record"
     },
     {
       "id": "xrd2mof",
@@ -719,11 +725,11 @@
       "name": "Ab-PXRD-Solver",
       "category": "core_solver",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-07-18",
+      "verified_at": "2026-11-27",
       "year": "2026",
       "inputs_target": "Experimental PXRD + chemical formula, with an optional known space group → refined CIF",
       "method": "Hybrid discrete symmetry/cell/Wyckoff search and continuous coordinate optimization with ML and physics-informed refinement",
-      "reported_performance": "Authors provide systematic results for more than 1,000 systems and demonstrations on complex or noisy experimental cases",
+      "reported_performance": "On 1,136 MP-20 structures drawn from the 1,156 top-20 failures shared by PXRDGen and Uni-3DAR (2D monolayer and triclinic cases excluded), fully automated runs that inferred the space group succeeded for 100% of cubic, 99.2% of hexagonal, 98.1% of trigonal, 98.4% of tetragonal, 94.0% of orthorhombic, and 60.1% of monoclinic structures, taking minutes to hours per structure on one CPU; neither arXiv version reports an evaluation on measured patterns",
       "paper_links": [
         {
           "label": "arXiv",
@@ -794,7 +800,7 @@
       "name": "XRDiff",
       "category": "core_solver",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-11-20",
+      "verified_at": "2026-11-27",
       "year": "2026",
       "inputs_target": "PXRD + stoichiometry, or elements + total atom count → crystal structure",
       "method": "Diffusion model with full-spectrum or peak-descriptor PXRD conditioning",
@@ -811,9 +817,14 @@
           "label": "learningmatter-mit/XRDiff",
           "url": "https://github.com/learningmatter-mit/XRDiff",
           "role": "code"
+        },
+        {
+          "label": "Zenodo datasets",
+          "url": "https://doi.org/10.5281/zenodo.24571197",
+          "role": "data"
         }
       ],
-      "artifact_note": "The paper-linked MIT repository, created on 2026-10-24 and prepared for external users on 2026-11-12, builds on DiffCSP and provides training, evaluation, and GSAS-II Rietveld ranking scripts for the RRUFF-148 experimental benchmark. It releases no trained checkpoints, and its Alex-MP-20-Poly, OQMD-Poly, and RRUFF dataset files are announced for a Zenodo record that was not yet linked on 2026-11-20. The pinned environment uses Python 3.8 and PyTorch 1.9"
+      "artifact_note": "The paper-linked MIT repository builds on DiffCSP and provides training, evaluation, and GSAS-II Rietveld ranking scripts for the RRUFF-148 experimental benchmark. Its Alex-MP-20-Poly and OQMD-Poly splits, the RRUFF-148 test set, and the RRUFF calibration set were released on 2026-11-26 as a 3.7 GB CC BY 4.0 Zenodo archive. No trained checkpoint is released, so generation requires training first. The pinned environment uses Python 3.8 and PyTorch 1.9"
     },
     {
       "id": "bragglite",
@@ -896,11 +907,11 @@
       "name": "EXPO",
       "category": "core_solver",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-11-20",
+      "verified_at": "2026-11-27",
       "year": "2013/2026",
       "inputs_target": "Powder diffraction profile plus composition and optional structural fragments → indexed, phased, solved, and refined crystal structure",
       "method": "Integrated peak extraction, indexing, space-group assignment, reciprocal- or direct-space structure solution, and Rietveld refinement",
-      "reported_performance": "The peer-reviewed EXPO2013 paper introduces the integrated structure-solution workflow through worked examples. The current EXPO 2.3.13 software and newly public documentation do not provide a new cross-method benchmark, so no current success-rate claim is inferred",
+      "reported_performance": "The peer-reviewed EXPO2013 paper introduces the integrated structure-solution workflow through worked examples. The current EXPO 2.3.15 software and newly public documentation do not provide a new cross-method benchmark, so no current success-rate claim is inferred",
       "paper_links": [
         {
           "label": "Journal of Applied Crystallography",
@@ -910,7 +921,7 @@
       ],
       "artifact_links": [
         {
-          "label": "EXPO 2.3.13 downloads",
+          "label": "EXPO 2.3.15 downloads",
           "url": "https://iccnr-xtal.github.io/expo-docs/download.html",
           "role": "tool"
         },
@@ -925,7 +936,7 @@
           "role": "docs"
         }
       ],
-      "artifact_note": "The Institute of Crystallography of Italy's National Research Council distributes EXPO 2.3.13 as Windows, Apple-silicon macOS, and Ubuntu packages, source, and a Docker image. Academic, scientific, educational, and other noncommercial use is free, while commercial use requires a paid license. The CC BY 4.0 documentation repository opened on 2026-11-13 moved to the iccnr-xtal organization on 2026-11-18, and its earlier migration notice was removed; the previous ccorrado71 GitHub Pages addresses now return HTTP 404. EXPO exposes command-line, no-GUI, automatic-run, and MPI modes. On Linux and macOS, the optional DICVOL and McMaille indexing programs require Wine; the Docker image omits Wine and those programs"
+      "artifact_note": "The Institute of Crystallography of Italy's National Research Council distributes EXPO 2.3.15 (2026-11-24) as Windows, Apple-silicon macOS, and Ubuntu 24.04 and 26.04 packages, source, and a Docker image. Version 2.3.14 rescales counts under the SCALE directive to start at zero, returns simulated annealing to the unweighted scale factor used before 2.3.13, and changes low-angle background handling in intensity extraction, so results can differ from 2.3.13. Academic, scientific, educational, and other noncommercial use is free, while commercial use requires a paid license. The CC BY 4.0 documentation repository opened on 2026-11-13 moved to the iccnr-xtal organization on 2026-11-18, and its earlier migration notice was removed; the previous ccorrado71 GitHub Pages addresses now return HTTP 404. EXPO exposes command-line, no-GUI, automatic-run, and MPI modes. On Linux and macOS, the optional DICVOL and McMaille indexing programs require Wine; the Docker image omits Wine and those programs"
     },
     {
       "id": "xcape",
@@ -1051,7 +1062,7 @@
       "name": "AlphaDiffract",
       "category": "pipeline_module",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-10-04",
+      "verified_at": "2026-11-27",
       "year": "2026",
       "task": "Crystal system, space group, and lattice parameter prediction from PXRD",
       "method": "1D ConvNeXt / deep diffraction encoder",
@@ -1455,7 +1466,7 @@
       "name": "Dara",
       "category": "pipeline_module",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-08-24",
+      "verified_at": "2026-11-27",
       "year": "2025/2026",
       "task": "Multiple-hypothesis phase identification and Rietveld refinement from PXRD",
       "method": "Database filtering + peak-matching-pruned tree search + BGMN full-profile refinement + isostructural grouping",
@@ -1474,14 +1485,14 @@
           "role": "code"
         }
       ],
-      "artifact_note": "The open Dara package uses the external BGMN refinement engine and requires a user-supplied structure database; access restrictions depend on the selected database"
+      "artifact_note": "The MIT Dara package calls the BGMN refinement engine, whose files it bundles with the BGMN and Profex developers' permission. Phase search can use any structure database or user CIFs: a filtered COD list ships with the package and COD CIFs can be fetched online or read from a local copy, while ICSD use needs a local folder of downloaded ICSD CIFs"
     },
     {
       "id": "aif",
       "name": "Automated Interpretation Framework (AIF)",
       "category": "pipeline_module",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-08-24",
+      "verified_at": "2026-11-27",
       "year": "2026",
       "task": "Probabilistic ranking and trust assessment of competing PXRD phase interpretations",
       "method": "Bayesian combination of Rwp/peak-match evidence, composition balance, and LLM-derived chemical-plausibility priors",
@@ -1512,7 +1523,7 @@
       "name": "AutoXRD",
       "category": "pipeline_module",
       "scope_relation": "multimodal_pxrd",
-      "verified_at": "2026-10-05",
+      "verified_at": "2026-11-27",
       "year": "2026",
       "task": "Autonomous powder-diffraction analysis, staged Rietveld workflow execution, and evidence-based result validation",
       "method": "LLM agent runtime with reusable XRD procedures, FullProf/GSAS-II backends, deterministic pre/post checks, and append-only refinement trajectories",
@@ -1543,7 +1554,7 @@
       "name": "PhaseDifformer",
       "category": "pipeline_module",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-08-10",
+      "verified_at": "2026-11-27",
       "year": "2026",
       "task": "Multi-phase PXRD decomposition",
       "method": "Phase-decomposition diffusion Transformer",
@@ -1767,7 +1778,7 @@
       "name": "RAPID",
       "category": "pipeline_module",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-09-07",
+      "verified_at": "2026-11-27",
       "year": "2026",
       "task": "CNN initialization and automated FullProf Rietveld refinement from PXRD",
       "method": "Convolutional neural network trained on augmented simulated profiles to predict structure/profile parameters, followed by AutoFP/FullProf refinement",
@@ -1923,7 +1934,7 @@
       "name": "XRDBench",
       "category": "dataset",
       "scope_relation": "multimodal_pxrd",
-      "verified_at": "2026-09-07",
+      "verified_at": "2026-11-27",
       "size": "100 diagnostic tasks + 34 executable workflows",
       "sim_exp": "Controlled + Exp",
       "format": "JSON task/oracle definitions + XYE/PRM/CIF inputs",
@@ -2138,11 +2149,11 @@
       "name": "XQueryer simulated database",
       "category": "dataset",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-11-27",
       "size": ">2M PXRD patterns from 100,315 MP structures",
       "sim_exp": "Sim + Exp evaluation",
       "format": "Simulated patterns, matching database, benchmark scripts",
-      "notes": "Neural search-match and real-time identification; includes RRUFF-MP matching benchmark",
+      "notes": "Neural search-match and real-time identification; includes RRUFF-MP matching benchmark. The README now describes 2.3M+ patterns and distributes the simulated dataset through a OneDrive share; GitHub holds the simulation and RRUFF-MP matching code, and a 2026-05-12 release adds an RRUFF database file",
       "resource_links": [
         {
           "label": "National Science Review paper",
@@ -2161,7 +2172,7 @@
       "name": "PowBase",
       "category": "dataset",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
+      "verified_at": "2026-11-27",
       "size": "169",
       "sim_exp": "Exp",
       "format": "`.dat` / `.cif`",
@@ -2215,11 +2226,11 @@
       "name": "XRed",
       "category": "dataset",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-05-09",
-      "size": "100+ public pattern files in GitHub tree",
+      "verified_at": "2026-11-27",
+      "size": "3 two-phase example patterns with 6 CIFs remain in the GitHub tree",
       "sim_exp": "Exp",
       "format": "`.csv` + `.cif`",
-      "notes": "Public experimental XRD phase-identification dataset with mono-, bi-, tri-, and multi-phase examples",
+      "notes": "Experimental XRD phase-identification dataset originally released with mono-, bi-, tri-, and multi-phase examples. On 2026-08-01 the repository's CSV pattern files fell from 186 to three and its CIFs from 42 to six, leaving three two-phase titanium and titania examples, and the README now states that the project has ended and its data moved to the Xchange project; that destination could not be verified in this audit, so no link is given",
       "resource_links": [
         {
           "label": "WPEM/XRED",
@@ -2233,19 +2244,24 @@
       "name": "opXRD",
       "category": "dataset",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-09-07",
+      "verified_at": "2026-11-27",
       "size": "92,552 patterns; 2,179 at least partially labeled",
       "sim_exp": "Exp",
       "format": "Diffractograms + metadata",
-      "notes": "Open experimental PXRD database sourced from six contributing institutions; useful for experimental-domain adaptation and retrieval",
+      "notes": "Open experimental PXRD database sourced from six contributing institutions; useful for experimental-domain adaptation and retrieval. The counts are those of the article, published online in Advanced Intelligent Discovery on 2025-06-20; the latest Zenodo version (2025-04-28) is a single 1.40 GB archive whose pattern count was not recounted in this audit",
       "resource_links": [
         {
-          "label": "Zenodo archive",
-          "url": "https://doi.org/10.5281/zenodo.14279434",
+          "label": "Zenodo archive (all versions)",
+          "url": "https://doi.org/10.5281/zenodo.14254270",
           "role": "data"
         },
         {
-          "label": "paper",
+          "label": "Advanced Intelligent Discovery",
+          "url": "https://doi.org/10.1002/aidi.202500044",
+          "role": "paper"
+        },
+        {
+          "label": "open-access copy (KITopen)",
           "url": "https://publikationen.bibliothek.kit.edu/1000182521",
           "role": "paper"
         }
@@ -2307,15 +2323,15 @@
       "name": "XRD-CLIP organic retrieval benchmark",
       "category": "dataset",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-11-13",
-      "size": "196 identified organic opXRD patterns and 19 external patterns; 308,861 CSD reference codes; open COD replica with 190 queries and 108,902 simulated library entries",
+      "verified_at": "2026-11-27",
+      "size": "196 identified organic opXRD patterns (188 CSD queries) and 19 external patterns; 308,862 CSD corpus reference codes (309,080 library entries with the external set's additions); open COD replica with 190 queries and 108,902 simulated library entries",
       "sim_exp": "Experimental query patterns + simulated CSD or COD reference libraries",
       "format": "Zenodo ZIP archives containing truth sets, reference-code lists, rank arrays, scripts, and sharded NumPy stick libraries",
-      "notes": "Measured-pattern retrieval benchmark comparing learned XRD-CLIP retrieval with classical full-profile scores. The frozen 2026-10-18 deposit includes code, benchmark definitions, per-pattern ranks, verification scripts, and a fully open COD replica. The live repository records a later ground-truth correction that adds three packing-equivalent CSD refcodes for one query; those corrected labels and subsequent analyses are not in the Zenodo snapshot. The repository also records rejection of the original RSC Advances submission and an ongoing repair/resubmission pass, so no public article page currently supports the method claims. CSD structures, CSD-simulated patterns, and the CSD-trained checkpoint remain unavailable under the CSD license; source opXRD profiles are in a separate CC BY 4.0 archive. Deposit metadata assign MIT to code, CC BY 4.0 to data/results, and CC0 to COD-derived content",
+      "notes": "Measured-pattern retrieval benchmark comparing learned XRD-CLIP retrieval with classical full-profile scores. Version 2 of the Zenodo deposit (2026-11-20) supersedes the 2026-10-18 snapshot for the current manuscript: it applies the label corrections, grouping refcode families into 121 compounds, re-simulates 37 disordered CSD library entries with their occupancies and recomputes every rank, adds a space-group-aware learned model with its ablation, and reruns the critic2 variable-cell re-rank on 60 patterns; version 1 remains available unchanged. The deposit holds code, benchmark definitions, per-pattern ranks, a script that regenerates every number in the manuscript, and the fully open COD replica. The manuscript is unpublished, so no public article page supports the method claims. The deposit excludes CSD structures, CSD-simulated patterns, and the CSD-trained checkpoints under the CSD license; source opXRD profiles are in a separate CC BY 4.0 archive. Deposit metadata assign MIT to code, CC BY 4.0 to data/results, and CC0 to COD-derived content",
       "resource_links": [
         {
-          "label": "Zenodo deposit",
-          "url": "https://doi.org/10.5281/zenodo.23446290",
+          "label": "Zenodo deposit (version 2)",
+          "url": "https://doi.org/10.5281/zenodo.24407260",
           "role": "data"
         },
         {
@@ -2445,6 +2461,32 @@
       ]
     },
     {
+      "id": "easydiffraction",
+      "name": "EasyDiffraction",
+      "category": "utility",
+      "scope_relation": "multimodal_pxrd",
+      "verified_at": "2026-11-27",
+      "task": "Diffraction pattern calculation and structure refinement for powder and single-crystal data",
+      "notes": "Calculates diffraction patterns from a structural model and fits the model to measured powder or single-crystal, neutron or X-ray data, including magnetic structures, through browser and desktop applications, a Python package, and a command line that share one calculation engine. Its tutorials include constant-wavelength X-ray powder refinements; the Python tutorial refines the Rietveld round robin's laboratory Cu Kα PbSO4 pattern stepwise to Rwp 8.40% (reduced χ² 2.98). The official site now links the enhantica/edi monorepo (created 2026-11-10) as its source, and its v2026.11.31 release (2026-11-25) is archived on Zenodo; the source is BSD-3-Clause and the built application GPL-3.0. The PyPI package was last released as 0.21.1 (2026-09-22) from the earlier easyscience/diffraction-lib repository, the version PowderLine pins as a backend. The project asks users to cite the software record; no software paper or benchmark is cited",
+      "resource_links": [
+        {
+          "label": "enhantica/edi",
+          "url": "https://github.com/enhantica/edi",
+          "role": "code"
+        },
+        {
+          "label": "documentation",
+          "url": "https://easydiffraction.org/",
+          "role": "docs"
+        },
+        {
+          "label": "Zenodo software record (all releases)",
+          "url": "https://doi.org/10.5281/zenodo.24127939",
+          "role": "tool"
+        }
+      ]
+    },
+    {
       "id": "kaisetsu",
       "name": "kaisetsu",
       "category": "utility",
@@ -2553,9 +2595,9 @@
       "name": "XRD Phase Finder",
       "category": "utility",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-11-20",
-      "task": "Interactive PXRD phase search-match, residual inspection, and project-based analysis",
-      "notes": "MIT desktop application that imports measured patterns and CIFs, searches user libraries and configured crystallographic databases, compares calculated profiles, and tracks unexplained residual peaks. Version 1.7.2, released 2026-11-18, is current for Windows, macOS, and Linux and changes window handling, save prompts, plot-control layout, and startup order. Version 1.7.1 had preserved CIF identities across library reimport and portable transfer, validated XPFF archives before atomic extraction, and refused quantitative fractions for nearly indistinguishable phases. The repository now cites a forthcoming Journal of Applied Crystallography article whose DOI did not resolve on 2026-11-20, so no article link is given. The releases report targeted software checks and an older 100-pattern baseline, not a new whole-dataset scientific benchmark",
+      "verified_at": "2026-11-27",
+      "task": "Interactive PXRD phase search-match, Le Bail cell and profile refinement, residual inspection, and project-based analysis",
+      "notes": "MIT desktop application that imports measured patterns and CIFs, searches user libraries and configured crystallographic databases, compares calculated profiles, and tracks unexplained residual peaks. Version 1.7.4, released 2026-11-25 for Windows, macOS, and Linux, adds Le Bail refinement of the accepted phases' cells and profiles with a user-set iteration count, Rwp and convergence reporting, and a separate calculation of structural phase fractions with the refined cells and scan zero held fixed; its release notes state that the published Match/Gain formulas are unchanged. The repository cites a Journal of Applied Crystallography article (volume 60) whose DOI did not resolve on 2026-11-27, so no article link is given. Release notes describe software changes, not a whole-dataset scientific benchmark",
       "resource_links": [
         {
           "label": "ABKuznetsov/XRD_Analysis_Toolkit",
@@ -2563,8 +2605,8 @@
           "role": "code"
         },
         {
-          "label": "v1.7.2 release",
-          "url": "https://github.com/ABKuznetsov/XRD_Analysis_Toolkit/releases/tag/v1.7.2",
+          "label": "v1.7.4 release",
+          "url": "https://github.com/ABKuznetsov/XRD_Analysis_Toolkit/releases/tag/v1.7.4",
           "role": "tool"
         }
       ]
@@ -2735,7 +2777,7 @@
       "name": "XRDStudio",
       "category": "utility",
       "scope_relation": "direct_pxrd",
-      "verified_at": "2026-08-10",
+      "verified_at": "2026-11-27",
       "task": "Browser-based PXRD simulation and phase-pattern comparison",
       "notes": "Single-file local app with 171 bundled structures, CIF import, multiple radiation choices, overlays, and reflection export; it does not perform refinement or model texture, absorption, or size/strain broadening",
       "resource_links": [
